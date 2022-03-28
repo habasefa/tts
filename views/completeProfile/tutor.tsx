@@ -31,6 +31,7 @@ function Tutor({ user }: any) {
   const [err, setErr] = useState('')
   const [showAlert, setShowAlert] = useState(false)
   const [birthDate, setBirthDate] = useState('')
+  const [tutorExperience, setTutorExperience] = useState(false)
 
   //   subject select
   const children = []
@@ -72,7 +73,7 @@ function Tutor({ user }: any) {
       field: value.field,
       college: value.college,
       volenteerism: value.volunteerism,
-      prevTutored: true,
+      prevTutored: tutorExperience,
       prevTutorGrades: value.prevTutorGrades,
       prevTutorExperience: value.prevTutorExperience,
       idealTutor: value.idealTutor,
@@ -89,12 +90,15 @@ function Tutor({ user }: any) {
       hobby: value.hobby,
       profilePicture: '',
       token: user.accessToken,
+      userId: user.user.id,
     }
 
     createTutor(userInfo)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.success) {
+          console.log('protected')
           router.replace('/protected')
         } else {
           setErr(data.message)
@@ -139,6 +143,12 @@ function Tutor({ user }: any) {
     onRemove: (file: any) => {
       setFileList((state) => state.filter((f) => f.name !== file.name))
     },
+  }
+
+  function handleChange(value: any) {
+    let x: boolean
+    value == 'yes' ? (x = true) : (x = false)
+    setTutorExperience(x)
   }
 
   return (
@@ -306,27 +316,20 @@ function Tutor({ user }: any) {
           >
             <Input maxLength={500} showCount />
           </Form.Item>
-          <Form.Item
-            name="prevTutored"
-            label="Tutoring Experience"
-            rules={[{ required: true }]}
-          >
+          <Form.Item name="prevTutored" label="Tutoring Experience">
             <Select
               placeholder="Select a option and change input text above"
-              allowClear
+              onChange={handleChange}
             >
-              <Option value={true}>Yes</Option>
-              <Option value={false}>No</Option>
+              <Option value="yes">Yes</Option>
+              <Option value="no">No</Option>
             </Select>
           </Form.Item>
-          <Form.Item
-            name="prevTutorGrades"
-            label="Previously Tutoried Grades"
-            rules={[{ required: true }]}
-          >
+          <Form.Item name="prevTutorGrades" label="Previously Tutoried Grades">
             <Select
               placeholder="Select a option and change input text above"
               allowClear
+              disabled={!tutorExperience}
             >
               <Option value="kindergarten">Kindergarten</Option>
               <Option value="elementary">1-8</Option>
@@ -342,12 +345,11 @@ function Tutor({ user }: any) {
             rules={[
               {
                 required: true,
-                message:
-                  'Please input your strength and weakness in your tutoring experience!',
+                message: 'Please input previous tutor experiences!',
               },
             ]}
           >
-            <Input maxLength={500} showCount />
+            <Input maxLength={500} showCount disabled={!tutorExperience} />
           </Form.Item>
           <Form.Item
             label="Ideal tutor in one word."
@@ -413,16 +415,7 @@ function Tutor({ user }: any) {
             <Input maxLength={50} showCount />
           </Form.Item>
 
-          <Form.Item
-            label="Contact's other phone number"
-            name="contactPhone2"
-            rules={[
-              {
-                required: true,
-                message: "Please input your contact's other phone number!",
-              },
-            ]}
-          >
+          <Form.Item label="Contact's other phone number" name="contactPhone2">
             <Input maxLength={50} showCount />
           </Form.Item>
           <Form.Item

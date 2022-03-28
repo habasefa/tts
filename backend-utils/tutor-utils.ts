@@ -28,6 +28,7 @@ interface IProps {
   hobby: string
   profilePicture: string
   token: string
+  userId: number
 }
 const createTutor = async ({
   fullName,
@@ -59,6 +60,7 @@ const createTutor = async ({
   hobby,
   profilePicture,
   token,
+  userId,
 }: IProps) => {
   const response = await fetch(`http://localhost:4000/api/v1/tutor/`, {
     method: 'POST',
@@ -95,21 +97,19 @@ const createTutor = async ({
       essay,
       hobby,
       profilePicture,
+      userId,
     }),
   })
   return response
 }
 
-const getTutorByEmail = async (email: string, token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/tutor/email`, {
+const getTutorById = async (id: number, token: string) => {
+  const response = await fetch(`http://localhost:4000/api/v1/tutor/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      email,
-    }),
   })
   return response
 }
@@ -125,4 +125,4 @@ const getJobs = async (token: string) => {
   return response
 }
 
-export { createTutor, getTutorByEmail, getJobs }
+export { createTutor, getTutorById, getJobs }

@@ -7,6 +7,7 @@ interface IProps {
   preferredBank: string
   profilePicture: string
   token: string
+  userId: number
 }
 const createParent = async ({
   fullName,
@@ -17,6 +18,7 @@ const createParent = async ({
   location,
   profilePicture,
   token,
+  userId,
 }: IProps) => {
   const response = await fetch(`http://localhost:4000/api/v1/parent/`, {
     method: 'POST',
@@ -32,6 +34,7 @@ const createParent = async ({
       preferredBank,
       location,
       profilePicture,
+      userId,
     }),
   })
   return response
@@ -101,8 +104,8 @@ const createStudent = async ({
   return response
 }
 
-const getParentByEmail = async (email: string, token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/parent/${email}`, {
+const getParentById = async (id: number, token: string) => {
+  const response = await fetch(`http://localhost:4000/api/v1/parent/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -112,4 +115,4 @@ const getParentByEmail = async (email: string, token: string) => {
   return response
 }
 
-export { createParent, createStudent, getParentByEmail }
+export { createParent, createStudent, getParentById }

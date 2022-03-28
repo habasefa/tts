@@ -14,7 +14,7 @@ import {
 
 import classes from '@/styles/completeProfile.module.css'
 import ImgCrop from 'antd-img-crop'
-import { createStudent, getParentByEmail } from 'backend-utils/parent-utils'
+import { createStudent, getParentById } from 'backend-utils/parent-utils'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
@@ -31,23 +31,9 @@ function AddStudents() {
   const [err, setErr] = useState('')
   const [showAlert, setShowAlert] = useState(false)
   const [birthDate, setBirthDate] = useState('')
-  const [parentData, setParentData] = useState<any>(null)
   const [hadPrevTutor, setHadPrevTutor] = useState(false)
 
-  useEffect(() => {
-    getParentByEmail(user.user.email, user.accessToken)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setParentData(data.user)
-        } else {
-          setErr(data.message)
-        }
-      })
-      .catch((_) => {
-        setErr('Something went wrong')
-      })
-  }, [user])
+  const parentId = user.user.parent.id
 
   const children = []
   const subjects = [
@@ -84,12 +70,13 @@ function AddStudents() {
       workDays: parseInt(value.workDays),
       workHour: parseInt(value.workHour),
       token: user.accessToken,
-      parentId: parentData?.id,
+      parentId: parentId,
     }
 
     createStudent(userInfo)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.success) {
           router.push('/')
         } else {

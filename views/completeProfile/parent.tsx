@@ -74,6 +74,7 @@ function Parent({ user }: any) {
       location: value.location,
       profilePicture: '',
       token: user.accessToken,
+      userId: user.user.id,
     }
 
     createParent(userInfo)
