@@ -1,13 +1,4 @@
-import { Button, Dropdown, Input, Menu } from 'antd'
-import Image from 'next/image'
-import {
-  HeartIcon,
-  PaperAirplaneIcon,
-  PlusCircleIcon,
-  SearchIcon,
-  UserGroupIcon,
-} from '@heroicons/react/outline'
-import { HomeIcon, MenuIcon } from '@heroicons/react/solid'
+import { Dropdown, Menu } from 'antd'
 import { useRouter } from 'next/router'
 import { logout, selectUser } from 'redux/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -95,6 +86,7 @@ function Header() {
                   className="dark:focus:ring-orange-300-600 mr-3 flex rounded-full bg-gray-800 text-sm focus:ring-1 focus:ring-orange-300 md:mr-0"
                   id="user-menu-button"
                   aria-expanded="false"
+                  onClick={() => router.push('/signup')}
                 >
                   <span className="sr-only">Open user menu</span>
                   <img

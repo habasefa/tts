@@ -13,7 +13,7 @@ const { Option } = Select
 import classes from '@/styles/completeProfile.module.css'
 import ImgCrop from 'antd-img-crop'
 import { storage } from '../../utils/firebase'
-import { ref } from 'firebase/storage'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { createTutor } from 'backend-utils/tutor-utils'
 import { useRouter } from 'next/router'
 
@@ -32,6 +32,8 @@ function Tutor({ user }: any) {
   const [showAlert, setShowAlert] = useState(false)
   const [birthDate, setBirthDate] = useState('')
   const [tutorExperience, setTutorExperience] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [profileUrl, setProfileUrl] = useState('')
 
   //   subject select
   const children = []
@@ -151,6 +153,28 @@ function Tutor({ user }: any) {
     setTutorExperience(x)
   }
 
+  const uploadFiles = (file: any) => {
+    if (!file) return
+    const storageRef = ref(storage, `/files/${file.name}`)
+    const uploadTask = uploadBytesResumable(storageRef, file)
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const prog = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        )
+        setProgress(prog)
+      },
+      (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) =>
+          setProfileUrl(url)
+        )
+      }
+    )
+  }
+
   return (
     <div>
       <h2 className={classes.header}>Complete your profile</h2>
@@ -178,6 +202,7 @@ function Tutor({ user }: any) {
                 {...props}
                 //   onPreview={onPreview}
                 fileList={fileList}
+                // onChange={e => }
               >
                 {fileList.length < 1 && '+ Upload'}
               </Upload>

@@ -83,80 +83,216 @@ export default function Login() {
   }, [])
 
   return (
-    <div className="grid h-screen w-screen place-items-center">
-      <div className={classes.container}>
-        <div className={classes.wrapper}>
-          <div className={classes.header}>
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-              alt="Workflow"
-            />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Sign in to your account
-            </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Or
+    // <div className="grid h-screen w-screen place-items-center">
+    //   <div className={classes.container}>
+    //     <div className={classes.wrapper}>
+    //       <div className={classes.header}>
+    //         <img
+    //           className="mx-auto h-12 w-auto"
+    //           src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+    //           alt="Workflow"
+    //         />
+    //         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+    //           Sign in to your account
+    //         </h2>
+    //         <p className="mt-2 text-center text-sm text-gray-600">
+    //           Or
+    //           <a
+    //             href="/signup"
+    //             className="font-medium text-indigo-600 hover:text-indigo-500"
+    //           >
+    //             {' '}
+    //             Create an account{' '}
+    //           </a>
+    //         </p>
+    //       </div>
+
+    //       <Form
+    //         layout="vertical"
+    //         initialValues={{ sendMail: true }}
+    //         onFinish={onFinish}
+    //         onFinishFailed={onFinishFailed}
+    //         autoComplete="off"
+    //       >
+    //         <Form.Item
+    // label="Email"
+    // name="email"
+    // rules={[
+    //   { type: 'email' },
+    //   { required: true, message: 'Please input your email!' },
+    // ]}
+    //         >
+    //           <Input
+    // placeholder="Enter email address"
+    // value={email}
+    // onChange={(e) => setEmail(e.target.value)}
+    //           />
+    //         </Form.Item>
+
+    //         <Form.Item
+    // label="Password"
+    // name="password"
+    // rules={[
+    //   { required: true, message: 'Please input your password!' },
+    // ]}
+    //         >
+    //           <Input.Password
+    // placeholder="Enter password"
+    // value={password}
+    // onChange={(e) => setPassword(e.target.value)}
+    //           />
+    //         </Form.Item>
+
+    //         <Form.Item>
+    //           <Button
+    // loading={loggingIn}
+    // type="primary"
+    // htmlType="submit"
+    // style={{ width: '100%' }}
+    //           >
+    //             Sign in
+    //           </Button>
+    //         </Form.Item>
+    //       </Form>
+    //       {showAlert && <Alert message={err} type="error" />}
+    //     </div>
+    //   </div>
+    // </div>
+    <>
+      <div className=" font-minionPro flex h-screen items-center justify-center bg-white sm:bg-white md:bg-white md:px-0 lg:bg-[#f1f1f1]">
+        <div className=" w-full">
+          <div className="mx-auto max-w-lg">
+            <a href="/">
+              <h1 className="font-typograhica text-center  text-4xl text-[#FED607] lg:text-5xl  2xl:text-7xl">
+                temaribet
+              </h1>
+            </a>
+          </div>
+          <div className="mx-auto mb-2 max-w-lg  text-center">
+            <p className="">
+              Don't have an account?{' '}
               <a
                 href="/signup"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="pl-5 font-bold text-[#1A3765] hover:underline"
               >
-                {' '}
-                Create an account{' '}
+                Sign up
               </a>
+              .
             </p>
           </div>
 
-          <Form
-            layout="vertical"
-            initialValues={{ sendMail: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-          >
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                { type: 'email' },
-                { required: true, message: 'Please input your email!' },
-              ]}
-            >
-              <Input
-                placeholder="Enter email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Item>
+          <div className="  mx-auto my-2 max-w-lg rounded-3xl bg-white p-8 md:p-10 md:px-20 lg:shadow-2xl ">
+            <div className="mt-2">
+              {showAlert && (
+                <Alert
+                  message={err}
+                  type="error"
+                  style={{ margin: '0 0 1rem' }}
+                />
+              )}
 
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[
-                { required: true, message: 'Please input your password!' },
-              ]}
-            >
-              <Input.Password
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                loading={loggingIn}
-                type="primary"
-                htmlType="submit"
-                style={{ width: '100%' }}
+              <Form
+                className="flex flex-col"
+                layout="vertical"
+                onFinish={onFinish}
               >
-                Sign in
-              </Button>
-            </Form.Item>
-          </Form>
-          {showAlert && <Alert message={err} type="error" />}
+                <label
+                  className="mb-1 block text-xl text-gray-500 2xl:text-2xl "
+                  htmlFor="email"
+                >
+                  <h4 className="text-xl">Email</h4>
+                </label>
+                <Form.Item
+                  name="email"
+                  rules={[
+                    { type: 'email' },
+                    { required: true, message: 'Please input your email!' },
+                  ]}
+                  className="mb-2 rounded pt-1 "
+                >
+                  <Input
+                    size="large"
+                    placeholder="Enter email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full  border border-gray-400 bg-gray-200  px-3 pb-3 text-gray-700 transition duration-500 focus:border-gray-900 focus:outline-none"
+                  />
+                </Form.Item>
+                <label
+                  className="mb-1 block text-xl  text-gray-500 2xl:text-2xl "
+                  htmlFor="password"
+                >
+                  <h4 className="text-xl">Password</h4>
+                </label>
+                <Form.Item
+                  name="password"
+                  rules={[
+                    { required: true, message: 'Please input your password!' },
+                  ]}
+                  className="mb-2 rounded pt-1 "
+                >
+                  <Input.Password
+                    size="large"
+                    placeholder="Enter password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full  border border-gray-400 bg-gray-200 px-3 pb-3 text-gray-700 transition duration-500 focus:border-gray-900 focus:outline-none"
+                  />
+                </Form.Item>
+                <div className="flex justify-start">
+                  <a
+                    href="#"
+                    className="text-md mb-2 text-[#1A3765]  hover:text-gray-600  2xl:text-lg"
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
+                <Form.Item>
+                  <Button
+                    size="large"
+                    loading={loggingIn}
+                    type="primary"
+                    htmlType="submit"
+                    style={{ backgroundColor: '#1A3765', border: '#1A3765' }}
+                  >
+                    Log in
+                  </Button>
+                </Form.Item>
+                <div className="mt-2 flex items-center justify-between">
+                  <hr className="w-full" />{' '}
+                  <span className="mb-1 p-2 text-2xl text-gray-400 2xl:text-3xl">
+                    or
+                  </span>
+                  <hr className="w-full" />
+                </div>
+                <button className=" mt-2 flex h-12 w-full  flex-row items-center border-2 bg-white  text-[#1A3765] hover:bg-blue-900 hover:text-white">
+                  <span className="flex-none px-3">
+                    <i className="fab fa-facebook-f"></i>
+                  </span>
+                  <span className="grow justify-center text-xl 2xl:text-2xl">
+                    Sign in with Facebook
+                  </span>
+                </button>
+                <button className=" mt-2 flex h-12 w-full  flex-row items-center border-2 bg-white  text-[#1A3765] hover:bg-blue-900 hover:text-white">
+                  <span className="flex-none px-3">
+                    <i className="fa-brands fa-google"></i>
+                  </span>
+                  <span className="grow justify-center text-xl 2xl:text-2xl">
+                    {' '}
+                    Sign in with Google
+                  </span>
+                </button>
+              </Form>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-5 flex max-w-lg justify-center ">
+            <p className=" text-center text-xl 2xl:text-2xl">
+              &copy;2022 Temaribet. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "fugasOne";
+  src: url(../public/fonts/FugazOne-Regular.ttf);
+}
+@font-face{
+  font-family:"typograhica";
+  src:url(../public/fonts/typographica.ttf)
+
+}
+@font-face{
+  font-family:"minionPro";
+  src:url(../public/fonts/MinionProRegular.ttf)
+  
+}
+
 @layer components {
   .navBtn {
     @apply hidden h-6 cursor-pointer transition-all duration-150 ease-out hover:scale-125 md:inline-flex;
@@ -9,4 +24,15 @@
   .btn {
     @apply h-7 cursor-pointer transition-all duration-150 ease-out hover:scale-125;
   }
+}
+
+.ant-btn-primary {
+  background-color: #1A3765;
+  margin-top: 0.5rem;
+  height: 3rem;
+  width: 100%;
+  font-size: 1.25rem;
+    line-height: 1.75rem;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));   
 }

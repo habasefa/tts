@@ -5,8 +5,8 @@ import Tutor from '@/views/completeProfile/tutor'
 import Parent from '@/views/completeProfile/parent'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
-import Header from '@/components/Header'
 import { useRouter } from 'next/router'
+import Header from '@/components/Common/Header'
 // import { IdTokenResult, User } from "firebase/auth";
 
 // interface IProps {

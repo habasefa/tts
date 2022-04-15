@@ -6,12 +6,7 @@ import { selectUser } from 'redux/userSlice'
 function Protected() {
   const user = useSelector(selectUser)
   const [tutors, setTutors] = useState([])
-  return (
-    <div>
-      <Header />
-      Hey
-    </div>
-  )
+  return <div>Hey</div>
 }
 
 export default Protected

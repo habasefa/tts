@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from './Header'
+import Footer from './Common/Footer'
+import Header from './Common/Header'
 
 function Layout({ children }: any) {
   return (
     <div>
-      <Header />
       <main>{children}</main>
     </div>
   )
