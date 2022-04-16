@@ -74,35 +74,35 @@ const Header = () => {
             (navbarOpen ? ' flex' : ' hidden')
           }
         >
-          <ul className="mb-0 flex list-none flex-col items-center justify-center text-2xl lg:ml-auto  lg:flex-row lg:text-2xl 2xl:text-4xl">
-            <li className="nav-item h-full">
+          <ul className="mb-0 flex list-none flex-col items-center justify-center lg:ml-auto  lg:flex-row text-lg 2xl:text-2xl">
+            <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center  px-3 py-1 font-serif  font-semibold leading-snug text-blue-900 opacity-40  hover:opacity-75"
+                className="flex items-center  px-3 py-1 font-serif  font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
               >
                 Home
               </a>
             </li>
-            <li className="nav-item h-full">
+            <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-40  hover:opacity-75"
+                className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
               >
                 About Us
               </a>
             </li>
-            <li className="nav-item h-full">
+            <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-40  hover:opacity-75"
+                className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
               >
                 Pricing
               </a>
             </li>
             {user == null && (
-              <li className="nav-item h-full">
+              <li className="nav-item h-full md:mx-5">
                 <a
-                  className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-40  hover:opacity-75"
+                  className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                   href="#"
                   onClick={() => router.push('/login')}
                 >

@@ -7,7 +7,7 @@ const profile = () => {
   return (
     <div
       className="
-    px-20 xl:mx-36 xl:px-16"
+    px-20  xl:px-16"
     >
       {/* bg-[#f2f2f2]  */}
       <Header />
