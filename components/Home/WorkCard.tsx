@@ -7,10 +7,10 @@ const WorkCard = (props: any) => {
     <div className="mt-10 flex flex-col items-center font-serif">
       <Image src={props.image} alt="me" width="300" height="250" />
       <div className="px-12">
-        <h1 className="mt-5 text-xl font-bold text-[#1A3765] lg:text-3xl 2xl:text-5xl">
+        <h1 className="text-[#1A3765] text-xl md:text-2xl xl:text-3xl 2xl:text-4xl text-[#1A3765] font-bold font-minionPro mt-5">
           {props.title}
         </h1>
-        <p className="text-lg text-[#1A3765] lg:text-xl 2xl:text-3xl">
+        <p className="text-[#1A3765] text-lg lg:text-xl 2xl:text-2xl">
           {props.description}
         </p>
       </div>

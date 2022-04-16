@@ -6,17 +6,17 @@ const ServiceCard = (props: any) => {
   return (
     <div className="flex h-full flex-col justify-between bg-[#E5EFFF] drop-shadow-lg">
       <div className="w-full px-11 py-9 ">
-        <h1 className="text-3xl  font-bold text-[#1A3765] 2xl:text-5xl">
+        <h1 className="text-[#1A3765]  text-lg md:text-xl xl:text-2xl 2xl:text-3xl text-[#1A3765] font-bold font-minionPro ">
           {props.title}
         </h1>
-        <p className="border-gray-500  font-sans text-lg text-gray-500  2xl:text-2xl">
+        <p className="text-gray-500  font-minionPro  text-lg md:text-xl xl:text-2xl 2xl:text-3xl  border-gray-500">
           {props.description}
         </p>
         <hr style={{ border: '1px solid lightgray' }} />
         {props.subjects.map((item: any) => (
           <li
             key={item}
-            className="m-5 ml-0  text-lg text-[#1A3765] lg:text-2xl 2xl:text-4xl"
+            className="text-[#1A3765] font-minionPro  text-lg md:text-xl xl:text-2xl 2xl:text-3xl m-5 ml-0"
             style={{
               listStyleType: 'none',
               listStyleImage: "url('../../../public/right.png')",

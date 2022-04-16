@@ -5,8 +5,8 @@ import WorkTogatherCard from './WorkCard'
 import 'antd/dist/antd.css'
 const Work = () => {
   return (
-    <div className="mx-5 mt-20 mb-20 md:mx-16">
-      <header className="font-serif text-3xl font-semibold text-[#1A3765] lg:text-5xl 2xl:text-6xl">
+    <div className="mx-5 md:mx-16 mt-20 mb-20 2xl:mt-40 2xl:mb-40">
+      <header className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765] ">
         How we will work together?
       </header>
       <Row gutter={[10, 24]} justify="space-around">
