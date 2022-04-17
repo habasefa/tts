@@ -1,7 +1,7 @@
 const Description = () => {
   return (
     <section>
-      <div className=" mx-5 flex flex-col   py-8 md:mx-16 md:mx-16 md:mt-20 xl:mt-30 2xl:mt-40 md:mb-20 xl:mb-30 2xl:mb-40">
+      <div className=" mx-9 flex flex-col   py-8 md:mx-20 md:mt-20 xl:mt-30 2xl:mt-40 md:mb-20 xl:mb-30 2xl:mb-40">
         <div className="prose-blue flex w-full  flex-col text-left">
           <div className=" mx-auto">
             <h1 className="font-bold font-minionPro text-[#1A3765]  text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl ">

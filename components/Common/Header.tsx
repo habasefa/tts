@@ -46,7 +46,7 @@ const Header = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   return (
     <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607] px-2 py-0 opacity-100">
-      <div className="mx-5 flex w-full flex-wrap items-center justify-between md:mx-16">
+      <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
         <div className="relative flex w-full justify-between lg:static lg:block lg:w-auto lg:justify-start">
           <a
             className="font-typograhica mr-4 inline-block  whitespace-nowrap  px-0  text-3xl font-thin leading-relaxed text-white md:py-5 md:text-5xl  2xl:py-6  2xl:text-6xl"

@@ -4,10 +4,10 @@ import WhyUsComponent from './WhyUsComponent'
 const WhyUs = () => {
   return (
     <div className="my-20  bg-[#EAEDF1] py-12">
-      <header className="mx-5 pt-1 pb-11  text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765] ">
+      <header className="mx-9 md:mx-20 pt-1 pb-11  text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765] ">
         Why Us?
       </header>
-      <div className="mx-5 mt-5 md:mx-16">
+      <div className="mx-9 mt-5 md:mx-20">
         <Row gutter={[8, 8]} justify={'space-between'}>
           <Col xs={12} xl={6} md={6}>
             <WhyUsComponent
