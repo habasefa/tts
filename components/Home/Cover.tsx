@@ -7,13 +7,13 @@ const Cover = () => {
       <div className="lg:flex">
         <div className="w-full sm:items-center  md:mb-20">
           <div className="mx-9 mt-5 pt-40 md:mx-20 md:mt-20 lg:w-full">
-            <h1 className=" 3xl:text-8xl font-serif text-4xl text-[#1A3765]  lg:text-7xl">
+            <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-7xl">
               We prepare for life.
             </h1>
-            <h1 className=" 3xl:text-8xl font-serif text-4xl font-medium text-white lg:text-7xl ">
+            <h1 className=" 3xl:text-8xl font-minionPro text-4xl font-medium text-white lg:text-7xl ">
               Not just exam!
             </h1>
-            <p className="3xl:text-4xl mt-2 font-serif text-2xl text-[#1A3765] md:mb-20">
+            <p className="3xl:text-4xl mt-2 font-minionPro text-2xl text-[#1A3765] md:mb-20">
               Top tutors from all over Addis Abeba
               <br />
               managed by Temaribet

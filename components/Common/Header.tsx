@@ -45,7 +45,7 @@ const Header = () => {
   )
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   return (
-    <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607] px-2 py-0 opacity-100">
+    <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607]  py-0 opacity-100">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
         <div className="relative flex w-full justify-between lg:static lg:block lg:w-auto lg:justify-start">
           <a
@@ -77,7 +77,7 @@ const Header = () => {
           <ul className="mb-0 flex list-none flex-col items-center justify-center lg:ml-auto  lg:flex-row text-lg 2xl:text-2xl">
             <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center  px-3 py-1 font-serif  font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                className="flex items-center  px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
               >
                 Home
@@ -85,7 +85,7 @@ const Header = () => {
             </li>
             <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
               >
                 About Us
@@ -93,7 +93,7 @@ const Header = () => {
             </li>
             <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                className="flex items-center px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
               >
                 Pricing
@@ -102,7 +102,7 @@ const Header = () => {
             {user == null && (
               <li className="nav-item h-full md:mx-5">
                 <a
-                  className="flex items-center px-3 py-1 font-serif   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                  className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                   href="#"
                   onClick={() => router.push('/login')}
                 >
@@ -114,7 +114,7 @@ const Header = () => {
               <li className="nav-item  h-full pl-2">
                 <button
                   onClick={() => router.push('/signup')}
-                  className="transform rounded-full bg-[#1A3765] px-10 py-3  font-serif capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                  className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                 >
                   Register
                 </button>

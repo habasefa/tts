@@ -52,7 +52,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-6 font-serif lg:mt-0 lg:flex-1">
+          <div className="mt-6 lg:mt-0 lg:flex-1">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
               <div>
                 <h3 className="text-xl uppercase text-white opacity-90 dark:text-white">
@@ -151,7 +151,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="mt-20 text-center font-serif text-xl text-white opacity-80 dark:text-white lg:text-2xl">
+          <p className="mt-20 text-center  text-xl text-white opacity-80 dark:text-white lg:text-2xl">
             © 2022 Temaribet.All rights reserved
           </p>
         </div>

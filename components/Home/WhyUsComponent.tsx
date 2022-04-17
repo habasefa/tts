@@ -11,11 +11,11 @@ const WhyUsComponent = (props: any) => {
         height="200"
       />
 
-      <h1 className="mt-3 text-center font-serif text-base font-bold text-[#1A3765] lg:text-2xl 2xl:text-3xl">
+      <h1 className="mt-3 text-center  text-base font-bold text-[#1A3765] lg:text-2xl 2xl:text-3xl">
         {props.title}
       </h1>
       <p
-        className="text-center font-serif text-sm text-[#1A3765] lg:text-lg 
+        className="text-center  text-sm text-[#1A3765] lg:text-lg 
          2xl:text-2xl"
       >
         {props.description}

@@ -34,7 +34,7 @@ const Work = () => {
           />
         </Col>
       </Row>
-      <p className="text-black-900 mt-10 text-center font-serif text-xl font-medium xl:text-3xl">
+      <p className="text-black-900 mt-10 text-center  text-xl font-medium xl:text-3xl">
         Ready to excel your child?{' '}
         <Link href={'#'}>
           <a className="font-serif text-2xl text-blue-700 xl:text-4xl xl:font-bold">

@@ -2,7 +2,7 @@ import { Button, List, Col, Row } from 'antd'
 import Stats from './Statistics'
 const Achievement = () => {
   return (
-    <div className="via-black-900 bg-gradient-to-r from-[#142F43] to-black pb-40 pt-9 font-serif ">
+    <div className="via-black-900 bg-gradient-to-r from-[#142F43] to-black pb-40 pt-9  ">
       <div className="mx-9 md:mx-20">
         <Col sm={24} style={{ justifyContent: 'center' }}>
           <div>

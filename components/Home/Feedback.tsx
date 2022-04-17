@@ -1,10 +1,10 @@
 import { Col, Row } from 'antd'
 const Feedback = () => {
   return (
-    <section className="mt-20 min-h-screen bg-yellow-50 font-serif md:bg-[#ECF2FB]">
+    <section className="mt-20 min-h-screen bg-yellow-50 font-minionPro md:bg-[#ECF2FB]">
       <div className="  mx-9 h-full py-12 md:mx-20 md:mr-16">
         <div className="mx-auto mt-7">
-          <h2 className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765]">
+          <h2 className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold  text-[#1A3765]">
             Why parents love <span className="text-yellow-300">temaribet</span>
           </h2>
         </div>
@@ -14,7 +14,7 @@ const Feedback = () => {
             <div className="w-full  lg:w-1/2">
               <div className="p-8 lg:p-12">
                 <div>
-                  <p className="font-bold font-minionPro text-lg lg:text-xl 2xl:text-3xl">
+                  <p className="font-bold  text-lg lg:text-xl 2xl:text-3xl">
                     Abinet Legesse
                   </p>
                   <p className="-mt-6 lg:-mt-4  font-minionPro text-lg lg:text-xl 2xl:text-3xl text-black opacity-30">
