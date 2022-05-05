@@ -1,7 +1,11 @@
 import Image from 'next/image'
 import 'antd/dist/antd.css'
-
+import { useRouter } from 'next/router'
 const Cover = () => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push("/parentRegistration")
+  }
   return (
     <div className="flex min-h-screen flex-col justify-end bg-[#FED607]">
       <div className="lg:flex">
@@ -18,7 +22,9 @@ const Cover = () => {
               <br />
               managed by Temaribet
             </p>
-            <button className="mb-6  mt-6 w-full transform bg-[#1A3765] px-14 py-5 font-serif text-xl font-medium text-white transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none md:text-3xl lg:w-auto lg:rounded-full lg:text-4xl  xl:text-5xl 2xl:text-5xl">
+            <button 
+            onClick={handleClick}
+            className="mb-6  mt-6 w-full transform bg-[#1A3765] px-14 py-5 font-serif text-xl font-medium text-white transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none md:text-3xl lg:w-auto lg:rounded-full lg:text-4xl  xl:text-5xl 2xl:text-5xl">
               Get tutor
             </button>
           </div>

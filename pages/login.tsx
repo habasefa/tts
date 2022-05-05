@@ -51,8 +51,8 @@ export default function Login() {
           )
           if (data.user.role === 'TUTOR' && data.user.tutor === null)
             router.push('/complete-profile')
-          if (data.user.role === 'PARENT' && data.user.parent === null)
-            router.push('/complete-profile')
+          // if (data.user.role === 'PARENT' && data.user.parent === null)
+          //   router.push('/complete-profile')
           router.push('/')
         } else {
           setErr(data.message)
