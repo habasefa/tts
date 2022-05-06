@@ -8,14 +8,15 @@ import {
   notification,
   Select,
   DatePicker,
+  InputNumber,
 } from 'antd'
 const { Option } = Select
 import classes from '@/styles/completeProfile.module.css'
 import ImgCrop from 'antd-img-crop'
 import { storage } from '../../utils/firebase'
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { createTutor } from 'backend-utils/tutor-utils'
 import { useRouter } from 'next/router'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
 function Tutor({ user }: any) {
   const router = useRouter()
@@ -32,7 +33,6 @@ function Tutor({ user }: any) {
   const [showAlert, setShowAlert] = useState(false)
   const [birthDate, setBirthDate] = useState('')
   const [tutorExperience, setTutorExperience] = useState(false)
-  const [progress, setProgress] = useState(0)
   const [profileUrl, setProfileUrl] = useState('')
 
   //   subject select
@@ -53,13 +53,6 @@ function Tutor({ user }: any) {
   }
 
   const onFinish = (value: any) => {
-    if (fileList.length !== 1) {
-      notification.error({
-        message: 'Only 1 image is required!',
-      })
-      return
-    }
-    // const storageRef = ref(storage, `/files/${fileList[0].name}`)
     const date = new Date(birthDate)
 
     const userInfo = {
@@ -68,7 +61,7 @@ function Tutor({ user }: any) {
       phone: value.phone,
       gender: value.gender,
       subjects: value.subjects,
-      birthDay: date,
+      age: parseInt(value.age),
       acadStatus: value.acadStatus,
       UEE: parseInt(value.UEE),
       cGPA: value.cGPA,
@@ -90,7 +83,7 @@ function Tutor({ user }: any) {
       location: value.location,
       essay: value.essay,
       hobby: value.hobby,
-      profilePicture: '',
+      profilePicture: profileUrl,
       token: user.accessToken,
       userId: user.user.id,
     }
@@ -101,7 +94,7 @@ function Tutor({ user }: any) {
         console.log(data)
         if (data.success) {
           console.log('protected')
-          router.replace('/protected')
+          router.replace('/profile')
         } else {
           setErr(data.message)
         }
@@ -118,62 +111,53 @@ function Tutor({ user }: any) {
       })
   }
 
-  //   !Image upload related
-  const validImageTypes = ['image/png', 'image/jpeg', 'image/jpg']
-  const [fileList, setFileList] = useState(Array<any>())
-
-  const props = {
-    name: 'file',
-    beforeUpload: (file: any) => {
-      if (!validImageTypes.includes(file.type)) {
-        notification.error({
-          message: `${file.name} is not a valid file type`,
-        })
-        return Upload.LIST_IGNORE
-      }
-      const isLt2M = file.size / 1024 / 1024 < 2
-      if (!isLt2M) {
-        notification.error({
-          message: 'Image must smaller than 2MB!',
-        })
-        return Upload.LIST_IGNORE
-      }
-      setFileList([])
-      setFileList((state) => state.concat(file))
-      return false
-    },
-    onRemove: (file: any) => {
-      setFileList((state) => state.filter((f) => f.name !== file.name))
-    },
-  }
-
   function handleChange(value: any) {
     let x: boolean
     value == 'yes' ? (x = true) : (x = false)
     setTutorExperience(x)
   }
 
-  const uploadFiles = (file: any) => {
-    if (!file) return
-    const storageRef = ref(storage, `/files/${file.name}`)
-    const uploadTask = uploadBytesResumable(storageRef, file)
+  const [file, setFile] = useState<any>('')
+  const [per, setPerc] = useState<any>(null)
 
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        )
-        setProgress(prog)
-      },
-      (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) =>
-          setProfileUrl(url)
-        )
-      }
-    )
-  }
+  useEffect(() => {
+    const uploadFile = () => {
+      const name = new Date().getTime() + file.name
+
+      console.log(name)
+      const storageRef = ref(storage, name)
+      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          console.log('Upload is ' + progress + '% done')
+          setPerc(progress)
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused')
+              break
+            case 'running':
+              console.log('Upload is running')
+              break
+            default:
+              break
+          }
+        },
+        (error) => {
+          console.log(error)
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setProfileUrl(downloadURL)
+          })
+        }
+      )
+    }
+    file && uploadFile()
+  }, [file])
 
   return (
     <div>
@@ -188,6 +172,16 @@ function Tutor({ user }: any) {
           onFinish={onFinish}
           autoComplete="off"
         >
+          <div className="left">
+            <img
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
+              }
+              alt=""
+            />
+          </div>
           <Form.Item
             label="Upload your profile picture"
             rules={[
@@ -196,7 +190,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <ImgCrop rotate maxZoom={5}>
+            {/* <ImgCrop rotate maxZoom={5}>
               <Upload
                 listType="picture-card"
                 {...props}
@@ -206,7 +200,12 @@ function Tutor({ user }: any) {
               >
                 {fileList.length < 1 && '+ Upload'}
               </Upload>
-            </ImgCrop>
+            </ImgCrop> */}
+            <input
+              type="file"
+              id="file"
+              onChange={(e: any) => setFile(e.target.files[0])}
+            />
           </Form.Item>
 
           <Form.Item
@@ -254,8 +253,8 @@ function Tutor({ user }: any) {
             </Select>
           </Form.Item>
           <Form.Item
-            label="Birthday"
-            name="birthDay"
+            label="Age"
+            name="age"
             rules={[
               {
                 required: true,
@@ -263,10 +262,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            {/* <Input maxLength={50} showCount /> */}
-            <DatePicker
-              onChange={(date, dateString) => setBirthDate(dateString)}
-            />
+            <InputNumber controls={false} />
           </Form.Item>
           <Form.Item
             name="acadStatus"
@@ -367,12 +363,6 @@ function Tutor({ user }: any) {
           <Form.Item
             label="Strength and Weakness on your previous Tutor Experience"
             name="prevTutorExperience"
-            rules={[
-              {
-                required: true,
-                message: 'Please input previous tutor experiences!',
-              },
-            ]}
           >
             <Input maxLength={500} showCount disabled={!tutorExperience} />
           </Form.Item>
@@ -501,7 +491,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <Input.TextArea maxLength={500} showCount />
+            <Input.TextArea showCount />
           </Form.Item>
           <Form.Item
             label="Hobby"

@@ -1,42 +1,12 @@
-interface IProps {
-  fullName: string
-  email: string
-  phone: string
-  gender: string
-  subjects: string[]
-  birthDay: any
-  acadStatus: string
-  UEE: number
-  cGPA: string
-  field: string
-  college: string
-  volenteerism: string
-  prevTutored: boolean
-  prevTutorGrades: string
-  prevTutorExperience: string
-  idealTutor: string
-  preferredBank: string
-  bankAccountNo: string
-  contactName: string
-  contactPhone1: string
-  contactPhone2: string | null
-  contactEmail: string
-  workDays: number
-  workHour: number
-  location: string
-  essay: string
-  hobby: string
-  profilePicture: string
-  token: string
-  userId: number
-}
+import { ReportPostProps, TutorPostProps } from 'utils/types'
+
 const createTutor = async ({
   fullName,
   email,
   phone,
   gender,
   subjects,
-  birthDay,
+  age,
   acadStatus,
   UEE,
   cGPA,
@@ -61,7 +31,7 @@ const createTutor = async ({
   profilePicture,
   token,
   userId,
-}: IProps) => {
+}: TutorPostProps) => {
   const response = await fetch(`http://localhost:4000/api/v1/tutor/`, {
     method: 'POST',
     headers: {
@@ -74,7 +44,7 @@ const createTutor = async ({
       phone,
       gender,
       subjects,
-      birthDay,
+      age,
       acadStatus,
       UEE,
       cGPA,
@@ -102,6 +72,58 @@ const createTutor = async ({
   })
   return response
 }
+const createReport = async ({
+  professionality,
+  assg,
+  noDays,
+  feedback,
+  semiTotalHour,
+  quiz,
+  test,
+  envChallenge,
+  envHelp,
+  envResponse,
+  yourChallenge,
+  yourHelp,
+  yourResponse,
+  tuteeChallenge,
+  tuteeHelp,
+  tuteeResponse,
+  subjects,
+  topics,
+  token,
+  tutorId,
+}: ReportPostProps) => {
+  const response = await fetch(`http://localhost:4000/api/v1/report/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      professionality,
+      assg,
+      noDays,
+      feedback,
+      semiTotalHour,
+      quiz,
+      test,
+      envChallenge,
+      envHelp,
+      envResponse,
+      yourChallenge,
+      yourHelp,
+      yourResponse,
+      tuteeChallenge,
+      tuteeHelp,
+      tuteeResponse,
+      subjects,
+      topics,
+      tutorId,
+    }),
+  })
+  return response
+}
 
 const getTutorById = async (id: number, token: string) => {
   const response = await fetch(`http://localhost:4000/api/v1/tutor/${id}`, {
@@ -125,4 +147,18 @@ const getJobs = async (token: string) => {
   return response
 }
 
-export { createTutor, getTutorById, getJobs }
+const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
+  const response = await fetch(`http://localhost:4000/api/v1/job/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      tutorId,
+    }),
+  })
+  return response
+}
+
+export { createTutor, getTutorById, getJobs, linkJobAndTutor, createReport }

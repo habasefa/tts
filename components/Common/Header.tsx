@@ -74,11 +74,11 @@ const Header = () => {
             (navbarOpen ? ' flex' : ' hidden')
           }
         >
-          <ul className="mb-0 flex list-none flex-col items-center justify-center lg:ml-auto  lg:flex-row text-lg 2xl:text-2xl">
+          <ul className="mb-0 flex list-none flex-col items-center justify-center text-lg  lg:ml-auto lg:flex-row 2xl:text-2xl">
             <li className="nav-item h-full md:mx-5">
               <a
                 className="flex items-center  px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                href="#"
+                href="/"
               >
                 Home
               </a>
@@ -118,6 +118,28 @@ const Header = () => {
                 >
                   Register
                 </button>
+              </li>
+            )}
+            {user && user.user.role === 'TUTOR' && (
+              <li className="nav-item h-full md:mx-5">
+                <a
+                  className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                  href="#"
+                  onClick={() => router.push('/jobs-list')}
+                >
+                  Find Jobs
+                </a>
+              </li>
+            )}
+            {user && user.user.role === 'TUTOR' && (
+              <li className="nav-item h-full md:mx-5">
+                <a
+                  className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                  href="#"
+                  onClick={() => router.push('/tutorReport')}
+                >
+                  Report
+                </a>
               </li>
             )}
             {user && (

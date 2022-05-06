@@ -37,4 +37,15 @@ const signout = async (accessToken: string, token: string) => {
   return response
 }
 
-export { signup, signin, signout }
+const getUserById = async (id: number, token: string) => {
+  const response = await fetch(`http://localhost:4000/api/v1/user/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  })
+  return response
+}
+
+export { signup, signin, signout, getUserById }

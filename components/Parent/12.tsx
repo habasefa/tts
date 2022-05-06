@@ -1,4 +1,5 @@
 import { createStudent } from 'backend-utils/parent-utils'
+import { useRouter } from 'next/router'
 import { ParentComponentProps } from 'utils/types'
 
 export default function ParentRegistration_12({
@@ -7,6 +8,8 @@ export default function ParentRegistration_12({
   page,
   setPage,
 }: ParentComponentProps) {
+  const router = useRouter()
+
   const handleClick = () => {
     console.log(formData)
     createStudent({
@@ -29,6 +32,7 @@ export default function ParentRegistration_12({
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err))
+    router.push('/')
   }
   return (
     <div>
