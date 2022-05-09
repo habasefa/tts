@@ -125,13 +125,25 @@ const createReport = async ({
   return response
 }
 
-const getTutorById = async (id: number, token: string) => {
+const getTutorById = async (id: any, token: string) => {
   const response = await fetch(`http://localhost:4000/api/v1/tutor/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
+  })
+  return response
+}
+
+const updateTutor = async (id: any, token: string, tutorBody: any) => {
+  const response = await fetch(`http://localhost:4000/api/v1/tutor/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ ...tutorBody }),
   })
   return response
 }
@@ -161,4 +173,11 @@ const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
   return response
 }
 
-export { createTutor, getTutorById, getJobs, linkJobAndTutor, createReport }
+export {
+  createTutor,
+  getTutorById,
+  getJobs,
+  linkJobAndTutor,
+  createReport,
+  updateTutor,
+}

@@ -29,8 +29,8 @@ const Home: NextPage = () => {
     if (decodedToken.exp > Date.now()) {
       dispatch(logout())
     }
-    if (user.user.role === 'TUTOR' && user.user.tutor === null)
-      router.push('/complete-profile')
+    // if (user.user.role === 'TUTOR' && user.user.tutor === null)
+    //   router.push('/complete-profile')
   }
   const access = localStorage.getItem('persist:root')
 

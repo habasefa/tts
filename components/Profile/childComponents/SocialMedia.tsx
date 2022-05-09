@@ -1,8 +1,13 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 
-const SocialMedia = () => {
+const SocialMedia = (props: any) => {
+  const router = useRouter()
   return (
     <div className="flex justify-center font-serif  md:justify-end">
+      {/* <button onClick={() => router.push('profile/' + props?.id)}>
+        Update
+      </button> */}
       <a
         href="#"
         className="mx-4 text-black hover:text-blue-600"
