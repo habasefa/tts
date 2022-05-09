@@ -40,13 +40,18 @@ function Tutor({ user }: any) {
   const subjects = [
     'Mathematics',
     'English',
-    'Biology',
+    'Amharic',
+    'Afan Oromo',
     'Physics',
+    'Biology',
     'Chemistry',
     'History',
     'Geography',
-    'Civics',
-    'SAT',
+    'Music',
+    'Art',
+    'Programming',
+    'Web Development',
+    'App Development',
   ]
   for (let i = 0; i < subjects.length; i++) {
     children.push(<Option key={subjects[i]}>{subjects[i]}</Option>)
@@ -172,8 +177,22 @@ function Tutor({ user }: any) {
           onFinish={onFinish}
           autoComplete="off"
         >
-          <div className="left">
+          <div
+            className="left"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              margin: '0 0 10px 0',
+            }}
+          >
             <img
+              style={{
+                width: '100px',
+                height: '100px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                marginRight: '20px',
+              }}
               src={
                 file
                   ? URL.createObjectURL(file)
@@ -181,16 +200,15 @@ function Tutor({ user }: any) {
               }
               alt=""
             />
-          </div>
-          <Form.Item
-            label="Upload your profile picture"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            {/* <ImgCrop rotate maxZoom={5}>
+            <Form.Item
+              label="Upload your profile picture"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              {/* <ImgCrop rotate maxZoom={5}>
               <Upload
                 listType="picture-card"
                 {...props}
@@ -201,12 +219,13 @@ function Tutor({ user }: any) {
                 {fileList.length < 1 && '+ Upload'}
               </Upload>
             </ImgCrop> */}
-            <input
-              type="file"
-              id="file"
-              onChange={(e: any) => setFile(e.target.files[0])}
-            />
-          </Form.Item>
+              <input
+                type="file"
+                id="file"
+                onChange={(e: any) => setFile(e.target.files[0])}
+              />
+            </Form.Item>
+          </div>
 
           <Form.Item
             label="Full name"
@@ -258,7 +277,7 @@ function Tutor({ user }: any) {
             rules={[
               {
                 required: true,
-                message: 'Please input your birth date!',
+                message: 'Please input your age!',
               },
             ]}
           >

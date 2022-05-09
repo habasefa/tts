@@ -43,6 +43,8 @@ const profile = () => {
     college: userData?.tutor.college,
     bank: userData?.tutor.preferredBank,
     bankAccountNo: userData?.tutor.bankAccountNo,
+    hobby: userData?.tutor.hobby,
+    subjects: userData?.tutor.subjects,
   }
   return (
     <div
@@ -58,7 +60,7 @@ const profile = () => {
           <PersonalEssay essay={userData?.tutor.essay} />
         </div>
 
-        <BottomRow />
+        <BottomRow userData={keyInfo} />
       </div>
       <Footer />
     </div>

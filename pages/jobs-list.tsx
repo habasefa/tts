@@ -61,6 +61,7 @@ const JobsList = () => {
             <div className="mt-6">
               <Row gutter={[8, 20]} justify={'space-between'}>
                 {jobs
+                  .filter((job: any) => job.hiredTutorId == null)
                   .filter((job: any) => {
                     if (searchTerm == '') {
                       return job

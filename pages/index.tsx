@@ -4,8 +4,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { selectUser } from 'redux/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, selectUser } from 'redux/userSlice'
 import jwt_decode from 'jwt-decode'
 import { refreshToken } from 'backend-utils/refresh-token'
 import Cover from '@/components/Home/Cover'
@@ -22,8 +22,15 @@ import Footer from '@/components/Common/Footer'
 const Home: NextPage = () => {
   const user = useSelector(selectUser)
   const router = useRouter()
+  const dispatch = useDispatch()
+
   if (user) {
-    const decodedToken = jwt_decode(user.accessToken)
+    const decodedToken: any = jwt_decode(user.accessToken)
+    if (decodedToken.exp > Date.now()) {
+      dispatch(logout())
+    }
+    if (user.user.role === 'TUTOR' && user.user.tutor === null)
+      router.push('/complete-profile')
   }
   const access = localStorage.getItem('persist:root')
 

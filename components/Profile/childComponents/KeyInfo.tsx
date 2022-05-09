@@ -15,7 +15,10 @@ const KeyInfo = (props: any) => {
         Age: {props.keyInfo.age}
       </p>
       <p className="mb-2 text-xl md:text-base xl:text-xl">
-        Grad Date: {props.keyInfo.graddate}
+        Grad Date:{' '}
+        {props.keyInfo.graddate == 'postGraduate'
+          ? 'Post Graduate'
+          : 'Under Graduate'}
       </p>
       <p className="mb-2 text-xl md:text-base xl:text-xl">
         cGPA: {props.keyInfo.cgpa}
@@ -23,9 +26,9 @@ const KeyInfo = (props: any) => {
       <p className="mb-2 text-xl md:text-base xl:text-xl">
         UEE: {props.keyInfo.UEE}
       </p>
-      <p className="mb-2 text-xl md:text-base xl:text-xl">
+      {/* <p className="mb-2 text-xl md:text-base xl:text-xl">
         SAT: {props.keyInfo.SAT}
-      </p>
+      </p> */}
       <p className="mb-2 text-xl md:text-base xl:text-xl">
         field: {props.keyInfo.field}
       </p>

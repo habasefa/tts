@@ -13,7 +13,11 @@ const BottomRow = (props: any) => {
           </div>
 
           <div className="w-full max-w-xs">
-            <BottomCard title="Best At" type="bestat" />
+            <BottomCard
+              title="Best At"
+              type="bestat"
+              subjects={props.userData?.subjects}
+            />
           </div>
 
           <div className="w-full max-w-xs">
@@ -21,7 +25,11 @@ const BottomRow = (props: any) => {
           </div>
 
           <div className="w-full max-w-xs">
-            <BottomCard title="Hobby" type="hobby" />
+            <BottomCard
+              title="Hobby"
+              type="hobby"
+              hobby={props.userData?.hobby}
+            />
           </div>
 
           <div className="w-full max-w-xs">

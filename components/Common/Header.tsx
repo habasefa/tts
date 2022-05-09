@@ -15,8 +15,10 @@ const Header = () => {
     router.push('/')
   }
   if (user) {
-    var name = user.user.email.match(/^([^@]*)@/)[1]
+    var name = user.user.email?.match(/^([^@]*)@/)[1]
     var role = user.user.role
+    var hiredJobId = user.user.tutor?.hiredJobId
+    var profilePicture = user.user.tutor?.profilePicture
   }
   const menu = (
     <Menu>
@@ -44,6 +46,7 @@ const Header = () => {
     </Menu>
   )
   const [navbarOpen, setNavbarOpen] = React.useState(false)
+  console.log(profilePicture)
   return (
     <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607]  py-0 opacity-100">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
@@ -120,7 +123,7 @@ const Header = () => {
                 </button>
               </li>
             )}
-            {user && user.user.role === 'TUTOR' && (
+            {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
@@ -131,7 +134,7 @@ const Header = () => {
                 </a>
               </li>
             )}
-            {user && user.user.role === 'TUTOR' && (
+            {hiredJobId && (
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
@@ -151,11 +154,19 @@ const Header = () => {
                   aria-expanded="false"
                 >
                   <span className="sr-only">Open user menu</span>
-                  <img
-                    className="h-12 w-12 rounded-full"
-                    src="/pp-1.png"
-                    alt="user photo"
-                  />
+                  {profilePicture ? (
+                    <img
+                      className="h-12 w-12 rounded-full object-cover"
+                      src={profilePicture}
+                      alt="user photo"
+                    />
+                  ) : (
+                    <img
+                      className="h-12 w-12 rounded-full"
+                      src="/pp-1.png"
+                      alt="user photo"
+                    />
+                  )}
                 </button>
               </Dropdown>
             )}

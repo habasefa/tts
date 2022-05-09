@@ -12,7 +12,7 @@ const BottomCard = (props: any) => {
       <Availability av={['Ayat', 'CMC', 'Summit', 'Gorro', 'Megenagna']} />
     )
   } else if (props.type == 'bestat') {
-    child = <BestAt subjects={['Maths', 'Physics', 'Chemistry']} />
+    child = <BestAt subjects={props.subjects} />
   } else if (props.type == 'fluency') {
     child = (
       <Fluency
@@ -24,7 +24,7 @@ const BottomCard = (props: any) => {
       />
     )
   } else if (props.type == 'hobby') {
-    child = <Hobby hobbies={['Movie', 'Reading', 'Biking']} />
+    child = <Hobby hobby={props.hobby} />
   } else if (props.type == 'vision') {
     child = (
       <Vision vision="It's not only writers who can benefit from this free online tool. If you're a programmer who's working on a project where blocks of text are needed," />
