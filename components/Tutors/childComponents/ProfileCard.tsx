@@ -32,7 +32,6 @@ const ProfileCard = (props: any) => {
     linkJobAndTutor(token, id, tutorId)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         setApplied(true)
       })
       .catch((_) => {
@@ -42,7 +41,6 @@ const ProfileCard = (props: any) => {
   }
   const haveApplied = (tutors: any[]) => {
     const jobTutorId = tutors.map((tutor: any) => tutor.id)
-    console.log(tutors, tutorId, jobTutorId)
     return jobTutorId.includes(tutorId) ? true : false
   }
   return (

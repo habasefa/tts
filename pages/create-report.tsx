@@ -5,7 +5,6 @@ import { selectUser } from 'redux/userSlice'
 
 function CreateReport() {
   const user = useSelector(selectUser)
-  if (user) console.log(' jjjjjjjjjjjjjjjjjjjjjj ', user.user)
 
   return (
     <div>

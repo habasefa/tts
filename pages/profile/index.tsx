@@ -41,8 +41,6 @@ const profile = () => {
       })
   }, [])
 
-  console.log(userData)
-  console.log('aaaaaaaaaaaaaaaaaaaaaaaa', tutorData)
   const keyInfo = {
     id: userData?.tutor.id,
     name: userData?.tutor.fullName,

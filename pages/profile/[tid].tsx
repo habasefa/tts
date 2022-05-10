@@ -1,20 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import {
-  Form,
-  Input,
-  Button,
-  Alert,
-  Upload,
-  notification,
-  Select,
-  DatePicker,
-  InputNumber,
-} from 'antd'
+import { Form, Input, Button, Alert, Select, InputNumber } from 'antd'
 const { Option } = Select
 import classes from '@/styles/completeProfile.module.css'
-import ImgCrop from 'antd-img-crop'
 import { storage } from '../../utils/firebase'
-import { createTutor, updateTutor } from 'backend-utils/tutor-utils'
+import { updateTutor } from 'backend-utils/tutor-utils'
 import { useRouter } from 'next/router'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import Header from '@/components/Common/Header'
@@ -111,16 +100,13 @@ function UpdateTutor() {
     updateTutor(tid, token, inputValue)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.success) {
-          console.log('protected')
           router.replace('/profile')
         } else {
           setErr(data.message)
         }
       })
       .catch((_err) => {
-        console.log('ssssssssssssssssssss', _err)
         setErr('Something went wrong')
       })
       .finally(() => {
@@ -143,7 +129,6 @@ function UpdateTutor() {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name
 
-      console.log(name)
       const storageRef = ref(storage, name)
       const uploadTask = uploadBytesResumable(storageRef, file)
 
@@ -182,7 +167,6 @@ function UpdateTutor() {
   const [form] = Form.useForm()
   //   useEffect(() => form.resetFields(), [tid])
   const [inputValue, setInputValue] = useState<any>(null)
-  console.log(inputValue)
   useEffect(() => {
     form.setFieldsValue(inputValue)
   }, [form, inputValue])

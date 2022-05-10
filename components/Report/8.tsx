@@ -1,5 +1,6 @@
 import { createReport } from 'backend-utils/tutor-utils'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
 import { ReportComponentProps } from 'utils/types'
@@ -15,8 +16,9 @@ export default function ReportRegistration_8({
     var token = user.accessToken
     var id = user.user.tutor.id
   }
+  const [data, setData] = useState(null)
+  const [err, setErr] = useState('')
   const handleClick = () => {
-    console.log(formData)
     createReport({
       professionality: formData.professionality,
       assg: formData.assg,
@@ -40,8 +42,8 @@ export default function ReportRegistration_8({
       tutorId: id,
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err))
+      .then((data) => setData(data))
+      .catch((err) => setErr(err))
     router.push('/')
   }
   return (

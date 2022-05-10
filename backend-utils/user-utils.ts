@@ -1,5 +1,4 @@
 import { API_URL } from 'utils/url'
-console.log(API_URL)
 const signup = async (email: string, password: string, role: string) => {
   const response = await fetch(`${API_URL}api/v1/user/register`, {
     method: 'POST',

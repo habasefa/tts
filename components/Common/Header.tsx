@@ -46,7 +46,6 @@ const Header = () => {
     </Menu>
   )
   const [navbarOpen, setNavbarOpen] = React.useState(false)
-  console.log(profilePicture)
   return (
     <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607]  py-0 opacity-100">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">

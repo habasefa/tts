@@ -1,21 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import {
-  Form,
-  Input,
-  Button,
-  Alert,
-  Upload,
-  notification,
-  Select,
-  DatePicker,
-  Row,
-  Col,
-  InputNumber,
-} from 'antd'
+import { Form, Input, Button, Alert, Select, Row, Col, InputNumber } from 'antd'
 
 import classes from '@/styles/completeProfile.module.css'
-import ImgCrop from 'antd-img-crop'
-import { createStudent, getParentById } from 'backend-utils/parent-utils'
+import { createStudent } from 'backend-utils/parent-utils'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
@@ -77,7 +64,6 @@ function AddStudents() {
     createStudent(userInfo)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.success) {
           router.push('/')
         } else {

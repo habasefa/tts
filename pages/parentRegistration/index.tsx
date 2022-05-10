@@ -1,5 +1,4 @@
 import ParentRegistration from '../../components/Parent/ParentRegistration_8'
-import Page1 from '../../components/Parent/child_components/page1'
 import { useState } from 'react'
 import ParentRegistration_1 from '@/components/Parent/1'
 import ParentRegistration_2 from '@/components/Parent/2'

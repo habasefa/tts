@@ -1,5 +1,3 @@
-import ParentRegistration from '../../components/Parent/ParentRegistration_8'
-import Page6 from '../../components/Parent/child_components/page6'
 import { ParentComponentProps } from 'utils/types'
 import { useState } from 'react'
 export default function ParentRegistration_6({

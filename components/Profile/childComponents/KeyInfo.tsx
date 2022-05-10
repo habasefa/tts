@@ -1,7 +1,6 @@
 import React from 'react'
 
 const KeyInfo = (props: any) => {
-  console.log(props)
   return (
     <div className="mt-4 flex flex-col items-center bg-[#fefefe] p-5 text-[#1a3765] drop-shadow-xl md:mr-6 md:w-1/3 md:items-start xl:mr-14">
       <h1 className="mb-1 text-3xl text-[#1a3765]">Key Info</h1>

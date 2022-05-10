@@ -1,5 +1,6 @@
 import { createStudent } from 'backend-utils/parent-utils'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { ParentComponentProps } from 'utils/types'
 
 export default function ParentRegistration_12({
@@ -9,9 +10,10 @@ export default function ParentRegistration_12({
   setPage,
 }: ParentComponentProps) {
   const router = useRouter()
+  const [data, setData] = useState(null)
+  const [err, setErr] = useState('')
 
   const handleClick = () => {
-    console.log(formData)
     createStudent({
       fullName: formData.st_name,
       gender: formData.st_gender,
@@ -30,8 +32,8 @@ export default function ParentRegistration_12({
       workHour: formData.hours,
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err))
+      .then((data) => setData(data))
+      .catch((err) => setErr(err))
     router.push('/')
   }
   return (

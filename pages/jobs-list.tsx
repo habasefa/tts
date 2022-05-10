@@ -13,7 +13,6 @@ const JobsList = () => {
   const [jobs, setJobs] = useState([])
   const [err, setErr] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
-  const [filterTerm, setFilterTerm] = useState<string[]>([])
   if (user) {
     var token = user.accessToken
   }

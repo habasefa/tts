@@ -3,7 +3,6 @@ export default function ParentRegistration_5({
   formData,
   setPage,
 }: ParentComponentProps) {
-  console.log(formData)
   return (
     <div>
       <div className="flex flex-col justify-between ">

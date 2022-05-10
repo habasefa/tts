@@ -96,9 +96,7 @@ function Tutor({ user }: any) {
     createTutor(userInfo)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.success) {
-          console.log('protected')
           router.replace('/profile')
         } else {
           setErr(data.message)
@@ -129,7 +127,6 @@ function Tutor({ user }: any) {
     const uploadFile = () => {
       const name = new Date().getTime() + file.name
 
-      console.log(name)
       const storageRef = ref(storage, name)
       const uploadTask = uploadBytesResumable(storageRef, file)
 

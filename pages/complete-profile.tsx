@@ -7,19 +7,8 @@ import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
 import { useRouter } from 'next/router'
 import Header from '@/components/Common/Header'
-// import { IdTokenResult, User } from "firebase/auth";
-
-// interface IProps {
-//   userInfo: IdTokenResult | null | undefined;
-//   authUser: User | null;
-// }
 
 export default function CompleteProfile() {
-  //   useEffect(() => {
-  //     if ((userInfo?.claims.profileCompletionLevel as unknown as number) !== 2) {
-  //       window.location.href = "/";
-  //     }
-  //   }, []);
   const user = useSelector(selectUser)
   const router = useRouter()
 

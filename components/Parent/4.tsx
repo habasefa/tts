@@ -29,9 +29,7 @@ export default function ParentRegistration_4({
         throw new Error(`Error! status: ${response.status}`)
       }
       const result = await response.json()
-      console.log('result is: ', JSON.stringify(result, null, 4))
       setData(result)
-      console.log('DDDDDDDDDDDDDDDDDdd', data)
       setPage((currentPage) => currentPage + 1)
     } catch (error: any) {
       setErr(error)
@@ -39,10 +37,7 @@ export default function ParentRegistration_4({
       setIsLoading(false)
     }
   }
-  console.log(data)
   useEffect(() => {
-    console.log('I am called')
-    console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkk', data?.parent.id)
     setFormData({ ...formData, pt_id: data?.parent.id })
   }, [data])
 
