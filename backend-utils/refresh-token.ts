@@ -1,5 +1,7 @@
+import { API_URL } from 'utils/url'
+
 const refreshToken = async (accessToken: string, token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/refreshToken`, {
+  const response = await fetch(`${API_URL}v1/refreshToken`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

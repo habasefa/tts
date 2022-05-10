@@ -1,5 +1,7 @@
+import { API_URL } from 'utils/url'
+
 const signup = async (email: string, password: string, role: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/user/register`, {
+  const response = await fetch(`${API_URL}api/v1/user/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -12,7 +14,7 @@ const signup = async (email: string, password: string, role: string) => {
 }
 
 const signin = async (email: string, password: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/user/login`, {
+  const response = await fetch(`${API_URL}api/v1/user/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -24,7 +26,7 @@ const signin = async (email: string, password: string) => {
 }
 
 const signout = async (accessToken: string, token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/user/logout`, {
+  const response = await fetch(`${API_URL}api/v1/user/logout`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -38,7 +40,7 @@ const signout = async (accessToken: string, token: string) => {
 }
 
 const getUserById = async (id: number, token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/user/${id}`, {
+  const response = await fetch(`${API_URL}api/v1/user/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

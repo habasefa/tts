@@ -1,4 +1,5 @@
 import { ReportPostProps, TutorPostProps } from 'utils/types'
+import { API_URL } from 'utils/url'
 
 const createTutor = async ({
   fullName,
@@ -32,7 +33,7 @@ const createTutor = async ({
   token,
   userId,
 }: TutorPostProps) => {
-  const response = await fetch(`http://localhost:4000/api/v1/tutor/`, {
+  const response = await fetch(`${API_URL}api/v1/tutor/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ const createReport = async ({
   token,
   tutorId,
 }: ReportPostProps) => {
-  const response = await fetch(`http://localhost:4000/api/v1/report/`, {
+  const response = await fetch(`${API_URL}api/v1/report/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -126,7 +127,7 @@ const createReport = async ({
 }
 
 const getTutorById = async (id: any, token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/tutor/${id}`, {
+  const response = await fetch(`${API_URL}api/v1/tutor/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -137,7 +138,7 @@ const getTutorById = async (id: any, token: string) => {
 }
 
 const updateTutor = async (id: any, token: string, tutorBody: any) => {
-  const response = await fetch(`http://localhost:4000/api/v1/tutor/${id}`, {
+  const response = await fetch(`${API_URL}api/v1/tutor/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -149,7 +150,7 @@ const updateTutor = async (id: any, token: string, tutorBody: any) => {
 }
 
 const getJobs = async (token: string) => {
-  const response = await fetch(`http://localhost:4000/api/v1/job`, {
+  const response = await fetch(`${API_URL}api/v1/job`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -160,7 +161,7 @@ const getJobs = async (token: string) => {
 }
 
 const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
-  const response = await fetch(`http://localhost:4000/api/v1/job/${id}`, {
+  const response = await fetch(`${API_URL}api/v1/job/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

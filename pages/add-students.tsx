@@ -10,6 +10,7 @@ import {
   DatePicker,
   Row,
   Col,
+  InputNumber,
 } from 'antd'
 
 import classes from '@/styles/completeProfile.module.css'
@@ -58,7 +59,7 @@ function AddStudents() {
       fullName: value.fullName,
       nickName: value.nickName,
       gender: value.gender,
-      birthDay: date,
+      age: value.age,
       subjects: value.subjects,
       grade: value.grade,
       address: value.address,
@@ -158,19 +159,19 @@ function AddStudents() {
                 </Col>
                 <Col md={12} sm={24}>
                   <Form.Item
-                    label="Date of birth"
-                    name="birthDay"
+                    label="Age"
+                    name="age"
                     rules={[
                       {
                         required: true,
-                        message: 'Please input your birth date!',
+                        message: 'Please input your age!',
                       },
                     ]}
                   >
-                    {/* <Input maxLength={50} showCount /> */}
-                    <DatePicker
+                    <InputNumber maxLength={3} />
+                    {/* <DatePicker
                       onChange={(date, dateString) => setBirthDate(dateString)}
-                    />
+                    /> */}
                   </Form.Item>
                 </Col>
                 <Col md={12} sm={24}>
