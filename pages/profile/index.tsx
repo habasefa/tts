@@ -68,7 +68,7 @@ const profile = () => {
       {/* bg-[#f2f2f2]  */}
       <Header />
       <div className="mt-40">
-        {tutorData?.user.jobs
+        {tutorData?.user?.jobs
           .filter((val: any) => val.id == tutorData.user.hiredJobId)
           .map((val: any) => (
             <div className="mt-4 w-full bg-[#fefefe] px-10 py-5 text-[#1a3765] drop-shadow-xl md:w-2/3">
@@ -95,7 +95,7 @@ const profile = () => {
               </p>
             </div>
           ))}
-        {tutorData?.user.students.map((val: any) => (
+        {tutorData?.user?.students.map((val: any) => (
           <div className="mt-4 w-full bg-[#fefefe] px-10 py-5 text-[#1a3765] drop-shadow-xl md:w-2/3">
             <h1 className="bg-[#fefefe] text-xl text-[#1a3765] md:text-3xl">
               Student Info
