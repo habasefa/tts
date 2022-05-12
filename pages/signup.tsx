@@ -159,10 +159,21 @@ export default function SignUp() {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (getFieldValue('password').length < 8) {
+                          return Promise.reject(
+                            new Error('Password must be minimum 8 characters.')
+                          )
+                        }
+                        return Promise.resolve()
+                      },
+                    }),
                   ]}
                   className="mb-2 rounded pt-1 "
                 >
                   <Input.Password
+                    minLength={8}
                     size="large"
                     placeholder="Enter password"
                     onChange={(e) => setPasswordLength(e.target.value.length)}
