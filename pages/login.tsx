@@ -146,10 +146,16 @@ export default function Login() {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
-                    {
-                      min: 8,
-                      message: 'Password must be minimum 8 characters.',
-                    },
+                    ({ getFieldValue }) => ({
+                      validator() {
+                        if (getFieldValue('password').length < 8) {
+                          return Promise.reject(
+                            new Error('Password must be minimum 8 characters.')
+                          )
+                        }
+                        return Promise.resolve()
+                      },
+                    }),
                   ]}
                   className="mb-2 rounded pt-1 "
                 >
