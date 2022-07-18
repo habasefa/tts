@@ -13,7 +13,7 @@ export default function ParentRegistration_6({
   }
   return (
     <div>
-      <div className="bg-[#FED607]">
+      <div className="bg-[#FED607] font-minionPro">
         <div>
           <h1 className="text-3xl font-bold text-[#1A3765] ">I AM YONATAN.</h1>
           <p className="p-2 pl-0 text-2xl  font-semibold text-[#5A5A5A]">
@@ -25,10 +25,10 @@ export default function ParentRegistration_6({
             onClick={() => setGender('Female')}
             style={
               gender == 'Female'
-                ? { backgroundColor: 'red' }
-                : { backgroundColor: 'green' }
+                ? { backgroundColor: 'gray' , color:"white"}
+                : { backgroundColor: 'white'  }
             }
-            className=" my-6 mr-4  bg-white px-10 py-6 text-4xl font-bold text-[#1A3765]"
+            className=" my-6 mr-4  bg-white px-10 py-6 text-4xl font-bold text-blue-900"
           >
             Girl
           </button>
@@ -37,10 +37,10 @@ export default function ParentRegistration_6({
             onClick={() => setGender('Male')}
             style={
               gender == 'Male'
-                ? { backgroundColor: 'red' }
-                : { backgroundColor: 'green' }
+                ? { backgroundColor: 'gray', color:"white" }
+                : { backgroundColor: 'white' }
             }
-            className="my-6 ml-4 bg-white px-10 py-6 text-4xl  font-bold text-[#707070]"
+            className="my-6 ml-4 bg-white px-10 py-6 text-4xl  font-bold text-blue-900"
           >
             Boy
           </button>
@@ -64,7 +64,9 @@ export default function ParentRegistration_6({
 
         <div className="mt-8 text-center lg:text-left">
           <button
-            onClick={handleClick}
+             onClick={() => {
+              setPage((currentPage) => currentPage + 1)
+            }}
             className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
           >
             CONTINUE
@@ -75,8 +77,8 @@ export default function ParentRegistration_6({
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
-          >
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             PREVIOUS
           </button>
         </div>

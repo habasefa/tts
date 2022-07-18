@@ -8,7 +8,7 @@ export default function ParentRegistration_3({
 }: ParentComponentProps) {
   return (
     <div>
-      <div className="bg-[#FED607]">
+      <div className=" bg-[#FED607] font-minionPro">
         <div>
           <h1 className="text-center text-3xl font-bold text-[#1A3765] lg:text-left ">
             This is our phone number.
@@ -53,7 +53,7 @@ export default function ParentRegistration_3({
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
           >
             PREVIOUS
           </button>

@@ -39,7 +39,7 @@ export default function ParentRegistration_12({
   return (
     <div>
       <div className="font-minionPro bg-[#FED607]">
-        <div>
+        <div className='w-full'>
           <h1 className="text-3xl font-bold text-[#1A3765] ">
             Tell us how much hour do you{' '}
           </h1>
@@ -48,7 +48,7 @@ export default function ParentRegistration_12({
           </p>
         </div>
 
-        <div className="mt-10 mb-16 flex flex-row">
+        <div className="mt-4 mb-9 flex flex-row">
           <div>
             <label
               className="text-md block py-2 pl-0  font-semibold text-[#5A5A5A]"
@@ -67,7 +67,7 @@ export default function ParentRegistration_12({
               placeholder="&nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;   &nbsp;    &nbsp; Days &nbsp;  &nbsp;  &nbsp;   &nbsp; "
             ></input>
             <label
-              className=" p-2 pl-24 text-sm  font-semibold text-[#5A5A5A]"
+              className=" p-2  text-sm  font-semibold text-[#5A5A5A]"
               htmlFor="price"
             >
               {' '}
@@ -75,7 +75,7 @@ export default function ParentRegistration_12({
             </label>
           </div>
 
-          <div className="mx-5">
+          <div className="ml-4">
             <label
               className="text-md block py-2 pl-0  font-semibold text-[#5A5A5A]"
               htmlFor="price"
@@ -93,7 +93,7 @@ export default function ParentRegistration_12({
               placeholder="&nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;   &nbsp;    &nbsp; Hour &nbsp;  &nbsp;  &nbsp;   &nbsp; "
             ></input>
             <label
-              className=" p-2  pl-24   text-sm  font-semibold text-[#5A5A5A]"
+              className="text-sm  font-semibold text-[#5A5A5A]"
               htmlFor="price"
             >
               Recommended: 1:30 hr
@@ -101,21 +101,21 @@ export default function ParentRegistration_12({
           </div>
         </div>
 
-        <div className=" mt-32 flex flex-row">
+        <div className=" mt-14 lg:mt-24 flex flex-row">
           <div className="mr-8">
-            <button className=" bg-[#1A3765] py-2 px-6 text-2xl font-semibold text-white hover:bg-blue-700 ">
+            <button className=" bg-[#1A3765] py-2 px-6 text-xl font-semibold text-white hover:bg-blue-700 ">
               Show Price
             </button>
           </div>
           <div className="mr-6">
-            <input className="block h-12" type="text" id="price"></input>
+            <input className="block h-12 w-full" type="text" id="price"></input>
             <label className="text-sm text-[#5A5A5A]" htmlFor="price">
               Registration fee: 500 ETB
             </label>
           </div>
         </div>
 
-        <div className="mt-8 text-center md:text-left">
+        <div className="mt-4 text-center md:text-left">
           <button
             onClick={handleClick}
             className=" bg-[#1A3765] py-3 px-10 text-3xl font-semibold text-white hover:bg-blue-700 "
@@ -123,13 +123,13 @@ export default function ParentRegistration_12({
             Submit
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
-          >
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             PREVIOUS
           </button>
         </div>

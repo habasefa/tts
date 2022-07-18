@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 const Another = () => {
   return (
-    <section className="bg-white ">
+    <section className="bg-white font-minionPro">
       <div className=" mx-9 py-16 md:mx-20">
         <div className="items-center lg:flex">
-          <div className="mt-6 flex w-full items-center justify-center border-gray-500 px-4 lg:mt-0 lg:mr-8 lg:w-2/5 lg:border-r ">
+          <div className="mt-6 flex w-full items-center justify-center border-gray-500 px-4 lg:mt-0 lg:mr-8 lg:w-1/2 lg:border-r ">
             <Image
               className="w-full rounded-full"
               src="/another.jpg"

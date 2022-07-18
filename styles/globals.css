@@ -8,12 +8,12 @@
 }
 @font-face{
   font-family:"typograhica";
-  src:url(../public/fonts/typographica.ttf)
+  src:url(../public/fonts/typographica.ttf);
 
 }
 @font-face{
   font-family:"minionPro";
-  src:url(../public/fonts/MinionProRegular.ttf)
+  src:url(../public/fonts/MinionProRegular.ttf);
   
 }
 

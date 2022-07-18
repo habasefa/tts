@@ -14,7 +14,7 @@ export default function ParentRegistration_11({
   }
   return (
     <div>
-      <div className="bg-[#FED607]">
+      <div className="bg-[#FED607] font-minionPro h-full">
         <div className="text-center lg:text-left">
           <h1 className="2xl:pr-30  text-2xl font-bold text-[#1A3765] md:text-3xl">
             In what area does your child
@@ -25,7 +25,7 @@ export default function ParentRegistration_11({
         </div>
 
         <div className="lg:justify-left grid flex-col justify-center lg:justify-start">
-          <div className=" mt-8 text-center lg:text-left">
+          <div className=" mt-4 text-center lg:text-left w-full">
             <button
               style={
                 subjects.includes('Computer Basics')
@@ -44,7 +44,7 @@ export default function ParentRegistration_11({
               Computer Basics
             </button>
           </div>
-          <div className="  mt-8  ">
+          <div className="  mt-4  ">
             <button
               style={
                 subjects.includes('Website Development')
@@ -63,7 +63,7 @@ export default function ParentRegistration_11({
               Website Development
             </button>
           </div>
-          <div className=" mt-8  ">
+          <div className=" mt-4  ">
             <button
               style={
                 subjects.includes('App Development')
@@ -84,7 +84,7 @@ export default function ParentRegistration_11({
           </div>
         </div>
 
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={handleClick}
             className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
@@ -97,8 +97,8 @@ export default function ParentRegistration_11({
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
-          >
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             PREVIOUS
           </button>
         </div>

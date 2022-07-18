@@ -43,7 +43,7 @@ export default function ParentRegistration_4({
 
   return (
     <div>
-      <div className="bg-[#FED607]">
+      <div className="bg-[#FED607] font-minionPro">
         <div>
           <h1 className="text-center text-3xl font-bold text-[#1A3765] lg:text-left ">
             Our office is located at
@@ -65,7 +65,7 @@ export default function ParentRegistration_4({
             className="mt-4 w-full py-5"
             type="text"
             id="location"
-            placeholder=" &nbsp;  &nbsp;  &nbsp;   &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;Addis Ababa&nbsp;  &nbsp; &nbsp; &nbsp; &#124; &nbsp; &nbsp;Adress "
+            placeholder=" &nbsp;  &nbsp;  &nbsp;   &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;Addis Ababa&nbsp;  &nbsp; &nbsp; &nbsp; &#124; &nbsp; &nbsp;Address "
             value={formData.location}
             onChange={(e) =>
               setFormData({ ...formData, location: e.target.value })
@@ -75,7 +75,9 @@ export default function ParentRegistration_4({
 
         <div className="mt-8 text-center lg:text-left">
           <button
-            onClick={handleClick}
+            onClick={() => {
+              setPage((currentPage) => currentPage + 1)
+            }}
             className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
           >
             CONTINUE
@@ -86,8 +88,8 @@ export default function ParentRegistration_4({
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
-          >
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             PREVIOUS
           </button>
         </div>

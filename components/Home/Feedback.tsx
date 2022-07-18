@@ -46,7 +46,7 @@ const Feedback = () => {
                   </p>
                 </div>
 
-                <p className="mt-10 w-2/3 opacity-70  font-minionPro text-lg lg:text-xl 2xl:text-3xl">
+                <p className="mt-10 opacity-70  font-minionPro text-lg lg:text-xl 2xl:text-3xl">
                   The tutorial helped me to improve my chemistry assessment. It
                   become interesting and made me want to study more on my own.
                 </p>

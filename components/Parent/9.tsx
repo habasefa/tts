@@ -13,7 +13,7 @@ export default function ParentRegistration_9({
   }
   return (
     <div>
-      <div className="font-miniPro bg-[#FED607]">
+      <div className=" font-minionPro bg-[#FED607]">
         <div>
           <h1 className="text-3xl font-bold text-[#1A3765] ">
             In what area does your child
@@ -36,12 +36,12 @@ export default function ParentRegistration_9({
         </div>
 
         <div>
-          <div className="mt-4 flex flex-row">
+          <div className="mt-4 flex flex-row w-full">
             <button
               style={
                 subjects.includes('Math')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -50,7 +50,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Math']
                 )
               }
-              className=" mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className=" mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Math
             </button>
@@ -58,8 +58,8 @@ export default function ParentRegistration_9({
             <button
               style={
                 subjects.includes('Phyiscs')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -68,7 +68,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Phyiscs']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Phyiscs
             </button>
@@ -76,8 +76,8 @@ export default function ParentRegistration_9({
             <button
               style={
                 subjects.includes('Chemistry')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -86,18 +86,18 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Chemistry']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Chemistry
             </button>
           </div>
 
-          <div className="my-4 flex flex-row">
+          <div className="my-4 flex flex-row w-full">
             <button
               style={
                 subjects.includes('Biology')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -106,7 +106,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Biology']
                 )
               }
-              className=" mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className=" mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Biology
             </button>
@@ -114,8 +114,8 @@ export default function ParentRegistration_9({
             <button
               style={
                 subjects.includes('History')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -124,7 +124,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'History']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               History
             </button>
@@ -132,8 +132,8 @@ export default function ParentRegistration_9({
             <button
               style={
                 subjects.includes('Geography')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -142,18 +142,18 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Geography']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Geography
             </button>
           </div>
 
-          <div className="my-4 flex flex-row">
+          <div className="my-4 flex flex-row w-full">
             <button
               style={
                 subjects.includes('Economics')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -162,7 +162,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Economics']
                 )
               }
-              className=" mr-2 flex-1  bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className=" mr-2 flex-1 w-1/2 bg-white py-3  text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Economics
             </button>
@@ -170,8 +170,8 @@ export default function ParentRegistration_9({
             <button
               style={
                 subjects.includes('Civics')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -180,7 +180,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Civics']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className="mr-2  flex-1 w-1/2 bg-white py-3  text-lg font-bold  hover:bg-blue-700 hover:text-black "
             >
               Civics
             </button>
@@ -188,8 +188,8 @@ export default function ParentRegistration_9({
             <button
               style={
                 subjects.includes('SAT')
-                  ? { backgroundColor: 'red' }
-                  : { backgroundColor: 'green' }
+                  ? { backgroundColor: 'gray' }
+                  : { backgroundColor: 'white' }
               }
               onClick={() =>
                 setSubjects((oldArray) =>
@@ -198,7 +198,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'SAT']
                 )
               }
-              className=" mr-2  flex-1 bg-white py-3 px-6 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-white "
+              className=" mr-2  flex-1 bg-white w-1/2 py-3  text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               SAT
             </button>
@@ -206,12 +206,13 @@ export default function ParentRegistration_9({
         </div>
 
         <div className="mt-8 text-center lg:text-left">
-          <button className=" bg-[#1A3765] py-2 px-6 text-2xl font-semibold text-white hover:bg-blue-700 ">
+          <button  className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             + Add subject
           </button>
         </div>
 
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-6 text-center lg:text-left">
           <button
             onClick={handleClick}
             className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
@@ -219,13 +220,13 @@ export default function ParentRegistration_9({
             CONTINUE
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-6 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
-          >
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             PREVIOUS
           </button>
         </div>

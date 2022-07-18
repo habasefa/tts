@@ -46,6 +46,7 @@ const Header = () => {
     </Menu>
   )
   const [navbarOpen, setNavbarOpen] = React.useState(false)
+  const [dropdownOpen,setDropDown]=React.useState(false)
   return (
     <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607]  py-0 opacity-100">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
@@ -113,14 +114,47 @@ const Header = () => {
               </li>
             )}
             {user == null && (
-              <li className="nav-item  h-full pl-2">
-                <button
+              <>
+              <li className="nav-item  h-full pl-2 ">
+              <button
+              onClick={()=>setDropDown(!dropdownOpen)}
+              
+              className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+              >
+                Register
+               
+                  
+              </button>
+              {(dropdownOpen ? 
+              <div
+              className="fixed  px-6 border-black  py-3 mt-1 bg-white rounded-sm"
+
+                >
+                  <a
+                    href="javascript:void(0)"
+                    className="block py-3 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
+                  >
+                    Enroll a Student
+                  </a>
+                  <a
+                    href="javascript:void(0)"
+                    className="block py-3 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
+                  >
+                    Become a Student 
+                  </a>
+
+                </div>
+              : <div></div> ) }
+                {/* <button
                   onClick={() => router.push('/signup')}
                   className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                 >
                   Register
-                </button>
+                  
+                </button> */}
               </li>
+              </>
+            
             )}
             {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
               <li className="nav-item h-full md:mx-5">

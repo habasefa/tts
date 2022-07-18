@@ -5,7 +5,7 @@ export default function ParentRegistration_5({
 }: ParentComponentProps) {
   return (
     <div>
-      <div className="flex flex-col justify-between ">
+      <div className="flex flex-col justify-between font-minionPro">
         <div className="bg-[#FED607]">
           <div className="text-center lg:text-left">
             <h1 className="2xl:pr-30  text-2xl font-semibold text-[#1A3765] md:text-3xl">

@@ -7,7 +7,7 @@ export default function ParentRegistration_7({
 }: ParentComponentProps) {
   return (
     <div>
-      <div className=" bg-[#FED607] ">
+      <div className=" bg-[#FED607] font-minionPro">
         <div>
           <h1 className="text-3xl font-bold text-[#1A3765] ">
             Now let me know the details
@@ -26,7 +26,7 @@ export default function ParentRegistration_7({
               onChange={(e) =>
                 setFormData({ ...formData, st_age: parseInt(e.target.value) })
               }
-              placeholder=" &nbsp;  &nbsp;  &nbsp;   &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;Age &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; "
+              placeholder=" &nbsp;  &nbsp;  &nbsp;   &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; Age&nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; "
             ></input>
           </div>
           <div className="flex-1">
@@ -74,8 +74,8 @@ export default function ParentRegistration_7({
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
-          >
+            className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
+            >
             PREVIOUS
           </button>
         </div>

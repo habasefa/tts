@@ -8,7 +8,7 @@ export default function ParentRegistration_2({
 }: ParentComponentProps) {
   return (
     <div>
-      <div className="bg-[#FED607]">
+      <div className="bg-[#FED607] font-minionPro">
         <div className="text-center lg:text-left">
           <h1 className="text-3xl font-bold text-[#1A3765] ">I AM YONATAN.</h1>
           <p className="p-2 pl-0 text-2xl  font-semibold text-[#5A5A5A]">
