@@ -17,18 +17,18 @@ export default function ParentRegistration_8({
           </p>
         </div>
 
-        <div className="mt-8 text-center lg:text-left w-1/2">
-          <button className=" bg-white text-center py-3  text-3xl w-full  font-bold text-[#1A3765] shadow-lg  ">
+        <div className="mt-6 text-center lg:text-left w-1/2">
+          <button className=" bg-white text-center py-3  text-2xl w-full  font-bold text-[#1A3765] shadow-lg  ">
             Acadamic
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left w-1/2">
-          <button className=" bg-white text-center py-3  text-3xl w-full font-bold text-[#1A3765] shadow-lg  ">
+        <div className="mt-6 text-center lg:text-left w-1/2">
+          <button className=" bg-white text-center py-3  text-2xl w-full font-bold text-[#1A3765] shadow-lg  ">
             Coding
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left w-1/2">
-          <button className=" bg-white text-center py-3 text-3xl w-full font-bold text-[#1A3765] shadow-lg">
+        <div className="mt-6 text-center lg:text-left w-1/2">
+          <button className=" bg-white text-center py-3 text-2xl w-full font-bold text-[#1A3765] shadow-lg">
             Language
           </button>
         </div>
@@ -42,7 +42,7 @@ export default function ParentRegistration_8({
             CONTINUE
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)

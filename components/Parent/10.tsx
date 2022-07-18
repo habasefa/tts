@@ -78,7 +78,7 @@ export default function ParentRegistration_10({
                   : [...oldArray, 'Afan Oromo']
               )
             }
-            className=" mr-2 flex-1 h-full w-full border bg-white py-3  text-xl text-xl font-bold text-blue-900 shadow-lg hover:bg-blue-700 "
+            className=" mr-2 flex-1 h-full w-full border bg-white py-3  text-xl  font-bold text-blue-900 shadow-lg hover:bg-blue-700 "
           >
             Afan Oromo
           </button>
@@ -93,7 +93,7 @@ export default function ParentRegistration_10({
             CONTINUE
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)

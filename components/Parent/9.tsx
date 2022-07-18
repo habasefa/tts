@@ -23,7 +23,7 @@ export default function ParentRegistration_9({
           </p>
         </div>
 
-        <div className="mt-10 text-center md:text-left">
+        <div className=" mt-2 text-center md:text-left">
           <input className="mr-2" type="radio" value="" name="" id="all" />
 
           <label
@@ -36,7 +36,7 @@ export default function ParentRegistration_9({
         </div>
 
         <div>
-          <div className="mt-4 flex flex-row w-full">
+          <div className="mt-2 flex flex-row w-full">
             <button
               style={
                 subjects.includes('Math')
@@ -50,7 +50,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Math']
                 )
               }
-              className=" mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className=" mr-2  flex-1 bg-white py-2 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Math
             </button>
@@ -68,7 +68,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Phyiscs']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className="mr-2  flex-1 bg-white py-2 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Phyiscs
             </button>
@@ -86,7 +86,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Chemistry']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className="mr-2  flex-1 bg-white py-2 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Chemistry
             </button>
@@ -106,7 +106,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Biology']
                 )
               }
-              className=" mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className=" mr-2  flex-1 bg-white py-2 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Biology
             </button>
@@ -124,7 +124,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'History']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className="mr-2  flex-1 bg-white py-2 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               History
             </button>
@@ -142,7 +142,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Geography']
                 )
               }
-              className="mr-2  flex-1 bg-white py-3 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className="mr-2  flex-1 bg-white py-2 w-1/2 text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Geography
             </button>
@@ -162,7 +162,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Economics']
                 )
               }
-              className=" mr-2 flex-1 w-1/2 bg-white py-3  text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className=" mr-2 flex-1 w-1/2 bg-white py-2  text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               Economics
             </button>
@@ -180,7 +180,7 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'Civics']
                 )
               }
-              className="mr-2  flex-1 w-1/2 bg-white py-3  text-lg font-bold  hover:bg-blue-700 hover:text-black "
+              className="mr-2  flex-1 w-1/2 bg-white py-2  text-lg font-bold  hover:bg-blue-700 hover:text-black "
             >
               Civics
             </button>
@@ -198,14 +198,14 @@ export default function ParentRegistration_9({
                     : [...oldArray, 'SAT']
                 )
               }
-              className=" mr-2  flex-1 bg-white w-1/2 py-3  text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
+              className=" mr-2  flex-1 bg-white w-1/2 py-2  text-lg font-bold text-blue-900 hover:bg-blue-700 hover:text-black "
             >
               SAT
             </button>
           </div>
         </div>
 
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-6 text-center lg:text-left">
           <button  className="bg-[#1A3765] py-1 px-3 text-xl font-semibold text-white hover:bg-blue-700 "
             >
             + Add subject
@@ -220,7 +220,7 @@ export default function ParentRegistration_9({
             CONTINUE
           </button>
         </div>
-        <div className="mt-6 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)

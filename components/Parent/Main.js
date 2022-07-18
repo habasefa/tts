@@ -1,7 +1,7 @@
 function Main(props) {
   return (
     <div
-      class="font-miniPro flex w-full rounded-lg bg-white  shadow-lg sm:mx-0"
+      class="font-miniPro flex w-full rounded-lg bg-white h-full shadow-lg sm:mx-0"
       
     >
       <div class="flex w-full  flex-col  bg-[#FED607] py-6 px-4 md:px-14 lg:w-1/2 xl:w-3/5">

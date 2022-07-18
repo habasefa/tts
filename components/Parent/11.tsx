@@ -39,7 +39,7 @@ export default function ParentRegistration_11({
                     : [...oldArray, 'Computer Basics']
                 )
               }
-              className="w-34  w-full bg-white py-6 text-4xl  font-bold text-[#1A3765] shadow-lg   "
+              className="w-34  w-full bg-white py-3 text-2xl  font-bold text-[#1A3765] shadow-lg   "
             >
               Computer Basics
             </button>
@@ -58,7 +58,7 @@ export default function ParentRegistration_11({
                     : [...oldArray, 'Website Development']
                 )
               }
-              className=" w-max bg-white py-6 px-3 text-4xl font-bold text-[#1A3765] shadow-lg"
+              className=" w-max bg-white py-3 px-3 text-2xl font-bold text-[#1A3765] shadow-lg"
             >
               Website Development
             </button>
@@ -77,7 +77,7 @@ export default function ParentRegistration_11({
                     : [...oldArray, 'App Development']
                 )
               }
-              className="w-full bg-white py-6 text-4xl  font-bold text-[#1A3765]  shadow-lg "
+              className="w-full bg-white py-3 text-2xl  font-bold text-[#1A3765]  shadow-lg "
             >
               App Development
             </button>
@@ -92,7 +92,7 @@ export default function ParentRegistration_11({
             CONTINUE
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)

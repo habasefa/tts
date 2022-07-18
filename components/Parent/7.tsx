@@ -19,7 +19,7 @@ export default function ParentRegistration_7({
         <div className=" flex justify-start md:text-center">
           <div className="flex-1">
             <input
-              className="mt-4 w-full py-5"
+              className="mt-4 w-full py-4"
               type="number"
               id="age"
               value={formData.st_age}
@@ -31,7 +31,7 @@ export default function ParentRegistration_7({
           </div>
           <div className="flex-1">
             <input
-              className="mt-4 w-full py-5"
+              className="mt-4 w-full py-4"
               type="text"
               id="grade"
               value={formData.st_grade}
@@ -42,7 +42,7 @@ export default function ParentRegistration_7({
             ></input>
           </div>
         </div>
-        <div className="mt-12 text-center lg:text-left">
+        <div className="mt-8 text-center lg:text-left">
           <label className="text-2xl font-bold tracking-wide" htmlFor="name">
             What is your child's school?
           </label>
@@ -69,7 +69,7 @@ export default function ParentRegistration_7({
             CONTINUE
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)

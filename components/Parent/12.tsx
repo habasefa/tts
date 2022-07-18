@@ -48,7 +48,7 @@ export default function ParentRegistration_12({
           </p>
         </div>
 
-        <div className="mt-4 mb-9 flex flex-row">
+        <div className="mt-3 mb-8 flex flex-row">
           <div>
             <label
               className="text-md block py-2 pl-0  font-semibold text-[#5A5A5A]"
@@ -101,7 +101,7 @@ export default function ParentRegistration_12({
           </div>
         </div>
 
-        <div className=" mt-14 lg:mt-24 flex flex-row">
+        <div className=" mt-8 lg:mt-14 flex flex-row">
           <div className="mr-8">
             <button className=" bg-[#1A3765] py-2 px-6 text-xl font-semibold text-white hover:bg-blue-700 ">
               Show Price
@@ -115,7 +115,7 @@ export default function ParentRegistration_12({
           </div>
         </div>
 
-        <div className="mt-4 text-center md:text-left">
+        <div className="mt-2 text-center md:text-left">
           <button
             onClick={handleClick}
             className=" bg-[#1A3765] py-3 px-10 text-3xl font-semibold text-white hover:bg-blue-700 "

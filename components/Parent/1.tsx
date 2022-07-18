@@ -21,7 +21,7 @@ export default function ParentRegistration_1({
               onClick={() => {
                 setPage((currentPage) => currentPage + 1)
               }}
-              className="rounded-full bg-[#1A3765] px-20 py-36 text-5xl font-semibold text-white hover:bg-blue-700 "
+              className=" rounded-full  bg-[#1A3765] px-12 py-28 text-5xl   font-semibold text-white hover:bg-blue-700 "
             >
               READY?
             </button>

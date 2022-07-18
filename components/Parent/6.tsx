@@ -28,7 +28,7 @@ export default function ParentRegistration_6({
                 ? { backgroundColor: 'gray' , color:"white"}
                 : { backgroundColor: 'white'  }
             }
-            className=" my-6 mr-4  bg-white px-10 py-6 text-4xl font-bold text-blue-900"
+            className="  mr-4  bg-white px-10 py-4 text-3xl font-bold text-blue-900"
           >
             Girl
           </button>
@@ -40,12 +40,12 @@ export default function ParentRegistration_6({
                 ? { backgroundColor: 'gray', color:"white" }
                 : { backgroundColor: 'white' }
             }
-            className="my-6 ml-4 bg-white px-10 py-6 text-4xl  font-bold text-blue-900"
+            className=" ml-4 bg-white px-10 py-4 text-3xl  font-bold text-blue-900"
           >
             Boy
           </button>
         </div>
-        <div className="mt-12 text-center lg:text-left">
+        <div className="mt-8 text-center lg:text-left">
           <label className="text-2xl font-bold tracking-wide" htmlFor="phoneN">
             What is child's name?
           </label>
@@ -72,7 +72,7 @@ export default function ParentRegistration_6({
             CONTINUE
           </button>
         </div>
-        <div className="mt-8 text-center lg:text-left">
+        <div className="mt-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
