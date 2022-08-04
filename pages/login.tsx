@@ -77,7 +77,7 @@ export default function Login() {
 
   return (
     <>
-      <div className=" font-minionPro flex h-screen items-center justify-center bg-white sm:bg-white md:bg-white md:px-0 lg:bg-[#f1f1f1]">
+      <div className="font-minionPro mx-auto min-h-screen bg-white  p-6 sm:bg-white md:bg-white lg:bg-[#f1f1f1]">
         <div className=" w-full">
           <div className="mx-auto max-w-lg">
             <a href="/">
@@ -176,30 +176,7 @@ export default function Login() {
                     Log in
                   </Button>
                 </Form.Item>
-                <div className="mt-2 flex items-center justify-between">
-                  <hr className="w-full" />{' '}
-                  <span className="mb-1 p-2 text-2xl text-gray-400 2xl:text-3xl">
-                    or
-                  </span>
-                  <hr className="w-full" />
-                </div>
-                <button className=" mt-2 flex h-12 w-full  flex-row items-center border-2 bg-white  text-[#1A3765] hover:bg-blue-900 hover:text-white">
-                  <span className="flex-none px-3">
-                    <i className="fab fa-facebook-f"></i>
-                  </span>
-                  <span className="grow justify-center text-xl 2xl:text-2xl">
-                    Sign in with Facebook
-                  </span>
-                </button>
-                <button className=" mt-2 flex h-12 w-full  flex-row items-center border-2 bg-white  text-[#1A3765] hover:bg-blue-900 hover:text-white">
-                  <span className="flex-none px-3">
-                    <i className="fa-brands fa-google"></i>
-                  </span>
-                  <span className="grow justify-center text-xl 2xl:text-2xl">
-                    {' '}
-                    Sign in with Google
-                  </span>
-                </button>
+                
               </Form>
             </div>
           </div>

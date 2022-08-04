@@ -9,7 +9,7 @@ const Feedback = () => {
           </h2>
         </div>
 
-        <div className="mt-20 mb-36 w-full">
+        <div className="mt-20 mb-30 w-full">
           <div className="mt-7 text-[#1A3765] lg:flex lg:justify-between">
             <div className="w-full  lg:w-1/2">
               <div className="p-8 lg:p-12">

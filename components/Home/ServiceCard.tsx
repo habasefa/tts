@@ -9,20 +9,20 @@ const ServiceCard = (props: any) => {
         <h1 className="text-[#1A3765]  text-lg md:text-xl xl:text-2xl 2xl:text-3xl text-[#1A3765] font-bold font-minionPro ">
           {props.title}
         </h1>
-        <p className="text-gray-500  font-minionPro  text-md md:text-xl xl:text-2xl 2xl:text-3xl  border-gray-500">
+        <p className="text-gray-500  font-minionPro  text-lg md:text-xl xl:text-2xl 2xl:text-3xl  border-gray-500">
           {props.description}
         </p>
         <hr style={{ border: '1px solid lightgray' }} />
         {props.subjects.map((item: any) => (
           <li
             key={item}
-            className="text-[#1A3765] font-minionPro text-md md:text-xl xl:text-2xl 2xl:text-3xl m-5 ml-0"
+            className="text-[#1A3765] font-minionPro text-lg md:text-xl  2xl:text-3xl m-5 ml-0"
             style={{
               listStyleType: 'none',
               listStyleImage: "url('../../../public/right.png')",
             }}
           >
-            <Image  src="/right.png" width="40" height="40" />{item}
+          <Image  src="/right.png" width={'35'} height={'35'}/>{item}
           </li>
         ))}
       </div>

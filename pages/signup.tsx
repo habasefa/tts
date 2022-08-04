@@ -257,30 +257,9 @@ export default function SignUp() {
                     Sign up
                   </Button>
                 </Form.Item>
-                <div className="mt-2 flex items-center justify-between">
-                  <hr className="w-full" />{' '}
-                  <span className="mb-1 p-2 text-2xl text-gray-400 2xl:text-3xl">
-                    or
-                  </span>
-                  <hr className="w-full" />
-                </div>
-                <button className=" mt-2 flex h-12 w-full  flex-row items-center border-2 bg-white  text-[#1A3765] hover:bg-blue-900 hover:text-white">
-                  <span className="flex-none px-3">
-                    <i className="fab fa-facebook-f"></i>
-                  </span>
-                  <span className="grow justify-center text-xl 2xl:text-2xl">
-                    Sign in with Facebook
-                  </span>
-                </button>
-                <button className=" mt-2 flex h-12 w-full  flex-row items-center border-2 bg-white  text-[#1A3765] hover:bg-blue-900 hover:text-white">
-                  <span className="flex-none px-3">
-                    <i className="fa-brands fa-google"></i>
-                  </span>
-                  <span className="grow justify-center text-xl 2xl:text-2xl">
-                    {' '}
-                    Sign in with Google
-                  </span>
-                </button>
+               
+                
+               
               </Form>
             </div>
           </div>
