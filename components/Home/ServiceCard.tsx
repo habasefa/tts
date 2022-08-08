@@ -16,13 +16,16 @@ const ServiceCard = (props: any) => {
         {props.subjects.map((item: any) => (
           <li
             key={item}
-            className="text-[#1A3765] font-minionPro text-lg md:text-xl  2xl:text-3xl m-5 ml-0"
+            className="text-[#1A3765] font-minionPro text-lg md:text-xl lg:text-2xl 2xl:text-3xl m-5 ml-0"
             style={{
+              
               listStyleType: 'none',
-              listStyleImage: "url('../../../public/right.png')",
+              // listStyleImage: "url('/right.png')",
             }}
+            
           >
-          <Image  src="/right.png" width={'35'} height={'35'}/>{item}
+            <Image src="/right.png"  width="30" height="30"/>
+          {item}
           </li>
         ))}
       </div>

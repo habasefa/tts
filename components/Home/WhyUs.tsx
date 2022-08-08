@@ -8,8 +8,8 @@ const WhyUs = () => {
         Why Us?
       </header>
       <div className="mx-9 mt-5 mb-20 md:mx-20">
-        <Row gutter={[8, 8]} justify={'space-between'}>
-          <Col xs={12} xl={6} md={6}>
+        <Row gutter={[10, 24]} justify="space-around">
+          <Col xs={16} xl={7}>
             <WhyUsComponent
               title="Handpicked Tutors"
               description="The best tutor selected from 10,000 of our tutors."
@@ -17,7 +17,7 @@ const WhyUs = () => {
             />
           </Col>
 
-          <Col xs={12} xl={6} md={6}>
+          <Col xs={16} xl={7}>
             <WhyUsComponent
               title="Decent"
               description="A tutor with good character, mindset and discipline."
@@ -25,15 +25,15 @@ const WhyUs = () => {
             />
           </Col>
 
-          <Col xs={12} xl={6} md={6}>
+          {/* <Col xs={16} xl={7}>
             <WhyUsComponent
               title="Progress Tracked"
               description="Every topic covered are stored in our database so that the parent could check."
               image="/neprogree.png"
             />
-          </Col>
+          </Col> */}
 
-          <Col xs={12} xl={6} md={6}>
+          <Col xs={16} xl={7}>
             <WhyUsComponent
               title="Trained"
               description="Equipped with methods, techniques and ways to give the highest quality tutoring in the country."

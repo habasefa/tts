@@ -9,7 +9,7 @@ function Stats({ text, numbers }: any) {
           {' '}
           {numbers}
         </div>
-        <div className="text-xl  sm:text-xl  md:text-2xl lg:text-3xl text-center pt-10  font-minioPro text-gray-400  text-white">
+        <div className="text-2xl  sm:text-2xl  md:text-2xl lg:text-3xl text-center pt-10  font-minionPro font-semibold text-gray-400  text-white">
           {' '}
           <span>{text}</span>{' '}
         </div>

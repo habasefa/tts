@@ -18,7 +18,7 @@ const Footer = () => {
                 High achieving, decent and trained tutors at your home
               </p>
 
-              <div className="flex mt-4 mx-2 font-minionPro text-lg lg:text-xl 2xl:text-2xl">
+              <div className="flex m-4 mx-2  font-minionPro text-lg lg:text-xl 2xl:text-2xl">
                 <a
                   href="#"
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"

@@ -16,7 +16,7 @@ export default function ParentRegistration_2({
           </p>
         </div>
 
-        <div className="mt-36 text-center lg:text-left">
+        <div className="mt-24 text-center lg:text-left">
           <label
             className="text-2xl font-semibold tracking-wide"
             htmlFor="phoneN"

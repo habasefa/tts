@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const WhyUsComponent = (props: any) => {
   return (
-    <div className="container flex h-full flex-col items-center bg-white py-5 px-4 lg:px-8 pb-0 drop-shadow-xl">
+    <div className="container flex h-full flex-col items-center bg-white py-5 px-4 lg:px-6 pb-0 drop-shadow-xl">
       <Image
         src={props.image}
         alt="Handpicked tutor image"

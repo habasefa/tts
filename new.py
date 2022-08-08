@@ -1,58 +1,53 @@
-import sys, threading
-vertices=int(input())
-memo={}
-for _ in range(vertices-1):
-    print(vertices)
-    value=[int(x) for x in input().split()]
-    if value[0] not in memo:
-        memo[value[0]]=[value[1]]
-    else:
-        memo[value[0]].append(value[1])
-    if value[1] not in memo:
-        memo[value[1]]=[value[0]]
-    else:
-        memo[value[1]].append(value[0])
-color=[int(x) for x in input().split()]
-def main(child,parent,colors):
-    print(child,parent,colors)
-    if len(memo[child])==1:
-        return 0
-    else:
-        for children in memo[child]:
-            if children==parent:
-                continue
-            if color[children-1]!=colors:
-                return 1
-            value=main(children,child,colors)
-            ans=0
-            ans+=value
-        return value
-for x in range(1,vertices+1):
-    for childern in memo[x]:
-        value=main(childern,x,color[childern-1])
-        if value>0:
-            print("NO")
-            break
-    if not value:
-        continue
-    else:
-        print("YES")
-        print(x)
-        break
-    
-def main(child,parent,colors):
-    print(child,parent,colors)
-    if len(memo[child])==1:
-        return 0
-    else:
-        for children in memo[child]:
-            if children==parent:
-                continue
-            if color[children]!=colors:
-                return 1
-            value=main(children,child,colors)
-            ans=0
-            ans+=value
-        return value
-            
+import heapq
+from collections import defaultdict,deque
+n,m=[int(x) for x in input().split()]
+memo=defaultdict(list)
 
+for i in range(m):
+    temp=[int(x) for x in input().split()]
+    memo[temp[0]].append((temp[1],temp[2]))
+    memo[temp[1]].append((temp[0],temp[2]))
+
+
+dist=defaultdict(int)
+parent=defaultdict(int)
+node=1
+node1=n
+for nodes in range(1,n+1):
+    dist[nodes]=float("inf")
+dist[node]=0
+level=[]
+heapq.heappush(level,(0,node))
+visited=set()
+        
+parent[node]=0
+ans=[]
+check=False
+while level:
+
+    value=heapq.heappop(level)
+    if value[1]==node1:
+        find=node1
+            
+        while parent[find]!=0:
+            ans.append(find)
+            find=parent[find]
+        ans.append(find)
+        ans.reverse()
+        for i in range(len(ans)-1):
+            print(ans[i],end=" ")
+        print(ans[i+1],end="\n")
+        check=True
+        break
+    if value[1] in visited:
+        continue
+
+    visited.add(value[1])
+    for i in memo[value[1]]:
+        if dist[i[0]]>dist[value[1]]+i[1]:
+            dist[i[0]]=dist[value[1]]+i[1]
+            parent[i[0]]=value[1]
+            heapq.heappush(level,(dist[i[0]],i[0]))
+if not check:
+    value=-1
+    print(value)

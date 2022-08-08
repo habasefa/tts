@@ -7,7 +7,7 @@ const Another = () => {
     <section className="bg-white font-minionPro">
       <div className=" mx-9 py-16 md:mx-20">
         <div className="items-center lg:flex">
-          <div className="mt-6 flex w-full items-center justify-center border-gray-500 px-4 lg:mt-0 lg:mr-8 lg:w-1/2 lg:border-r ">
+          <div className="mt-6 flex w-full items-center justify-center border-gray-500 px-4 lg:px-12 lg:mt-0 lg:mr-8 lg:w-1/2 lg:border-r ">
             <Image
               className="w-full rounded-full"
               src="/another.jpg"
