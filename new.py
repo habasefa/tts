@@ -1,53 +1,68 @@
-import heapq
-from collections import defaultdict,deque
-n,m=[int(x) for x in input().split()]
-memo=defaultdict(list)
-
-for i in range(m):
-    temp=[int(x) for x in input().split()]
-    memo[temp[0]].append((temp[1],temp[2]))
-    memo[temp[1]].append((temp[0],temp[2]))
-
-
-dist=defaultdict(int)
-parent=defaultdict(int)
-node=1
-node1=n
-for nodes in range(1,n+1):
-    dist[nodes]=float("inf")
-dist[node]=0
-level=[]
-heapq.heappush(level,(0,node))
-visited=set()
-        
-parent[node]=0
+from collections import deque
+import math
+num,left,right=[int(x) for x in input().split()]
+level=deque([num])
 ans=[]
-check=False
+def getGeneratedNum(num):
+    if num==0 or num==1:
+        return 1
+    value=2**math.floor(math.log2(num)+1)
+    return value-1
+temp=0
 while level:
+    n=len(level)
+    temp2=temp
+    for _ in range(n):
+        value=level.popleft()
+        left_generated=getGeneratedNum(value//2)
+        print(left_generated,temp,temp2)
+        print(ans)
+        if temp2+left_generated>=right:
+            if (value//2)<2:
+                ans.append(value//2)
+            else:
+                level.append(value//2)
+            break
+        else:
+            if temp2+left_generated>=left:
+                if (value//2)<2:
+                    ans.append(value//2)
+                else:
+                    level.append(value//2)
+                # temp2+=left_generated
+            else:
+                temp=left
+            temp2+=left_generated
+        rem=value%2
+        if temp2+1==right:
+            ans.append(rem)
+            break
+        else:
+            if temp2+1>=left:
+                ans.append(rem)
+                
+            else:
+                temp=left
+            temp2+=1
 
-    value=heapq.heappop(level)
-    if value[1]==node1:
-        find=node1
-            
-        while parent[find]!=0:
-            ans.append(find)
-            find=parent[find]
-        ans.append(find)
-        ans.reverse()
-        for i in range(len(ans)-1):
-            print(ans[i],end=" ")
-        print(ans[i+1],end="\n")
-        check=True
-        break
-    if value[1] in visited:
-        continue
-
-    visited.add(value[1])
-    for i in memo[value[1]]:
-        if dist[i[0]]>dist[value[1]]+i[1]:
-            dist[i[0]]=dist[value[1]]+i[1]
-            parent[i[0]]=value[1]
-            heapq.heappush(level,(dist[i[0]],i[0]))
-if not check:
-    value=-1
-    print(value)
+                
+        if temp2+left_generated>=right:
+            if (value//2)<2:
+                ans.append(value//2)
+            else:
+                level.append(value//2)
+            break
+        else:
+            if temp2+left_generated>=left:
+                if (value//2)<2:
+                    ans.append(value//2)
+                else:
+                    level.append(value//2)
+                # temp2+=left_generated
+            else:
+                temp=left
+            temp2+=left_generated
+        temp2+=1
+    print(level)
+    print(ans)
+print(len(ans))

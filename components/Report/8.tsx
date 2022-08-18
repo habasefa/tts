@@ -67,7 +67,7 @@ export default function ReportRegistration_8({
           ></textarea>
         </div>
 
-        <div className="mt-4 text-center lg:text-left">
+        <div className="m-4 text-center lg:text-left">
           <button
             onClick={handleClick}
             className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
@@ -75,12 +75,12 @@ export default function ReportRegistration_8({
             CONTINUE
           </button>
         </div>
-        <div className="mt-4 text-center lg:text-left">
+        <div className="m-4 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-3 px-6 text-xl font-semibold text-white hover:bg-blue-700 "
           >
             PREVIOUS
           </button>

@@ -24,7 +24,7 @@ export default function ReportRegistration_6({
               onChange={(e) =>
                 setFormData({ ...formData, envHelp: e.target.value })
               }
-              className="mb-4 w-full py-5"
+              className="mb-3 w-full py-3"
               type="text"
               id="envHelp"
               placeholder=""
@@ -39,7 +39,7 @@ export default function ReportRegistration_6({
               onChange={(e) =>
                 setFormData({ ...formData, tuteeHelp: e.target.value })
               }
-              className="mb-4 w-full py-5"
+              className="mb-3 w-full py-3"
               type="text"
               id="tuteeHelp"
               placeholder=" "
@@ -54,7 +54,7 @@ export default function ReportRegistration_6({
               onChange={(e) =>
                 setFormData({ ...formData, yourHelp: e.target.value })
               }
-              className="mb-4 w-full py-5"
+              className="mb-3 w-full py-3"
               type="text"
               id="yourHelp"
               placeholder=""
@@ -62,22 +62,22 @@ export default function ReportRegistration_6({
           </div>
         </div>
 
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-1 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage + 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-1 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
           >
             CONTINUE
           </button>
         </div>
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-1 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-1 px-6 text-xl font-semibold text-white hover:bg-blue-700 "
           >
             PREVIOUS
           </button>

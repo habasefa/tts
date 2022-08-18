@@ -24,7 +24,7 @@ export default function ReportRegistration_4({
               onChange={(e) =>
                 setFormData({ ...formData, envChallenge: e.target.value })
               }
-              className="mt-4 w-full py-5"
+              className="mt-3 w-full py-3"
               type="text"
               id="envChallenge"
               placeholder=" &nbsp;eg. There was a lot of noise coming from &nbsp;"
@@ -39,7 +39,7 @@ export default function ReportRegistration_4({
               onChange={(e) =>
                 setFormData({ ...formData, tuteeChallenge: e.target.value })
               }
-              className="mt-4 w-full py-5"
+              className="mt-3 w-full py-3"
               type="text"
               id="tuteeChallenge"
               placeholder=" &nbsp;eg.  She was very sleepy &nbsp;"
@@ -54,7 +54,7 @@ export default function ReportRegistration_4({
               onChange={(e) =>
                 setFormData({ ...formData, yourChallenge: e.target.value })
               }
-              className="mt-4 w-full py-5"
+              className="mt-3 w-full py-3"
               type="text"
               id="yourChallenge"
               placeholder=" &nbsp;eg.  I was very obessed with work issue &nbsp;"
@@ -62,22 +62,22 @@ export default function ReportRegistration_4({
           </div>
         </div>
 
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-1 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage + 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-1 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
           >
             CONTINUE
           </button>
         </div>
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-1 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-1 px-6 text-xl font-semibold text-white hover:bg-blue-700 "
           >
             PREVIOUS
           </button>

@@ -24,7 +24,7 @@ export default function ReportRegistration_7({
               onChange={(e) =>
                 setFormData({ ...formData, quiz: e.target.value })
               }
-              className="mb-4 w-full py-5"
+              className="mb-3 w-full py-3"
               type="text"
               id="quiz"
               placeholder=""
@@ -39,7 +39,7 @@ export default function ReportRegistration_7({
               onChange={(e) =>
                 setFormData({ ...formData, assg: e.target.value })
               }
-              className="mb-4 w-full py-5"
+              className="mb-3 w-full py-3"
               type="text"
               id="assg"
               placeholder=" "
@@ -54,7 +54,7 @@ export default function ReportRegistration_7({
               onChange={(e) =>
                 setFormData({ ...formData, test: e.target.value })
               }
-              className="mb-4 w-full py-5"
+              className="mb-3 w-full py-3"
               type="text"
               id="test"
               placeholder=""
@@ -62,22 +62,22 @@ export default function ReportRegistration_7({
           </div>
         </div>
 
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-1 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage + 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-1 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
           >
             CONTINUE
           </button>
         </div>
-        <div className="mt-4 text-center lg:text-left">
+        <div className="mt-1 text-center lg:text-left">
           <button
             onClick={() => {
               setPage((currentPage) => currentPage - 1)
             }}
-            className=" bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
+            className=" bg-[#1A3765] py-1 px-6 text-xl font-semibold text-white hover:bg-blue-700 "
           >
             PREVIOUS
           </button>
