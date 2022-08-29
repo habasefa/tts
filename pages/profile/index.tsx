@@ -30,16 +30,16 @@ const profile = () => {
         setErr('Something went wrong')
       })
   }, [])
-  useEffect(() => {
-    getTutorById(user.user.tutor?.id, token)
-      .then((res) => res.json())
-      .then((data) => {
-        setTutorData(data)
-      })
-      .catch((_) => {
-        setErr('Something went wrong')
-      })
-  }, [])
+  // useEffect(() => {
+  //   getTutorById(user.user.tutor?.id, token)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setTutorData(data)
+  //     })
+  //     .catch((_) => {
+  //       setErr('Something went wrong')
+  //     })
+  // }, [])
 
   const keyInfo = {
     id: userData?.tutor.id,

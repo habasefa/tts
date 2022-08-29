@@ -33,7 +33,7 @@ const JobsList = () => {
   return (
     <div>
       <Header />
-      <div className="mx-12 mt-40">
+      <div className="mx-12 mt-40 z-auto">
         <Row gutter={[8, 8]} justify={'space-between'} className="">
           <Col xs={6} xl={5} md={6}>
             <div className="flex flex-col">
