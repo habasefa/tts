@@ -494,7 +494,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <Input maxLength={50} showCount name="workDays" />
+             <InputNumber controls={false} name="workDays" />
             </Form.Item>
             <Form.Item
               label="Work hours"
@@ -506,7 +506,8 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <Input maxLength={50} showCount name="workHour" />
+              <InputNumber controls={false} name="workHour" />
+             
             </Form.Item>
             <Form.Item
               label="Location"
@@ -518,7 +519,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <Input maxLength={50} showCount name="location" />
+              <Input  maxLength={50} showCount name="location" />
             </Form.Item>
             <Form.Item
               label="Essay"
