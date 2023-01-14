@@ -46,21 +46,21 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          emailjs
-            .send(
-              process.env.EMAIL_SERVICE_ID!,
-              process.env.EMAIL_TEMPLATE_ID!,
-              templateParams,
-              process.env.EMAIL_PUBLIC_KEY
-            )
-            .then(
-              (response) => {
-                console.log('SUCCESS!', response.status, response.text)
-              },
-              (err) => {
-                console.log('FAILED...', err)
-              }
-            )
+          // emailjs
+          //   .send(
+          //     process.env.EMAIL_SERVICE_ID!,
+          //     process.env.EMAIL_TEMPLATE_ID!,
+          //     templateParams,
+          //     process.env.EMAIL_PUBLIC_KEY
+          //   )
+          //   .then(
+          //     (response) => {
+          //       console.log('SUCCESS!', response.status, response.text)
+          //     },
+          //     (err) => {
+          //       console.log('FAILED...', err)
+          //     }
+          //   )
           router.replace('/login')
         } else {
           setErr(data.message)
