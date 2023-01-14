@@ -30,6 +30,7 @@ export default function ParentRegistration_12({
       subjects: formData.st_subject,
       workDays: formData.days,
       workHour: formData.hours,
+      tutorId : null
     })
       .then((res) => res.json())
       .then((data) => setData(data))

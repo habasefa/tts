@@ -72,29 +72,50 @@ export interface StudentPostProps {
   workHour: number | null
   hobby: string | null
   parentId: number
+  tutorId : number | null
 }
 
 export interface ReportPostProps {
-  professionality: string | null
-  assg: string | null
-  noDays: string
-  feedback: string | null
-  semiTotalHour: string | null
-  quiz: string | null
-  test: string | null
-  envChallenge: string | null
-  envHelp: string | null
-  envResponse: string | null
-  yourChallenge: string | null
-  yourHelp: string | null
-  yourResponse: string | null
-  tuteeChallenge: string | null
-  tuteeHelp: string | null
-  tuteeResponse: string | null
-  subjects: string | null
-  topics: string | null
+
+  // professionality: string | null
+  // assg: string | null
+  // noDays: string
+  // feedback: string | null
+  // semiTotalHour: string | null
+  // quiz: string | null
+  // test: string | null
+  // envChallenge: string | null
+  // envHelp: string | null
+  // envResponse: string | null
+  // yourChallenge: string | null
+  // yourHelp: string | null
+  // yourResponse: string | null
+  // tuteeChallenge: string | null
+  // tuteeHelp: string | null
+  // tuteeResponse: string | null
+  // subjects: string | null
+  // topics: string | null
+  totalDays: String | null
+  totalHours: String | null
+  month: String | null
+  week: String | null
+  feedback: String | null
+  pastChallenge: String | null
+  futureChallenge: String | null
+  helpChallenge: String | null
+  dressing: String | null
+  grooming: String | null
+  hygiene: String | null
+  punctuality: String | null
+  manner: String | null
+  elequence: String | null
+  reports: object | null
   token: string
   tutorId: number
+  tutorName:String | null
+  reportDate: number
+  reportMonth : number
+  reportYear: number
 }
 
 export interface TutorPostProps {

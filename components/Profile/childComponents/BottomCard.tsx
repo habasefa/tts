@@ -33,10 +33,10 @@ const BottomCard = (props: any) => {
 
   return (
     <div className="h-full bg-[#fefefe] p-5 drop-shadow-xl">
-      <h1 className="text-sm text-[#1a3765] md:text-base xl:text-xl">
+      <h1 className="text-sm  md:text-base xl:text-xl">
         {props.title}
       </h1>
-      <div className="h-1 bg-gray-200"></div>
+      <div className="h-1 text-black bg-gray-200"></div>
       {child}
     </div>
   )

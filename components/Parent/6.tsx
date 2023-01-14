@@ -64,9 +64,7 @@ export default function ParentRegistration_6({
 
         <div className="mt-8 text-center lg:text-left">
           <button
-             onClick={() => {
-              setPage((currentPage) => currentPage + 1)
-            }}
+             onClick={handleClick}
             className="bg-[#1A3765] py-3 px-6 text-3xl font-semibold text-white hover:bg-blue-700 "
           >
             CONTINUE

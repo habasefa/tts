@@ -10,7 +10,12 @@ import { getUserById } from 'backend-utils/user-utils'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
+import { useRouter } from "next/router";
+import { Avatar } from '@mui/material'
+
+
 const profile = () => {
+  const router = useRouter();
   const user = useSelector(selectUser)
   if (user) {
     var token = user.accessToken
@@ -21,6 +26,8 @@ const profile = () => {
   const [err, setErr] = useState('')
 
   useEffect(() => {
+    console.log(id)
+    console.log(token)
     getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {
@@ -42,6 +49,7 @@ const profile = () => {
   // }, [])
 
   const keyInfo = {
+    
     id: userData?.tutor.id,
     name: userData?.tutor.fullName,
     gender: userData?.tutor.gender,
@@ -58,6 +66,7 @@ const profile = () => {
     hobby: userData?.tutor.hobby,
     subjects: userData?.tutor.subjects,
   }
+
   return (
     <div
       className="
@@ -65,12 +74,31 @@ const profile = () => {
     >
       {/* bg-[#f2f2f2]  */}
       <Header />
-      <div className="mt-40">
+      <div className="mt-40 font-minionPro">
+        <div className="justify-center">
+        <Avatar
+            src={'/pp-2.png'}
+            sx={{
+              height: 64,
+              mb: 2,
+              width: 64,
+            }}
+          />
+        </div>
+        <div className="flex justify-end my-2">
+        <button
+              className=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none md:w-1/6 md:text-xl"
+              type="button"
+              onClick={() => router.push("/profile/" + userData?.tutor.id )}
+            >
+              Edit Profile
+            </button>
+        </div>
         {tutorData?.user?.jobs
           .filter((val: any) => val.id == tutorData.user.hiredJobId)
           .map((val: any) => (
-            <div className="mt-4 w-full bg-[#fefefe] px-10 py-5 text-[#1a3765] drop-shadow-xl md:w-2/3">
-              <h1 className="bg-[#fefefe] text-xl text-[#1a3765] md:text-3xl">
+            <div className="mt-4 w-full  bg-[#fefefe] px-10 py-5 text-black drop-shadow-xl md:w-2/3">
+              <h1 className="bg-[#fefefe] text-xl text-black md:text-3xl">
                 Your Job
               </h1>
               <p className="mt-3 text-justify md:text-left md:text-base xl:text-lg">
@@ -94,8 +122,8 @@ const profile = () => {
             </div>
           ))}
         {tutorData?.user?.students.map((val: any) => (
-          <div className="mt-4 w-full bg-[#fefefe] px-10 py-5 text-[#1a3765] drop-shadow-xl md:w-2/3">
-            <h1 className="bg-[#fefefe] text-xl text-[#1a3765] md:text-3xl">
+          <div className="mt-4 w-full bg-[#fefefe] px-10 py-5 text-black drop-shadow-xl md:w-2/3">
+            <h1 className="bg-[#fefefe] text-xl  md:text-3xl">
               Student Info
             </h1>
             <p className="mt-3 text-justify md:text-left md:text-base xl:text-lg">

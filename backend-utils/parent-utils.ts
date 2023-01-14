@@ -1,5 +1,6 @@
 import { ParentPostProps, StudentPostProps } from 'utils/types'
 import { API_URL } from 'utils/url'
+
 const createParent = async ({
   fullName,
   email,
@@ -10,6 +11,7 @@ const createParent = async ({
   profilePicture,
   userId,
 }: ParentPostProps) => {
+  
   const response = await fetch(`${API_URL}api/v1/parent/`, {
     method: 'POST',
     headers: {
@@ -26,6 +28,7 @@ const createParent = async ({
       userId,
     }),
   })
+  console.log(response)
   return response
 }
 
@@ -45,7 +48,11 @@ const createStudent = async ({
   workDays,
   workHour,
   parentId,
+  tutorId
 }: StudentPostProps) => {
+  console.log(parentId)
+  console.log(grade)
+  console.log(gender)
   const response = await fetch(`${API_URL}api/v1/student/`, {
     method: 'POST',
     headers: {
@@ -67,8 +74,10 @@ const createStudent = async ({
       workHour,
       hobby,
       parentId,
+      tutorId
     }),
   })
+  console.log(response)
   return response
 }
 

@@ -33,7 +33,7 @@ export default function Login() {
     setLoggingIn(true)
     setErr('')
     setShowAlert(false)
-
+    console.log(email,password)
     signin(email, password)
       .then((res) => res.json())
       .then((data) => {

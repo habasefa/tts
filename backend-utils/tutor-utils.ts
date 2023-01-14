@@ -73,28 +73,47 @@ const createTutor = async ({
   })
   return response
 }
-const createReport = async ({
-  professionality,
-  assg,
-  noDays,
-  feedback,
-  semiTotalHour,
-  quiz,
-  test,
-  envChallenge,
-  envHelp,
-  envResponse,
-  yourChallenge,
-  yourHelp,
-  yourResponse,
-  tuteeChallenge,
-  tuteeHelp,
-  tuteeResponse,
-  subjects,
-  topics,
-  token,
-  tutorId,
+
+const fetchReport = async (  tutorId :number , token: string)=>{
+  console.log(tutorId)
+  const response = await fetch(`${API_URL}api/v1/report/${tutorId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  })
+  
+  return response
+
+}
+const createReport = async ({            
+  reports,         
+  token,       
+  tutorId ,
+  totalDays       ,
+  totalHours      ,
+  month        ,
+  week          ,
+  feedback        ,
+  pastChallenge   ,
+  futureChallenge ,
+  helpChallenge  ,
+  dressing        ,
+  grooming        ,
+  hygiene        ,
+  punctuality     ,
+  manner        ,
+  elequence ,
+  tutorName,
+  reportDate ,
+  reportMonth ,
+  reportYear    
 }: ReportPostProps) => {
+  console.log(reports)
+  console.log(week)
+  console.log(month)
+  console.log(totalDays)
   const response = await fetch(`${API_URL}api/v1/report/`, {
     method: 'POST',
     headers: {
@@ -102,27 +121,29 @@ const createReport = async ({
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      professionality,
-      assg,
-      noDays,
-      feedback,
-      semiTotalHour,
-      quiz,
-      test,
-      envChallenge,
-      envHelp,
-      envResponse,
-      yourChallenge,
-      yourHelp,
-      yourResponse,
-      tuteeChallenge,
-      tuteeHelp,
-      tuteeResponse,
-      subjects,
-      topics,
+      reports,
       tutorId,
+      totalDays       ,
+  totalHours      ,
+  month        ,
+  week          ,
+  feedback        ,
+  pastChallenge   ,
+  futureChallenge ,
+  helpChallenge  ,
+  dressing        ,
+  grooming        ,
+  hygiene        ,
+  punctuality     ,
+  manner        ,
+  elequence ,
+  tutorName,
+  reportDate ,
+  reportMonth   ,
+  reportYear      
     }),
   })
+  console.log(response)
   return response
 }
 
@@ -181,4 +202,5 @@ export {
   linkJobAndTutor,
   createReport,
   updateTutor,
+  fetchReport
 }

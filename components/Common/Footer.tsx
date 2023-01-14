@@ -60,19 +60,19 @@ const Footer = () => {
                 </h3>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   Get a tutor
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   Become a tutor
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   Partner with us
                 </a>
@@ -83,32 +83,32 @@ const Footer = () => {
                 </h3>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   Fesitivall22, 3rd floor
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   22 Mazoriya
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   Addis Ababa, Ethiopia
                 </a>
 
                 <a
                   href="#"
-                  className="block mt-7 text-white opacity-80 hover:underline"
+                  className="block mt-7 text-white opacity-80 "
                 >
                   P: +251940120591
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   E: contact@temari-bet.com
                 </a>
@@ -120,13 +120,13 @@ const Footer = () => {
                 </h3>
                 <a
                   href="#"
-                  className="block my-2 text-white opacity-80 hover:underline"
+                  className="block my-2 text-white opacity-80 "
                 >
                   eLearning
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-white opacity-80 hover:underline"
+                  className="block mt-2 text-white opacity-80 "
                 >
                   Tutoring
                 </a>
@@ -136,13 +136,13 @@ const Footer = () => {
                 <h3 className="text-xl uppercase text-white opacity-90 dark:text-white">
                   About Us
                 </h3>
-                <span className="block mt-2 text-white opacity-80 hover:underline">
+                <span className="block mt-2 text-white opacity-80 ">
                   Mission and Vision
                 </span>
-                <span className="block mt-2 text-white opacity-80 hover:underline">
+                <span className="block mt-2 text-white opacity-80 ">
                   Who we serve
                 </span>
-                <span className="block mt-2 text-white opacity-80 hover:underline">
+                <span className="block mt-2 text-white opacity-80 ">
                   Pricing
                 </span>
               </div>

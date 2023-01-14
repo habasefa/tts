@@ -1,8 +1,10 @@
 import React from 'react'
 import { List, Button } from 'antd'
 import Image from 'next/image'
+import {useRouter } from 'next/router'
 
 const ServiceCard = (props: any) => {
+  const router = useRouter()
   return (
     <div className="flex h-full  font-minionPro flex-col justify-between bg-[#E5EFFF] drop-shadow-lg">
       <div className="w-full px-11 py-9 ">
@@ -29,7 +31,9 @@ const ServiceCard = (props: any) => {
           </li>
         ))}
       </div>
-      <button className="w-full bg-[#1A3765] py-3 text-2xl text-white 2xl:text-3xl">
+      <button
+      onClick={()=>router.push('/studentRegistration')}
+      className="w-full bg-[#1A3765] py-3 text-2xl text-white 2xl:text-3xl">
         Get a Tutor
       </button>
     </div>

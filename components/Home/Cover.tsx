@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 const Cover = () => {
   const router = useRouter()
   const handleClick = () => {
-    router.push("/parentRegistration")
+    router.push("/studentRegistration")
   }
   return (
     <div className="flex min-h-screen flex-col justify-end bg-[#FED607]">

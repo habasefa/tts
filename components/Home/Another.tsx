@@ -1,8 +1,10 @@
 import { Button, Col, Row } from 'antd'
 import 'antd/dist/antd.css'
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 
 const Another = () => {
+  const router = useRouter ();
   return (
     <section className="bg-white font-minionPro">
       <div className=" mx-9 py-16 md:mx-20">
@@ -32,7 +34,9 @@ const Another = () => {
                 Top tutors from all over Addis Ababa managed by Temaribet.
               </p>
               <div className="text-center lg:text-left">
-                <button className=" mt-20 transform rounded-full bg-[#1A3765] px-12 py-3 text-4xl font-bold text-white  transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none lg:w-auto  xl:py-5 2xl:px-14">
+                <button 
+                 onClick={()=>router.push('/studentRegistration')}
+                className=" mt-20 transform rounded-full bg-[#1A3765] px-12 py-3 text-4xl font-bold text-white  transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none lg:w-auto  xl:py-5 2xl:px-14">
                   Get tutor
                 </button>
               </div>

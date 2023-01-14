@@ -2,9 +2,9 @@ import React from 'react'
 import Header from '../components/historyComponents/header'
 import Body from '../components/historyComponents/body'
 import Footer from '../components/historyComponents/footer'
-const report = () => {
+const history = () => {
   return (
-    <div className='px-20 xl:px-24 font-minionPro bg-[#f2f2f2] min-h-screen'>
+    <div className='px-20 xl:px-24  bg-[#f2f2f2] min-h-screen'>
         <Header />
         <div className='flex justify-end mt-14 mb-10'>
           <div className='md:mr-36'>
@@ -17,4 +17,4 @@ const report = () => {
     </div>
   )
 }
-export default report;
+export default history

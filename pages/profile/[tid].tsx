@@ -172,8 +172,11 @@ function UpdateTutor() {
   }, [form, inputValue])
 
   const handleInputChange = (e: any) => {
-    const { name, value } = e.target
-    setInputValue({ ...inputValue, [name]: value })
+    console.log(e)
+    const keys =  Object.keys(e);
+
+    
+    setInputValue({ ...inputValue, [keys[0]]: e[keys[0]] })
   }
 
   return (
@@ -182,7 +185,7 @@ function UpdateTutor() {
     px-20  xl:px-16"
     >
       <Header />
-      <div>
+      <div className='font-minionPro'>
         <h2 className={classes.header}>Update your profile</h2>
         <p className={classes.subHeader}>
           This helps parents understand you better.
@@ -194,7 +197,7 @@ function UpdateTutor() {
             initialValues={inputValue}
             onFinish={onFinish}
             autoComplete="off"
-            // onValuesChange={handleInputChange}
+            onValuesChange={handleInputChange}
           >
             <div
               className="left"

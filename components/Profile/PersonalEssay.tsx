@@ -6,7 +6,7 @@ const PersonalEssay = (props: any) => {
       <h1 className="bg-[#fefefe] text-xl text-[#1a3765] md:text-3xl">
         Personal Essay
       </h1>
-      <p className="mt-3 text-justify md:text-left md:text-base xl:text-lg">
+      <p className="mt-3 text-justify text-black md:text-left md:text-base xl:text-lg">
         {props.essay}
       </p>
     </div>

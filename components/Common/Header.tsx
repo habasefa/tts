@@ -1,12 +1,19 @@
+import { Button } from '@mui/material'
 import { Dropdown, Menu } from 'antd'
 import { signout } from 'backend-utils/user-utils'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, selectUser } from 'redux/userSlice'
+import {useRef} from "react"
+
 const Header = () => {
+
   const user = useSelector(selectUser)
   const router = useRouter()
+  const registerMenu = useRef(null)
+  
+
   const dispatch = useDispatch()
   const handleLogout = (e: any) => {
     e.preventDefault()
@@ -14,7 +21,18 @@ const Header = () => {
     dispatch(logout())
     router.push('/')
   }
+  useEffect(()=>{
+    console.log(user)
+    const closeDropDown =(e: any)=>{
+      if (e.path[0]!==registerMenu.current){
+        setDropDown(false)
+      }
+    }
+    document.body.addEventListener('click',closeDropDown)
+    return ()=>document.body.removeEventListener('click',closeDropDown)
+  })
   if (user) {
+  
     var name = user.user.email?.match(/^([^@]*)@/)[1]
     var role = user.user.role
     var hiredJobId = user.user.tutor?.hiredJobId
@@ -33,7 +51,12 @@ const Header = () => {
       <Menu.Item key={1}>
         <a href="/profile">Profile</a>
       </Menu.Item>
+      {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&  (
       <Menu.Item key={2}>
+        <a href="/tryerror">Report</a>
+      </Menu.Item>
+      )}
+      <Menu.Item key={3}>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -43,10 +66,21 @@ const Header = () => {
           Logout
         </a>
       </Menu.Item>
+     
+    
     </Menu>
   )
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   const [dropdownOpen,setDropDown]=React.useState(false)
+  useEffect(()=>{
+    const closeDropDown =(e: any)=>{
+      if (e.path[0]!==registerMenu.current){
+        setDropDown(false)
+      }
+    }
+    document.body.addEventListener('click',closeDropDown)
+    return ()=>document.body.removeEventListener('click',closeDropDown)
+  })
   return (
     <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607]  py-0 opacity-100">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
@@ -90,6 +124,7 @@ const Header = () => {
               <a
                 className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
+                onClick={()=>router.push("/about")}
               >
                 About Us
               </a>
@@ -98,6 +133,7 @@ const Header = () => {
               <a
                 className="flex items-center px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
+                onClick={()=>router.push('/pricing')}
               >
                 Pricing
               </a>
@@ -116,8 +152,17 @@ const Header = () => {
             {user == null && (
               <>
               <li className="nav-item  h-full pl-2 ">
+               
               <button
-              onClick={()=>setDropDown(!dropdownOpen)}
+              ref={registerMenu}
+              onClick={()=>setDropDown(!dropdownOpen)
+              
+              
+              }
+              
+            
+              
+             
               
               className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
               >
@@ -125,22 +170,26 @@ const Header = () => {
                
                   
               </button>
+            
               {(dropdownOpen ? 
               <div
-              className="fixed  px-6 border-black  py-3 mt-1 bg-white rounded-sm"
+           
+              className={`fixed  px-6 border-black bg-white  divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 py-3 mt-1  rounded-sm ${
+                dropdownOpen ? "block" : "hidden"
+              }`}
 
                 >
                   <a
-                    href="javascript:void(0)"
-                    className="block py-3 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
+                  onClick={()=>router.push("/studentRegistration")}
+                    className="block py-3 text-base font-semibold text-slate-500 dark:hover:text-white"
                   >
                     Enroll a Student
                   </a>
                   <a
-                    href="javascript:void(0)"
-                    className="block py-3 text-base font-semibold text-body-color hover:bg-primary hover:bg-opacity-5 hover:text-primary"
+                      onClick={()=>router.push("/signup")}
+                    className="block py-3 text-base text-slate-500 font-semibold w-full  dark:hover:text-white"
                   >
-                    Become a Student 
+                    Become a Tutor
                   </a>
 
                 </div>
@@ -164,6 +213,17 @@ const Header = () => {
                   onClick={() => router.push('/jobs-list')}
                 >
                   Find Jobs
+                </a>
+              </li>
+            )}
+            {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
+              <li className="nav-item h-full md:mx-5">
+                <a
+                  className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                  href="#"
+                  onClick={() => router.push('/training')}
+                >
+                  Training
                 </a>
               </li>
             )}

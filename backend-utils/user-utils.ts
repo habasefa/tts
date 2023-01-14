@@ -1,5 +1,6 @@
 import { API_URL } from 'utils/url'
 const signup = async (email: string, password: string, role: string) => {
+  console.log(email)
   const response = await fetch(`${API_URL}api/v1/user/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -9,11 +10,14 @@ const signup = async (email: string, password: string, role: string) => {
       role,
     }),
   })
+  console.log(response)
   return response
 }
 
 const signin = async (email: string, password: string) => {
+  console.log(email,password)
   const response = await fetch(`${API_URL}api/v1/user/login`, {
+ 
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -21,6 +25,7 @@ const signin = async (email: string, password: string) => {
       email,
     }),
   })
+  console.log(response)
   return response
 }
 
@@ -46,6 +51,7 @@ const getUserById = async (id: number, token: string) => {
       authorization: `Bearer ${token}`,
     },
   })
+  console.log(response)
   return response
 }
 

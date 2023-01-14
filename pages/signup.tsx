@@ -40,7 +40,8 @@ export default function SignUp() {
     setLoggingIn(true)
     setErr('')
     setShowAlert(false)
-
+    console.log(values.email)
+    console.log(values.passoword)
     signup(values.email, values.password, 'TUTOR')
       .then((res) => res.json())
       .then((data) => {
@@ -129,6 +130,7 @@ export default function SignUp() {
                 layout="vertical"
                 onFinish={onFinish}
               >
+                
                 <label
                   className="mb-1 block text-xl text-gray-500 2xl:text-2xl "
                   htmlFor="email"
