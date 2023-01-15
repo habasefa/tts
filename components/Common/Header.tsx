@@ -205,7 +205,7 @@ const Header = () => {
               </>
             
             )}
-            {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
+            {/* {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
@@ -215,8 +215,8 @@ const Header = () => {
                   Find Jobs
                 </a>
               </li>
-            )}
-            {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
+            )} */}
+            {user && user.user.role === 'TUTOR' && (
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
