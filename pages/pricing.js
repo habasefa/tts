@@ -47,9 +47,9 @@ const Pricing = () => {
 
   return (
     <>
-    <div className="h-screen overflow-y-scroll px-20  xl:px-16 bg-gray-50 scrollbar-hide font-minionPro">
+    <div className="h-screen overflow-y-scroll  bg-gray-50 scrollbar-hide font-minionPro">
       <Header />
-      <div className="mt-16">
+      <div className="mt-16  xl:px-16">
         <div className="my-2 p-3 md:p-5">
           <h2 className="text-lg md:text-2xl md:py-2">Pricing Per Hour</h2>
           <div>
