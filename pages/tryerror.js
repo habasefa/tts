@@ -719,7 +719,7 @@ const router = useRouter()
                     />
                   </div>
                 </div>
-                <div className=" w-fit my-10 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 md:px-3 md:py-2 ">
+                <div className=" w-fit my-10 border border-gray-200 rounded-lg shadow-md md:px-3 md:py-2 ">
                   <div className="text-lg">On the Content</div>
 
                   {inputFields[index].subjects.map((input, valu) => {
@@ -939,7 +939,7 @@ const router = useRouter()
                   })}
                 </div>
 
-                <div className=" w-fit my-10 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 md:px-3 md:py-2 ">
+                <div className=" w-fit my-10 border border-gray-200 rounded-lg shadow-md  md:px-3 md:py-2 ">
                   <div className="text-lg">On Result</div>
 
                   {inputFields[index].assesments.map(

@@ -174,7 +174,7 @@ const Header = () => {
               {(dropdownOpen ? 
               <div
            
-              className={`fixed  px-6 border-black bg-white  divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 py-3 mt-1  rounded-sm ${
+              className={`fixed  px-6 border-black bg-white  divide-y divide-gray-100 shadow  py-3 mt-1  rounded-sm ${
                 dropdownOpen ? "block" : "hidden"
               }`}
 

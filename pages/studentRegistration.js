@@ -339,7 +339,7 @@ const StudentRegistration = () => {
           {studnets && studnets.length > 0
             ? studnets.map((val, index) => {
                 return (
-                  <div key={index} className=" my-2 mb-4 px-10 py-2 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                  <div key={index} className=" my-2 mb-4 px-10 py-2 border border-gray-200 rounded-lg shadow-md ">
                     <label className="font-minionPro text-lg font-semibold text-[#1A3765] md:text-xl">
                       Child Information (Child {index+1})
                     </label>
