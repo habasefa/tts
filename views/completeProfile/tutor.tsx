@@ -471,7 +471,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <Input maxLength={50} showCount />
+           <InputNumber controls={false} />
           </Form.Item>
           <Form.Item
             label="Work hours"
@@ -483,7 +483,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <Input maxLength={50} showCount />
+          <InputNumber controls={false} />
           </Form.Item>
           <Form.Item
             label="Location"
