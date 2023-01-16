@@ -68,6 +68,7 @@ const profile = () => {
     bankAccountNo: userData?.tutor.bankAccountNo,
     hobby: userData?.tutor.hobby,
     subjects: userData?.tutor.subjects,
+    profilePicture:  userData?.tutor.profilePicture,
   }
 
   return (
@@ -87,7 +88,7 @@ const profile = () => {
       <div className="mt-40 font-minionPro">
         <div className="justify-center">
         <Avatar
-            src={'/pp-2.png'}
+            src={keyInfo.profilePicture}
             sx={{
               height: 64,
               mb: 2,

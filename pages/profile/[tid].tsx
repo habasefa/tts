@@ -11,8 +11,8 @@ import Footer from '@/components/Profile/Footer'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
 import { getTutorById } from '../../backend-utils/tutor-utils'
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
 
 function UpdateTutor() {
   const user = useSelector(selectUser)
@@ -76,7 +76,7 @@ function UpdateTutor() {
   const [birthDate, setBirthDate] = useState('')
   const [tutorExperience, setTutorExperience] = useState(false)
   const [profileUrl, setProfileUrl] = useState('')
-  const [isLoading,setIsLoading]=useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   //   subject select
   const children = []
@@ -177,9 +177,8 @@ function UpdateTutor() {
 
   const handleInputChange = (e: any) => {
     console.log(e)
-    const keys =  Object.keys(e);
+    const keys = Object.keys(e)
 
-    
     setInputValue({ ...inputValue, [keys[0]]: e[keys[0]] })
   }
 
@@ -190,13 +189,12 @@ function UpdateTutor() {
     >
       <Header />
       <Backdrop
-  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-  open={isLoading}
-  
->
-  <CircularProgress color="inherit" />
-</Backdrop>
-      <div className='font-minionPro'>
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <div className="font-minionPro">
         <h2 className={classes.header}>Update your profile</h2>
         <p className={classes.subHeader}>
           This helps parents understand you better.
@@ -505,7 +503,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-             <InputNumber controls={false} name="workDays" />
+              <InputNumber controls={false} name="workDays" />
             </Form.Item>
             <Form.Item
               label="Work hours"
@@ -518,7 +516,6 @@ function UpdateTutor() {
               ]}
             >
               <InputNumber controls={false} name="workHour" />
-             
             </Form.Item>
             <Form.Item
               label="Location"
@@ -530,7 +527,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <Input  maxLength={50} showCount name="location" />
+              <Input maxLength={50} showCount name="location" />
             </Form.Item>
             <Form.Item
               label="Essay"
