@@ -11,6 +11,8 @@ import Footer from '@/components/Profile/Footer'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
 import { getTutorById } from '../../backend-utils/tutor-utils'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function UpdateTutor() {
   const user = useSelector(selectUser)
@@ -63,6 +65,7 @@ function UpdateTutor() {
           profilePicture: data.user.profilePicture,
           userId: data.user.userId,
         })
+        setIsLoading(false)
       })
       .catch((_) => {
         setErr('Something went wrong')
@@ -73,6 +76,7 @@ function UpdateTutor() {
   const [birthDate, setBirthDate] = useState('')
   const [tutorExperience, setTutorExperience] = useState(false)
   const [profileUrl, setProfileUrl] = useState('')
+  const [isLoading,setIsLoading]=useState(true)
 
   //   subject select
   const children = []
@@ -185,6 +189,13 @@ function UpdateTutor() {
     px-20  xl:px-16"
     >
       <Header />
+      <Backdrop
+  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+  open={isLoading}
+  
+>
+  <CircularProgress color="inherit" />
+</Backdrop>
       <div className='font-minionPro'>
         <h2 className={classes.header}>Update your profile</h2>
         <p className={classes.subHeader}>

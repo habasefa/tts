@@ -24,7 +24,7 @@ import {
   Alert,
   Box,
   Item,
-  Button,
+  
   Tabs,
   Checkbox,
   Container,
@@ -39,6 +39,7 @@ import {
   OutlinedInput,
   Chip,
 } from '@mui/material'
+import { Button } from 'antd/lib/radio'
 
 const tryerror = () => {
   const date = new Date();
@@ -50,6 +51,7 @@ const router = useRouter()
 
 
   const [userData, setUserData] = useState(null)
+  const [isLoading,setIsLoading]=useState(false)
   const user = useSelector(selectUser)
   const [openDup,setOpenDup] = useState(false)
   const [reportData, setReportData] = useState(null)
@@ -175,6 +177,7 @@ const router = useRouter()
   ])
 
   const handleClick = () => {
+    setIsLoading(true)
     event.preventDefault()
     console.log(token)
     console.log(inputFields)
@@ -206,6 +209,7 @@ const router = useRouter()
     })
       .then((res) => res.json())
       .then((res)=>{
+        setIsLoading(false)
         console.log(res)
         if (res.success){
           console.log(res)
@@ -560,7 +564,7 @@ const router = useRouter()
   };
   const [open, setOpen] = React.useState(false)
   const handleClose = () => {
-    router.push('/tryerror')
+    router.push('/')
     setOpen(false)
     setOpenDup(false)
     
@@ -1530,9 +1534,14 @@ const router = useRouter()
 
           </div>
         </div>
+        
         <button
           class=" focus:shadow-outline md:w-1/12 rounded-xl bg-[#fdd507] py-2 px-4 font-bold text-white hover:bg-[#c6a917] focus:outline-none"
           type="submit"
+          disabled={isLoading}
+          
+          
+          
         
         >
           Submit

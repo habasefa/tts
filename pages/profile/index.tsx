@@ -6,6 +6,8 @@ import Footer from '@/components/Profile/Footer'
 import PersonalEssay from '@/components/Profile/PersonalEssay'
 import { getTutorById } from 'backend-utils/tutor-utils'
 import { getUserById } from 'backend-utils/user-utils'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 // import Header from '@/components/Profile/Header'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -24,7 +26,7 @@ const profile = () => {
   const [userData, setUserData] = useState<any>(null)
   const [tutorData, setTutorData] = useState<any>(null)
   const [err, setErr] = useState('')
-
+  const [isLoading,setIsLoading]=useState(true)
   useEffect(() => {
     console.log(id)
     console.log(token)
@@ -32,6 +34,7 @@ const profile = () => {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data)
+        setIsLoading(false)
       })
       .catch((_) => {
         setErr('Something went wrong')
@@ -74,6 +77,13 @@ const profile = () => {
     >
       {/* bg-[#f2f2f2]  */}
       <Header />
+      <Backdrop
+  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+  open={isLoading}
+  
+>
+  <CircularProgress color="inherit" />
+</Backdrop>
       <div className="mt-40 font-minionPro">
         <div className="justify-center">
         <Avatar
