@@ -9,7 +9,7 @@ const Cover = () => {
   return (
     <div className="flex min-h-screen flex-col justify-end bg-[#FED607]">
       <div className="lg:flex">
-        <div className="w-full sm:items-center md:mb-20">
+        <div className="w-full sm:items-center">
           <div className="mx-9 mt-5 pt-32 2xl:pt-40 md:mx-20 md:mt-16 2xl:mt-20 lg:w-full">
             <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-7xl">
               We prepare for life.
@@ -24,7 +24,7 @@ const Cover = () => {
             </p>
             <button 
             onClick={handleClick}
-            className="mb-6  mt-6 w-full bg-white text-[#1A3765] lg:text-white transform lg:bg-[#1A3765] px-14 py-5 font-serif text-xl font-medium transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none md:text-3xl lg:w-auto lg:rounded-full lg:text-4xl  xl:text-5xl 2xl:text-5xl">
+            className="mb-6 w-full bg-white text-[#1A3765] lg:text-white transform lg:bg-[#1A3765] px-14 py-5 font-serif text-xl font-medium transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none md:text-3xl lg:w-auto lg:rounded-full lg:text-3xl  xl:text-4xl">
               Get tutor
             </button>
           </div>
@@ -35,8 +35,8 @@ const Cover = () => {
             className="w-full"
             src="/temaribet.png.png"
             alt="young girl image"
-            width={'600'}
-            height={'700'}
+            width={'400'}
+            height={'500'}
           />
         </div>
       </div>
