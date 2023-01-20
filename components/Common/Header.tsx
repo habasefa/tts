@@ -24,7 +24,9 @@ const Header = () => {
   useEffect(()=>{
     console.log(user)
     const closeDropDown =(e: any)=>{
-      if (e.path[0]!==registerMenu.current){
+     
+      console.log(e,registerMenu.current)
+      if (e.srcElement!==registerMenu.current){
         setDropDown(false)
       }
     }
@@ -56,6 +58,11 @@ const Header = () => {
         <a href="/tryerror">Report</a>
       </Menu.Item>
       )}
+      {user && user.user.role === 'TUTOR' && (
+      <Menu.Item key={2}>
+        <a href="/notification">Notificaton</a>
+      </Menu.Item>
+      )}
       <Menu.Item key={3}>
         <a
           target="_blank"
@@ -74,7 +81,8 @@ const Header = () => {
   const [dropdownOpen,setDropDown]=React.useState(false)
   useEffect(()=>{
     const closeDropDown =(e: any)=>{
-      if (e.path[0]!==registerMenu.current){
+      console.log(e,registerMenu.current)
+      if (e.srcElement!==registerMenu.current){
         setDropDown(false)
       }
     }

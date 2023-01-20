@@ -87,6 +87,22 @@ const fetchReport = async (  tutorId :number , token: string)=>{
   return response
 
 }
+
+const fetchRejectedReport = async (  tutorId :number , token: string)=>{
+  console.log(tutorId)
+  
+  const response = await fetch(`${API_URL}api/v1/report/one/rejected/${tutorId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  })
+  console.log(response)
+  
+  return response
+
+}
 const createReport = async ({            
   reports,         
   token,       
@@ -157,6 +173,16 @@ const getTutorById = async (id: any, token: string) => {
   })
   return response
 }
+const deleteReport = async (token:any, id: any) => {
+  const response = await fetch(`${API_URL}api/v1/report/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
+};
 
 const updateTutor = async (id: any, token: string, tutorBody: any) => {
   const response = await fetch(`${API_URL}api/v1/tutor/${id}`, {
@@ -195,6 +221,37 @@ const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
   return response
 }
 
+const UpdateAReport = async (token:string,id:any,reportBody:any)=>{
+  console.log(reportBody)
+  
+  const response = await fetch(`${API_URL}api/v1/report/${id}`, {
+    method: "PATCH",
+    headers :{
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ ...reportBody }),
+    
+
+  })
+  console.log(response)
+  return response;
+}
+
+const getAReport = async (token:string,id : any)=>{
+  
+  const response = await fetch(`${API_URL}api/v1/report/${id}`, {
+    method:"GET",
+    headers :{
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+
+  })
+  console.log(response)
+  return response;
+}
+
 export {
   createTutor,
   getTutorById,
@@ -202,5 +259,9 @@ export {
   linkJobAndTutor,
   createReport,
   updateTutor,
-  fetchReport
+  fetchReport,
+  fetchRejectedReport,
+  deleteReport,
+  UpdateAReport,
+  getAReport
 }
