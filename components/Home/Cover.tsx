@@ -9,8 +9,8 @@ const Cover = () => {
   return (
     <div className="flex min-h-screen flex-col justify-end bg-[#FED607]">
       <div className="lg:flex">
-        <div className="w-full sm:items-center md:mb-20">
-          <div className="mx-9 mt-5 pt-32 2xl:pt-40 md:mx-20 md:mt-16 2xl:mt-20 lg:w-full">
+        <div className="w-full sm:items-center md:mb-16">
+          <div className="mx-9 mt-5 pt-32 2xl:pt-40 md:mx-20 md:mt-16 2xl:mt-16 lg:w-full">
             <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-6xl">
             Is your child struggling to 
             </h1>
@@ -35,8 +35,8 @@ const Cover = () => {
             className="w-full"
             src="/myProject.png"
             alt="young girl image"
-            width={'700'}
-            height={'700'}
+            width={'780'}
+            height={'900'}
           />
         </div>
       </div>
