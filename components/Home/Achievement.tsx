@@ -19,9 +19,9 @@ const Achievement = () => {
         </Col>
 
         <Row>
-          <Stats text="FAMILIES" numbers="350+"></Stats>
+          <Stats text="FAMILIES" numbers="100+"></Stats>
           <Stats text="SCHOOLS" numbers="50+"></Stats>
-          <Stats text="TUTORS" numbers="10,000+"></Stats>
+          <Stats text="TUTORS" numbers="2,000+"></Stats>
           <Stats text="VISION" numbers="1"></Stats>
         </Row>
       </div>

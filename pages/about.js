@@ -56,14 +56,7 @@ const About = () => {
           <div className="my-2 p-3 md:p-5">
             <h2 className="text-lg md:text-2xl">Our Values</h2>
             <div>
-              <p className="text-lg">
-                Our pricing based on an hourly rate.The opportunity of a
-                lifetime passed before him as he tried to decide between a cone
-                or a cup.Our Pricing rate per hour Our pricing based on an
-                hourly rate.The opportunity of a lifetime passed before him as
-                he tried to decide between a cone or a cup.Our Pricing rate per
-                hour
-              </p>
+              
               <div className="flex-col space-y-1 md:flex md:flex-row md:space-x-1">
                 <div className="md:flex-1 ">
                   <button
@@ -126,11 +119,11 @@ const About = () => {
                 <div className="flex flex-col space-y-1">
                 <div className="flex justify-center">
                     <Avatar
-                      src={'/pp-1.png'}
+                      src={'/habtamu.jpg'}
                       sx={{
-                        height: 64,
+                        height: 128,
                         mb: 2,
-                        width: 64,
+                        width: 128,
                       }}
                     />
                   </div>
@@ -151,9 +144,9 @@ const About = () => {
                     <Avatar
                       src={'/pp-1.png'}
                       sx={{
-                        height: 64,
+                        height: 128,
                         mb: 2,
-                        width: 64,
+                        width: 128,
                       }}
                     />
                   </div>
@@ -172,11 +165,11 @@ const About = () => {
                 <div className="flex flex-col space-y-1">
                 <div className="flex justify-center">
                     <Avatar
-                      src={'/pp-1.png'}
+                      src={'/minte.jpg'}
                       sx={{
-                        height: 64,
+                        height: 128,
                         mb: 2,
-                        width: 64,
+                        width: 128,
                       }}
                     />
                   </div>
@@ -197,9 +190,9 @@ const About = () => {
                     <Avatar
                       src={'/pp-1.png'}
                       sx={{
-                        height: 64,
+                        height: 128,
                         mb: 2,
-                        width: 64,
+                        width: 128,
                       }}
                     />
                   </div>
