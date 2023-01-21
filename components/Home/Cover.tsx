@@ -12,15 +12,15 @@ const Cover = () => {
         <div className="w-full sm:items-center md:mb-20">
           <div className="mx-9 mt-5 pt-32 2xl:pt-40 md:mx-20 md:mt-16 2xl:mt-20 lg:w-full">
             <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-7xl">
-                We prepare for life.
+            Is your child struggling 
             </h1>
             <h1 className=" 3xl:text-8xl font-minionPro text-4xl font-medium text-white lg:text-7xl ">
-              Not just exam!
+            to stay on top of their lessons?
             </h1>
             <p className="3xl:text-4xl mt-2 font-minionPro text-xl lg:text-2xl text-[#1A3765] md:mb-10 2xl:mb-20">
-              Top tutors from all over Addis Abeba
+            Let us help realize your child's true academic potential, 
               <br />
-              managed by Temaribet
+              without added stress on you!
             </p>
             <button 
             onClick={handleClick}
