@@ -17,7 +17,7 @@ const WhyUs = () => {
             />
           </Col>
 
-          <Col xs={16} xl={7}>
+          <Col xs={16} xl={7} >
             <WhyUsComponent
               title="Decent"
               description="A tutor with good character, mindset and discipline."
