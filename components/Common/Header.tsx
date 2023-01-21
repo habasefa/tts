@@ -1,18 +1,72 @@
-import { Button } from '@mui/material'
-import { Dropdown, Menu } from 'antd'
-import { signout } from 'backend-utils/user-utils'
+import { Badge, Button, Dialog, DialogTitle, ListItem, ListItemAvatar, ListItemButton, ListItemText } from '@mui/material'
+import { Avatar, Dropdown, List, Menu } from 'antd'
+import { getUserById, signout } from 'backend-utils/user-utils'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, selectUser } from 'redux/userSlice'
 import {useRef} from "react"
-
+import { fetchRejectedReport } from 'backend-utils/tutor-utils'
+import WorkIcon from '@mui/icons-material/Work';
+import Typography from '@mui/material/Typography';
+import MailIcon from '@mui/icons-material/Mail';
 const Header = () => {
 
+  const monthName = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const user = useSelector(selectUser)
   const router = useRouter()
   const registerMenu = useRef(null)
+  const [notify,setNot]= useState<any[]>([])
+  const [isLoading,setisLoading]=useState(false)
+  const handleClose = () => {
+    setisLoading(false)
+  };
+
+
   
+  if (user) {
+    
+    var token = user.accessToken
+    var id = user.user.id
+  }
+
+useEffect( ()=>{
+  if (user){
+    getUserById(id,token)
+    .then((res) => res.json())
+    .then((data) =>{ 
+    console.log(data)
+    fetchRejectedReport( data.tutor.id,token)
+    .then((res)=>res.json())
+    .then((data)=>{
+        console.log(data)
+        setNot(data.reports)
+        
+    })
+    .catch((error)=>{
+        setisLoading(false)
+    })
+    }
+    )
+  }
+
+    
+}
+
+,[] )
 
   const dispatch = useDispatch()
   const handleLogout = (e: any) => {
@@ -60,7 +114,23 @@ const Header = () => {
       )}
       {user && user.user.role === 'TUTOR' && (
       <Menu.Item key={2}>
-        <a href="/notification">Notificaton</a>
+        <a
+        onClick={()=>{
+          
+        setisLoading(true)
+        }}
+        >Notification 
+      
+      <Badge badgeContent={notify?.length} color="secondary">
+        <MailIcon color="action" />
+      </Badge>
+      </a>
+      </Menu.Item>
+      )}
+
+{user && user.user.role === 'TUTOR' && (
+      <Menu.Item key={2}>
+        <a href="/changePassword">Change Password</a>
       </Menu.Item>
       )}
       <Menu.Item key={3}>
@@ -274,6 +344,51 @@ const Header = () => {
           </ul>
         </div>
       </div>
+
+      <Dialog onClose={handleClose} open={isLoading}>
+      <DialogTitle>Notification</DialogTitle>
+      <List >
+        {notify.map((report) => (
+        (
+          <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <WorkIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <Typography>
+          Your report in which you submitted in {monthName[report?.reportMonth-1]} {report.reportDate} , {report.reportYear} is Rejected
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={()=>{ 
+              setisLoading(false)
+               router.push('/report/'+report.id)
+             }}
+            >
+                Recreate the Report
+
+            </Button>
+        </ListItem>
+         )
+        ))}
+
+       
+      </List>
+      {
+        notify.length==0 && (
+         
+          <Typography
+          align="center"
+          p={2}
+          
+          >
+            NO NOTIFICATION FOR TODAY
+          </Typography>
+
+        )
+      }
+    </Dialog>
     </nav>
   )
 }

@@ -524,7 +524,17 @@ const router = useRouter()
       data.push(temp)
       k -= 1
     }
-    setinputFields(data)
+    if (numberOfTutee<inputFields.length)
+    {
+      console.log(k)
+      let temporary =inputFields.slice(0,k)
+      setinputFields( temporary)
+    }
+    else
+    {
+      setinputFields(data)
+    }
+   
   }
   const getDay = (date) => {
     // get day number from 0 (monday) to 6 (sunday)
@@ -733,7 +743,7 @@ const router = useRouter()
                         key={valu}
                       >
                         <div className="col basis-1/4 mr-2 md:mr-0">
-                          { index==0 && valu==0 && (
+                          { valu==0 && (
                           <div className=" inline-block w-fit md:w-2/3  rounded bg-[#1A3765] px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out">
                             
                             Subject
@@ -783,7 +793,7 @@ const router = useRouter()
                                   key={chapter_index}
                                 >
                                   <div className="col mr-2 md:mr-0">
-                                  { index==0 && valu==0 && chapter_index==0 && (
+                                  { valu==0 && chapter_index==0 && (
                                     <div className=" w-fit  md:w-2/3 rounded bg-[#1A3765] px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out">
                                       {' '}
                                       Chapter
@@ -846,7 +856,7 @@ const router = useRouter()
                                           key={topic_index}
                                         >
                                           <div className="col mr-2 md:mr-0">
-                                          { index==0 && valu==0 && chapter_index==0 && topic_index==0 && (
+                                          { valu==0 && chapter_index==0 && topic_index==0 && (
                                             <div className="w-fit md:w-2/3  rounded bg-[#1A3765] px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out">
                                               {' '}
                                               Topic
@@ -906,7 +916,7 @@ const router = useRouter()
                                             </button>
                                           </div>
                                           <div className="col mr-2 md:mr-0">
-                                          { index==0 && valu==0 && chapter_index==0 && topic_index==0 && (
+                                          { valu==0 && chapter_index==0 && topic_index==0 && (
                                             <div className=" mb-1 w-fit md:w-2/3 rounded bg-[#1A3765] text-center py-2.5 text-xs  uppercase  text-white shadow-md ">
                                               Understanding
                                             </div>
@@ -966,7 +976,7 @@ const router = useRouter()
                               className="mr-1 mb-2 w-fit rounded-lg border text-xs border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/4"
                               type="text"
                               placeholder="Subject"
-                              required={true}
+                             
                               name="assesment"
                               value={input.assesment}
                               onChange={(event) =>

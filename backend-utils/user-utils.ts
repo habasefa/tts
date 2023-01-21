@@ -14,6 +14,32 @@ const signup = async (email: string, password: string, role: string) => {
   return response
 }
 
+const forgotPassword = async (email:string) =>{
+  const response = await fetch (`${API_URL}api/v1/user/forgotPassword`,{
+    method:'PATCH',
+    headers:{
+      'Content-Type':'application/json',
+
+    },
+    body:JSON.stringify({
+      email:email
+     })
+  })
+  return response;
+}
+
+const changePassword = async (id:any , token:string, reqBody:any)=>{
+  const response = await fetch(`${API_URL}api/v1/user/${id}`,{
+    method:'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ ...reqBody }),
+  })
+  console.log(response)
+  return response
+}
 const signin = async (email: string, password: string) => {
   console.log(email,password)
   const response = await fetch(`${API_URL}api/v1/user/login`, {
@@ -55,4 +81,4 @@ const getUserById = async (id: number, token: string) => {
   return response
 }
 
-export { signup, signin, signout, getUserById }
+export { signup, signin, signout, getUserById , changePassword,forgotPassword}
