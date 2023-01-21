@@ -18,7 +18,7 @@ const Service = () => {
         <Col xs={24} lg={7} xl={7}>
           <ServiceCard
             title="Natural"
-            description="Making software to help you grow traffic, convert more visitors, and run complete inbound"
+            description=" Let your child find success and confidence in science with personalized instruction from an expert lead tutor, right at home!"
             subjects={Natural}
           />
         </Col>
@@ -26,14 +26,14 @@ const Service = () => {
         <Col xs={24} lg={7} xl={7}>
           <ServiceCard
             title="Social"
-            description="Making software to help you grow traffic, convert more visitors, and run complete inbound"
+            description="Let your child find success and confidence in social science with personalized instruction from an expert lead tutor, right at home!"
             subjects={Social}
           />
         </Col>
         <Col xs={24} lg={7} xl={7}>
           <ServiceCard
             title="Technology"
-            description="Making software to help you grow traffic, convert more visitors, and run complete inbound"
+            description="Realize your child's programming potential with a personalized tutoring plan and dedicated instructors."
             subjects={Technology}
           />
         </Col>

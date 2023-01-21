@@ -152,7 +152,7 @@ const Footer = () => {
 
         <div>
           <p className="mt-20 text-center  text-xl text-white opacity-80 dark:text-white lg:text-2xl">
-            © 2022 Temaribet.All rights reserved
+            © 2023 Temaribet.All rights reserved
           </p>
         </div>
       </div>

@@ -51,12 +51,11 @@ const Pricing = () => {
       <Header />
       <div className="mt-16  xl:px-16">
         <div className="my-2 p-3 md:p-5">
+        <h1 className="mt-12 text-center text-lg md:text-3xl ">Pricing</h1>
           <h2 className="text-lg md:text-2xl md:py-2">Pricing Per Hour</h2>
           <div>
             <p>
-              Our pricing based on an hourly rate.The opportunity of a lifetime
-              passed before him as he tried to decide between a cone or a
-              cup.Our Pricing rate per hour
+            Sessions are 250 ETB per hour for KG-12  students for direct 1:1, tutor- student time. 
             </p>
             <div>
               For KG-10:
@@ -75,11 +74,9 @@ const Pricing = () => {
           <h2 className="text-lg md:text-2xl">Billing Schedule</h2>
           <div>
             <p>
-              Our pricing based on an hourly rate.The opportunity of a lifetime
-              passed before him as he tried to decide between a cone or a
-              cup.Our Pricing rate per hour Our pricing based on an hourly
-              rate.The opportunity of a lifetime passed before him as he tried
-              to decide between a cone or a cup.Our Pricing rate per hour
+            Monthly invoices will be sent to the parent’s phone number at the end of each month.
+             Payment is expected by the 7th of each month for the previous month’s billing invoice.
+             Cash and check will be accepted.
             </p>
           </div>
         </div>
@@ -88,11 +85,7 @@ const Pricing = () => {
           <h2 className="text-lg md:text-2xl">Price Calculator</h2>
           <div>
             <p>
-              Our pricing based on an hourly rate.The opportunity of a lifetime
-              passed before him as he tried to decide between a cone or a
-              cup.Our Pricing rate per hour Our pricing based on an hourly
-              rate.The opportunity of a lifetime passed before him as he tried
-              to decide between a cone or a cup.Our Pricing rate per hour
+            You can calculate a your predicted bill by manipulating the number of hours per each day and the number of days per week you want your child to be tutored.
             </p>
           </div>
           <Grid

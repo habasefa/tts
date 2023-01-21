@@ -31,7 +31,7 @@ const Another = () => {
               </h3>
 
               <p className="text-xl md:text-2xl xl:text-3xl 2xl:text-4xl text-center lg:text-left text-[#1A3765]">
-                Top tutors from all over Addis Ababa managed by Temaribet.
+              Ready To Help Your Child Reach New Heights? Hire a Professional Home Tutor Now!
               </p>
               <div className="text-center lg:text-left">
                 <button 

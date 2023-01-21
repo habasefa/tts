@@ -12,10 +12,8 @@ const Achievement = () => {
               let us{' '}
             </h1>
             <p className="pt-0 text-lg  text-gray-400  text-center text-lg md:text-xl xl:text-2xl 2xl:text-3xl  font-minionPro  2xl:pr-96   ">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV
-              ax quiz prog. Junk MTV quiz graced by fox whelps. Bawlds jog,
-              flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex!
-              For nymphs grap quick-jived{' '}
+            We'll take the monotony out of studying by creating lessons that are engaging and interactive while still teaching real world concepts in a structured way so that students 
+            may see immediate results in improved performance while still having fun!{' '}
             </p>
           </div>
         </Col>
