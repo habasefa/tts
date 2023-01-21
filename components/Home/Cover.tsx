@@ -11,11 +11,11 @@ const Cover = () => {
       <div className="lg:flex">
         <div className="w-full sm:items-center md:mb-20">
           <div className="mx-9 mt-5 pt-32 2xl:pt-40 md:mx-20 md:mt-16 2xl:mt-20 lg:w-full">
-            <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-7xl">
-            Is your child struggling 
+            <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-6xl">
+            Is your child struggling to 
             </h1>
-            <h1 className=" 3xl:text-8xl font-minionPro text-4xl font-medium text-white lg:text-7xl ">
-            to stay on top of their lessons?
+            <h1 className=" 3xl:text-8xl font-minionPro text-4xl font-medium text-white lg:text-6xl ">
+            stay on top of their lessons?
             </h1>
             <p className="3xl:text-4xl mt-2 font-minionPro text-xl lg:text-2xl text-[#1A3765] md:mb-10 2xl:mb-20">
             Let us help realize your child's true academic potential, 
@@ -33,9 +33,9 @@ const Cover = () => {
         <div className="flex items-center md:w-2/3 2xl:w-full flex-col justify-end ">
           <Image
             className="w-full"
-            src="/temaribet.png.png"
+            src="/myProject.png"
             alt="young girl image"
-            width={'600'}
+            width={'700'}
             height={'700'}
           />
         </div>
