@@ -53,7 +53,7 @@ const Pricing = () => {
         <div className="my-2 p-3 md:p-5">
         <h1 className="mt-12 text-center text-lg md:text-3xl ">Pricing</h1>
           <h2 className="text-lg md:text-2xl md:py-2">Pricing Per Hour</h2>
-          <div>
+          <div className="text-lg">
             <p>
             Sessions are 250 ETB per hour for KG-12  students for direct 1:1, tutor- student time. 
             </p>
@@ -72,7 +72,7 @@ const Pricing = () => {
 
         <div className="my-2 p-3 md:p-5">
           <h2 className="text-lg md:text-2xl">Billing Schedule</h2>
-          <div>
+          <div  className="text-lg">
             <p>
             Monthly invoices will be sent to the parent’s phone number at the end of each month.
              Payment is expected by the 7th of each month for the previous month’s billing invoice.
@@ -83,7 +83,7 @@ const Pricing = () => {
 
         <div className="my-2 p-3 md:p-5">
           <h2 className="text-lg md:text-2xl">Price Calculator</h2>
-          <div>
+          <div  className="text-lg">
             <p>
             You can calculate a your predicted bill by manipulating the number of hours per each day and the number of days per week you want your child to be tutored.
             </p>
