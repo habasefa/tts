@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-import LeftSide from './childComponents/LeftSide'
-import RightSide from './childComponents/RightSide'
-const Body = () => {
-  const [index,setIndex]=useState(0)
-  const paragraphs= [
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
+import Header from '@/components/Common/Header'
+import Footer from '@/components/Common/Footer'
+const steps = [
   {
     label: <>Congratulations!</>,
     description: `You are reading this means you are officially accepted as Temaribet Tutor. 
@@ -236,49 +243,94 @@ description:
 
     </>
   }
-]
+];
+
+export default function Training() {
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
 
   return (
-    <div className='flex flex-col md:flex-row justify-between font-minionPro'>
-
-
-<div className='md:w-1/3'>
-      
-        <div className='mt-10 mb-10'>
-        <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-            onClick={()=>setIndex(0)}
-            >Congratulations</button>
-            <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-              onClick={()=>setIndex(1)}
-            >1. Part One</button>
-           <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(2)}
-            >2. Part Two</button>
-           <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(3)}
-            >3. Part Three</button>
-           <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(4)}
-            >4. Part Four</button>
-             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(5)}
-            >5. Part Five</button>
-             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(6)}
-            >6. Part Six</button>
-             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(7)}
-            >7. Part Seven</button>
-        </div>
+    <>
+    <div className="h-screen overflow-y-scroll bg-gray-50   font-minionPro scrollbar-hide">
+      <Header />
+      <div className=" mt-24  lg:px-12 xl:px-20">
+    <Box >
+      <Stepper activeStep={activeStep} orientation="vertical">
+        {steps.map((step, index) => (
+          <Step key={step.label}>
+            <StepLabel
+              optional={
+                index === steps.length-1 ? (
+                  <Typography
+                 
+                  variant="caption" >Last step</Typography>
+                ) : null
+              }
+            >
+                <Typography 
+                variant="h5"
+                fontFamily='inherit'
+               sx={{
+                whiteSpace:'pre-line',
+                
+            }}
+                > {step.label}
+                </Typography>
+             
+            </StepLabel>
+            <StepContent>
+              <Typography
+                fontFamily='inherit'
+               sx={{
+                whiteSpace:'pre-line',
+                
+            }}
+              >{step.description}</Typography>
+              <Box sx={{ mb: 2 }}>
+                <div>
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                  </Button>
+                  <Button
+                    disabled={index === 0}
+                    onClick={handleBack}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Back
+                  </Button>
+                </div>
+              </Box>
+            </StepContent>
+          </Step>
+        ))}
+      </Stepper>
+      {activeStep === steps.length && (
+        <Paper square elevation={0} sx={{ p: 3 }}>
+          <Typography>All steps completed - you&apos;re finished</Typography>
+          <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+            Reset
+          </Button>
+        </Paper>
+      )}
+    </Box>
     </div>
-        <RightSide 
-            text = {paragraphs[index].label}
-            subtext = {paragraphs[index].description}
-
-        />
-        
-      </div>
-  )
+    
+    </div>
+    </>
+  );
 }
-
-export default Body

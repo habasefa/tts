@@ -11,7 +11,7 @@ const Cover = () => {
       <div className="lg:flex">
         <div className="w-full sm:items-center md:mb-16">
           <div className="mx-9 mt-5 pt-32 2xl:pt-40 md:mx-20 md:mt-16 2xl:mt-16 lg:w-full">
-            <h1 className=" 3xl:text-8xl font-minionPro text-4xl text-[#1A3765]  lg:text-6xl">
+            <h1 className=" 3xl:text-7xl m-0 font-minionPro text-4xl text-[#1A3765]  lg:text-6xl">
             Is your child struggling to 
             </h1>
             <h1 className=" 3xl:text-8xl font-minionPro text-4xl font-medium text-white lg:text-6xl ">
@@ -35,7 +35,7 @@ const Cover = () => {
             className="w-full"
             src="/myProject.png"
             alt="young girl image"
-            width={'780'}
+            width={'1000'}
             height={'900'}
           />
         </div>

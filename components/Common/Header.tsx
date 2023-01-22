@@ -207,7 +207,8 @@ useEffect( ()=>{
                 About Us
               </a>
             </li>
-            <li className="nav-item h-full md:mx-5">
+
+            { user == null && <li className="nav-item h-full md:mx-5">
               <a
                 className="flex items-center px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
                 href="#"
@@ -216,6 +217,7 @@ useEffect( ()=>{
                 Pricing
               </a>
             </li>
+}
             {user == null && (
               <li className="nav-item h-full md:mx-5">
                 <a
@@ -305,17 +307,7 @@ useEffect( ()=>{
                 </a>
               </li>
             )}
-            {hiredJobId && (
-              <li className="nav-item h-full md:mx-5">
-                <a
-                  className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                  href="#"
-                  onClick={() => router.push('/tutorReport')}
-                >
-                  Report
-                </a>
-              </li>
-            )}
+           
             {user && (
               <Dropdown overlay={menu} placement="bottom" arrow>
                 <button

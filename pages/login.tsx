@@ -183,7 +183,7 @@ export default function Login() {
 
           <div className="mx-auto mt-5 flex max-w-lg justify-center ">
             <p className=" text-center text-xl 2xl:text-2xl">
-              &copy;2022 Temaribet. All rights reserved.
+              &copy;2023 Temaribet. All rights reserved.
             </p>
           </div>
         </div>
