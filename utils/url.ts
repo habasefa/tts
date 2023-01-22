@@ -1,3 +1,3 @@
-export const API_URL ='http://localhost:3000/'
+export const API_URL ='https://temaribet-api.onrender.com/'
 
 // 'https://temaribet-api.onrender.com/'
