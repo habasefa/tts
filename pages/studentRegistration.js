@@ -300,10 +300,7 @@ const StudentRegistration = () => {
 
             <Grid item xs={16} md={8} lg={3}>
             <InputLabel
-                sx={{
-                    pb: 2,
-                    font:"inherit"
-                }}
+                
                 id="demo-select-small"
               >
              Address
@@ -612,8 +609,10 @@ const StudentRegistration = () => {
           </div>
           <div className="my-1 flex justify-center md:my-2 ">
             <button
-              class=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none md:w-1/6 md:text-xl"
+              class=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white disabled:bg-[#6793d9] hover:bg-[#6793d9] focus:outline-none md:w-1/6 md:text-xl"
               type="submit"
+              
+              disabled={isLoading}
               
             >
               Submit
