@@ -125,10 +125,7 @@ const { rid } = router.query;
     var id = user.user.id
   }
   useEffect(() => {
-    console.log(token)
-    console.log("hi")
-    console.log(id)
-    console.log(rid)
+  
     deleteReport(token,rid)
     .then((res)=>res.json())
     .then((data)=>{

@@ -73,12 +73,12 @@ const createTutor = async ({
       telegramUsername
     }),
   })
-  console.log(response)
+
   return response
 }
 
 const fetchReport = async (  tutorId :number , token: string)=>{
-  console.log(tutorId)
+
   const response = await fetch(`${API_URL}api/v1/report/${tutorId}`, {
     method: 'GET',
     headers: {
@@ -92,7 +92,7 @@ const fetchReport = async (  tutorId :number , token: string)=>{
 }
 
 const fetchRejectedReport = async (  tutorId :number , token: string)=>{
-  console.log(tutorId)
+  
   
   const response = await fetch(`${API_URL}api/v1/report/one/rejected/${tutorId}`, {
     method: 'GET',
@@ -101,7 +101,7 @@ const fetchRejectedReport = async (  tutorId :number , token: string)=>{
       authorization: `Bearer ${token}`,
     },
   })
-  console.log(response)
+  
   
   return response
 
@@ -129,10 +129,7 @@ const createReport = async ({
   reportMonth ,
   reportYear    
 }: ReportPostProps) => {
-  console.log(reports)
-  console.log(week)
-  console.log(month)
-  console.log(totalDays)
+
   const response = await fetch(`${API_URL}api/v1/report/`, {
     method: 'POST',
     headers: {
@@ -162,7 +159,7 @@ const createReport = async ({
   reportYear      
     }),
   })
-  console.log(response)
+
   return response
 }
 
@@ -225,7 +222,7 @@ const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
 }
 
 const UpdateAReport = async (token:string,id:any,reportBody:any)=>{
-  console.log(reportBody)
+
   
   const response = await fetch(`${API_URL}api/v1/report/${id}`, {
     method: "PATCH",
@@ -237,7 +234,7 @@ const UpdateAReport = async (token:string,id:any,reportBody:any)=>{
     
 
   })
-  console.log(response)
+  
   return response;
 }
 
@@ -251,7 +248,7 @@ const getAReport = async (token:string,id : any)=>{
     },
 
   })
-  console.log(response)
+
   return response;
 }
 

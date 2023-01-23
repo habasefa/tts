@@ -30,6 +30,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Temaribet</title>
         <link rel="icon" href="/favicon.ico" />
+        
       </Head>
       <Header />
       <Cover />

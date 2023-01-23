@@ -95,7 +95,7 @@ const router = useRouter()
 
 
   const handleDressing =(event)=>{
-    console.log(event.target.value)
+  
     setDressing(event.target.value)
   }
   const handlePunctuality =(event)=>{

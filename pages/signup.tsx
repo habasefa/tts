@@ -40,8 +40,7 @@ export default function SignUp() {
     setLoggingIn(true)
     setErr('')
     setShowAlert(false)
-    console.log(values.email)
-    console.log(values.passoword)
+  
     signup(values.email, values.password, 'TUTOR')
       .then((res) => res.json())
       .then((data) => {

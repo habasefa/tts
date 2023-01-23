@@ -41,21 +41,18 @@ export default function Login() {
     var id = user.user.id
   }
   useEffect(() => {
-    console.log(token)
-    console.log("hi")
-    console.log(id)
+    
     getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+       
         setEmail(data.email)
-        console.log(data.email)
      
         setIsLoading(false)
-        console.log(isLoading)
+       
       })
       .catch((_) => {
-       console.log("hi")
+     
       })
   }, [])
 

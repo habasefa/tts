@@ -48,11 +48,11 @@ useEffect( ()=>{
     getUserById(id,token)
     .then((res) => res.json())
     .then((data) =>{ 
-    console.log(data)
+   
     fetchRejectedReport( data.tutor.id,token)
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data)
+     
         setNot(data.reports)
         
     })

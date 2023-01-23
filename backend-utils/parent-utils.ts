@@ -28,7 +28,6 @@ const createParent = async ({
       userId,
     }),
   })
-  console.log(response)
   return response
 }
 

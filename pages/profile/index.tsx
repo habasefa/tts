@@ -28,8 +28,7 @@ const profile = () => {
   const [err, setErr] = useState('')
   const [isLoading,setIsLoading]=useState(true)
   useEffect(() => {
-    console.log(id)
-    console.log(token)
+
     getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {

@@ -17,16 +17,14 @@ const newtry = () => {
     var id = user.user.id
   }
   useEffect(() => {
-    console.log(token)
-    console.log("hi")
-    console.log(id)
+  
     getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {
         setUserData(data)
       })
       .catch((_) => {
-       console.log("hi")
+     
       })
   }, [])
   // useE
@@ -74,9 +72,7 @@ const newtry = () => {
   ])
 
   const handleClick = () => {
-    console.log(token)
-    console.log(inputFields)
-    console.log(userData)
+    
     
     createReport({
       reports: {inputFields},
