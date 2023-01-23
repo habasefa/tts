@@ -28,7 +28,7 @@ const createParent = async ({
       userId,
     }),
   })
-  console.log(response)
+
   return response
 }
 
@@ -50,9 +50,7 @@ const createStudent = async ({
   parentId,
   tutorId
 }: StudentPostProps) => {
-  console.log(parentId)
-  console.log(grade)
-  console.log(gender)
+ 
   const response = await fetch(`${API_URL}api/v1/student/`, {
     method: 'POST',
     headers: {
@@ -77,7 +75,7 @@ const createStudent = async ({
       tutorId
     }),
   })
-  console.log(response)
+
   return response
 }
 

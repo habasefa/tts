@@ -103,19 +103,19 @@ const StudentRegistration = () => {
   }
   const handleStudentField = (event, index) => {
     let data = [...studnets]
-    console.log(data)
+  
 
     if (event.target.name == 'subjects') {
       const {
         target: { value },
       } = event
-      console.log(value)
+     
       if (typeof value === 'string') {
         data[index].subjects = value.split(',')
       } else {
         data[index].subjects = value
       }
-      console.log()
+ 
 
       // console.log(event.target.value)
       // data[index].subjects.push(event.target.value)
@@ -182,7 +182,7 @@ const StudentRegistration = () => {
   const createStudentParent = () => {
     setIsLoading(true)
     event.preventDefault()
-    console.log(formik.values)
+   
     createParent({
       fullName: formik.values.parentName,
       location: formik.values.Address,
