@@ -328,7 +328,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <Input maxLength={50} showCount name="UEE" />
+              <InputNumber maxLength={50}  name="UEE" />
             </Form.Item>
             <Form.Item
               label="Cumulative GPA"
@@ -340,7 +340,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <Input maxLength={50} showCount name="cGPA" />
+              <InputNumber maxLength={50}  name="cGPA" />
             </Form.Item>
             <Form.Item
               label="Field of study"

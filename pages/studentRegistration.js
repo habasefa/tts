@@ -67,6 +67,7 @@ const StudentRegistration = () => {
     'Programming',
   ]
   const [isLoading, setIsLoading] = useState(false)
+  const [value, setValue] = React.useState();
   const [open, setOpen] = React.useState(false)
   const handleClose = () => {
     setOpen(false)
@@ -181,6 +182,7 @@ const StudentRegistration = () => {
   const createStudentParent = () => {
     setIsLoading(true)
     event.preventDefault()
+    console.log(formik.values)
     createParent({
       fullName: formik.values.parentName,
       location: formik.values.Address,
@@ -306,32 +308,24 @@ const StudentRegistration = () => {
               >
              Address
               </InputLabel>
-              <Select
-               labelId="demo-select-small"
-               id="demo-select-small"
-               name="Address"
-               required={true}
-               margin="normal"
-               value={formik.values.Address}
-               label="Hours Per Day"
-               onBlur={formik.handleBlur}
-               onChange={formik.handleChange}
-               fullWidth
-               
-              
-              >
-               {locations.map((name)=>{
-                return (
-                  <MenuItem
-                  key={name}
-                  value={name}
-                 
-                >
-                  {name}
-                </MenuItem>
-                )
-               })}
-              </Select>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                required={true}
+                error={Boolean(
+                  formik.touched.Address && formik.errors.Address
+                )}
+                fullWidth
+                helperText={
+                  formik.touched.Address && formik.errors.Address
+                }
+                margin="normal"
+                name="Address"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.Address}
+              />
+       
+             
              
             </Grid>
           </Grid>
@@ -644,14 +638,12 @@ const StudentRegistration = () => {
 
           <DialogContent dividers>
             <Typography gutterBottom>
-              You have successfully submitted your request for tutor. Morbi leo
-              risus, porta ac consectetur ac, vestibulum at eros.
+              You have successfully submitted your request for tutor.We are very glad that you chose us to 
+              to be the tutor of your child.
             </Typography>
             <br></br>
             <Typography gutterBottom>
-              In 24 Hour Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-              faucibus dolor auctor.
+              In 24 Hour our staff will call you to facilitate that commencement of the first tutoring session.
             </Typography>
             <br></br>
             <Typography gutterBottom>
@@ -661,9 +653,7 @@ const StudentRegistration = () => {
             </Typography>
             <br></br>
             <Typography gutterBottom>
-            In 24 Hour Praesent commodo cursus magna, vel scelerisque nisl
-              consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-              faucibus dolor auctor.
+         Again we are very exicted for you are ready to be part of our family
             </Typography>
           </DialogContent>
           <div className="flex justify-center my-2">

@@ -145,6 +145,7 @@ export interface TutorPostProps {
   workHour: number
   location: string
   essay: string
+  telegramUsername:string
   hobby: string
   profilePicture: string
   token: string

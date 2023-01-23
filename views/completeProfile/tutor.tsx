@@ -90,6 +90,7 @@ function Tutor({ user }: any) {
       hobby: value.hobby,
       profilePicture: profileUrl,
       token: user.accessToken,
+      telegramUsername: value.telgramUsername,
       userId: user.user.id,
     }
 
@@ -303,7 +304,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <Input maxLength={50} showCount />
+            <InputNumber maxLength={50}  />
           </Form.Item>
           <Form.Item
             label="Cumulative GPA"
@@ -315,7 +316,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <Input maxLength={50} showCount />
+            <InputNumber maxLength={50}  />
           </Form.Item>
           <Form.Item
             label="Field of study"
@@ -461,6 +462,19 @@ function Tutor({ user }: any) {
           >
             <Input maxLength={50} showCount />
           </Form.Item>
+          <Form.Item
+            label="Username for telegram"
+            name="telegramUsername"
+            rules={[
+              {
+                required: true,
+                message: "Please input your username for telegram!",
+              },
+            ]}
+          >
+            <Input maxLength={50} showCount />
+          </Form.Item>
+
           <Form.Item
             label="Work days"
             name="workDays"

@@ -32,6 +32,7 @@ const createTutor = async ({
   profilePicture,
   token,
   userId,
+  telegramUsername
 }: TutorPostProps) => {
   const response = await fetch(`${API_URL}api/v1/tutor/`, {
     method: 'POST',
@@ -69,8 +70,10 @@ const createTutor = async ({
       hobby,
       profilePicture,
       userId,
+      telegramUsername
     }),
   })
+  console.log(response)
   return response
 }
 
