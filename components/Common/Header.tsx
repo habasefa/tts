@@ -46,9 +46,18 @@ const Header = () => {
 useEffect( ()=>{
   if (user){
     getUserById(id,token)
+    .then((data)=>{console.log(data)
+      if (data.status==403){
+        throw new Error('no valid Token')
+        
+      }
+     return data
+   })
     .then((res) => res.json())
     .then((data) =>{ 
-   
+    
+      
+    
     fetchRejectedReport( data.tutor.id,token)
     .then((res)=>res.json())
     .then((data)=>{
@@ -56,11 +65,17 @@ useEffect( ()=>{
         setNot(data.reports)
         
     })
-    .catch((error)=>{
-        setisLoading(false)
-    })
-    }
+   
+  }
+ 
+    
     )
+    .catch((error)=>{
+      setisLoading(false)
+      dispatch(logout())
+  router.push('/login')
+  })
+
   }
 
     
@@ -107,7 +122,7 @@ useEffect( ()=>{
       <Menu.Item key={1}>
         <a href="/profile">Profile</a>
       </Menu.Item>
-      {user && user.user.role === 'TUTOR' && user.user.tutor.status==='SUCCESS' &&  (
+      {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&  (
       <Menu.Item key={2}>
         <a href="/tryerror">Report</a>
       </Menu.Item>
