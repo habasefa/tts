@@ -6,7 +6,7 @@ import Parent from '@/views/completeProfile/parent'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
 import { useRouter } from 'next/router'
-import Header from '@/components/Common/Header'
+import Header  from '../components/historyComponents/header'
 
 export default function CompleteProfile() {
   const user = useSelector(selectUser)
