@@ -37,6 +37,7 @@ export default function Login() {
     signin(email, password)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.success) {
           dispatch(
             login({
@@ -47,9 +48,15 @@ export default function Login() {
             })
           )
           if (data.user.role === 'TUTOR' && data.user.tutor === null)
+          {
             router.push('/complete-profile')
-         
-        } else {
+          }
+          else if (data.user.role=== 'TUTOR'){
+            router.push('/')
+          }
+        } 
+      
+        else {
           setErr(data.message)
         }
       })
