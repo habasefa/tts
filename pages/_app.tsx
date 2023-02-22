@@ -13,9 +13,10 @@ import Script from 'next/script';
 let persistor = persistStore(store)
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   return (
     <>
-    <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-S9HZKGCV21"/>
+    <Script strategy="afterInteractive"   src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTIC_ID}`}/>
     <Script
       id='google-analytics'
       strategy="afterInteractive"
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-S9HZKGCV21');
+  gtag('config', '${process.env.GOOGLE_ANALYTIC_ID}');
         `,
         }}
     />
