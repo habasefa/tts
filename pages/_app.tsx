@@ -8,11 +8,27 @@ import store from '../redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import Layout from '@/components/Layout'
+import Script from 'next/script';
 
 let persistor = persistStore(store)
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <>
+    <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-S9HZKGCV21"/>
+    <Script
+      id='google-analytics'
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+           window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S9HZKGCV21');
+        `,
+        }}
+    />
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
@@ -20,6 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
       </PersistGate>
     </Provider>
+    </>
   )
 }
 
