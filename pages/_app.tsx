@@ -9,11 +9,29 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import Layout from '@/components/Layout'
 import Script from 'next/script';
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 let persistor = persistStore(store)
 
 function MyApp({ Component, pageProps }: AppProps) {
 
+  
+
+  const router = useRouter()
+
+  useEffect(() => {
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init(`${process.env.FB_PIXEL_ID}`) // facebookPixelId
+        ReactPixel.pageView()
+
+        router.events.on('routeChangeComplete', () => {
+          ReactPixel.pageView()
+        })
+      })
+  }, [router.events])
   return (
     <>
     <Script strategy="afterInteractive"   src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTIC_ID}`}/>
