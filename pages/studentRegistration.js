@@ -6,6 +6,7 @@ import Footer from '../components/historyComponents/footer'
 import Header from '../components/historyComponents/header'
 import { createParent, createStudent } from '../backend-utils/parent-utils'
 import { Form} from 'antd'
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 import {
@@ -614,7 +615,9 @@ const StudentRegistration = () => {
               
               disabled={isLoading}
               
+              
             >
+            
               Submit
             </button>
           </div>

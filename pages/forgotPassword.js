@@ -29,16 +29,14 @@ export default function ForgotPassword() {
   const router = useRouter()
  
 
-  const [open, setOpen] = useState(false);
+
   const handleClose = (event, reason) => {
 
     setOpen(false);
   };
 
 
-  
- 
-
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
 
@@ -56,7 +54,8 @@ export default function ForgotPassword() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        
+        console.log(open)
+        setOpen(true)
         router.push('/')
       })
       .catch((_) => {
@@ -155,11 +154,11 @@ export default function ForgotPassword() {
           </div>
         </div>
       </div>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar  anchorOrigin={{vertical:'top', horizontal:'right'}} open={open} message='  A message is sent to your email'  autoHideDuration={6000} onClose={handleClose} />
       
-          A message is sent to your email
+        
        
-      </Snackbar>
+      
     </>
   )
 }
