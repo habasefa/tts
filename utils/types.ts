@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { string } from 'yup'
 export interface ParentFormProps {
   name: string
   phone: string
@@ -117,7 +118,15 @@ export interface ReportPostProps {
   reportMonth : number
   reportYear: number
 }
+export interface TimeSheetProps {
+  tutorId : number
+  listStudent: object
+  parentName : String
+  month : String
+  image : Blob
+  token: String
 
+}
 export interface TutorPostProps {
   fullName: string
   email: string

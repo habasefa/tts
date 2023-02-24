@@ -1,4 +1,4 @@
-import { ReportPostProps, TutorPostProps } from 'utils/types'
+import { ReportPostProps, TutorPostProps, TimeSheetProps } from 'utils/types'
 import { API_URL } from 'utils/url'
 
 const createTutor = async ({
@@ -77,7 +77,7 @@ const createTutor = async ({
   return response
 }
 
-const fetchReport = async (  tutorId :number , token: string)=>{
+const fetchReport = async (tutorId: number, token: string) => {
 
   const response = await fetch(`${API_URL}api/v1/report/${tutorId}`, {
     method: 'GET',
@@ -86,14 +86,14 @@ const fetchReport = async (  tutorId :number , token: string)=>{
       authorization: `Bearer ${token}`,
     },
   })
-  
+
   return response
 
 }
 
-const fetchRejectedReport = async (  tutorId :number , token: string)=>{
-  
-  
+const fetchRejectedReport = async (tutorId: number, token: string) => {
+
+
   const response = await fetch(`${API_URL}api/v1/report/one/rejected/${tutorId}`, {
     method: 'GET',
     headers: {
@@ -101,33 +101,64 @@ const fetchRejectedReport = async (  tutorId :number , token: string)=>{
       authorization: `Bearer ${token}`,
     },
   })
-  
-  
+
+
   return response
 
 }
-const createReport = async ({            
-  reports,         
-  token,       
-  tutorId ,
-  totalDays       ,
-  totalHours      ,
-  month        ,
-  week          ,
-  feedback        ,
-  pastChallenge   ,
-  futureChallenge ,
-  helpChallenge  ,
-  dressing        ,
-  grooming        ,
-  hygiene        ,
-  punctuality     ,
-  manner        ,
-  elequence ,
+const sendTimeSheet = async ({
+  tutorId,
+  listStudent,
+  parentName,
+  month,
+  image,
+  token
+
+
+}: TimeSheetProps) => {
+  const formDataWithImage = new FormData();
+  formDataWithImage.append("image",image)
+  formDataWithImage.append('data',JSON.stringify({
+    tutorId,
+    listStudent,
+    parentName,
+    month,
+
+  }))
+ 
+console.log(image)
+  const response = await fetch(`${API_URL}api/v1/tutor/upload`, {
+    method: 'POST',
+    headers: {
+     
+      authorization: `Bearer ${token}`,
+    },
+    body: formDataWithImage
+  })
+  return response;
+}
+const createReport = async ({
+  reports,
+  token,
+  tutorId,
+  totalDays,
+  totalHours,
+  month,
+  week,
+  feedback,
+  pastChallenge,
+  futureChallenge,
+  helpChallenge,
+  dressing,
+  grooming,
+  hygiene,
+  punctuality,
+  manner,
+  elequence,
   tutorName,
-  reportDate ,
-  reportMonth ,
-  reportYear    
+  reportDate,
+  reportMonth,
+  reportYear
 }: ReportPostProps) => {
 
   const response = await fetch(`${API_URL}api/v1/report/`, {
@@ -139,24 +170,24 @@ const createReport = async ({
     body: JSON.stringify({
       reports,
       tutorId,
-      totalDays       ,
-  totalHours      ,
-  month        ,
-  week          ,
-  feedback        ,
-  pastChallenge   ,
-  futureChallenge ,
-  helpChallenge  ,
-  dressing        ,
-  grooming        ,
-  hygiene        ,
-  punctuality     ,
-  manner        ,
-  elequence ,
-  tutorName,
-  reportDate ,
-  reportMonth   ,
-  reportYear      
+      totalDays,
+      totalHours,
+      month,
+      week,
+      feedback,
+      pastChallenge,
+      futureChallenge,
+      helpChallenge,
+      dressing,
+      grooming,
+      hygiene,
+      punctuality,
+      manner,
+      elequence,
+      tutorName,
+      reportDate,
+      reportMonth,
+      reportYear
     }),
   })
 
@@ -173,7 +204,7 @@ const getTutorById = async (id: any, token: string) => {
   })
   return response
 }
-const deleteReport = async (token:any, id: any) => {
+const deleteReport = async (token: any, id: any) => {
   const response = await fetch(`${API_URL}api/v1/report/${id}`, {
     method: "DELETE",
     headers: {
@@ -221,28 +252,28 @@ const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
   return response
 }
 
-const UpdateAReport = async (token:string,id:any,reportBody:any)=>{
+const UpdateAReport = async (token: string, id: any, reportBody: any) => {
 
-  
+
   const response = await fetch(`${API_URL}api/v1/report/${id}`, {
     method: "PATCH",
-    headers :{
+    headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ ...reportBody }),
-    
+
 
   })
-  
+
   return response;
 }
 
-const getAReport = async (token:string,id : any)=>{
-  
+const getAReport = async (token: string, id: any) => {
+
   const response = await fetch(`${API_URL}api/v1/report/${id}`, {
-    method:"GET",
-    headers :{
+    method: "GET",
+    headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
@@ -263,5 +294,6 @@ export {
   fetchRejectedReport,
   deleteReport,
   UpdateAReport,
-  getAReport
+  getAReport,
+  sendTimeSheet
 }
