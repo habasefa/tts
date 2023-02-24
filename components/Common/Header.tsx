@@ -122,9 +122,15 @@ useEffect( ()=>{
       <Menu.Item key={1}>
         <a href="/profile">Profile</a>
       </Menu.Item>
+      
       {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&  (
       <Menu.Item key={2}>
         <a href="/tryerror">Report</a>
+      </Menu.Item>
+      )}
+      {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&  (
+      <Menu.Item key={2}>
+        <a href="/timesheet">Monthly TimeSheet</a>
       </Menu.Item>
       )}
       {user && user.user.role === 'TUTOR'&& (
