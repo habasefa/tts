@@ -245,6 +245,11 @@ const DropZoneImageUpload = () => {
   return (
     <div className="">
       <Header />
+      <div className='flex justify-center '>
+          <div className=' font-minionPro mt-1'>
+            <h1 className='text-[#000000] md:text-2xl text-lg'>Monthly TimeSheet</h1>
+            </div>
+            </div>
       <form onSubmit={createStudentParent} method="post">
         <div className="justify-center px-10 font-minionPro  md:px-16 ">
           <div
