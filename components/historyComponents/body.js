@@ -250,25 +250,25 @@ description:
             >Congratulations</button>
             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
               onClick={()=>setIndex(1)}
-            >1. Part One</button>
+            >1. Part One : On benefits</button>
            <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
                onClick={()=>setIndex(2)}
-            >2. Part Two</button>
+            >2. Part Two : On Temaribet</button>
            <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
                onClick={()=>setIndex(3)}
-            >3. Part Three</button>
+            >3. Part Three : On the Tutee</button>
            <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
                onClick={()=>setIndex(4)}
-            >4. Part Four</button>
+            >4. Part Four : On Tutoring</button>
              <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
                onClick={()=>setIndex(5)}
-            >5. Part Five</button>
+            >5. Part Five : On Procedures</button>
              <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
                onClick={()=>setIndex(6)}
-            >6. Part Six</button>
+            >6. Part Six : On Resourcefulness</button>
              <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
                onClick={()=>setIndex(7)}
-            >7. Part Seven</button>
+            >7. Part Seven : On Payment and Reward</button>
         </div>
     </div>
         <RightSide 

@@ -123,7 +123,7 @@ useEffect( ()=>{
         <a href="/profile">Profile</a>
       </Menu.Item>
       
-      {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&  (
+      {user && user.user.role === 'TUTOR' &&  (
       <Menu.Item key={2}>
         <a href="/tryerror">Report</a>
       </Menu.Item>
