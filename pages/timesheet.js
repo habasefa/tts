@@ -86,6 +86,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import Footer from '../components/historyComponents/footer'
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import {
   Autocomplete,
@@ -284,18 +285,24 @@ const DropZoneImageUpload = () => {
             ) : (
               <>
                 <div className="text-center sm:text-left">
+                <div class="flex justify-center">
+                  <CloudUploadIcon/>
+                  </div>
                   <span className=" text-lg font-medium text-gray-500">
-                    Drag &amp; drop an image here or
+                    Drag, Drop or <button 
+                      type="button" 
+                     className="text-lg font-medium text-blue-500 hover:text-blue-700 focus:underline focus:outline-none"
+                    onClick={handleBrowseClick}> Choose a file </button> to upload
                   </span>
                   <div class="flex justify-center">
-                    <button
+                    <p
                       type="button"
-                      className="ml-2  flex flex-col items-center text-lg font-medium text-blue-500 hover:text-blue-700 focus:underline focus:outline-none"
-                      onClick={handleBrowseClick}
+                      className="ml-2  flex flex-col items-center text-lg font-medium "
+                     
                     >
-                      <FileUploadIcon />
-                      browse
-                    </button>
+                      
+                     PNG,JPEG or JPG
+                    </p>
                   </div>
                 </div>
                 <input
@@ -310,7 +317,7 @@ const DropZoneImageUpload = () => {
             )}
           </div>
         </div>
-        <div className="justify-center px-10 font-minionPro   md:px-16 ">
+        <div className="justify-center px-10 font-minionPro   md:px-10 ">
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Parent Name</InputLabel>
@@ -336,11 +343,12 @@ const DropZoneImageUpload = () => {
             </Grid>
           </Grid>
         </div>
-        <div className="justify-center px-10 font-minionPro  md:px-16 ">
+        <div className="  justify-center px-10 font-minionPro  md:px-16 ">
           {listStudent.map((val, index) => {
             return (
+              <div  className=" my-2 mb-4 px-3 py-2 border border-gray-200 rounded-lg shadow-md " >
               <Grid container p={4} rowSpacing={1} columnSpacing={2}>
-                <Grid item xs={3} md={3} lg={3}>
+                <Grid item xs={16} md={8} lg={3}>
                   <InputLabel id="demo-select-small">Tutee Name</InputLabel>
                   <TextField
                     fullWidth
@@ -352,7 +360,7 @@ const DropZoneImageUpload = () => {
                   />
                 </Grid>
 
-                <Grid item xs={3} md={3} lg={3}>
+                <Grid item xs={16} md={8} lg={3}>
                   <InputLabel
                     sx={{
                       pb: 2,
@@ -387,7 +395,7 @@ const DropZoneImageUpload = () => {
                     <MenuItem value="12">G-12</MenuItem>
                   </Select>
                 </Grid>
-                <Grid item xs={3} md={3} lg={3}>
+                <Grid item xs={16} md={8} lg={3}>
                   <InputLabel id="demo-select-small">No of Hours</InputLabel>
                   <TextField
                     fullWidth
@@ -403,8 +411,8 @@ const DropZoneImageUpload = () => {
                   />
                 </Grid>
 
-                <Grid item xs={3} md={3} lg={3}>
-                  <InputLabel id="demo-select-small">Add or Remove</InputLabel>
+                <Grid item xs={16} md={8} lg={3}>
+                 
                   <IconButton
                     color="primary"
                     onClick={addStudent}
@@ -423,6 +431,7 @@ const DropZoneImageUpload = () => {
                   </IconButton>
                 </Grid>
               </Grid>
+            </div>
             )
           })}
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
@@ -430,6 +439,8 @@ const DropZoneImageUpload = () => {
               <InputLabel id="demo-select-small">Total Hour</InputLabel>
               <TextField disabled value={totalHour} />
             </Grid>
+          </Grid>
+          <Grid container p={4} rowSpacing={1} columnSpacing={2}>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Net Salary</InputLabel>
               <TextField disabled value={totalSalary} />
@@ -440,9 +451,7 @@ const DropZoneImageUpload = () => {
               class=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
               type="submit"
             >
-              {isUploading && (
-                <div className="absolute top-0 left-0 right-0 bottom-0 rounded-lg bg-white opacity-25"></div>
-              )}
+             
               {isUploading ? 'Uploading...' : 'Submit'}
             </button>
           </div>
