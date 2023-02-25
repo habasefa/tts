@@ -1,7 +1,7 @@
 .wrapper {
   /* width: 100%; */
   padding: 2rem;
-  width:max-content;
+  width:100%;
   
   border-radius: 7px;
   border: 0.5px solid rgb(243, 243, 243);
