@@ -286,12 +286,12 @@ const DropZoneImageUpload = () => {
             <h1 className='text-[#000000] md:text-2xl text-lg'>Monthly TimeSheet</h1>
             </div>
             </div>
-      <div className='flex justify-left  px-10 font-minionPro  md:px-28  '>
+      <div className='flex justify-left  px-10 font-minionPro  md:px-40  '>
       <h1 className='text-[#000000] md:text-2xl text-lg'>{monthName[mont-1]} Time Sheet</h1>
 
         </div>
       <form onSubmit={createStudentParent} method="post">
-        <div className="justify-center px-10 font-minionPro  md:px-28 ">
+        <div className="justify-center px-10 font-minionPro  md:px-40 ">
           <div
             className=" xl:h-120 flex h-96 w-full cursor-pointer flex-col items-center justify-center rounded-lg  border-2 border-dashed border-gray-300 p-4 sm:h-72 sm:flex-row sm:p-8 md:h-80 lg:h-96"
             onDrop={handleDrop}
@@ -356,7 +356,7 @@ const DropZoneImageUpload = () => {
             )}
           </div>
         </div>
-        <div className="justify-center px-10 font-minionPro  md:px-20 ">
+        <div className="justify-center px-10 font-minionPro  md:px-32 ">
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Parent Name</InputLabel>
@@ -384,7 +384,7 @@ const DropZoneImageUpload = () => {
             </Grid>
           </Grid>
         </div>
-        <div className="  justify-center px-10 font-minionPro  md:px-24 ">
+        <div className="  justify-center px-10 font-minionPro  md:px-40 ">
           {listStudent.map((val, index) => {
             return (
               <div  className=" my-2 mb-4 px-3 py-2 border border-gray-200 rounded-lg shadow-md " >
@@ -498,7 +498,7 @@ const DropZoneImageUpload = () => {
               <TextField  InputProps={{ style: styles.input }} disabled value={totalSalary} />
             </Grid>
           </Grid>
-          <div className="my-1 mx-2 mb-4 flex justify-end md:my-2 ">
+          <div className="my-1 mx-2 mb-4 flex justify-center md:my-2 ">
             <button
               class=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
               type="submit"
