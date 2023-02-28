@@ -4,7 +4,7 @@ import Body from '../components/historyComponents/body'
 import Footer from '../components/historyComponents/footer'
 const history = () => {
   return (
-    <div className='px-20 xl:px-20  bg-[#f2f2f2] min-h-screen'>
+    <div className='px-10 md:px-20 xl:px-20  bg-[#f2f2f2] min-h-screen'>
         <Header />
         <div className='flex justify-center mt-14 mb-10'>
           <div className=' font-minionPro mt-1'>

@@ -7,20 +7,16 @@ import Vision from './Vision'
 
 const BottomCard = (props: any) => {
   let child = null
-  if (props.type == 'available') {
+  if (props.type == 'location') {
     child = (
-      <Availability av={['Ayat', 'CMC', 'Summit', 'Gorro', 'Megenagna']} />
+      <Availability av={props.location} />
     )
   } else if (props.type == 'bestat') {
     child = <BestAt subjects={props.subjects} />
-  } else if (props.type == 'fluency') {
+  } else if (props.type == 'ContactInformation') {
     child = (
       <Fluency
-        langs={[
-          ['English', 'Pro'],
-          ['Amharic', 'Native'],
-          ['Afan Oromo', 'Pro'],
-        ]}
+        langs={props.contact}
       />
     )
   } else if (props.type == 'hobby') {

@@ -2,7 +2,7 @@ import React from 'react'
 
 const KeyInfo = (props: any) => {
   return (
-    <div className="mt-4 flex flex-col items-center bg-[#fefefe] p-5 text-black drop-shadow-xl md:mr-6 md:w-1/3 md:items-start xl:mr-14">
+    <div className="mt-4 flex flex-col w-fit bg-[#fefefe] p-5 text-black drop-shadow-xl md:mr-6 md:w-1/3 md:items-start xl:mr-14">
       <h1 className="mb-1 text-3xl text-[#1a3765]">Key Info</h1>
       <p className="md-text-lg mt-3 mb-2 text-2xl xl:text-2xl">
         {props.keyInfo.name}

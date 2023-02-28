@@ -243,8 +243,8 @@ description:
 
 
 <div className='md:w-1/3'>
-        <p className="w-5/6  px-12 py-3 2xl:px-20 text-lg md:text-2xl font-bold bg-white text-[#1a3765] shadow-lg" >List of Training</p>
-        <div className='mt-10 mb-10'>
+        <p className="w-5/6 px-3  md:px-12 py-3 2xl:px-20 text-lg md:text-2xl font-bold text-center bg-white text-[#1a3765] shadow-lg" >List of Training</p>
+        <div className='my-10 text-left'>
         <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
             onClick={()=>setIndex(0)}
             >Congratulations</button>

@@ -58,6 +58,7 @@ const profile = () => {
     age: userData?.tutor.age,
     phone: userData?.tutor.phone,
     location: userData?.tutor.location,
+    acadStatus : userData?.tutor.acadStatus,
     graddate: userData?.tutor.acadStatus,
     cgpa: userData?.tutor.cGPA,
     UEE: userData?.tutor.UEE,
@@ -68,12 +69,17 @@ const profile = () => {
     hobby: userData?.tutor.hobby,
     subjects: userData?.tutor.subjects,
     profilePicture:  userData?.tutor.profilePicture,
+    contactName: userData?.tutor.contactName,
+    telegramUsername : userData?.tutor.telegramUsername,
+    contactPhone1 : userData?.tutor.contactPhone1,
+    contactPhone2 : userData?.tutor.contactPhone2,
+    contactEmail : userData?.tutor.contactEmail
   }
 
   return (
     <div
       className="
-    px-20  xl:px-16"
+   px-10 md:px-20  xl:px-16"
     >
       {/* bg-[#f2f2f2]  */}
       <Header />

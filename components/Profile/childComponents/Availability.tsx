@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Availability = (props: any) => {
+
+  useEffect(()=>{
+    console.log(props.av)
+  },[props.av])
   return (
     <div className="mt-4">
-      {props.av.map((item: any, idx: any) => (
-        <p
+      <p
           className="md:max-w-1/3 mx-2 inline-block text-[#1a3765] md:text-base"
-          key={idx}
+          
         >
-          {item}
+          {props.av!}
         </p>
-      ))}
+    
     </div>
   )
 }

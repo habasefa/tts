@@ -117,6 +117,20 @@ import {
 import { sendTimeSheet } from '../backend-utils/tutor-utils'
 
 const DropZoneImageUpload = () => {
+  const styles = {
+    input: {
+      backgroundColor: '#f1f1f1', // Replace with desired gray color
+    },
+    boxContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100%',
+      
+    },
+  };
+  
+  
   const date = new Date()
   const mont = date.getMonth() + 1
   const [isUploading, setUploading] = useState(false)
@@ -139,6 +153,21 @@ const DropZoneImageUpload = () => {
         setErr('Something went wrong')
       })
   }, [])
+
+  const monthName = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const [uploadedImage, setUploadedImage] = useState(null)
   const [image, setImage] = useState(null)
   const [totalHour, setTotalHour] = useState(null)
@@ -159,7 +188,7 @@ const DropZoneImageUpload = () => {
     setListStudents(data)
     var total = 0
     data.map((val) => {
-      total += val.workHour
+      total += Number(val.workHour)
     })
     setTotalHour(Number(total))
     setTotalSalary(total * 250)
@@ -182,6 +211,12 @@ const DropZoneImageUpload = () => {
       data.pop()
       setListStudents(data)
     }
+    var total = 0
+    data.map((val)=>
+      total += Number(val.workHour)
+    )
+    setTotalHour(Number(total))
+    setTotalSalary(total * 250)
   }
   const fileInputRef = useRef(null)
 
@@ -251,8 +286,12 @@ const DropZoneImageUpload = () => {
             <h1 className='text-[#000000] md:text-2xl text-lg'>Monthly TimeSheet</h1>
             </div>
             </div>
+      <div className='flex justify-left  px-10 font-minionPro  md:px-28  '>
+      <h1 className='text-[#000000] md:text-2xl text-lg'>{monthName[mont-1]} Time Sheet</h1>
+
+        </div>
       <form onSubmit={createStudentParent} method="post">
-        <div className="justify-center px-10 font-minionPro  md:px-16 ">
+        <div className="justify-center px-10 font-minionPro  md:px-28 ">
           <div
             className=" xl:h-120 flex h-96 w-full cursor-pointer flex-col items-center justify-center rounded-lg  border-2 border-dashed border-gray-300 p-4 sm:h-72 sm:flex-row sm:p-8 md:h-80 lg:h-96"
             onDrop={handleDrop}
@@ -317,7 +356,7 @@ const DropZoneImageUpload = () => {
             )}
           </div>
         </div>
-        <div className="justify-center px-10 font-minionPro   md:px-10 ">
+        <div className="justify-center px-10 font-minionPro  md:px-20 ">
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Parent Name</InputLabel>
@@ -326,6 +365,7 @@ const DropZoneImageUpload = () => {
                 required={true}
                 margin="normal"
                 name="parentName"
+                InputProps={{ style: styles.input }}
                 onChange={(event) => setParentName(event.target.value)}
                 value={parentName}
               />
@@ -337,13 +377,14 @@ const DropZoneImageUpload = () => {
                 required={true}
                 margin="normal"
                 name="address"
+                InputProps={{ style: styles.input }}
                 onChange={(event) => setAddress(event.target.value)}
                 value={address}
               />
             </Grid>
           </Grid>
         </div>
-        <div className="  justify-center px-10 font-minionPro  md:px-16 ">
+        <div className="  justify-center px-10 font-minionPro  md:px-24 ">
           {listStudent.map((val, index) => {
             return (
               <div  className=" my-2 mb-4 px-3 py-2 border border-gray-200 rounded-lg shadow-md " >
@@ -355,6 +396,7 @@ const DropZoneImageUpload = () => {
                     required={true}
                     margin="normal"
                     name="studentName"
+                    InputProps={{ style: styles.input }}
                     onChange={(event) => handleStudentField(event, index)}
                     value={val.studentName}
                   />
@@ -378,7 +420,11 @@ const DropZoneImageUpload = () => {
                     required={true}
                     value={val.grade}
                     label="grade"
+                    
+                
                     fullWidth
+                   SelectDisplayProps={{ style: styles.input  }}
+
                     onChange={(event) => handleStudentField(event, index)}
                   >
                     <MenuItem value="1">G-1</MenuItem>
@@ -402,8 +448,10 @@ const DropZoneImageUpload = () => {
                     required={true}
                     margin="normal"
                     name="workHour"
+                    
                     InputProps={{
                       inputProps: { min: 0 },
+                      style: styles.input
                     }}
                     onChange={(event) => handleStudentField(event, index)}
                     value={val.workHour}
@@ -412,6 +460,9 @@ const DropZoneImageUpload = () => {
                 </Grid>
 
                 <Grid item xs={16} md={8} lg={3}>
+                  <Box  style={styles.boxContainer}
+                  
+                  >
                  
                   <IconButton
                     color="primary"
@@ -429,6 +480,7 @@ const DropZoneImageUpload = () => {
                   >
                     <HighlightOffIcon />
                   </IconButton>
+                  </Box>
                 </Grid>
               </Grid>
             </div>
@@ -437,13 +489,13 @@ const DropZoneImageUpload = () => {
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Total Hour</InputLabel>
-              <TextField disabled value={totalHour} />
+              <TextField  InputProps={{ style: styles.input }} disabled value={totalHour} />
             </Grid>
           </Grid>
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Net Salary</InputLabel>
-              <TextField disabled value={totalSalary} />
+              <TextField  InputProps={{ style: styles.input }} disabled value={totalSalary} />
             </Grid>
           </Grid>
           <div className="my-1 mx-2 mb-4 flex justify-end md:my-2 ">
