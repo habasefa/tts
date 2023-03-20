@@ -29,7 +29,7 @@ const ProfileCard = (props: any) => {
   }, [])
   const tutorId = userData?.tutor.id
   const handleApply = (id: number) => {
-    linkJobAndTutor(token, id, tutorId)
+    linkJobAndTutor(token, id.toString(), tutorId)
       .then((res) => res.json())
       .then((data) => {
         setApplied(true)
