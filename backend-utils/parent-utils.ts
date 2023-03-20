@@ -78,7 +78,7 @@ const createStudent = async ({
   return response
 }
 
-const getParentById = async (id: number, token: string) => {
+const getParentById = async (id: string, token: string) => {
   const response = await fetch(`${API_URL}api/v1/parent/${id}`, {
     method: 'GET',
     headers: {

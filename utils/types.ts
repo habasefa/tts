@@ -4,7 +4,7 @@ export interface ParentFormProps {
   name: string
   phone: string
   location: string
-  pt_id: number
+  pt_id: string
   st_name: string
   st_gender: string
   st_age: number
@@ -54,7 +54,7 @@ export interface ParentPostProps {
   location: string
   preferredBank: string | null
   profilePicture: string | null
-  userId: number | null
+  userId: string | null
 }
 
 export interface StudentPostProps {
@@ -72,8 +72,8 @@ export interface StudentPostProps {
   workDays: number | null
   workHour: number | null
   hobby: string | null
-  parentId: number
-  tutorId : number | null
+  parentId: string
+  tutorId : string | null
 }
 
 export interface ReportPostProps {
@@ -112,19 +112,20 @@ export interface ReportPostProps {
   elequence: String | null
   reports: object | null
   token: string
-  tutorId: number
+  tutorId: string
   tutorName:String | null
   reportDate: number
   reportMonth : number
   reportYear: number
 }
 export interface TimeSheetProps {
-  tutorId : number
+  tutorId : string
   listStudent: object
-  parentName : String
+  parentId : String
   month : String
   image : Blob
   token: String
+  year : String
 
 }
 export interface TutorPostProps {
@@ -158,5 +159,5 @@ export interface TutorPostProps {
   hobby: string
   profilePicture: string
   token: string
-  userId: number
+  userId: string
 }

@@ -29,6 +29,7 @@ import {
   OutlinedInput,
   Chip,
 } from '@mui/material'
+import { sendMessage } from '../backend-utils/tutor-utils'
 const About = () => {
   const router = useRouter()
 
@@ -213,7 +214,7 @@ const About = () => {
         <div className="flex justify-center my-4">
           <button
               
-              onClick={()=>router.push("/studentRegistration")
+              onClick={()=>sendMessage()
               }
               
             

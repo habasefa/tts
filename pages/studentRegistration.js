@@ -192,12 +192,14 @@ const StudentRegistration = () => {
       phone2: formik.values.phoneNumber2,
       preferredBank: null,
       profilePicture: null,
-      userId: null,
+      userId: undefined,
     })
       .then((res) => res.json())
-
-      .then((res) =>
+      .then((parent) =>
         studnets.map((val) => {
+          console.log(parent)
+          console.log("val",parent)
+          console.log(val)
           createStudent({
             fullName: val.studentName,
             gender: val.gender,
@@ -207,14 +209,14 @@ const StudentRegistration = () => {
             hobby: null,
             idealTutor: null,
             nickName: null,
-            parentId: res.parent.id,
+            parentId: parent?.parent?.id,
             prevTutorExperience: null,
             prevTutored: null,
             school: val.schoolName,
             subjects: val.subjects,
             workDays: parseInt(val.workDays),
             workHour: parseInt(val.workHour),
-            tutorId: null,
+            tutorId: undefined,
           })
             .then((res) => res.json())
             .then((res) => console.log(res))
@@ -226,6 +228,7 @@ const StudentRegistration = () => {
             })
         })
       )
+      .catch((err)=>console.log(err))
     
   }
 

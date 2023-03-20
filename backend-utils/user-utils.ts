@@ -69,7 +69,7 @@ const signout = async (accessToken: string, token: string) => {
   return response
 }
 
-const getUserById = async (id: number, token: string) => {
+const getUserById = async (id: string, token: string) => {
   const response = await fetch(`${API_URL}api/v1/user/${id}`, {
     method: 'GET',
     headers: {

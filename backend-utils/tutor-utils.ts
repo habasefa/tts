@@ -77,7 +77,7 @@ const createTutor = async ({
   return response
 }
 
-const fetchReport = async (tutorId: number, token: string) => {
+const fetchReport = async (tutorId: string, token: string) => {
 
   const response = await fetch(`${API_URL}api/v1/report/${tutorId}`, {
     method: 'GET',
@@ -91,7 +91,18 @@ const fetchReport = async (tutorId: number, token: string) => {
 
 }
 
-const fetchRejectedReport = async (tutorId: number, token: string) => {
+const sendMessage = async()=>{
+  console.log("hi")
+ await fetch(`${API_URL}api/v1/tutor/sendMessage`,{
+    method:'POST',
+    headers:{
+      'Content-Type': 'application/json',
+    }
+  })
+  return "good";
+}
+
+const fetchRejectedReport = async (tutorId: string, token: string) => {
 
 
   const response = await fetch(`${API_URL}api/v1/report/one/rejected/${tutorId}`, {
@@ -109,10 +120,11 @@ const fetchRejectedReport = async (tutorId: number, token: string) => {
 const sendTimeSheet = async ({
   tutorId,
   listStudent,
-  parentName,
+  parentId,
   month,
   image,
-  token
+  token,
+  year
 
 
 }: TimeSheetProps) => {
@@ -121,12 +133,11 @@ const sendTimeSheet = async ({
   formDataWithImage.append('data',JSON.stringify({
     tutorId,
     listStudent,
-    parentName,
+    parentId,
     month,
+    year,
 
   }))
- 
-console.log(image)
   const response = await fetch(`${API_URL}api/v1/tutor/upload`, {
     method: 'POST',
     headers: {
@@ -238,7 +249,7 @@ const getJobs = async (token: string) => {
   return response
 }
 
-const linkJobAndTutor = async (token: string, id: number, tutorId: number) => {
+const linkJobAndTutor = async (token: string, id: string, tutorId: string) => {
   const response = await fetch(`${API_URL}api/v1/job/${id}`, {
     method: 'PATCH',
     headers: {
@@ -295,5 +306,6 @@ export {
   deleteReport,
   UpdateAReport,
   getAReport,
-  sendTimeSheet
+  sendTimeSheet,
+  sendMessage
 }
