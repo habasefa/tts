@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="font-minionPro px-4">
               <div>
                 <a
-                  href="#"
+                  
                   className="text-xl lg:text-2xl 2xl:text-3xl font-bold font-typograhica text-white  hover:text-gray-700 dark:hover:text-gray-300"
                 >
                   temaribet
@@ -20,7 +20,7 @@ const Footer = () => {
 
               <div className="flex m-4 mx-2  font-minionPro text-lg lg:text-xl 2xl:text-2xl">
                 <a
-                  href="#"
+                 
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
                   aria-label="Linkden"
                 >
@@ -30,7 +30,7 @@ const Footer = () => {
                 </a>
 
                 <a
-                  href="#"
+                  
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
                   aria-label="Facebook"
                 >
@@ -40,7 +40,7 @@ const Footer = () => {
                 </a>
 
                 <a
-                  href="#"
+                  
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
                   aria-label="Twitter"
                 >
@@ -59,19 +59,19 @@ const Footer = () => {
                   Home tutoring
                 </h3>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   Get a tutor
                 </a>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   Become a tutor
                 </a>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   Partner with us
@@ -82,32 +82,32 @@ const Footer = () => {
                   Contact Us
                 </h3>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   Fesitivall22, 3rd floor
                 </a>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   22 Mazoriya
                 </a>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   Addis Ababa, Ethiopia
                 </a>
 
                 <a
-                  href="#"
+                  
                   className="block mt-7 text-white opacity-80 "
                 >
                   P: +251940120591
                 </a>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   E: contact@temari-bet.com
@@ -119,13 +119,13 @@ const Footer = () => {
                   Services
                 </h3>
                 <a
-                  href="#"
+                  
                   className="block my-2 text-white opacity-80 "
                 >
                   eLearning
                 </a>
                 <a
-                  href="#"
+                  
                   className="block mt-2 text-white opacity-80 "
                 >
                   Tutoring

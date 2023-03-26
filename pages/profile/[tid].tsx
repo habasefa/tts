@@ -189,10 +189,10 @@ function UpdateTutor() {
     >
       <Header />
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#fff', backgroundColor: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isLoading}
       >
-        <CircularProgress color="inherit" />
+        <CircularProgress color="info" />
       </Backdrop>
       <div className="font-minionPro">
         <h2 className={classes.header}>Update your profile</h2>
@@ -328,7 +328,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <InputNumber maxLength={50}  name="UEE" />
+              <InputNumber maxLength={50} name="UEE" />
             </Form.Item>
             <Form.Item
               label="Cumulative GPA"
@@ -340,7 +340,7 @@ function UpdateTutor() {
                 },
               ]}
             >
-              <InputNumber maxLength={50}  name="cGPA" />
+              <InputNumber maxLength={50} name="cGPA" />
             </Form.Item>
             <Form.Item
               label="Field of study"

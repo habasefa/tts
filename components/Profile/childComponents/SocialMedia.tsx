@@ -9,7 +9,7 @@ const SocialMedia = (props: any) => {
         Update
       </button> */}
       <a
-        href="#"
+        
         className="mx-4 text-black hover:text-blue-600"
         aria-label="Facebook"
       >
@@ -19,7 +19,7 @@ const SocialMedia = (props: any) => {
       </a>
 
       <a
-        href="#"
+        
         className="mx-4 text-black hover:text-blue-600"
         aria-label="Twitter"
       >
@@ -28,7 +28,7 @@ const SocialMedia = (props: any) => {
         </svg>
       </a>
       <a
-        href="#"
+        
         className="mx-4 text-black hover:text-blue-600"
         aria-label="Linkden"
       >
@@ -37,7 +37,7 @@ const SocialMedia = (props: any) => {
         </svg>
       </a>
       <a
-        href="#"
+        
         className="mx-4 text-black hover:text-blue-600"
         aria-label="Instagram"
       >

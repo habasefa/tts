@@ -1,4 +1,4 @@
-import { ReportPostProps, TutorPostProps, TimeSheetProps } from 'utils/types'
+import { ReportPostProps, TutorPostProps, TimeSheetProps,TutorFollowup } from 'utils/types'
 import { API_URL } from 'utils/url'
 
 const createTutor = async ({
@@ -247,6 +247,44 @@ const getJobs = async (token: string) => {
     },
   })
   return response
+} 
+const createTutorFollowUp = async ({
+  tutorId ,
+  month ,
+  year ,
+  strength,
+  weakness ,
+  opportunity ,
+  threat ,
+  assesment,
+  satisfaction,
+  status ,
+  authenticity,
+  token
+}: TutorFollowup) => {
+  
+  const response = await fetch(`${API_URL}api/v1/tutor/followUp`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      tutorId ,
+      month ,
+      year ,
+      strength,
+      weakness ,
+      opportunity ,
+      threat ,
+      assesment,
+      satisfaction,
+      status ,
+      authenticity,
+    }),
+  })
+
+  return response
 }
 
 const linkJobAndTutor = async (token: string, id: string, tutorId: string) => {
@@ -307,5 +345,6 @@ export {
   UpdateAReport,
   getAReport,
   sendTimeSheet,
-  sendMessage
+  sendMessage,
+  createTutorFollowUp
 }

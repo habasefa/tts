@@ -37,8 +37,10 @@ import {
 
 import TextField from '@mui/material/TextField'
 import { Router } from '@mui/icons-material'
+
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
+const inputProps = { style: { border: 'none' } };
 const MenuProps = {
   PaperProps: {
     style: {
@@ -250,6 +252,7 @@ const StudentRegistration = () => {
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Full Name</InputLabel>
               <TextField
+        
                 InputLabelProps={{ shrink: true }}
                 required={true}
                 error={Boolean(
@@ -588,6 +591,7 @@ const StudentRegistration = () => {
                 rows={4}
                 xs={16}
                 md={8}
+                
               />
             </Grid>
           </Grid>

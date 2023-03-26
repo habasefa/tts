@@ -222,7 +222,7 @@ useEffect( ()=>{
             <li className="nav-item h-full md:mx-5">
               <a
                 className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                href="#"
+                
                 onClick={()=>router.push("/about")}
               >
                 About Us
@@ -232,7 +232,7 @@ useEffect( ()=>{
             { user == null && <li className="nav-item h-full md:mx-5">
               <a
                 className="flex items-center px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                href="#"
+               
                 onClick={()=>router.push('/pricing')}
               >
                 Pricing
@@ -243,7 +243,7 @@ useEffect( ()=>{
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                  href="#"
+                 
                   onClick={() => router.push('/login')}
                 >
                   Log In
@@ -321,7 +321,7 @@ useEffect( ()=>{
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                  href="#"
+                 
                   onClick={() => router.push('/training')}
                 >
                   Training

@@ -128,6 +128,30 @@ export interface TimeSheetProps {
   year : String
 
 }
+export interface TutorFollowup {
+  tutorId : string
+  month :  String
+  year : String
+  strength: String
+  weakness : String
+  opportunity : String
+  threat:String
+  assesment:String
+  satisfaction: String
+  status: String
+  authenticity: String
+  token:String
+}
+
+export interface ParentFollowup {
+  parentId : string
+  month :  String
+  year : String
+  comment: String
+  satisfaction: String
+  status: String
+  token:String
+}
 export interface TutorPostProps {
   fullName: string
   email: string

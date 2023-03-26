@@ -49,7 +49,7 @@ function Header() {
     <div className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <nav className="border-gray-200 bg-white px-2 py-2.5  sm:px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
-          <a href="#" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img
               src="/word_logo.png"
               className="mr-3 h-6 sm:h-10"

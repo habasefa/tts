@@ -84,11 +84,11 @@ const profile = () => {
       {/* bg-[#f2f2f2]  */}
       <Header />
       <Backdrop
-  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+ sx={{ color: '#fff', backgroundColor: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
   open={isLoading}
   
 >
-  <CircularProgress color="inherit" />
+  <CircularProgress color="info" />
 </Backdrop>
       <div className="mt-40 font-minionPro">
         <div className="justify-center">

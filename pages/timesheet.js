@@ -201,7 +201,7 @@ const DropZoneImageUpload = () => {
     return () => {
       isMounted = false; // cleanup function to prevent state updates if component unmounts
     };
-
+Number
   }, [])
 
   const monthName = [
@@ -368,10 +368,10 @@ const DropZoneImageUpload = () => {
     <div className="h-screen">
       <Header />
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+         sx={{ color: '#fff', backgroundColor: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isLoading}
       >
-        <CircularProgress color="inherit" />
+        <CircularProgress color="info" />
       </Backdrop>
       <div className="flex justify-center ">
         <div className=" mt-1 font-minionPro">

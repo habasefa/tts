@@ -1,4 +1,4 @@
-import { ParentPostProps, StudentPostProps } from 'utils/types'
+import { ParentFollowup, ParentPostProps, StudentPostProps } from 'utils/types'
 import { API_URL } from 'utils/url'
 
 const createParent = async ({
@@ -11,7 +11,7 @@ const createParent = async ({
   profilePicture,
   userId,
 }: ParentPostProps) => {
-  
+
   const response = await fetch(`${API_URL}api/v1/parent/`, {
     method: 'POST',
     headers: {
@@ -49,7 +49,7 @@ const createStudent = async ({
   parentId,
   tutorId
 }: StudentPostProps) => {
- 
+
   const response = await fetch(`${API_URL}api/v1/student/`, {
     method: 'POST',
     headers: {
@@ -88,5 +88,34 @@ const getParentById = async (id: string, token: string) => {
   })
   return response
 }
+const createParentFollowUp = async ({
+  parentId,
+  month,
+  year,
 
-export { createParent, createStudent, getParentById }
+  comment,
+  satisfaction,
+  status,
+
+  token
+}: ParentFollowup) => {
+  const response = await fetch(`${API_URL}api/v1/parent/followUp`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      parentId,
+      month,
+      year,
+      comment,
+      satisfaction,
+      status,
+
+    }),
+  })
+
+  return response
+}
+export { createParent, createStudent, getParentById, createParentFollowUp }
