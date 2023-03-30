@@ -158,6 +158,7 @@ const DropZoneImageUpload = () => {
       getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data,"tutor we need")
         getTutorById(data.tutor.id, token)
           .then((data) => data.json())
           .then((data) => {
@@ -193,7 +194,7 @@ const DropZoneImageUpload = () => {
 
       .catch((_) => {
         router.push('/')
-        setErr('Something went wrong')
+        console.log('Something went wrong')
       })
     }
     fetchUserData();
@@ -226,6 +227,7 @@ Number
   const [address, setAddress] = useState(null)
   const [selectedParent, setSelectedParent] = useState(null)
   const [listStudent, setListStudents] = useState([])
+  const [parentFetched , setParentFetched] = useState(false);
 
   const handleStudentField = (event, index) => {
     let data = [...listStudent]
@@ -582,8 +584,9 @@ Number
            {listStudent.length > 0 && 
           <div className="my-1 mx-2 mb-4 flex justify-center md:my-2 ">
             <button
-              class=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
+              class="  focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
               type="submit"
+              disabled={isUploading}
             >
               {isUploading ? 'Uploading...' : 'Submit'}
             </button>

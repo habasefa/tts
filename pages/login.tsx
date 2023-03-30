@@ -57,7 +57,13 @@ export default function Login() {
         } 
       
         else {
+          if (data.status != 500)
+          {
           setErr(data.message)
+          }
+          else{
+            setErr('Something went wrong')
+          }
         }
       })
       .catch((_) => {

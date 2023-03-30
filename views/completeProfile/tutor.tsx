@@ -90,7 +90,7 @@ function Tutor({ user }: any) {
       hobby: value.hobby,
       profilePicture: profileUrl,
       token: user.accessToken,
-      telegramUsername: value.telgramUsername,
+      telegramUsername: value.telegramUsername,
       userId: user.user.id,
     }
 

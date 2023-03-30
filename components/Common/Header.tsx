@@ -361,7 +361,7 @@ useEffect( ()=>{
       <Dialog onClose={handleClose} open={isLoading}>
       <DialogTitle>Notification</DialogTitle>
       <List >
-        {notify.map((report) => (
+        {notify?.map((report) => (
         (
           <ListItem>
           <ListItemAvatar>

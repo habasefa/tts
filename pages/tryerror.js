@@ -209,7 +209,7 @@ const router = useRouter()
     })
       .then((res) => res.json())
       .then((res)=>{
-        setIsLoading(false)
+      
         console.log(res)
         if (res.success){
           console.log(res)
@@ -225,7 +225,7 @@ const router = useRouter()
       .catch((err) => console.log(err))
       .finally(()=>{
         
-      
+        setIsLoading(false)
       })
    
   }
@@ -1546,7 +1546,7 @@ const router = useRouter()
         </div>
         
         <button
-          class=" focus:shadow-outline md:w-1/12 rounded-xl bg-[#fdd507] py-2 px-4 font-bold text-white hover:bg-[#c6a917] focus:outline-none"
+          class=" focus:shadow-outline md:w-1/6 rounded-xl bg-[#fdd507] py-2 px-4 font-bold text-white hover:bg-[#c6a917] focus:outline-none"
           type="submit"
           disabled={isLoading}
           
