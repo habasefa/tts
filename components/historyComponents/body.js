@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
 import LeftSide from './childComponents/LeftSide'
 import RightSide from './childComponents/RightSide'
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Box from '@mui/material/Box';
+import { Typography } from '@mui/material';
+
 const Body = () => {
-  const [index,setIndex]=useState(0)
+  
   const paragraphs= [
   {
     label: <>Congratulations!</>,
@@ -238,47 +247,91 @@ description:
   }
 ]
 
-  return (
-    <div className='flex flex-col md:flex-row justify-between font-minionPro'>
+const [isOpen, setIsOpen] = useState(false);
+const [index, setIndex] = useState(0);
 
+const toggleDrawer = () => {
+  setIsOpen(!isOpen);
+};
 
-<div className='md:w-1/3'>
-        <p className="w-5/6 px-3  md:px-12 py-3 2xl:px-20 text-lg md:text-2xl font-bold text-center bg-white text-[#1a3765] shadow-lg" >List of Training</p>
-        <div className='my-10 text-left'>
-        <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-            onClick={()=>setIndex(0)}
-            >Congratulations</button>
-            <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-              onClick={()=>setIndex(1)}
-            >1. Part One : On benefits</button>
-           <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(2)}
-            >2. Part Two : On Temaribet</button>
-           <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(3)}
-            >3. Part Three : On the Tutee</button>
-           <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(4)}
-            >4. Part Four : On Tutoring</button>
-             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(5)}
-            >5. Part Five : On Procedures</button>
-             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(6)}
-            >6. Part Six : On Resourcefulness</button>
-             <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
-               onClick={()=>setIndex(7)}
-            >7. Part Seven : On Payment and Reward</button>
-        </div>
-    </div>
-        <RightSide 
-            text = {paragraphs[index].label}
-            subtext = {paragraphs[index].description}
+const buttonList = [
+  {
+    label: 'Congratulations',
+    onClick: () => {setIndex(0)
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+  },
+  {
+    label: 'Part One : On benefits',
+    onClick: () => {setIndex(1)
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+  },
+  {
+    label: 'Part Two : On Temaribet',
+    onClick: () =>{ setIndex(2),
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+    },
+  {
+    label: 'Part Three : On the Tutee',
+    onClick: () =>{ setIndex(3),
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+    },
+  {
+    label: 'Part Four : On Tutoring',
+    onClick: () => {setIndex(4),
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+  },
+  {
+    label: 'Part Five : On Procedures',
+    onClick: () =>{ setIndex(5),
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+    },
+  {
+    label: 'Part Six : On Resourcefulness',
+    onClick: () =>{ setIndex(6),
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+  },
+  {
+    label: 'Part Seven : On Payment and Reward',
+    onClick: () =>{ setIndex(7),
 
-        />
-        
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
+  }]
+  const listItems = buttonList.map((button, index) => (
+    
+    <ListItem button key={index} onClick={() => {
+        button.onClick();
+        toggleDrawer();
+      }}>
+        <div className="font-minionPro">
+          
+      <ListItemText   >
+        <Typography   sx={{font:"inherit"}}>{button.label}</Typography>
+        </ListItemText>
       </div>
-  )
-}
+    </ListItem>
+  ));
+  return (
+    <div className='font-minionPro'>
+      <IconButton  edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={{
+          position: "fixed",
+          
+          zIndex: 2,
+        }} onClick={toggleDrawer}>
+        <MenuIcon />
+      </IconButton>
+      <Drawer anchor="left"  open={isOpen} onClose={toggleDrawer}>
+        <div style={{ width: 250 }}>
+          <List>{listItems}</List>
+        </div>
+      </Drawer>
+      <RightSide text={paragraphs[index].label} subtext={paragraphs[index].description} />
+    </div>
+  );
+};
+
+
 
 export default Body
