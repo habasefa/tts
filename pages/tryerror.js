@@ -40,6 +40,8 @@ import {
   Chip,
 } from '@mui/material'
 import { Button } from 'antd/lib/radio'
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const tryerror = () => {
   const date = new Date();
@@ -71,6 +73,7 @@ const router = useRouter()
 
   const [hygiene, sethygiene] =useState(null)
   const [elequence, setelequence ] =useState(null)
+  const [pageLoading, isPageLoading ] = useState(true);
   useEffect(()=>{
       if (!user){
     router.push('/')
@@ -130,7 +133,7 @@ const router = useRouter()
       })
       .catch((_) => {
        console.log("hi")
-      })
+      }).finally(()=>{isPageLoading(false)})
   }, [])
   // useE
  
@@ -607,6 +610,12 @@ const router = useRouter()
     <LocalizationProvider  dateAdapter={AdapterDayjs }>
     <div className="min-h-screen px-20 font-minionPro text-[#1A3765] xl:px-24 ">
       <Header />
+      <Backdrop
+         sx={{ color: '#fff', backgroundColor: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={pageLoading}
+      >
+        <CircularProgress color="info" />
+      </Backdrop>
       <form
       method='post'
       onSubmit={handleClick}
@@ -1554,7 +1563,7 @@ const router = useRouter()
           
         
         >
-          Submit
+         {isLoading? 'Submitting...': 'Submit'}
         </button>
       </form>
       <div>

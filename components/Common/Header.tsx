@@ -135,21 +135,8 @@ useEffect( ()=>{
         <a href="/timesheet">Monthly TimeSheet</a>
       </Menu.Item>
       )}
-      {user && user.user.role === 'TUTOR'&& (
-      <Menu.Item key={2}>
-        <a
-        onClick={()=>{
-          
-        setisLoading(true)
-        }}
-        >Notification 
       
-      <Badge badgeContent={notify?.length} color="secondary">
-        <MailIcon color="action" />
-      </Badge>
-      </a>
-      </Menu.Item>
-      )}
+     
 
 {user && user.user.role === 'TUTOR' && (
       <Menu.Item key={2}>
@@ -329,6 +316,20 @@ useEffect( ()=>{
                   Training
                 </a>
               </li>
+            )}
+            {user && user.user.role === 'TUTOR'&& (
+               <a
+               className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+               onClick={()=>{
+                 
+               setisLoading(true)
+               }}
+               >Notification 
+             
+             <Badge badgeContent={notify?.length} color="secondary">
+               <MailIcon color="action" />
+             </Badge>
+             </a>
             )}
            
             {user && (
