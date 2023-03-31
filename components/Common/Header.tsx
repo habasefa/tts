@@ -35,6 +35,7 @@ const Header = () => {
     setisLoading(false)
   };
 
+  const [tutorData, setTutorData] = useState<any>(null);
 
   
   if (user) {
@@ -55,6 +56,7 @@ useEffect( ()=>{
    })
     .then((res) => res.json())
     .then((data) =>{ 
+      setTutorData(data)
     
       
     
@@ -123,12 +125,12 @@ useEffect( ()=>{
         <a href="/profile">Profile</a>
       </Menu.Item>
       
-      {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&   (
+      {user && user.user.role === 'TUTOR' && tutorData?.tutor?.status==='SUCCESS' &&   (
       <Menu.Item key={2}>
         <a href="/tryerror">Report</a>
       </Menu.Item>
       )}
-      {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&   (
+      {user && user.user.role === 'TUTOR' && tutorData?.tutor?.status==='SUCCESS' &&   (
       <Menu.Item key={2}>
         <a href="/timesheet">Monthly TimeSheet</a>
       </Menu.Item>
@@ -317,7 +319,7 @@ useEffect( ()=>{
                 </a>
               </li>
             )} */}
-            {user && user.user.role === 'TUTOR' && user.user.tutor?.status==='SUCCESS' &&  (
+            {user && user.user.role === 'TUTOR' && tutorData?.tutor?.status==='SUCCESS' &&  (
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
