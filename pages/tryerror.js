@@ -570,7 +570,7 @@ const router = useRouter()
       data.push([temp[0], temp[temp.length - 1]]);
       temp = [];
     }
-    return None;
+    return null;
   };
   const [open, setOpen] = React.useState(false)
   const handleClose = () => {
