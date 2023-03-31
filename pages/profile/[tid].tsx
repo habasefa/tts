@@ -101,6 +101,7 @@ function UpdateTutor() {
   }
 
   const onFinish = (value: any) => {
+    setComplete(true)
     updateTutor(tid, token, inputValue)
       .then((res) => res.json())
       .then((data) => {

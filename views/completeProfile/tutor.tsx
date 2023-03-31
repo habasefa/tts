@@ -59,6 +59,7 @@ function Tutor({ user }: any) {
 
   const onFinish = (value: any) => {
     const date = new Date(birthDate)
+    setComplete(true);
 
     const userInfo = {
       fullName: value.fullName,

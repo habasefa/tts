@@ -26,6 +26,7 @@ const profile = () => {
   const [userData, setUserData] = useState<any>(null)
   const [tutorData, setTutorData] = useState<any>(null)
   const [err, setErr] = useState('')
+  const [isButton,setIsButton]=useState(false)
   const [isLoading,setIsLoading]=useState(true)
   useEffect(() => {
 
@@ -52,28 +53,28 @@ const profile = () => {
 
   const keyInfo = {
     
-    id: userData?.tutor.id,
-    name: userData?.tutor.fullName,
-    gender: userData?.tutor.gender,
-    age: userData?.tutor.age,
-    phone: userData?.tutor.phone,
-    location: userData?.tutor.location,
-    acadStatus : userData?.tutor.acadStatus,
-    graddate: userData?.tutor.acadStatus,
-    cgpa: userData?.tutor.cGPA,
-    UEE: userData?.tutor.UEE,
-    field: userData?.tutor.field,
-    college: userData?.tutor.college,
-    bank: userData?.tutor.preferredBank,
-    bankAccountNo: userData?.tutor.bankAccountNo,
-    hobby: userData?.tutor.hobby,
-    subjects: userData?.tutor.subjects,
-    profilePicture:  userData?.tutor.profilePicture,
-    contactName: userData?.tutor.contactName,
-    telegramUsername : userData?.tutor.telegramUsername,
-    contactPhone1 : userData?.tutor.contactPhone1,
-    contactPhone2 : userData?.tutor.contactPhone2,
-    contactEmail : userData?.tutor.contactEmail
+    id: userData?.tutor?.id,
+    name: userData?.tutor?.fullName,
+    gender: userData?.tutor?.gender,
+    age: userData?.tutor?.age,
+    phone: userData?.tutor?.phone,
+    location: userData?.tutor?.location,
+    acadStatus : userData?.tutor?.acadStatus,
+    graddate: userData?.tutor?.acadStatus,
+    cgpa: userData?.tutor?.cGPA,
+    UEE: userData?.tutor?.UEE,
+    field: userData?.tutor?.field,
+    college: userData?.tutor?.college,
+    bank: userData?.tutor?.preferredBank,
+    bankAccountNo: userData?.tutor?.bankAccountNo,
+    hobby: userData?.tutor?.hobby,
+    subjects: userData?.tutor?.subjects,
+    profilePicture:  userData?.tutor?.profilePicture,
+    contactName: userData?.tutor?.contactName,
+    telegramUsername : userData?.tutor?.telegramUsername,
+    contactPhone1 : userData?.tutor?.contactPhone1,
+    contactPhone2 : userData?.tutor?.contactPhone2,
+    contactEmail : userData?.tutor?.contactEmail
   }
 
   return (
@@ -105,7 +106,10 @@ const profile = () => {
         <button
               className=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none md:w-1/6 md:text-xl"
               type="button"
-              onClick={() => router.push("/profile/" + userData?.tutor.id )}
+              disabled={isButton}
+              onClick={() => {
+                setIsButton(true)
+                router.push("/profile/" + userData?.tutor.id )}}
             >
               Edit Profile
             </button>
