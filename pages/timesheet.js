@@ -245,11 +245,11 @@ Number
     data.push(new_studnet)
     setListStudents(data)
   }
-  const removeStudent = () => {
+  const removeStudent = (index) => {
     event.preventDefault()
     const data = [...listStudent]
     if (data.length > 1) {
-      data.pop()
+       data.slice(index,1)
       setListStudents(data)
     }
     var total = 0
@@ -511,7 +511,7 @@ Number
                   <Grid item xs={16} md={8} lg={3}>
                   <IconButton
                         color="error"
-                        onClick={removeStudent}
+                        onClick={()=> {removeStudent(index)}}
                         aria-label="delete"
                         size="small"
                       >
