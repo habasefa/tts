@@ -205,20 +205,7 @@ const DropZoneImageUpload = () => {
 Number
   }, [])
 
-  const monthName = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]
+  const monthName =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   const [uploadedImage, setUploadedImage] = useState(null)
   const [image, setImage] = useState(null)
   const [totalHour, setTotalHour] = useState(null)
