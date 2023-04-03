@@ -49,7 +49,7 @@ const Pricing = () => {
     <>
     <div className="h-screen overflow-y-scroll  bg-gray-50 scrollbar-hide font-minionPro">
       <Header />
-      <div className="mt-16  xl:px-16">
+      <div className="mt-16 px-10 xl:px-16">
         <div className="my-2 p-3 md:p-5">
         <h1 className="mt-12 text-center text-lg md:text-3xl ">Pricing</h1>
           <h2 className="text-lg md:text-2xl md:py-2">Pricing Per Hour</h2>
@@ -193,7 +193,7 @@ const Pricing = () => {
             </Grid>
           </Grid>
         </div>
-        <div className="md: p-12">
+        <div className=" mb-3 md: p-12">
           <Alert severity="info" sx={{padding:'2' }} >
             <p className="m-0 font-minionPro text-lg">
               Your estimated monthly value is going to be
@@ -201,6 +201,24 @@ const Pricing = () => {
             </p>
           </Alert>
         </div>
+        <div className="flex justify-center my-4">
+          <button
+              
+              onClick={router.push('/studentRegistration')}
+              
+            
+              
+             
+              
+              className="transform rounded-full bg-[#1A3765] px-10 py-3 text-lg md:text-2xl  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-900 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+              >
+                Get Tutor
+               
+                  
+              </button>
+          </div>
+
+
       </div>
        <Footer />
     </div>

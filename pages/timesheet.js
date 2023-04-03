@@ -90,6 +90,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { getTutorById } from '../backend-utils/tutor-utils'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
+import { FaSpinner } from 'react-icons/fa';
 
 import {
   Autocomplete,
@@ -142,7 +143,7 @@ const DropZoneImageUpload = () => {
   const router = useRouter()
   const user = useSelector(selectUser)
   const [isLoading, setIsLoading] = useState(true);
-
+  const [openDup,setOpenDup] = useState(false)
   if (user) {
     var token = user.accessToken
     var id = user.user.id
@@ -315,8 +316,16 @@ Number
       .then((data) => {
         console.log(data)
         console.log('h')
+        if (data.duplication)
+        
+        {
+            setOpenDup(true)
+          
+        }
+        else {
 
         router.push('/')
+        }
         setUploading(false)
       })
   }
@@ -353,6 +362,12 @@ Number
   useEffect(()=>{
     console.log(listofParents,"change")
   },[listofParents])
+  const handleClose = () => {
+    router.push('/')
+   
+    setOpenDup(false)
+    
+  }
   return (
     <div className="h-screen">
       <Header />
@@ -575,16 +590,51 @@ Number
               type="submit"
               disabled={isUploading}
             >
-              {isUploading ? 'Uploading...' : 'Submit'}
+              {isUploading ? <span className="flex items-center">
+      <FaSpinner className="animate-spin mr-2" />
+      Uploading...
+    </span> : 'Submit'}
             </button>
           </div>
 }
         </div>
            
       </form>
+      <Dialog
+          open={openDup}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle align="center">
+            <label className="font-minionPro text-[#fd6907] md:text-3xl ">
+              Alert
+            </label>
+          </DialogTitle>
+
+          <DialogContent dividers>
+          <label className="font-minionPro  md:text-xl ">
+          TimeSheet is submitted for the this specific Month.
+            </label>
+          </DialogContent>
+          <DialogActions>
+          <div className="flex justify-center my-2">
+          <button
+              className=" focus:shadow-outline    font-minionPro rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none  md:text-xl"
+              type="button"
+              onClick={handleClose}
+            >
+              Go To Home
+            </button>
+          
+            </div>
+          </DialogActions>
+        </Dialog>
       <Footer />
+      
     </div>
   )
+  
 }
 
 export default DropZoneImageUpload

@@ -1618,14 +1618,16 @@ const router = useRouter()
             </label>
           </DialogContent>
           <DialogActions>
-            <Button
-              color="primary"
-              variant="contained"
+          <div className="flex justify-center my-2">
+          <button
+              className=" focus:shadow-outline  font-minionPro rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none  md:text-xl"
+              type="button"
               onClick={handleClose}
-              autoFocus
             >
-              Go to Home
-            </Button>
+              Go To Home
+            </button>
+          
+            </div>
           </DialogActions>
         </Dialog>
       </div>

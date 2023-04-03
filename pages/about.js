@@ -37,7 +37,7 @@ const About = () => {
     <>
       <div className="h-screen overflow-y-scroll bg-gray-50   font-minionPro scrollbar-hide">
         <Header />
-        <div className="mt-16  xl:px-16">
+        <div className="mt-16 px-10 xl:px-16">
           <div className="my-2 p-3 md:p-5">
             <h1 className="mt-12 text-center text-lg md:text-3xl ">About</h1>
             <h2 className="text-lg md:py-2 md:text-2xl">Our Story</h2>
@@ -214,8 +214,7 @@ const About = () => {
         <div className="flex justify-center my-4">
           <button
               
-              onClick={()=>sendMessage()
-              }
+              onClick={router.push('/studentRegistration')}
               
             
               
