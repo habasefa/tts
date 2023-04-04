@@ -117,6 +117,21 @@ const fetchRejectedReport = async (tutorId: string, token: string) => {
   return response
 
 }
+const fetchRejectedTimesheet = async (tutorId: string, token: string) => {
+
+
+  const response = await fetch(`${API_URL}api/v1/tutor/image/rejected/${tutorId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  })
+
+
+  return response
+
+}
 const sendTimeSheet = async ({
   tutorId,
   listStudent,
@@ -217,6 +232,16 @@ const getTutorById = async (id: any, token: string) => {
 }
 const deleteReport = async (token: any, id: any) => {
   const response = await fetch(`${API_URL}api/v1/report/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
+};
+const deleteTimesheet = async (token: any, id: any) => {
+  const response = await fetch(`${API_URL}api/v1/tutor/image/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -331,6 +356,22 @@ const getAReport = async (token: string, id: any) => {
 
   return response;
 }
+const UpdateAnImage = async (token: String,id: String,imageBody: any)=>{
+  console.log(imageBody)
+  
+  const response = await fetch(`${API_URL}api/v1/tutor/image/${id}`, {
+    method: "PATCH",
+    headers :{
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ ...imageBody }),
+    
+
+  })
+  console.log(response)
+  return response;
+}
 
 export {
   createTutor,
@@ -346,5 +387,8 @@ export {
   getAReport,
   sendTimeSheet,
   sendMessage,
-  createTutorFollowUp
+  createTutorFollowUp,
+  fetchRejectedTimesheet,
+  deleteTimesheet,
+  UpdateAnImage
 }

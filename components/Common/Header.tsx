@@ -1,89 +1,122 @@
-import { Badge, Button, Dialog, DialogTitle, ListItem, ListItemAvatar, ListItemButton, ListItemText } from '@mui/material'
-import { Avatar, Dropdown, List, Menu } from 'antd'
+import {
+  Badge,
+  Button,
+  Dialog,
+  DialogTitle,
+  ListItem,
+  ListItemAvatar,
+  ListItemButton,
+  ListItemText,
+  List,
+  Rating,
+} from '@mui/material'
+import { Avatar, Dropdown, Menu } from 'antd'
 import { getUserById, signout } from 'backend-utils/user-utils'
 import { useRouter } from 'next/router'
-import React, { useEffect ,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, selectUser } from 'redux/userSlice'
-import {useRef} from "react"
-import { fetchRejectedReport } from 'backend-utils/tutor-utils'
-import WorkIcon from '@mui/icons-material/Work';
-import Typography from '@mui/material/Typography';
-import MailIcon from '@mui/icons-material/Mail';
+import { useRef } from 'react'
+import {
+  UpdateAReport,
+  UpdateAnImage,
+  fetchRejectedReport,
+  fetchRejectedTimesheet,
+} from 'backend-utils/tutor-utils'
+import WorkIcon from '@mui/icons-material/Work'
+import Typography from '@mui/material/Typography'
+import MailIcon from '@mui/icons-material/Mail'
+import RedoIcon from '@mui/icons-material/Redo'
+import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined'
+import FilePresentOutlinedIcon from '@mui/icons-material/FilePresentOutlined'
 const Header = () => {
-
   const monthName = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
   const user = useSelector(selectUser)
   const router = useRouter()
   const registerMenu = useRef(null)
-  const [notify,setNot]= useState<any[]>([])
-  const [isLoading,setisLoading]=useState(false)
+  const [notify, setNot] = useState<any[]>([])
+  const [timNotify, setTimNot] = useState<any[]>([])
+  const [isLoading, setisLoading] = useState(false)
   const handleClose = () => {
     setisLoading(false)
-  };
+  }
 
-  const [tutorData, setTutorData] = useState<any>(null);
+  const [tutorData, setTutorData] = useState<any>(null)
 
-  
   if (user) {
-    
     var token = user.accessToken
     var id = user.user.id
   }
 
-useEffect( ()=>{
-  if (user){
-    getUserById(id,token)
-    .then((data)=>{console.log(data)
-      if (data.status==403){
-        throw new Error('no valid Token')
-        
-      }
-     return data
-   })
-    .then((res) => res.json())
-    .then((data) =>{ 
-      setTutorData(data)
-    
-      
-    
-    fetchRejectedReport( data.tutor.id,token)
-    .then((res)=>res.json())
-    .then((data)=>{
-     
-        setNot(data.reports)
-        
-    })
-   
-  }
- 
-    
-    )
-    .catch((error)=>{
-      setisLoading(false)
-      dispatch(logout())
-  router.push('/login')
-  })
+  useEffect(() => {
+    if (user) {
+      getUserById(id, token)
+        .then((data) => {
+          console.log(data)
+          if (data.status == 403) {
+            throw new Error('no valid Token')
+          }
+          return data
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          setTutorData(data)
 
-  }
-
-    
-}
-
-,[] )
+          fetchRejectedReport(data.tutor.id, token)
+            .then((res) => res.json())
+            .then((data) => {
+              let temp: any[] = []
+              if (data.success) {
+                data.reports?.map((report:any)=>{
+                  console.log(report,"report")
+                  if (report?.view === "PENDING" || report?.status === "REJECTED" )
+                  {
+                    temp.push(report)
+                  }
+                })
+               
+              }
+              setNot(temp)
+            })
+          fetchRejectedTimesheet(data.tutor.id, token)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data, 'i really need to see')
+              let temp: any[] = []
+              if (data.success) {
+                data.timeSheets?.map((timesheet: any) => {
+                  if (
+                    timesheet?.view === 'PENDING' ||
+                    timesheet?.statusOfAcceptance == 'REJECTED'
+                  ) {
+                    console.log(timesheet,"seen")
+                    temp.push(timesheet)
+                  }
+                })
+                setTimNot(temp)
+              }
+            })
+        })
+        .catch((error) => {
+          setisLoading(false)
+          dispatch(logout())
+          router.push('/login')
+        })
+    }
+  }, [isLoading])
 
   const dispatch = useDispatch()
   const handleLogout = (e: any) => {
@@ -92,20 +125,18 @@ useEffect( ()=>{
     dispatch(logout())
     router.push('/')
   }
-  useEffect(()=>{
+  useEffect(() => {
     console.log(user)
-    const closeDropDown =(e: any)=>{
-     
-      console.log(e,registerMenu.current)
-      if (e.srcElement!==registerMenu.current){
+    const closeDropDown = (e: any) => {
+      console.log(e, registerMenu.current)
+      if (e.srcElement !== registerMenu.current) {
         setDropDown(false)
       }
     }
-    document.body.addEventListener('click',closeDropDown)
-    return ()=>document.body.removeEventListener('click',closeDropDown)
+    document.body.addEventListener('click', closeDropDown)
+    return () => document.body.removeEventListener('click', closeDropDown)
   })
   if (user) {
-  
     var name = user.user.email?.match(/^([^@]*)@/)[1]
     var role = user.user.role
     var hiredJobId = user.user.tutor?.hiredJobId
@@ -124,24 +155,26 @@ useEffect( ()=>{
       <Menu.Item key={1}>
         <a href="/profile">Profile</a>
       </Menu.Item>
-      
-      {user && user.user.role === 'TUTOR' && tutorData?.tutor?.status==='SUCCESS' &&   (
-      <Menu.Item key={2}>
-        <a href="/tryerror">Report</a>
-      </Menu.Item>
-      )}
-      {user && user.user.role === 'TUTOR' && tutorData?.tutor?.status==='SUCCESS' &&   (
-      <Menu.Item key={3}>
-        <a href="/timesheet">Monthly TimeSheet</a>
-      </Menu.Item>
-      )}
-      
-     
 
-{user && user.user.role === 'TUTOR' && (
-      <Menu.Item key={4}>
-        <a href="/changePassword">Change Password</a>
-      </Menu.Item>
+      {user &&
+        user.user.role === 'TUTOR' &&
+        tutorData?.tutor?.status === 'SUCCESS' && (
+          <Menu.Item key={2}>
+            <a href="/tryerror">Report</a>
+          </Menu.Item>
+        )}
+      {user &&
+        user.user.role === 'TUTOR' &&
+        tutorData?.tutor?.status === 'SUCCESS' && (
+          <Menu.Item key={3}>
+            <a href="/timesheet">Monthly TimeSheet</a>
+          </Menu.Item>
+        )}
+
+      {user && user.user.role === 'TUTOR' && (
+        <Menu.Item key={4}>
+          <a href="/changePassword">Change Password</a>
+        </Menu.Item>
       )}
       <Menu.Item key={5}>
         <a
@@ -153,28 +186,26 @@ useEffect( ()=>{
           Logout
         </a>
       </Menu.Item>
-     
-    
     </Menu>
   )
   const [navbarOpen, setNavbarOpen] = React.useState(false)
-  const [dropdownOpen,setDropDown]=React.useState(false)
-  useEffect(()=>{
-    const closeDropDown =(e: any)=>{
-      console.log(e,registerMenu.current)
-      if (e.srcElement!==registerMenu.current){
+  const [dropdownOpen, setDropDown] = React.useState(false)
+  useEffect(() => {
+    const closeDropDown = (e: any) => {
+      console.log(e, registerMenu.current)
+      if (e.srcElement !== registerMenu.current) {
         setDropDown(false)
       }
     }
-    document.body.addEventListener('click',closeDropDown)
-    return ()=>document.body.removeEventListener('click',closeDropDown)
+    document.body.addEventListener('click', closeDropDown)
+    return () => document.body.removeEventListener('click', closeDropDown)
   })
   return (
-    <nav className=" font-minionPro fixed top-0 left-0 right-0 z-50 flex items-center justify-between  overflow-x-hidden bg-[#FED607]  py-0 opacity-100">
+    <nav className=" fixed top-0 left-0 right-0 z-50 flex items-center justify-between overflow-x-hidden  bg-[#FED607] py-0  font-minionPro opacity-100">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
         <div className="relative flex w-full justify-between lg:static lg:block lg:w-auto lg:justify-start">
           <a
-            className="font-typograhica mr-4 inline-block  whitespace-nowrap  px-0  text-3xl font-thin leading-relaxed text-white md:py-5 md:text-5xl  2xl:py-6  2xl:text-6xl"
+            className="mr-4 inline-block whitespace-nowrap  px-0  font-typograhica  text-3xl font-thin leading-relaxed text-white md:py-5 md:text-5xl  2xl:py-6  2xl:text-6xl"
             href="/"
           >
             temaribet
@@ -211,28 +242,26 @@ useEffect( ()=>{
             <li className="nav-item h-full md:mx-5">
               <a
                 className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                
-                onClick={()=>router.push("/about")}
+                onClick={() => router.push('/about')}
               >
                 About Us
               </a>
             </li>
 
-            { user == null && <li className="nav-item h-full md:mx-5">
-              <a
-                className="flex items-center px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-               
-                onClick={()=>router.push('/pricing')}
-              >
-                Pricing
-              </a>
-            </li>
-}
+            {user == null && (
+              <li className="nav-item h-full md:mx-5">
+                <a
+                  className="flex items-center px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                  onClick={() => router.push('/pricing')}
+                >
+                  Pricing
+                </a>
+              </li>
+            )}
             {user == null && (
               <li className="nav-item h-full md:mx-5">
                 <a
                   className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                 
                   onClick={() => router.push('/login')}
                 >
                   Log In
@@ -241,59 +270,46 @@ useEffect( ()=>{
             )}
             {user == null && (
               <>
-              <li className="nav-item  h-full pl-2 ">
-               
-              <button
-              ref={registerMenu}
-              onClick={()=>setDropDown(!dropdownOpen)
-              
-              
-              }
-              
-            
-              
-             
-              
-              className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-              >
-                Register
-               
-                  
-              </button>
-            
-              {(dropdownOpen ? 
-              <div
-           
-              className={`fixed  px-6 border-black bg-white  divide-y divide-gray-100 shadow  py-3 mt-1  rounded-sm ${
-                dropdownOpen ? "block" : "hidden"
-              }`}
-
-                >
-                  <a
-                  onClick={()=>router.push("/studentRegistration")}
-                    className="block py-3 text-base font-semibold text-slate-500 dark:hover:text-white"
+                <li className="nav-item  h-full pl-2 ">
+                  <button
+                    ref={registerMenu}
+                    onClick={() => setDropDown(!dropdownOpen)}
+                    className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                   >
-                    Enroll a Student
-                  </a>
-                  <a
-                      onClick={()=>router.push("/signup")}
-                    className="block py-3 text-base text-slate-500 font-semibold w-full  dark:hover:text-white"
-                  >
-                    Become a Tutor
-                  </a>
+                    Register
+                  </button>
 
-                </div>
-              : <div></div> ) }
-                {/* <button
+                  {dropdownOpen ? (
+                    <div
+                      className={`fixed  mt-1 divide-y divide-gray-100  rounded-sm border-black bg-white  px-6 py-3  shadow ${
+                        dropdownOpen ? 'block' : 'hidden'
+                      }`}
+                    >
+                      <a
+                        onClick={() => router.push('/studentRegistration')}
+                        className="block py-3 text-base font-semibold text-slate-500 dark:hover:text-white"
+                      >
+                        Enroll a Student
+                      </a>
+                      <a
+                        onClick={() => router.push('/signup')}
+                        className="block w-full py-3 text-base font-semibold text-slate-500  dark:hover:text-white"
+                      >
+                        Become a Tutor
+                      </a>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                  {/* <button
                   onClick={() => router.push('/signup')}
                   className="transform rounded-full bg-[#1A3765] px-10 py-3  capitalize tracking-wide text-white transition-colors duration-200  hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                 >
                   Register
                   
                 </button> */}
-              </li>
+                </li>
               </>
-            
             )}
             {/* {user && user.user.role === 'TUTOR' && user.user.tutor !== null && (
               <li className="nav-item h-full md:mx-5">
@@ -306,32 +322,62 @@ useEffect( ()=>{
                 </a>
               </li>
             )} */}
-            {user && user.user.role === 'TUTOR' && tutorData?.tutor?.status==='SUCCESS' &&  (
-              <li className="nav-item h-full md:mx-5">
-                <a
-                  className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-                 
-                  onClick={() => router.push('/training')}
+            {user &&
+              user.user.role === 'TUTOR' &&
+              tutorData?.tutor?.status === 'SUCCESS' && (
+                <li className="nav-item h-full md:mx-5">
+                  <a
+                    className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                    onClick={() => router.push('/training')}
+                  >
+                    Training
+                  </a>
+                </li>
+              )}
+            {user && user.user.role === 'TUTOR' && (
+              <a
+                className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                onClick={() => {
+                  setisLoading(true)
+                  if (timNotify.length > 0) {
+                    console.log("hidd")
+                    timNotify.map((val) => {
+                      console.log(val,'hidd')
+                      if (val.statusOfAcceptance =="SUCCESS"){
+                      UpdateAnImage(user.accessToken, val.id, { view: 'SEEN' })
+                        .then((data) => console.log(data,"updated"))
+                        .catch((error) => {
+                          console.log(error)
+                        })
+                      }
+                    })
+                    
+                  }
+                  if (notify.length > 0){
+                    notify.map((val) => {
+                      if(val.status == "SUCCESS") {
+                        UpdateAReport(user.accessToken,val.id,{view:'SEEN'})
+                        .then((data) => console.log(data))
+                        .catch((error) => {
+                          console.log(error)
+                        })
+                      }
+                    })
+                  }
+                }}
+              >
+                Notification
+                <Badge
+                  badgeContent={
+                    Number(notify?.length) + Number(timNotify?.length)
+                  }
+                  color="secondary"
                 >
-                  Training
-                </a>
-              </li>
+                  <MailIcon color="action" />
+                </Badge>
+              </a>
             )}
-            {user && user.user.role === 'TUTOR'&& (
-               <a
-               className="flex items-center px-3 py-1    font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
-               onClick={()=>{
-                 
-               setisLoading(true)
-               }}
-               >Notification 
-             
-             <Badge badgeContent={notify?.length} color="secondary">
-               <MailIcon color="action" />
-             </Badge>
-             </a>
-            )}
-           
+
             {user && (
               <Dropdown overlay={menu} placement="bottom" arrow>
                 <button
@@ -362,49 +408,106 @@ useEffect( ()=>{
       </div>
 
       <Dialog onClose={handleClose} open={isLoading}>
-      <DialogTitle>Notification</DialogTitle>
-      <List >
-        {notify?.map((report) => (
-        (
-          <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <WorkIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <Typography>
-          Your report in which you submitted in {monthName[report?.reportMonth-1]} {report.reportDate} , {report.reportYear} is Rejected
-          </Typography>
-          <Button
-            variant="contained"
-            onClick={()=>{ 
-              setisLoading(false)
-               router.push('/report/'+report.id)
-             }}
-            >
-                Recreate the Report
+        <DialogTitle align="center">Notification</DialogTitle>
+        <List>
+          {notify?.map((report) => (
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <WorkIcon />
+                </Avatar>
+              </ListItemAvatar>
+              {report?.status === "REJECTED" && 
+              (
+                <>
+              <Typography>
+                Your report in which you submitted in{' '}
+                {monthName[report?.reportMonth - 1]} {report.reportDate} ,{' '}
+                {report.reportYear} is Rejected
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setisLoading(false)
+                  router.push('/report/' + report.id)
+                }}
+              >
+                <RedoIcon />
+              </Button>
+              </>
+              )}
+               {report?.status === "SUCCESS" && 
+              (
+                <>
+              <Typography variant="subtitle2">
+                Your report in which you submitted in{' '}
+                {monthName[report?.reportMonth - 1]} {report.reportDate} ,{' '}
+                {report.reportYear} is Accepted
+              </Typography>
+              
+                <Rating name="size-small"  defaultValue={report.rate} size="small" />
+                
+              
+              </>
+              )}
+            </ListItem>
+          ))}
+        </List>
 
-            </Button>
-        </ListItem>
-         )
-        ))}
+        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+          {timNotify?.map((timesheet) => (
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <FilePresentOutlinedIcon />
+                </Avatar>
+              </ListItemAvatar>
+              {timesheet.statusOfAcceptance == 'REJECTED' &&
+              (
+                <>
+              <Typography variant="subtitle2">
+                Your Timesheet in which you submitted regarding your tutee's
+                parent {timesheet?.parent?.fullName} in{' '}
+                {monthName[timesheet?.month - 1]}, {timesheet.year} is Rejected
+              </Typography>
+              <Button
+                sx={{ m: 2, p: 2 }}
+                size="small"
+                variant="contained"
+                onClick={() => {
+                  setisLoading(false)
+                  router.push('/timesheet/' + timesheet.id)
+                }}
+              >
+              <RedoIcon></RedoIcon>
+              </Button>
+              </>
+              )
+}
 
-       
-      </List>
-      {
-        notify.length==0 && (
-         
-          <Typography
-          align="center"
-          p={2}
-          
-          >
+{
+  timesheet.statusOfAcceptance == 'ACCEPTED' &&
+  (
+    <>
+      <Typography variant="subtitle2">
+                Your Timesheet in which you submitted regarding your tutee's
+                parent {timesheet?.parent?.fullName} in{' '}
+                {monthName[timesheet?.month - 1]}, {timesheet.year} is Accepted
+              </Typography>
+              
+    </>
+  )
+}
+            </ListItem>
+          ))}
+        </List>
+
+        {notify.length == 0 && timNotify.length == 0 && (
+          <Typography align="center" p={2}>
             NO NOTIFICATION FOR TODAY
           </Typography>
-
-        )
-      }
-    </Dialog>
+        )}
+      </Dialog>
     </nav>
   )
 }
