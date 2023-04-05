@@ -514,8 +514,9 @@ Number
                       required={true}
                       margin="normal"
                       name="workHour"
+                      
                       InputProps={{
-                        inputProps: { min: 0 },
+                        inputProps: { min: 0,max:12 },
                         style: styles.input,
                       }}
                       onChange={(event) => handleStudentField(event, index)}
