@@ -487,7 +487,7 @@ const Header = () => {
 }
 
 {
-  timesheet.statusOfAcceptance == 'ACCEPTED' &&
+  timesheet.statusOfAcceptance == 'SUCCESS' &&
   (
     <>
       <Typography variant="subtitle2">

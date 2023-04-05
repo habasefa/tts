@@ -120,6 +120,7 @@ import {
 import { sendTimeSheet } from '../../backend-utils/tutor-utils'
 
 import { deleteTimesheet } from '../../backend-utils/tutor-utils'
+import { getParentById } from '../../backend-utils/parent-utils'
 
 const DropZoneImageUploadUpdate = () => {
   const styles = {
@@ -153,16 +154,27 @@ const DropZoneImageUploadUpdate = () => {
         console.log(data,"indeed deleted")
         if (data.success)
         {
-      
-            setSelectedParent(data.deletedTimesheet?.parent)
-            setMonth(data.deleteTimesheet?.month)
-            setYear(data.deleteTimesheet?.year)
+
+            getParentById(data.deletedTimesheet?.parentId,token)
+            .then((data)=>data.json())
+            .then((data)=>{
+              console.log(data);
+              setSelectedParent(data.user);
+            })
+            
+            setMonth(data.deletedTimesheet?.month)
+            setYear(data.deletedTimesheet?.year)
             setUserData(data.deletedTimesheet?.tutor)
             setParentId(data.deletedTimesheet?.parentId)
             let parentIds = data.deletedTimesheet?.parentId
+            let value =[]
             getTutorById(data.deletedTimesheet?.tutorId,token)
+           
+            .then((data)=>data.json())
             .then((tutor)=>{
-                tutor.students.map((student)=>{
+              console.log(tutor);
+              setUserData(tutor.user);
+                tutor.user.students?.map((student)=>{
                     if (student.parentId == parentIds){
                       value.push({
                         studentName: student,
@@ -184,6 +196,7 @@ const DropZoneImageUploadUpdate = () => {
     )
    
     .catch((error)=>{
+      console.log(error)
         router.push('/');
         console.log("Something is Wrong");
     })
@@ -294,7 +307,7 @@ const DropZoneImageUploadUpdate = () => {
     event.preventDefault()
     setUploading(true)
     console.log(isUploading)
-
+    console.log(month,year,userData,parentId)
     sendTimeSheet({
       tutorId: userData?.id,
       listStudent: { listStudent },
@@ -455,7 +468,7 @@ const DropZoneImageUploadUpdate = () => {
               <InputLabel id="demo-select-small">Parent Name</InputLabel>
                <TextField
                disabled
-               value={selectedParent?.parent}
+               value={selectedParent?.fullName}
                fullWidth
                required={true}
                margin="normal"
