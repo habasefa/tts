@@ -53,6 +53,8 @@ const Header = () => {
   const handleClose = () => {
     setisLoading(false)
   }
+  const [reportCount, setReportCount]=useState(0);
+  const [timesheetCount,setTimeSheetCount] = useState(0);
 
   const [tutorData, setTutorData] = useState<any>(null)
 
@@ -74,24 +76,28 @@ const Header = () => {
         .then((res) => res.json())
         .then((data) => {
           setTutorData(data)
-
+          let count = 0;
           fetchRejectedReport(data.tutor.id, token)
             .then((res) => res.json())
             .then((data) => {
               console.log(data)
               let temp: any[] = []
               if (data.success) {
-                data.reports?.map((report:any)=>{
-                  console.log(report,"report")
-                  if (report?.view === "PENDING" || report?.status === "REJECTED" )
-                  {
-                    temp.push(report)
+                data.reports?.map((report: any) => {
+                  console.log(report, 'report')
+                  if (
+                    report?.view === 'PENDING' ||
+                    report?.status === 'REJECTED'
+                  ) {
+                    count = Number(count) + 1
                   }
+                  temp.push(report)
                 })
-               
               }
+              setReportCount(count)
               setNot(temp)
             })
+          let couTime = 0;
           fetchRejectedTimesheet(data.tutor.id, token)
             .then((res) => res.json())
             .then((data) => {
@@ -103,11 +109,14 @@ const Header = () => {
                     timesheet?.view === 'PENDING' ||
                     timesheet?.statusOfAcceptance == 'REJECTED'
                   ) {
-                    console.log(timesheet,"seen")
-                    temp.push(timesheet)
+                    console.log(timesheet, 'seen')
+                    couTime = Number(couTime) +1
                   }
+                  temp.push(timesheet)
                 })
+              
                 setTimNot(temp)
+                setTimeSheetCount(couTime)
               }
             })
         })
@@ -341,27 +350,30 @@ const Header = () => {
                 onClick={() => {
                   setisLoading(true)
                   if (timNotify.length > 0) {
-                    console.log("hidd")
+                    console.log('hidd')
                     timNotify.map((val) => {
-                      console.log(val,'hidd')
-                      if (val.statusOfAcceptance =="SUCCESS"){
-                      UpdateAnImage(user.accessToken, val.id, { view: 'SEEN' })
-                        .then((data) => console.log(data,"updated"))
-                        .catch((error) => {
-                          console.log(error)
+                      console.log(val, 'hidd')
+                      if (val.statusOfAcceptance == 'SUCCESS') {
+                        UpdateAnImage(user.accessToken, val.id, {
+                          view: 'SEEN',
                         })
+                          .then((data) => console.log(data, 'updated'))
+                          .catch((error) => {
+                            console.log(error)
+                          })
                       }
                     })
-                    
                   }
-                  if (notify.length > 0){
+                  if (notify.length > 0) {
                     notify.map((val) => {
-                      if(val.status == "SUCCESS") {
-                        UpdateAReport(user.accessToken,val.id,{view:'SEEN'})
-                        .then((data) => console.log(data))
-                        .catch((error) => {
-                          console.log(error)
+                      if (val.status == 'SUCCESS') {
+                        UpdateAReport(user.accessToken, val.id, {
+                          view: 'SEEN',
                         })
+                          .then((data) => console.log(data))
+                          .catch((error) => {
+                            console.log(error)
+                          })
                       }
                     })
                   }
@@ -370,7 +382,8 @@ const Header = () => {
                 Notification
                 <Badge
                   badgeContent={
-                    Number(notify?.length) + Number(timNotify?.length)
+                    timesheetCount + reportCount 
+                   
                   }
                   color="secondary"
                 >
@@ -410,100 +423,138 @@ const Header = () => {
 
       <Dialog onClose={handleClose} open={isLoading}>
         <DialogTitle align="center">Notification</DialogTitle>
-        <List>
+        <List  sx={{ width: '100%', padding:2, bgcolor: 'background.paper' }}>
+        {notify.length > 0 && (
+            <Typography variant="h6" mb={2}>
+              Reports
+            </Typography>
+          )}
           {notify?.map((report) => (
-            <ListItem>
+            <ListItem  sx={{borderRadius: 2, boxShadow: 4, p: 2 ,borderBottom: '1px solid #ccc' }}>
               <ListItemAvatar>
                 <Avatar>
                   <WorkIcon />
                 </Avatar>
               </ListItemAvatar>
-              {report?.status === "REJECTED" && 
-              (
+              {report?.status === 'REJECTED' && (
                 <>
-              <Typography>
-                Your report in which you submitted in{' '}
-                {monthName[report?.reportMonth - 1]} {report.reportDate} ,{' '}
-                {report.reportYear} is Rejected
-              </Typography>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  setisLoading(false)
-                  router.push('/report/' + report.id)
-                }}
-              >
-                <RedoIcon />
-              </Button>
-              </>
+                  <ListItemText
+                    primary={
+                      <Typography variant="subtitle2">
+                        Your report in which you submitted in{' '}
+                        {monthName[report.reportMonth - 1]} {report.reportDate},{' '}
+                        {report.reportYear} is Rejected
+                      </Typography>
+                    }
+                    secondary={
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          setisLoading(false)
+                          router.push('/report/' + report.id)
+                        }}
+                      >
+                        Retry
+                      </Button>
+                    }
+                  />
+                </>
               )}
-               {report?.status === "SUCCESS" && 
-              (
+              {report?.status === 'SUCCESS' && (
                 <>
-              <Typography variant="subtitle2">
-                Your report in which you submitted in{' '}
-                {monthName[report?.reportMonth - 1]} {report.reportDate} ,{' '}
-                {report.reportYear} is Accepted
-              </Typography>
-              
-                <Rating name="size-small"  defaultValue={report.rate} size="small" />
-                
-              
-              </>
+                  <ListItemText
+                    primary={
+                      <Typography variant="subtitle2">
+                        Your report in which you submitted in{' '}
+                        {monthName[report.reportMonth - 1]} {report.reportDate},{' '}
+                        {report.reportYear} is Accepted
+                      </Typography>
+                    }
+                    secondary={
+                      <Rating
+                        name="size-small"
+                        disabled={true}
+                        defaultValue={report.rate}
+                        size="small"
+                      />
+                    }
+                  />
+                </>
               )}
             </ListItem>
           ))}
-        </List>
+       
 
-        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+       {timNotify.length > 0 && (
+            <Typography variant="h6" mt={2} mb={2}>
+              Timesheets
+            </Typography>
+          )}
           {timNotify?.map((timesheet) => (
-            <ListItem>
+            <ListItem   sx={{borderRadius: 2, boxShadow: 4, p: 2 ,borderBottom: '1px solid #ccc' }}>
               <ListItemAvatar>
                 <Avatar>
                   <FilePresentOutlinedIcon />
                 </Avatar>
               </ListItemAvatar>
-              {timesheet.statusOfAcceptance == 'REJECTED' &&
-              (
+              {timesheet.statusOfAcceptance == 'REJECTED' && (
                 <>
-              <Typography variant="subtitle2">
-                Your Timesheet in which you submitted regarding your tutee's
-                parent {timesheet?.parent?.fullName} in{' '}
-                {monthName[timesheet?.month - 1]}, {timesheet.year} is Rejected
-              </Typography>
-              <Button
-                sx={{ m: 2, p: 2 }}
-                size="small"
-                variant="contained"
-                onClick={() => {
-                  setisLoading(false)
-                  router.push('/timesheet/' + timesheet.id)
-                }}
-              >
-              <RedoIcon></RedoIcon>
-              </Button>
-              </>
-              )
-}
+                  <ListItemText
+                    primary={
+                      <Typography variant="subtitle2">
+                        Your Timesheet in which you submitted regarding your
+                        tutee's parent {timesheet.parent.fullName} in{' '}
+                        {monthName[timesheet.month - 1]}, {timesheet.year} is
+                        Rejected
+                      </Typography>
+                    }
+                    secondary={
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          setisLoading(false)
+                          router.push('/timesheet/' + timesheet.id)
+                        }}
+                      >
+                        Retry
+                      </Button>
+                    }
+                  />
+                </>
+              )}
 
-{
-  timesheet.statusOfAcceptance == 'SUCCESS' &&
-  (
-    <>
-      <Typography variant="subtitle2">
-                Your Timesheet in which you submitted regarding your tutee's
-                parent {timesheet?.parent?.fullName} in{' '}
-                {monthName[timesheet?.month - 1]}, {timesheet.year} is Accepted
-              </Typography>
-              
-    </>
-  )
-}
+              {timesheet.statusOfAcceptance == 'SUCCESS' && (
+                <>
+                  <ListItemText
+                    primary={
+                      <Typography variant="subtitle2">
+                        Your Timesheet in which you submitted regarding your
+                        tutee's parent {timesheet?.parent?.fullName} in{' '}
+                        {monthName[timesheet?.month - 1]}, {timesheet.year} is
+                        Accepted
+                      </Typography>
+                    }
+                  />
+                </>
+              )}
             </ListItem>
           ))}
+          {tutorData?.tutor?.status === 'SUCCESS' && (
+            <Typography variant="h6" mb={2}>
+              Status
+            </Typography>
+          )}
+
+{ tutorData?.tutor?.status === 'SUCCESS' && (
+           <Typography variant="subtitle1">
+          Your are active tutor Now
+         </Typography>
+        )}
         </List>
 
-        {notify.length == 0 && timNotify.length == 0 && (
+       
+
+        {notify.length == 0 && timNotify.length == 0 && tutorData?.tutor?.status != 'SUCCESS' && (
           <Typography align="center" p={2}>
             NO NOTIFICATION FOR TODAY
           </Typography>
