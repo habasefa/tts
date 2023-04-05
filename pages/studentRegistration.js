@@ -475,6 +475,7 @@ const StudentRegistration = () => {
                           margin="normal"
                           required={true}
                           value={val.workDays}
+                          
                           label="Hours Per Day"
                           fullWidth
                           onChange={(event) => handleStudentField(event, index)}
@@ -486,7 +487,7 @@ const StudentRegistration = () => {
                           <MenuItem value={5}>5 Days</MenuItem>
                           <MenuItem value={6}>6 Days</MenuItem>
                           <MenuItem value={7}>7 Days</MenuItem>
-                          <MenuItem value={8}>8 Days</MenuItem>
+                        
                         </Select>
                       </Grid>
                       <Grid item xs={16} md={8} lg={3}>

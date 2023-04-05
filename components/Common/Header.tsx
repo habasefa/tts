@@ -78,6 +78,7 @@ const Header = () => {
           fetchRejectedReport(data.tutor.id, token)
             .then((res) => res.json())
             .then((data) => {
+              console.log(data)
               let temp: any[] = []
               if (data.success) {
                 data.reports?.map((report:any)=>{
