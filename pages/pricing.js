@@ -4,6 +4,8 @@ import Header from '@/components/Common/Header'
 import Footer from '@/components/Common/Footer'
 
 
+
+
 import {
   Dialog,
   DialogActions,
@@ -29,6 +31,7 @@ import {
   Chip,
 } from '@mui/material'
 const Pricing = () => {
+  const router = useRouter()
   const [grade, setGrade] = useState('')
   const [hours, setHours] = useState(0)
   const [days, setDays] = useState(0)
@@ -204,7 +207,7 @@ const Pricing = () => {
         <div className="flex justify-center my-4">
           <button
               
-              onClick={router.push('/studentRegistration')}
+              onClick={()=>router.push('/studentRegistration')}
               
             
               
