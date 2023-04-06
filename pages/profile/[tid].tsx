@@ -499,8 +499,7 @@ function UpdateTutor() {
               name="workDays"
               rules={[
                 {
-                  max:7,
-                min:1,
+                  
                   required: true,
                   message: 'Please input preferred work day/days',
                 },
@@ -514,8 +513,7 @@ function UpdateTutor() {
               rules={[
                 {
                   required: true,
-                  max:12,
-                  min:1,
+                
                   message: 'Please input preferred work hour/hours',
                 },
               ]}
