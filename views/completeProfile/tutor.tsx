@@ -481,7 +481,7 @@ function Tutor({ user }: any) {
             name="workDays"
             rules={[
               {
-                max:7,
+                
                 min:1,
                 required: true,
                 message: 'Please input preferred work day/days',
@@ -495,7 +495,7 @@ function Tutor({ user }: any) {
             name="workHour"
             rules={[
               {
-                max:12,
+                
                 min:1,
                 required: true,
                 message: 'Please input preferred work hour/hours',
