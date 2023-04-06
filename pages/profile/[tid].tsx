@@ -46,7 +46,7 @@ function UpdateTutor() {
           cGPA: data.user.cGPA,
           field: data.user.field,
           college: data.user.college,
-          volenteerism: data.user.volunteerism,
+          volenteerism: data.user.volenteerism,
           prevTutored: data.user.prevTutored,
           prevTutorGrades: data.user.prevTutorGrades,
           prevTutorExperience: data.user.prevTutorExperience,
