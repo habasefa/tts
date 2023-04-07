@@ -372,6 +372,19 @@ const UpdateAnImage = async (token: String,id: String,imageBody: any)=>{
   console.log(response)
   return response;
 }
+const FetchAnImage = async(token:String , id:String)=>{
+  const response = await fetch(`${API_URL}api/v1/tutor/image/${id}`,{
+    method:"GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+
+    }
+    
+  })
+
+  return response;
+}
 
 export {
   createTutor,
@@ -390,5 +403,6 @@ export {
   createTutorFollowUp,
   fetchRejectedTimesheet,
   deleteTimesheet,
-  UpdateAnImage
+  UpdateAnImage,
+  FetchAnImage
 }

@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout, selectUser } from 'redux/userSlice'
 import { useRef } from 'react'
 import {
+  FetchAnImage,
   UpdateAReport,
   UpdateAnImage,
   fetchRejectedReport,
@@ -104,6 +105,7 @@ const Header = () => {
               console.log(data, 'i really need to see')
               let temp: any[] = []
               if (data.success) {
+               
                 data.timeSheets?.map((timesheet: any) => {
                   if (
                     timesheet?.view === 'PENDING' ||
@@ -112,6 +114,8 @@ const Header = () => {
                     console.log(timesheet, 'seen')
                     couTime = Number(couTime) +1
                   }
+                  FetchAnImage(token,timesheet.id).then((data)=>data.json())
+                  .then((data)=>console.log(data,"wanted" ))
                   temp.push(timesheet)
                 })
               

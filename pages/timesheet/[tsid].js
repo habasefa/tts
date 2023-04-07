@@ -85,11 +85,12 @@ import IconButton from '@mui/material/IconButton'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import Footer from '../../components/historyComponents/footer'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
-import { getTutorById } from '../../backend-utils/tutor-utils'
+import { FetchAnImage, getTutorById } from '../../backend-utils/tutor-utils'
 
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
 import { FaSpinner } from 'react-icons/fa';
+import Collapse from '@mui/material/Collapse';
 
 import {
   Autocomplete,
@@ -148,27 +149,23 @@ const DropZoneImageUploadUpdate = () => {
   const { tsid } = router.query;
   useEffect(() => {
   
-    deleteTimesheet(token,tsid)
+    FetchAnImage(token,tsid)
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data,"indeed deleted")
+        console.log(data,"indeed fetched")
         if (data.success)
         {
 
-            getParentById(data.deletedTimesheet?.parentId,token)
-            .then((data)=>data.json())
-            .then((data)=>{
-              console.log(data);
-              setSelectedParent(data.user);
-            })
-            
-            setMonth(data.deletedTimesheet?.month)
-            setYear(data.deletedTimesheet?.year)
-            setUserData(data.deletedTimesheet?.tutor)
-            setParentId(data.deletedTimesheet?.parentId)
-            let parentIds = data.deletedTimesheet?.parentId
+       
+            setSelectedParent(data.fetchedTimesheet?.parent)
+            setMonth(data.fetchedTimesheet?.month)
+            setYear(data.fetchedTimesheet?.year)
+            setUserData(data.fetchedTimesheet?.tutor)
+            setParentId(data.fetchedTimesheet?.parentId)
+           
+            let parentIds = data.fetchedTimesheet?.parentId
             let value =[]
-            getTutorById(data.deletedTimesheet?.tutorId,token)
+            getTutorById(data.fetchedTimesheet?.tutorId,token)
            
             .then((data)=>data.json())
             .then((tutor)=>{
@@ -221,6 +218,8 @@ const DropZoneImageUploadUpdate = () => {
   const [selectedParent, setSelectedParent] = useState(null)
   const [listStudent, setListStudents] = useState([])
   const [parentFetched , setParentFetched] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false)
+  const [errMessage, setErrMessage] = useState("");
 
   const handleStudentField = (event, index) => {
     let data = [...listStudent]
@@ -308,6 +307,10 @@ const DropZoneImageUploadUpdate = () => {
     setUploading(true)
     console.log(isUploading)
     console.log(month,year,userData,parentId)
+    deleteTimesheet(token,tsid)
+    .then((data)=>data.json())
+    .then((data)=>{
+      console.log(data,"indeed deleted")
     sendTimeSheet({
       tutorId: userData?.id,
       listStudent: { listStudent },
@@ -321,7 +324,13 @@ const DropZoneImageUploadUpdate = () => {
       .then((data) => {
         console.log(data)
         console.log('h')
-        if (data.duplication)
+        if (data.error){
+          setOpenAlert(true)
+    
+          setErrMessage(data.error.message)
+          
+        }
+      else  if (data.duplication)
         
         {
             setOpenDup(true)
@@ -333,6 +342,7 @@ const DropZoneImageUploadUpdate = () => {
         }
         setUploading(false)
       })
+    })
   }
   const renderSelectedParent = (value) => {
     if (!value) {
@@ -387,6 +397,8 @@ const DropZoneImageUploadUpdate = () => {
           </h1>
         </div>
       </div>
+    
+      
       <div className="justify-left flex  px-10 font-minionPro  md:px-40  ">
         <h1 className="text-lg text-[#000000] md:text-2xl">
           {monthName[month - 1]} Time Sheet
@@ -597,6 +609,12 @@ const DropZoneImageUploadUpdate = () => {
           </div>
 }
         </div>
+        <div className=" flex justify-center">
+      <Collapse in={openAlert}>
+      
+      <Alert severity="error">{errMessage}</Alert>
+      </Collapse>
+      </div>
            
       </form>
       <Dialog

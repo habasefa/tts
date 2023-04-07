@@ -91,7 +91,7 @@ import { getTutorById } from '../backend-utils/tutor-utils'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
 import { FaSpinner } from 'react-icons/fa';
-
+import Collapse from '@mui/material/Collapse';
 import {
   Autocomplete,
   Dialog,
@@ -99,7 +99,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Alert,
+  
   Box,
   Item,
   Button,
@@ -120,6 +120,7 @@ import {
 } from '@mui/material'
 import { sendTimeSheet } from '../backend-utils/tutor-utils'
 import { getParentById } from '../backend-utils/parent-utils'
+import Alert from '@mui/material/Alert';
 
 const DropZoneImageUpload = () => {
   const styles = {
@@ -144,6 +145,8 @@ const DropZoneImageUpload = () => {
   const user = useSelector(selectUser)
   const [isLoading, setIsLoading] = useState(true);
   const [openDup,setOpenDup] = useState(false)
+  const [openAlert, setOpenAlert] = useState(false)
+  const [errMessage, setErrMessage] = useState("");
   if (user) {
     var token = user.accessToken
     var id = user.user.id
@@ -314,9 +317,16 @@ Number
     })
       .then((data) => data.json())
       .then((data) => {
-        console.log(data)
-        console.log('h')
-        if (data.duplication)
+      
+
+    if (data.error){
+      setOpenAlert(true)
+
+      setErrMessage(data.error.message)
+      
+    }
+        
+    else if (data.duplication)
         
         {
             setOpenDup(true)
@@ -384,7 +394,9 @@ Number
           </h1>
         </div>
       </div>
+   
       <div className="justify-left flex  px-10 font-minionPro  md:px-40  ">
+     
         <h1 className="text-lg text-[#000000] md:text-2xl">
           {monthName[mont - 1]} Time Sheet
         </h1>
@@ -599,6 +611,12 @@ Number
           </div>
 }
         </div>
+        <div className=" flex justify-center">
+      <Collapse in={openAlert}>
+      
+      <Alert severity="error">{errMessage}</Alert>
+      </Collapse>
+      </div>
            
       </form>
       <Dialog
