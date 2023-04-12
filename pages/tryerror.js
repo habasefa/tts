@@ -3,7 +3,7 @@ import Footer from '../components/historyComponents/footer'
 import Header from '../components/historyComponents/header'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
-import { createReport, fetchReport } from "../backend-utils/tutor-utils"
+import { createReport, fetchReport, getTutorById } from "../backend-utils/tutor-utils"
 import { useRouter } from 'next/router'
 import { getUserById } from '../backend-utils/user-utils'
 import { LocalizationProvider } from '@mui/x-date-pickers'
@@ -126,15 +126,66 @@ const router = useRouter()
     console.log(token)
     console.log("hi")
     console.log(id)
+    let listst = []
     getUserById(id, token)
       .then((res) => res.json())
+      
       .then((data) => {
+        console.log(data,"a")
+        getTutorById(data.tutor?.id,token)
+        .then((re)=>re.json())
+        .then((re)=>{
+          re.user?.students.map((stu)=>{
+            listst.push({
+              name: stu.fullName,
+              subjects: [
+                {
+                  subject: '',
+                  chapters: [
+                    {
+                      chapter: '',
+                      topics: [
+                        {
+                          topic: '',
+                          understanding: '',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+              assesments: [
+                {
+                  course: '',
+                  units: [
+                    {
+                      unit: '',
+                      types: [
+                        {
+                          typ: '',
+                          result: '',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },)
+          })
+          console.log(listst,"fin")
+          setinputFields(listst)
+        })
+        
         setUserData(data)
       })
       .catch((_) => {
        console.log("hi")
-      }).finally(()=>{isPageLoading(false)})
+      }).finally(()=>{
+        
+       })
   }, [])
+
+  
   // useE
  
 
@@ -142,42 +193,13 @@ const router = useRouter()
   const [numberOfTutee, setnumberOfTutee] = useState(1)
 
   const [inputFields, setinputFields] = useState([
-    {
-      name: '',
-      subjects: [
-        {
-          subject: '',
-          chapters: [
-            {
-              chapter: '',
-              topics: [
-                {
-                  topic: '',
-                  understanding: '',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      assesments: [
-        {
-          course: '',
-          units: [
-            {
-              unit: '',
-              types: [
-                {
-                  typ: '',
-                  result: '',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
   ])
+  useEffect(()=>{
+    if (inputFields.length>1){
+      isPageLoading(false)
+    }
+
+  },[inputFields])
 
   const handleClick = () => {
     setIsLoading(true)
@@ -620,29 +642,7 @@ const router = useRouter()
       method='post'
       onSubmit={handleClick}
       >
-        <div className=" ">
-          <label className="col mt-2 text-lg font-semibold md:text-xl">
-            Total Number of Tutee
-          </label>
-          <br></br>
-
-          <input
-            className="mr-1 w-full rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/12"
-            type="number"
-            max={4}
-            min={1}
-            placeholder="Number of Tutee"
-          
-            onChange={(event) => handleNumber(event)}
-          />
-          <button
-            class="ml-2 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
-            onClick={addField}
-          >
-            add
-          </button>
-      
-        </div>
+       
         <div className="mt-5">
         <div>
           <div>
@@ -735,6 +735,7 @@ const router = useRouter()
                       className="mr-1 w-full rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/4"
                       name="name"
                       type="text"
+                      disabled={true}
                       placeholder="Full Name"
                       required={true}
                       value={input.name}
