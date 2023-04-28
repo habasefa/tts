@@ -184,7 +184,8 @@ const createReport = async ({
   tutorName,
   reportDate,
   reportMonth,
-  reportYear
+  reportYear,
+  parentId
 }: ReportPostProps) => {
 
   const response = await fetch(`${API_URL}api/v1/report/`, {
@@ -196,6 +197,7 @@ const createReport = async ({
     body: JSON.stringify({
       reports,
       tutorId,
+      parentId,
       totalDays,
       totalHours,
       month,

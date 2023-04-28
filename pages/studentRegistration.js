@@ -589,7 +589,7 @@ const StudentRegistration = () => {
             </Grid>
           </Grid>
           <button
-            class=" focus:shadow-outline w-1/2 rounded-xl bg-[#767b84] py-2 px-4 font-bold text-white hover:bg-[#c5c5c5] focus:outline-none md:w-1/6 md:text-xl"
+            class=" focus:shadow-outline w-1/2 mb-1  rounded-xl bg-[#767b84] py-2 px-4 font-bold text-white hover:bg-[#c5c5c5] focus:outline-none md:w-1/6 md:text-xl"
             type="button"
             onClick={addStudent}
           >

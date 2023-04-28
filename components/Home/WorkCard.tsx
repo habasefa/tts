@@ -1,11 +1,12 @@
-import React from 'react'
-import Image from 'next/image'
-import 'antd/dist/antd.css'
+import React from 'react';
+import 'antd/dist/antd.css';
 
 const WorkCard = (props: any) => {
   return (
     <div className="mt-10 flex flex-col items-center font-minionPro">
-      <Image src={props.image} alt="me" width="400" height="300" />
+      <div style={{ width: '400px', height: '300px', overflow: 'hidden', objectFit: 'cover' }}>
+        <img src={props.image} alt="me" style={{ width: '100%', height: '100%' }} />
+      </div>
       <div className="px-4">
         <h1 className="text-[#1A3765] text-center text-xl md:text-2xl xl:text-3xl 2xl:text-4xl text-[#1A3765] font-bold font-minionPro mt-5">
           {props.title}
@@ -15,7 +16,7 @@ const WorkCard = (props: any) => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WorkCard
+export default WorkCard;

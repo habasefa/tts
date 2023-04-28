@@ -117,6 +117,7 @@ export interface ReportPostProps {
   reportDate: number
   reportMonth : number
   reportYear: number
+  parentId:string
 }
 export interface TimeSheetProps {
   tutorId : string

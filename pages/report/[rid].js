@@ -70,6 +70,7 @@ const { rid } = router.query;
   const [helpChallenge,setHelpChallenge] = useState(null)
   const [ dressing, setDressing] =useState(null)
   const [ punctuality , setpunctuality ]= useState(null)
+  const [parentId, setParentId] = useState('');
 
   const [grooming, setgrooming] =useState(null)
   const [manner, setmanner] =useState(null)
@@ -125,11 +126,57 @@ const { rid } = router.query;
     var id = user.user.id
   }
   useEffect(() => {
-  
+   let value = []
     deleteReport(token,rid)
     .then((res)=>res.json())
     .then((data)=>{
       console.log(data)
+      setParentId(data.deletedUser?.parentId);
+      setReportMonth(data.deletedUser?.reportMonth)
+      setReporYear(data?.deletedUser?.reportYear)
+      setReportWeek(data?.deletedUser?.week)
+      setReportDate(data?.deletedUser?.reportDate)
+      
+      
+      data.deletedUser?.reports.inputFields.map((st)=>{
+        value.push({
+          name: st.name,
+          subjects: [
+            {
+              subject: '',
+              chapters: [
+                {
+                  chapter: '',
+                  topics: [
+                    {
+                      topic: '',
+                      understanding: '',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          assesments: [
+            {
+              course: '',
+              units: [
+                {
+                  unit: '',
+                  types: [
+                    {
+                      typ: '',
+                      result: '',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        })
+
+      })
+    setinputFields(value);
     getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {
@@ -148,41 +195,6 @@ const { rid } = router.query;
   const [numberOfTutee, setnumberOfTutee] = useState(1)
 
   const [inputFields, setinputFields] = useState([
-    {
-      name: '',
-      subjects: [
-        {
-          subject: '',
-          chapters: [
-            {
-              chapter: '',
-              topics: [
-                {
-                  topic: '',
-                  understanding: '',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      assesments: [
-        {
-          course: '',
-          units: [
-            {
-              unit: '',
-              types: [
-                {
-                  typ: '',
-                  result: '',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
   ])
 
   const handleClick = () => {
@@ -191,6 +203,7 @@ const { rid } = router.query;
     console.log(token)
     console.log(inputFields)
     console.log(userData)
+    console.log(reportWeek,reportWeek,reportDate)
     
     createReport({
       reports: {inputFields},
@@ -213,7 +226,8 @@ const { rid } = router.query;
       tutorName :  userData?.tutor.fullName,
       reportDate   : reportDate,
       reportMonth   : reportMonth,
-      reportYear:  reportYear
+      reportYear:  reportYear,
+      parentId:parentId,
           
     })
       .then((res) => res.json())
@@ -579,8 +593,8 @@ const { rid } = router.query;
     
   }
   const [reportDate,setReportDate]= useState(day)
-  const [reportMonth, setReportMonth] =useState(mont)
-  const [reportYear,setReporYear]=useState(year)
+  const [reportMonth, setReportMonth] =useState(null)
+  const [reportYear,setReporYear]=useState(null)
   const [wholeDay, setWholeDay] =useState(dayjs());
   const [reportWeek,setReportWeek] =useState(createCalander(year,mont,day))
 
@@ -610,31 +624,9 @@ const { rid } = router.query;
       method='post'
       onSubmit={handleClick}
       >
-        <div className=" ">
-          <label className="col mt-2 text-lg font-semibold md:text-xl">
-            Total Number of Tutee
-          </label>
-          <br></br>
-
-          <input
-            className="mr-1 w-full rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/12"
-            type="number"
-            max={4}
-            min={1}
-            placeholder="Number of Tutee"
-          
-            onChange={(event) => handleNumber(event)}
-          />
-          <button
-            class="ml-2 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
-            onClick={addField}
-          >
-            add
-          </button>
-      
-        </div>
+        
         <div className="mt-5">
-        <div>
+        {/* <div>
           <div>
             <label className="col mt-2 text-lg font-semibold md:text-xl">
               Please Specify your report Date
@@ -650,7 +642,7 @@ const { rid } = router.query;
           renderInput={(params) => <TextField {...params} />}
         
         />
-         </div>
+         </div> */}
       
         </div>
         <div className=" mt-5 ">
