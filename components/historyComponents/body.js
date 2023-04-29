@@ -311,25 +311,45 @@ const buttonList = [
     </ListItem>
   ));
   return (
-    <div className='font-minionPro'>
-      <IconButton  edge="start"
-        color="inherit"
-        aria-label="menu"
-        sx={{
-          position: "fixed",
-          
-          zIndex: 2,
-        }} onClick={toggleDrawer}>
-        <MenuIcon />
-      </IconButton>
-      <Drawer anchor="left"  open={isOpen} onClose={toggleDrawer}>
-        <div style={{ width: 250 }}>
-          <List>{listItems}</List>
-        </div>
-      </Drawer>
-      <RightSide text={paragraphs[index].label} subtext={paragraphs[index].description} />
+    
+    <div className='flex flex-col md:flex-row justify-between font-minionPro'>
+
+  <div className='md:w-1/3 md:sticky md:top-0 md:h-full md:overflow-y-auto'>
+    <p className="w-5/6 px-3  md:px-12 py-3 2xl:px-20 text-lg md:text-2xl font-bold text-center bg-white text-[#1a3765] shadow-lg">List of Training</p>
+    <div className='my-10 text-left '>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(0)}
+      >Congratulations</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(1)}
+      >1. Part One : On benefits</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(2)}
+      >2. Part Two : On Temaribet</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(3)}
+      >3. Part Three : On the Tutee</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(4)}
+      >4. Part Four : On Tutoring</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(5)}
+      >5. Part Five : On Procedures</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(6)}
+      >6. Part Six : On Resourcefulness</button>
+      <button className='font-bold hover:bg-white text-[#1a3765] p-3  focus:bg-white text-xl mt-5 block '
+        onClick={() => setIndex(7)}
+      >7. Part Seven : On Payment and Reward</button>
     </div>
-  );
+  </div>
+
+  <RightSide text={paragraphs[index].label} subtext={paragraphs[index].description} />
+</div>
+
+    );
+    
+    
 };
 
 
