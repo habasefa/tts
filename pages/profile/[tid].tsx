@@ -34,6 +34,7 @@ function UpdateTutor() {
     getTutorById(tid, token)
       .then((res) => res.json())
       .then((data) => {
+        setTutorExperience(data.user.prevTutored);
         setInputValue({
           fullName: data.user.fullName,
           email: data.user.email,
@@ -122,9 +123,8 @@ function UpdateTutor() {
   }
 
   function handleChange(value: any) {
-    let x: boolean
-    value == 'yes' ? (x = true) : (x = false)
-    setTutorExperience(x)
+    console.log(value)
+    setTutorExperience(value)
   }
 
   const [file, setFile] = useState<any>('')
@@ -384,8 +384,8 @@ function UpdateTutor() {
                 placeholder="Select a option and change input text above"
                 onChange={handleChange}
               >
-                <Option value="yes">Yes</Option>
-                <Option value="no">No</Option>
+                <Option value={true}>Yes</Option>
+                <Option value={false}>No</Option>
               </Select>
             </Form.Item>
             <Form.Item
