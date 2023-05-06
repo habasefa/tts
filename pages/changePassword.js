@@ -12,6 +12,7 @@ import { login, selectUser } from 'redux/userSlice'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
 import { getUserById } from '../backend-utils/user-utils'
+import classes from '@/styles/signUp.module.css'
 
 
 export default function Login() {
@@ -29,11 +30,13 @@ export default function Login() {
 
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
+  const [oldPassword, setOldPassword] = useState(null)
 
   const [loggingIn, setLoggingIn] = useState(false)
   const [err, setErr] = useState('')
   const [showAlert, setShowAlert] = useState(false)
   const [isLoading,setIsLoading]=useState(true)
+  const [passwordLength, setPasswordLength] = useState(0)
   const dispatch = useDispatch()
   if (user) {
     
@@ -61,12 +64,24 @@ export default function Login() {
     setErr('')
     setShowAlert(false)
     console.log(email,password)
-    changePassword(id,token,{password:password})
+    changePassword(id,token,{password:password , oldPassword:oldPassword})
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        
-        router.push('/')
+        if (data.success)
+        {
+          router.push('/')
+        }
+        else {
+          if (data.status != 500)
+          {
+          setErr(data.message)
+          }
+          else{
+            setErr('Something went wrong')
+          }
+        }
+       
       })
       .catch((_) => {
         setErr('Something went wrong')
@@ -120,6 +135,27 @@ export default function Login() {
                 layout="vertical"
                 onFinish={onFinish}
               >
+                <label
+                  className="mb-1 block text-xl  text-gray-500 2xl:text-2xl "
+                  htmlFor="oldpassword"
+                >
+                  <h4 className="text-xl">Old Password</h4>
+                </label>
+                <Form.Item
+                  name="oldpassword"
+                  rules={[
+                    { required: true, message: 'Please input your Old password!' },
+                  ]}
+                  className="mb-2 rounded pt-1 "
+                >
+                  <Input.Password
+                    size="large"
+                    placeholder="Enter Old password"
+                    value={password}
+                    onChange={(e) => setOldPassword(e.target.value)}
+                    className="w-full  border border-gray-400 bg-gray-200 px-3 pb-3 text-gray-700 transition duration-500 focus:border-gray-900 focus:outline-none"
+                  />
+                </Form.Item>
               
                 <label
                   className="mb-1 block text-xl  text-gray-500 2xl:text-2xl "
@@ -131,17 +167,49 @@ export default function Login() {
                   name="password"
                   rules={[
                     { required: true, message: 'Please input your password!' },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (getFieldValue('password').length < 8) {
+                          return Promise.reject(
+                            new Error('Password must be minimum 8 characters.')
+                          )
+                        }
+                        return Promise.resolve()
+                      },
+                    }),
                   ]}
                   className="mb-2 rounded pt-1 "
                 >
                   <Input.Password
                     size="large"
-                    placeholder="Enter password"
+                    placeholder="Enter New Password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {setPassword(e.target.value); setPasswordLength(e.target.value.length) }}
                     className="w-full  border border-gray-400 bg-gray-200 px-3 pb-3 text-gray-700 transition duration-500 focus:border-gray-900 focus:outline-none"
                   />
                 </Form.Item>
+                <div className={classes.strength}>
+                  <span
+                    className={`${classes.box} ${
+                      passwordLength >= 2 && classes.strongO
+                    }`}
+                  ></span>
+                  <span
+                    className={`${classes.box} ${
+                      passwordLength >= 4 && classes.strongO
+                    }`}
+                  ></span>
+                  <span
+                    className={`${classes.box} ${
+                      passwordLength >= 6 && classes.strong
+                    }`}
+                  ></span>
+                  <span
+                    className={`${classes.box} ${
+                      passwordLength >= 8 && classes.strong
+                    }`}
+                  ></span>
+                </div>
                 
                
                 <Form.Item>
