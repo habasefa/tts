@@ -446,14 +446,14 @@ const tryerror = () => {
   const addSubject = (index) => {
     console.log(userData)
     event.preventDefault()
-    fetchReport(userData?.tutor.id, token)
-      .then((res) => res.json())
-      .then((data) => {
-        setReportData(data)
-      })
-      .catch((_) => {
-        console.log('hi')
-      })
+    // fetchReport(userData?.tutor.id, token)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setReportData(data)
+    //   })
+    //   .catch((_) => {
+    //     console.log('hi')
+    //   })
 
     let new_data = {
       subject: '',
