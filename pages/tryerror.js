@@ -20,6 +20,17 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import TextField from '@mui/material/TextField'
 import { Input } from 'antd'
 import { borderRadius, height } from '@mui/system'
+import { WeeklyCalendar } from 'react-week-picker';
+import 'react-week-picker/src/lib/calendar.css';
+
+import locale from 'antd/lib/date-picker/locale/en_GB';
+import 'moment/locale/en-gb';
+import moment from 'moment';
+moment.updateLocale('en-gb', {
+  week: {
+    dow: 1 /// Date offset
+  }
+});
 import {
   Autocomplete,
   Dialog,
@@ -47,6 +58,7 @@ import {
 import { Button } from 'antd/lib/radio'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
+
 
 const tryerror = () => {
   const date = new Date()
@@ -138,6 +150,11 @@ const tryerror = () => {
    
     console.log(parent,"hid,updated")
   }
+  
+  const weekFormat = (value) =>
+  `${moment(value).startOf('week').format('MMM D')} ~ ${moment(value)
+    .endOf('week')
+    .format('MMM D')}`;;
   if (user) {
     var token = user.accessToken
     var id = user.user.id
@@ -663,11 +680,14 @@ const tryerror = () => {
   const [reportDate, setReportDate] = useState(day)
   const [reportMonth, setReportMonth] = useState(mont)
   const [reportYear, setReporYear] = useState(year)
-  const [wholeDay, setWholeDay] = useState(dayjs())
+  const [wholeDay, setWholeDay] = useState(moment())
   const [reportWeek, setReportWeek] = useState(createCalander(year, mont, day))
 
-  const handleChangeForWholeDay = (newValue) => {
-    setWholeDay(newValue)
+  const handleChangeForWholeDay = (date,dateString) => {
+    const dayjsDate = dayjs(date); 
+    console.log(dayjsDate);
+    console.log("his s")
+    setWholeDay(date)
   }
   useEffect(() => {
     setReporYear(wholeDay.year())
@@ -778,14 +798,14 @@ const tryerror = () => {
                   Please Specify your report Date
                 </label>
               </div>
-
-              <DesktopDatePicker
+              <DatePicker size={'large'} style={{ width: '60%' }} format ={weekFormat} value={wholeDay}   locale={locale}  onChange={handleChangeForWholeDay} picker="week" />
+              {/* <DesktopDatePicker
                 label=""
                 inputFormat="MM/DD/YYYY"
                 value={wholeDay}
                 onChange={handleChangeForWholeDay}
                 renderInput={(params) => <TextField {...params} />}
-              />
+              /> */}
             </div>
           </div>
           <div className=" mt-5 ">
