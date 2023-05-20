@@ -20,8 +20,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import TextField from '@mui/material/TextField'
 import { Input } from 'antd'
 import { borderRadius, height } from '@mui/system'
-import { WeeklyCalendar } from 'react-week-picker';
-import 'react-week-picker/src/lib/calendar.css';
+
 
 import locale from 'antd/lib/date-picker/locale/en_GB';
 import 'moment/locale/en-gb';
