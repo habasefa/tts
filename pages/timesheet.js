@@ -227,7 +227,7 @@ Number
     var total = 0
     var temp = 0
     data.map((val) => {
-      if (val.grade == "11" || val.grad == "12")
+      if (val.grade == "11" || val.grade == "12")
       {
        temp += Number(val.workHour) * 200 
       }
