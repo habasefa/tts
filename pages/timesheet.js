@@ -225,11 +225,20 @@ Number
     data[index][event.target.name] = event.target.value
     setListStudents(data)
     var total = 0
+    var temp = 0
     data.map((val) => {
+      if (val.grade == "11" || val.grad == "12")
+      {
+       temp += Number(val.workHour) * 200 
+      }
+      else {
+        temp += Number(val.workHour) * 175
+      }
       total += Number(val.workHour)
+
     })
     setTotalHour(Number(total))
-    setTotalSalary(total * 250)
+    setTotalSalary(temp)
   }
   const addParents = (parent) => {
    
@@ -338,6 +347,8 @@ Number
         }
         setUploading(false)
       })
+      
+    
   }
   const renderSelectedParent = (value) => {
     if (!value) {
