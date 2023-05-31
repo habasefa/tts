@@ -140,29 +140,6 @@ const About = () => {
                 </div>
               </div>
               <div className="md:flex-1">
-                <div className="flex flex-col space-y-2">
-                <div className="flex justify-center">
-                    <Avatar
-                      src={'/pp-1.png'}
-                      sx={{
-                        height: 128,
-                        mb: 2,
-                        width: 128,
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h2 className="text-center text-lg md:text-2xl">
-                      Boaz Tamiru
-                    </h2>{' '}
-                  </div>
-                  <div>
-                    <h2 className="text-center text-lg md:text-2xl">HR</h2>
-                  </div>
-                 
-                </div>
-              </div>
-              <div className="md:flex-1">
                 <div className="flex flex-col space-y-1">
                 <div className="flex justify-center">
                     <Avatar
