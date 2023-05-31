@@ -222,6 +222,8 @@ Number
 
   const handleStudentField = (event, index) => {
     let data = [...listStudent]
+    
+    console.log(data[index][event.target.name])
     data[index][event.target.name] = event.target.value
     setListStudents(data)
     var total = 0
@@ -229,10 +231,14 @@ Number
     data.map((val) => {
       if (val.grade == "11" || val.grade == "12")
       {
+       
        temp += Number(val.workHour) * 200 
+       temp += Number((val.workMin)/60) * 200 
+       
       }
       else {
         temp += Number(val.workHour) * 175
+        temp += Number((val.workMin)/60) * 175 
       }
       total += Number(val.workHour)
 
@@ -254,6 +260,8 @@ Number
       studentName: '',
       grade: '',
       workHour: 0,
+      
+      
     }
     data.push(new_studnet)
     setListStudents(data)
@@ -370,13 +378,13 @@ Number
           studentName: student,
           grade: student.grade,
           workHour: 0,
+          workMin: 0,
         })
 
       }
     })
     
     console.log(selectedParent);
-
 
     setListStudents(value)
   }
@@ -544,6 +552,23 @@ Number
                       }}
                       onChange={(event) => handleStudentField(event, index)}
                       value={val.workHour}
+                      type="number"
+                    />
+                  </Grid>
+                  <Grid item xs={16} md={8} lg={3}>
+                    <InputLabel id="demo-select-small">No of Minutes</InputLabel>
+                    <TextField
+                      fullWidth
+                      required={true}
+                      margin="normal"
+                      name="workMin"
+                      
+                      InputProps={{
+                        inputProps: { min: 0 },
+                        style: styles.input,
+                      }}
+                      onChange={(event) => handleStudentField(event, index)}
+                      value={val.workMin}
                       type="number"
                     />
                   </Grid>
