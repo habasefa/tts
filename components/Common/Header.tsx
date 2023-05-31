@@ -447,7 +447,7 @@ const Header = () => {
                       <Typography variant="subtitle2">
                         Your report in which you submitted in{' '}
                         {monthName[report.reportMonth - 1]} {report.reportDate},{' '}
-                        {report.reportYear} is Rejected
+                        {report.reportYear} is Rejected. Because of this reasons listed: {report.comment}
                       </Typography>
                     }
                     secondary={
