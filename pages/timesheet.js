@@ -136,7 +136,7 @@ const DropZoneImageUpload = () => {
   }
 
   const date = new Date()
-  const mont = date.getMonth() + 1
+  const [mont,setmont] =useState (date.getMonth() + 1)
   const year = date.getFullYear()
   const [isUploading, setUploading] = useState(false)
   const [listofParents, setlistOfParents] = useState([])
@@ -152,6 +152,7 @@ const DropZoneImageUpload = () => {
     var id = user.user.id
   }
   const [userData, setUserData] = useState(null)
+  const [selectMonth, setSelectedMonth] = useState(null);
   useEffect(() => {
     let isMounted = true;
    
@@ -327,7 +328,7 @@ Number
       tutorId: userData?.id,
       listStudent: { listStudent },
       parentId: parentId,
-      month: Number(mont),
+      month: Number(selectMonth),
       image: image,
       token: token,
       year: Number(year),
@@ -492,6 +493,32 @@ Number
         </div>
         <div className="justify-center px-10 font-minionPro  md:px-32 ">
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
+          <Grid item xs={16} md={8} lg={3}>
+          <InputLabel id="demo-select-small">Choose Month</InputLabel>
+              <Select
+                fullWidth
+                SelectDisplayProps={{ style: styles.input }}
+                
+                value={selectMonth}
+                label="Hours Per Day"
+                required
+                sx={{ marginLeft: "auto" }}
+                onChange={(event) =>{ setmont(event.target.value);  setSelectedMonth(event.target.value)}}
+              >
+                <MenuItem value={1}>January</MenuItem>
+                <MenuItem value={2}>February</MenuItem>
+                <MenuItem value={3}>March</MenuItem>
+                <MenuItem value={4}>April</MenuItem>
+                <MenuItem value={5}>May</MenuItem>
+                <MenuItem value={6}>June</MenuItem>
+                <MenuItem value={7}>July</MenuItem>
+                <MenuItem value={8}>August</MenuItem>
+                <MenuItem value={9}>September</MenuItem>
+                <MenuItem value={10}>October</MenuItem>
+                <MenuItem value={11}>November</MenuItem>
+                <MenuItem value={12}>December</MenuItem>
+              </Select>
+            </Grid>
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Parent Name</InputLabel>
               <Select
