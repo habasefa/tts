@@ -583,9 +583,10 @@ Number
                     />
                   </Grid>
                   <Grid item xs={16} md={8} lg={3}>
-                    <InputLabel id="demo-select-small">No of Minutes</InputLabel>
+                    <InputLabel id="demo-select-small">No of Minutes(Remaining from the Hours)</InputLabel>
                     <TextField
                       fullWidth
+                      placeholder=''
                       required={true}
                       margin="normal"
                       name="workMin"
