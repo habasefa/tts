@@ -471,7 +471,7 @@ const Header = () => {
                       <Typography variant="subtitle2">
                         Your report in which you submitted in{' '}
                         {monthName[report.reportMonth - 1]} {report.reportDate},{' '}
-                        {report.reportYear} is Accepted
+                        {report.reportYear} is Accepted. And here are the comments: {report.comment}
                       </Typography>
                     }
                     secondary={
