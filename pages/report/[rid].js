@@ -6,7 +6,7 @@ import Header from '../../components/historyComponents/header'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'redux/userSlice'
 
-import { createReport, deleteReport, fetchReport } from "../../backend-utils/tutor-utils"
+import { UpdateAReport, createReport, deleteReport, fetchReport, getAReport } from "../../backend-utils/tutor-utils"
 import { useRouter } from 'next/router'
 import { getUserById } from '../../backend-utils/user-utils'
 
@@ -127,56 +127,29 @@ const { rid } = router.query;
   }
   useEffect(() => {
    let value = []
-    deleteReport(token,rid)
+   getAReport(token,rid)
     .then((res)=>res.json())
     .then((data)=>{
       console.log(data)
-      setParentId(data.deletedUser?.parentId);
-      setReportMonth(data.deletedUser?.reportMonth)
-      setReporYear(data?.deletedUser?.reportYear)
-      setReportWeek(data?.deletedUser?.week)
-      setReportDate(data?.deletedUser?.reportDate)
-      
-      
-      data.deletedUser?.reports.inputFields.map((st)=>{
-        value.push({
-          name: st.name,
-          subjects: [
-            {
-              subject: '',
-              chapters: [
-                {
-                  chapter: '',
-                  topics: [
-                    {
-                      topic: '',
-                      understanding: '',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-          assesments: [
-            {
-              course: '',
-              units: [
-                {
-                  unit: '',
-                  types: [
-                    {
-                      typ: '',
-                      result: '',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        })
+      setParentId(data.user?.parentId);
+      setelequence(data?.user?.elequence)
+      sethygiene(data?.user?.hygiene)
+      setmanner(data?.user?.manner)
+      setgrooming(data?.user?.grooming)
+      setpunctuality(data?.user?.punctuality)
+      setDressing(data?.user?.dressing)
+      setHelpChallenge(data?.user?.helpChallenge)
+      setFutureChallenge(data?.user?.futureChallenge)
+      setPastChallenge(data?.user?.pastChallenge)
+      setFeedback(data?.user?.feedback)
 
-      })
-    setinputFields(value);
+      setReportMonth(data.user?.reportMonth)
+
+      setReporYear(data?.user?.reportYear)
+      setReportWeek(data?.user?.week)
+      setReportDate(data?.user?.reportDate)
+      setinputFields(data?.user?.reports.inputFields);
+   
     getUserById(id, token)
       .then((res) => res.json())
       .then((data) => {
@@ -205,9 +178,9 @@ const { rid } = router.query;
     console.log(userData)
     console.log(reportWeek,reportWeek,reportDate)
     
-    createReport({
+    UpdateAReport(token,rid,{
       reports: {inputFields},
-      token: token,
+     
       tutorId: userData?.tutor.id,
       totalDays : totaldays,
       totalHours: totalhours,
@@ -228,6 +201,8 @@ const { rid } = router.query;
       reportMonth   : reportMonth,
       reportYear:  reportYear,
       parentId:parentId,
+      status: "PENDING",
+      comment:"",
           
     })
       .then((res) => res.json())
@@ -1203,7 +1178,8 @@ const { rid } = router.query;
             1.How do the tutorial go?
 
             </div>
-            <textarea  
+            <textarea
+            value ={feedback}  
             className="mr-1 w-full h-20 rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/4"
             
             required={true}
@@ -1222,7 +1198,8 @@ const { rid } = router.query;
 
             </div>
       
-            <textarea  
+            <textarea 
+            value={pastChallenge} 
             className="mr-1 w-full h-20 rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/4"
             onChange={(event) => handlePastChallenge(event)}
             >
@@ -1238,6 +1215,7 @@ const { rid } = router.query;
 
             </div>
             <textarea  
+            value={futureChallenge}
             className="mr-1 w-full h-20 rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/4"
             onChange={(event) => handleFutureChallenge(event)}
             required={true}
@@ -1254,6 +1232,7 @@ const { rid } = router.query;
 
             </div>
             <textarea  
+            value={helpChallenge}
             className="mr-1 w-full h-20 rounded-lg border border-gray-400 bg-gray-200 text-gray-700  transition duration-500 focus:border-gray-900 focus:outline-none md:w-3/4"
             onChange={(event) => handleHelpChallenge(event)}
             required={true}
