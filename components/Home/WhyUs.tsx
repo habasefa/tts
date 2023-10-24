@@ -3,24 +3,24 @@ import WhyUsComponent from './WhyUsComponent'
 
 const WhyUs = () => {
   return (
-    <div className="my-40  font-minionPro bg-[#EAEDF1] py-12">
-      <header className="mx-9 md:mx-20 pt-1 pb-11  text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765] ">
+    <div className="my-15  bg-[#EAEDF1] py-12 font-minionPro">
+      <header className="mx-9 pt-1 pb-0 font-minionPro  text-3xl font-bold text-[#1A3765] text-[#1A3765] md:mx-20 md:text-4xl xl:text-5xl 2xl:text-6xl ">
         Why Us?
       </header>
-      <div className="mx-9 mt-5 mb-20 md:mx-20">
+      <div className="mx-9 mt-5 md:mx-20">
         <Row gutter={[10, 24]} justify="space-around">
-          <Col xs={16} xl={7}>
+          <Col xs={24} xl={7}>
             <WhyUsComponent
               title="Handpicked Tutors"
-              description="The best tutor selected from 10,000 of our tutors."
+              description="The right tutor to fit your child's need selected from thousands of our tutors"
               image="/passionate.png"
             />
           </Col>
 
-          <Col xs={16} xl={7} >
+          <Col xs={24} xl={7}>
             <WhyUsComponent
-              title="Decent"
-              description="A tutor with good character, mindset and discipline."
+              title="Managed"
+              description="We track every aspect of the tutoring. The tutoring session, topic covered and progress of your child."
               image="/suitcase.png"
             />
           </Col>
@@ -33,10 +33,10 @@ const WhyUs = () => {
             />
           </Col> */}
 
-          <Col xs={16} xl={7}>
+          <Col xs={24} xl={10}>
             <WhyUsComponent
-              title="Trained"
-              description="Equipped with methods, techniques and ways to give the highest quality tutoring in the country."
+              title="Report"
+              description="You can find every single information you need about the tutoring just at your fingertip."
               image="/upstair.png"
             />
           </Col>

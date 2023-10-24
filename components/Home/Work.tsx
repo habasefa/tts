@@ -5,17 +5,17 @@ import WorkTogatherCard from './WorkCard'
 import 'antd/dist/antd.css'
 import { useRouter } from 'next/router'
 const Work = () => {
-  const router = useRouter();
+  const router = useRouter()
   return (
-    <div className="font-minionPro mx-9 md:mx-20 mt-20 mb-20 2xl:mt-40 2xl:mb-40">
-      <header className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765] ">
-        How we will work together?
+    <div className="mx-9 mt-20 mb-20 font-minionPro md:mx-20 2xl:mt-40 2xl:mb-40">
+      <header className="font-minionPro text-3xl font-bold text-[#1A3765] text-[#1A3765] md:text-4xl xl:text-5xl 2xl:text-6xl ">
+        How to start?
       </header>
-      <Row gutter={[10, 24]} justify="space-around">
+      <Row gutter={[10, 0]} justify="space-around">
         <Col xs={16} xl={7}>
           <WorkTogatherCard
             title="Register"
-            description="Fill all the necessary info about your kid."
+            description="Fill all the form."
             image="/sheet1.png"
           />
         </Col>
@@ -40,8 +40,9 @@ const Work = () => {
         Ready to excel your child?{' '}
         <Link href={'studentRegistration'}>
           <button
-           onClick={()=>router.push('/studentRegistration')}
-          className=" text-2xl text-blue-700 xl:text-4xl xl:font-bold">
+            onClick={() => router.push('/studentRegistration')}
+            className=" text-2xl text-blue-700 xl:text-4xl xl:font-bold"
+          >
             Get tutor
           </button>
         </Link>

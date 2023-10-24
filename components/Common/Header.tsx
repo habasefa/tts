@@ -54,8 +54,8 @@ const Header = () => {
   const handleClose = () => {
     setisLoading(false)
   }
-  const [reportCount, setReportCount]=useState(0);
-  const [timesheetCount,setTimeSheetCount] = useState(0);
+  const [reportCount, setReportCount] = useState(0)
+  const [timesheetCount, setTimeSheetCount] = useState(0)
 
   const [tutorData, setTutorData] = useState<any>(null)
 
@@ -77,7 +77,7 @@ const Header = () => {
         .then((res) => res.json())
         .then((data) => {
           setTutorData(data)
-          let count = 0;
+          let count = 0
           fetchRejectedReport(data.tutor.id, token)
             .then((res) => res.json())
             .then((data) => {
@@ -98,27 +98,27 @@ const Header = () => {
               setReportCount(count)
               setNot(temp)
             })
-          let couTime = 0;
+          let couTime = 0
           fetchRejectedTimesheet(data.tutor.id, token)
             .then((res) => res.json())
             .then((data) => {
               console.log(data, 'i really need to see')
               let temp: any[] = []
               if (data.success) {
-               
                 data.timeSheets?.map((timesheet: any) => {
                   if (
                     timesheet?.view === 'PENDING' ||
                     timesheet?.statusOfAcceptance == 'REJECTED'
                   ) {
                     console.log(timesheet, 'seen')
-                    couTime = Number(couTime) +1
+                    couTime = Number(couTime) + 1
                   }
-                  FetchAnImage(token,timesheet.id).then((data)=>data.json())
-                  .then((data)=>console.log(data,"wanted" ))
+                  FetchAnImage(token, timesheet.id)
+                    .then((data) => data.json())
+                    .then((data) => console.log(data, 'wanted'))
                   temp.push(timesheet)
                 })
-              
+
                 setTimNot(temp)
                 setTimeSheetCount(couTime)
               }
@@ -215,7 +215,7 @@ const Header = () => {
     return () => document.body.removeEventListener('click', closeDropDown)
   })
   return (
-    <nav className=" fixed top-0 left-0 right-0 z-50 flex items-center justify-between overflow-x-hidden  bg-[#FED607] py-0  font-minionPro opacity-100">
+    <nav className=" fixed left-0 top-0  right-0 z-50 flex items-center justify-between overflow-x-hidden bg-[#FED607] py-2 font-minionPro  opacity-100 lg:my-0 lg:py-0">
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
         <div className="relative flex w-full justify-between lg:static lg:block lg:w-auto lg:justify-start">
           <a
@@ -240,11 +240,11 @@ const Header = () => {
 
         <div
           className={
-            'flex-grow items-center justify-center lg:flex' +
+            ' lg: flex-grow items-center justify-center rounded-lg py-3 ring-1 lg:flex lg:rounded-none lg:ring-0' +
             (navbarOpen ? ' flex' : ' hidden')
           }
         >
-          <ul className="mb-0 flex list-none flex-col items-center justify-center text-lg  lg:ml-auto lg:flex-row 2xl:text-2xl">
+          <ul className="justify-centerxl mb-0 flex list-none flex-col items-center text-lg  lg:ml-auto lg:flex-row 2xl:text-2xl">
             <li className="nav-item h-full md:mx-5">
               <a
                 className="flex items-center  px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
@@ -385,10 +385,7 @@ const Header = () => {
               >
                 Notification
                 <Badge
-                  badgeContent={
-                    timesheetCount + reportCount 
-                   
-                  }
+                  badgeContent={timesheetCount + reportCount}
                   color="secondary"
                 >
                   <MailIcon color="action" />
@@ -427,14 +424,21 @@ const Header = () => {
 
       <Dialog onClose={handleClose} open={isLoading}>
         <DialogTitle align="center">Notification</DialogTitle>
-        <List  sx={{ width: '100%', padding:2, bgcolor: 'background.paper' }}>
-        {notify.length > 0 && (
+        <List sx={{ width: '100%', padding: 2, bgcolor: 'background.paper' }}>
+          {notify.length > 0 && (
             <Typography variant="h6" mb={2}>
               Reports
             </Typography>
           )}
           {notify?.map((report) => (
-            <ListItem  sx={{borderRadius: 2, boxShadow: 4, p: 2 ,borderBottom: '1px solid #ccc' }}>
+            <ListItem
+              sx={{
+                borderRadius: 2,
+                boxShadow: 4,
+                p: 2,
+                borderBottom: '1px solid #ccc',
+              }}
+            >
               <ListItemAvatar>
                 <Avatar>
                   <WorkIcon />
@@ -447,7 +451,8 @@ const Header = () => {
                       <Typography variant="subtitle2">
                         Your report in which you submitted in{' '}
                         {monthName[report.reportMonth - 1]} {report.reportDate},{' '}
-                        {report.reportYear} is Rejected. Because of this reasons listed: {report.comment}
+                        {report.reportYear} is Rejected. Because of this reasons
+                        listed: {report.comment}
                       </Typography>
                     }
                     secondary={
@@ -471,7 +476,8 @@ const Header = () => {
                       <Typography variant="subtitle2">
                         Your report in which you submitted in{' '}
                         {monthName[report.reportMonth - 1]} {report.reportDate},{' '}
-                        {report.reportYear} is Accepted. And here are the comments: {report.comment}
+                        {report.reportYear} is Accepted. And here are the
+                        comments: {report.comment}
                       </Typography>
                     }
                     secondary={
@@ -487,15 +493,21 @@ const Header = () => {
               )}
             </ListItem>
           ))}
-       
 
-       {timNotify.length > 0 && (
+          {timNotify.length > 0 && (
             <Typography variant="h6" mt={2} mb={2}>
               Timesheets
             </Typography>
           )}
           {timNotify?.map((timesheet) => (
-            <ListItem   sx={{borderRadius: 2, boxShadow: 4, p: 2 ,borderBottom: '1px solid #ccc' }}>
+            <ListItem
+              sx={{
+                borderRadius: 2,
+                boxShadow: 4,
+                p: 2,
+                borderBottom: '1px solid #ccc',
+              }}
+            >
               <ListItemAvatar>
                 <Avatar>
                   <FilePresentOutlinedIcon />
@@ -549,20 +561,20 @@ const Header = () => {
             </Typography>
           )}
 
-{ tutorData?.tutor?.status === 'SUCCESS' && (
-           <Typography variant="subtitle1">
-          Your are active tutor Now
-         </Typography>
-        )}
+          {tutorData?.tutor?.status === 'SUCCESS' && (
+            <Typography variant="subtitle1">
+              Your are active tutor Now
+            </Typography>
+          )}
         </List>
 
-       
-
-        {notify.length == 0 && timNotify.length == 0 && tutorData?.tutor?.status != 'SUCCESS' && (
-          <Typography align="center" p={2}>
-            NO NOTIFICATION FOR TODAY
-          </Typography>
-        )}
+        {notify.length == 0 &&
+          timNotify.length == 0 &&
+          tutorData?.tutor?.status != 'SUCCESS' && (
+            <Typography align="center" p={2}>
+              NO NOTIFICATION FOR TODAY
+            </Typography>
+          )}
       </Dialog>
     </nav>
   )

@@ -1,26 +1,18 @@
 const Footer = () => {
   return (
-    <footer className="bg-black font-minionPro">
-      <div className="py-10 mx-9 md:mx-20">
-        <div className="lg:flex mt-10">
+    <footer className="bg-gradient-to-r from-[#142F43] to-black pt-0 font-minionPro  xl:pb-40">
+      <div className="mx-9 py-10 md:mx-20">
+        <div className="mt-10 lg:flex">
           <div className="-mx-6 w-full lg:w-2/5">
-            <div className="font-minionPro px-4">
+            <div className="px-4 font-minionPro">
               <div>
-                <a
-                  
-                  className="text-xl lg:text-2xl 2xl:text-3xl font-bold font-typograhica text-white  hover:text-gray-700 dark:hover:text-gray-300"
-                >
+                <a className="font-typograhica text-xl font-bold text-white hover:text-gray-700 dark:hover:text-gray-300  lg:text-2xl 2xl:text-3xl">
                   temaribet
                 </a>
               </div>
 
-              <p className="text-lg lg:text-xl 2xl:text-3xl opacity-80 pr-1 w-3/4 mt-2 text-white">
-                High achieving, decent and trained tutors at your home
-              </p>
-
-              <div className="flex m-4 mx-2  font-minionPro text-lg lg:text-xl 2xl:text-2xl">
+              <div className="mx-2 mt-4 mb-10 ml-0 flex justify-start  font-minionPro text-lg lg:text-xl 2xl:text-2xl">
                 <a
-                 
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
                   aria-label="Linkden"
                 >
@@ -30,7 +22,6 @@ const Footer = () => {
                 </a>
 
                 <a
-                  
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
                   aria-label="Facebook"
                 >
@@ -40,7 +31,6 @@ const Footer = () => {
                 </a>
 
                 <a
-                  
                   className="mx-2 text-white hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-400"
                   aria-label="Twitter"
                 >
@@ -55,104 +45,42 @@ const Footer = () => {
           <div className="mt-6 lg:mt-0 lg:flex-1">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
               <div>
-                <h3 className="text-xl uppercase text-white opacity-90 dark:text-white">
-                  Home tutoring
+                <h3 className="font-sans text-lg uppercase text-white opacity-90 dark:text-white">
+                  Tutoring
                 </h3>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
-                  Get a tutor
-                </a>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
+                <a className="mt-2 block text-white opacity-80 ">Get a tutor</a>
+                <a className="mt-2 block text-white opacity-80 ">
                   Become a tutor
                 </a>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
+                <a className="mt-2 block text-white opacity-80 ">
                   Partner with us
                 </a>
               </div>
               <div>
-                <h3 className="text-xl uppercase text-white opacity-90 dark:text-white">
+                <h3 className="font-sans text-lg uppercase text-white opacity-90 dark:text-white">
                   Contact Us
                 </h3>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
-                  Fesitivall22, 3rd floor
+                <a className="mt-2 block text-white opacity-80 ">
+                  Besides Andualem Cafe, Jan Meda
                 </a>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
-                  22 Mazoriya
-                </a>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
+                <a className="mt-2 block text-white opacity-80 ">
                   Addis Ababa, Ethiopia
                 </a>
 
-                <a
-                  
-                  className="block mt-7 text-white opacity-80 "
-                >
-                  P: +251940120591
+                <a className="mt-7 block text-white opacity-80 ">
+                  +251940120591
                 </a>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
-                  E: contact@temari-bet.com
+                <a className="mt-2 block text-white opacity-80 ">
+                  nazrihabtish@gmail.com
                 </a>
-              </div>
-
-              <div>
-                <h3 className="text-xl uppercase text-white opacity-90 dark:text-white">
-                  Services
-                </h3>
-                <a
-                  
-                  className="block my-2 text-white opacity-80 "
-                >
-                  eLearning
-                </a>
-                <a
-                  
-                  className="block mt-2 text-white opacity-80 "
-                >
-                  Tutoring
-                </a>
-              </div>
-
-              <div>
-                <h3 className="text-xl uppercase text-white opacity-90 dark:text-white">
-                  About Us
-                </h3>
-                <span className="block mt-2 text-white opacity-80 ">
-                  Mission and Vision
-                </span>
-                <span className="block mt-2 text-white opacity-80 ">
-                  Who we serve
-                </span>
-                <span className="block mt-2 text-white opacity-80 ">
-                  Pricing
-                </span>
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <p className="mt-20 text-center  text-xl text-white opacity-80 dark:text-white lg:text-2xl">
-            © 2023 Temaribet.All rights reserved
+          <p className="mt-10 mb-0 text-center  text-lg text-white opacity-80 dark:text-white lg:text-2xl">
+            © 2023 Temaribet Inc. All rights reserved.
           </p>
         </div>
       </div>

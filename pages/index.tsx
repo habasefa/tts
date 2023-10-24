@@ -30,12 +30,11 @@ const Home: NextPage = () => {
       <Head>
         <title>Temaribet</title>
         <link rel="icon" href="/logo.png" />
-        
       </Head>
       <Header />
       <Cover />
       <Description />
-      <Service />
+      {/* <Service /> */}
       <WhyUs />
       <Work />
       <Achievement />
