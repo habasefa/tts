@@ -90,8 +90,8 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import { getTutorById } from '../backend-utils/tutor-utils'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
-import { FaSpinner } from 'react-icons/fa';
-import Collapse from '@mui/material/Collapse';
+import { FaSpinner } from 'react-icons/fa'
+import Collapse from '@mui/material/Collapse'
 import {
   Autocomplete,
   Dialog,
@@ -99,7 +99,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  
   Box,
   Item,
   Button,
@@ -120,7 +119,7 @@ import {
 } from '@mui/material'
 import { sendTimeSheet } from '../backend-utils/tutor-utils'
 import { getParentById } from '../backend-utils/parent-utils'
-import Alert from '@mui/material/Alert';
+import Alert from '@mui/material/Alert'
 
 const DropZoneImageUpload = () => {
   const styles = {
@@ -136,81 +135,87 @@ const DropZoneImageUpload = () => {
   }
 
   const date = new Date()
-  const [mont,setmont] =useState (date.getMonth() + 1)
+  const [mont, setmont] = useState(date.getMonth() + 1)
   const year = date.getFullYear()
   const [isUploading, setUploading] = useState(false)
   const [listofParents, setlistOfParents] = useState([])
-  const [parentId, setParentId] = useState('');
+  const [parentId, setParentId] = useState('')
   const router = useRouter()
   const user = useSelector(selectUser)
-  const [isLoading, setIsLoading] = useState(true);
-  const [openDup,setOpenDup] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [openDup, setOpenDup] = useState(false)
   const [openAlert, setOpenAlert] = useState(false)
-  const [errMessage, setErrMessage] = useState("");
+  const [errMessage, setErrMessage] = useState('')
   if (user) {
     var token = user.accessToken
     var id = user.user.id
   }
   const [userData, setUserData] = useState(null)
-  const [selectMonth, setSelectedMonth] = useState(null);
+  const [selectMonth, setSelectedMonth] = useState(null)
   useEffect(() => {
-    let isMounted = true;
-   
+    let isMounted = true
 
-
-    const fetchUserData = async () => { 
-      const tempList =[]
+    const fetchUserData = async () => {
+      const tempList = []
       getUserById(id, token)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data,"tutor we need")
-        getTutorById(data.tutor.id, token)
-          .then((data) => data.json())
-          .then((data) => {
-            console.log(data.user,"tutor")
-            setUserData(data.user)
-            const parentIds = new Set()
-            data.user.students.map((student) => {
-              console.log(student,"students")
-              if (!parentIds.has(student.parentId)) {
-                getParentById(student.parentId, token)
-                  .then((data) => data.json())
-                  .then((data) => {
-                    if (data.user) {
-                     
-                       
-                      
-                        console.log(data.user,"usefull parent")
-                        tempList.push(data.user);
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data, 'tutor we need')
+          getTutorById(data.tutor.id, token)
+            .then((data) => data.json())
+            .then((data) => {
+              console.log(data.user, 'tutor')
+              setUserData(data.user)
+              const parentIds = new Set()
+              data.user.students.map((student) => {
+                console.log(student, 'students')
+                if (!parentIds.has(student.parentId)) {
+                  getParentById(student.parentId, token)
+                    .then((data) => data.json())
+                    .then((data) => {
+                      if (data.user) {
+                        console.log(data.user, 'usefull parent')
+                        tempList.push(data.user)
                         addParents(data.user)
-                      console.log(data)
-                    }
-                    
-                  })
+                        console.log(data)
+                      }
+                    })
                   parentIds.add(student.parentId)
-                  
+                }
+              })
+              if (isMounted) {
+                setIsLoading(false)
               }
             })
-            if (isMounted) {
-              setIsLoading(false); 
-            }
-          })
-      })
+        })
 
-      .catch((_) => {
-        router.push('/')
-        console.log('Something went wrong')
-      })
+        .catch((_) => {
+          router.push('/')
+          console.log('Something went wrong')
+        })
     }
-    fetchUserData();
+    fetchUserData()
 
     return () => {
-      isMounted = false; // cleanup function to prevent state updates if component unmounts
-    };
-Number
+      isMounted = false // cleanup function to prevent state updates if component unmounts
+    }
+    Number
   }, [])
 
-  const monthName =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const monthName = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
   const [uploadedImage, setUploadedImage] = useState(null)
   const [image, setImage] = useState(null)
   const [totalHour, setTotalHour] = useState(null)
@@ -219,40 +224,33 @@ Number
   const [address, setAddress] = useState(null)
   const [selectedParent, setSelectedParent] = useState(null)
   const [listStudent, setListStudents] = useState([])
-  const [parentFetched , setParentFetched] = useState(false);
+  const [parentFetched, setParentFetched] = useState(false)
 
   const handleStudentField = (event, index) => {
     let data = [...listStudent]
-    
+
     console.log(data[index][event.target.name])
     data[index][event.target.name] = event.target.value
     setListStudents(data)
     var total = 0
     var temp = 0
     data.map((val) => {
-      if (val.grade == "11" || val.grade == "12")
-      {
-       
-       temp += Number(val.workHour) * 200 
-       temp += Number((val.workMin)/60) * 200 
-       
-      }
-      else {
+      if (val.grade == '11' || val.grade == '12') {
+        temp += Number(val.workHour) * 200
+        temp += Number(val.workMin / 60) * 200
+      } else {
         temp += Number(val.workHour) * 175
-        temp += Number((val.workMin)/60) * 175 
+        temp += Number(val.workMin / 60) * 175
       }
       total += Number(val.workHour)
-
     })
     setTotalHour(Number(total))
     setTotalSalary(temp)
   }
   const addParents = (parent) => {
-   
-    setlistOfParents(prevList => [...prevList, parent]);
+    setlistOfParents((prevList) => [...prevList, parent])
 
-   
-    console.log(parent,"hid,updated")
+    console.log(parent, 'hid,updated')
   }
   const addStudent = () => {
     event.preventDefault()
@@ -261,8 +259,6 @@ Number
       studentName: '',
       grade: '',
       workHour: 0,
-      
-      
     }
     data.push(new_studnet)
     setListStudents(data)
@@ -271,17 +267,15 @@ Number
     event.preventDefault()
     const data = [...listStudent]
     if (data.length > 1) {
-       data.slice(index,1)
+      data.slice(index, 1)
       setListStudents(data)
     }
     var total = 0
     data.map((val) => (total += Number(val.workHour)))
     setTotalHour(Number(total))
-    setTotalSalary(total * 250)
+    setTotalSalary(total * 300)
   }
   const fileInputRef = useRef(null)
-
-
 
   const handleDrop = (event) => {
     event.preventDefault()
@@ -335,74 +329,64 @@ Number
     })
       .then((data) => data.json())
       .then((data) => {
-      
+        if (data.error) {
+          setOpenAlert(true)
 
-    if (data.error){
-      setOpenAlert(true)
-
-      setErrMessage(data.error.message)
-      
-    }
-        
-    else if (data.duplication)
-        
-        {
-            setOpenDup(true)
-          
-        }
-        else {
-
-        router.push('/')
+          setErrMessage(data.error.message)
+        } else if (data.duplication) {
+          setOpenDup(true)
+        } else {
+          router.push('/')
         }
         setUploading(false)
       })
-      
-    
   }
   const renderSelectedParent = (value) => {
     if (!value) {
-      return '';
+      return ''
     }
 
-    return value.fullName;
-  };
+    return value.fullName
+  }
   const handleParentSelection = (event) => {
-    const parent = event.target.value;
-    console.log(parent,"selected Parent")
+    const parent = event.target.value
+    console.log(parent, 'selected Parent')
     let value = []
     console.log(parent.fullName)
-    setSelectedParent(parent);
+    setSelectedParent(parent)
     setParentId(parent.id)
-    userData.students.map((student)=>{
-      if (student.parentId == parent.id){
+    userData.students.map((student) => {
+      if (student.parentId == parent.id) {
         value.push({
           studentName: student,
           grade: student.grade,
           workHour: 0,
           workMin: 0,
         })
-
       }
     })
-    
-    console.log(selectedParent);
+
+    console.log(selectedParent)
 
     setListStudents(value)
   }
-  useEffect(()=>{
-    console.log(listofParents,"change")
-  },[listofParents])
+  useEffect(() => {
+    console.log(listofParents, 'change')
+  }, [listofParents])
   const handleClose = () => {
     router.push('/')
-   
+
     setOpenDup(false)
-    
   }
   return (
     <div className="h-screen">
       <Header />
       <Backdrop
-         sx={{ color: '#fff', backgroundColor: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          color: '#fff',
+          backgroundColor: '#fff',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
         open={isLoading}
       >
         <CircularProgress color="info" />
@@ -414,9 +398,8 @@ Number
           </h1>
         </div>
       </div>
-   
+
       <div className="justify-left flex  px-10 font-minionPro  md:px-40  ">
-     
         <h1 className="text-lg text-[#000000] md:text-2xl">
           {monthName[mont - 1]} Time Sheet
         </h1>
@@ -424,7 +407,7 @@ Number
       <form onSubmit={createStudentParent} method="post">
         <div className="justify-center px-10 font-minionPro  md:px-40 ">
           <div
-            className=" xl:h-96 flex h-80 w-full cursor-pointer flex-col items-center justify-center rounded-lg  border-2 border-dashed border-gray-300 p-4 sm:h-72 sm:flex-row sm:p-8 md:h-80 lg:h-96"
+            className=" flex h-80 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2  border-dashed border-gray-300 p-4 sm:h-72 sm:flex-row sm:p-8 md:h-80 lg:h-96 xl:h-96"
             onDrop={handleDrop}
             onDragOver={handleDragOver}
           >
@@ -493,17 +476,19 @@ Number
         </div>
         <div className="justify-center px-10 font-minionPro  md:px-32 ">
           <Grid container p={4} rowSpacing={1} columnSpacing={2}>
-          <Grid item xs={16} md={8} lg={3}>
-          <InputLabel id="demo-select-small">Choose Month</InputLabel>
+            <Grid item xs={16} md={8} lg={3}>
+              <InputLabel id="demo-select-small">Choose Month</InputLabel>
               <Select
                 fullWidth
                 SelectDisplayProps={{ style: styles.input }}
-                
                 value={selectMonth}
                 label="Hours Per Day"
                 required
-                sx={{ marginLeft: "auto" }}
-                onChange={(event) =>{ setmont(event.target.value);  setSelectedMonth(event.target.value)}}
+                sx={{ marginLeft: 'auto' }}
+                onChange={(event) => {
+                  setmont(event.target.value)
+                  setSelectedMonth(event.target.value)
+                }}
               >
                 <MenuItem value={1}>January</MenuItem>
                 <MenuItem value={2}>February</MenuItem>
@@ -572,7 +557,6 @@ Number
                       required={true}
                       margin="normal"
                       name="workHour"
-                      
                       InputProps={{
                         inputProps: { min: 0 },
                         style: styles.input,
@@ -583,14 +567,15 @@ Number
                     />
                   </Grid>
                   <Grid item xs={16} md={8} lg={3}>
-                    <InputLabel id="demo-select-small">No of Minutes(Remaining from the Hours)</InputLabel>
+                    <InputLabel id="demo-select-small">
+                      No of Minutes(Remaining from the Hours)
+                    </InputLabel>
                     <TextField
                       fullWidth
-                      placeholder=''
+                      placeholder=""
                       required={true}
                       margin="normal"
                       name="workMin"
-                      
                       InputProps={{
                         inputProps: { min: 0 },
                         style: styles.input,
@@ -601,15 +586,17 @@ Number
                     />
                   </Grid>
                   <Grid item xs={16} md={8} lg={3}>
-                  <IconButton
-                        color="error"
-                        onClick={()=> {removeStudent(index)}}
-                        aria-label="delete"
-                        size="small"
-                      >
-                        <HighlightOffIcon />
-                      </IconButton>
-                      </Grid>
+                    <IconButton
+                      color="error"
+                      onClick={() => {
+                        removeStudent(index)
+                      }}
+                      aria-label="delete"
+                      size="small"
+                    >
+                      <HighlightOffIcon />
+                    </IconButton>
+                  </Grid>
 
                   {/* <Grid item xs={16} md={8} lg={3}>
                     <Box style={styles.boxContainer}>
@@ -660,64 +647,63 @@ Number
               </Grid>
             </>
           )}
-           {listStudent.length > 0 && 
-          <div className="my-1 mx-2 mb-4 flex justify-center md:my-2 ">
-            <button
-              class="  focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
-              type="submit"
-              disabled={isUploading}
-            >
-              {isUploading ? <span className="flex items-center">
-      <FaSpinner className="animate-spin mr-2" />
-      Uploading...
-    </span> : 'Submit'}
-            </button>
-          </div>
-}
+          {listStudent.length > 0 && (
+            <div className="my-1 mx-2 mb-4 flex justify-center md:my-2 ">
+              <button
+                class="  focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
+                type="submit"
+                disabled={isUploading}
+              >
+                {isUploading ? (
+                  <span className="flex items-center">
+                    <FaSpinner className="mr-2 animate-spin" />
+                    Uploading...
+                  </span>
+                ) : (
+                  'Submit'
+                )}
+              </button>
+            </div>
+          )}
         </div>
         <div className=" flex justify-center">
-      <Collapse in={openAlert}>
-      
-      <Alert severity="error">{errMessage}</Alert>
-      </Collapse>
-      </div>
-           
+          <Collapse in={openAlert}>
+            <Alert severity="error">{errMessage}</Alert>
+          </Collapse>
+        </div>
       </form>
       <Dialog
-          open={openDup}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle align="center">
-            <label className="font-minionPro text-[#fd6907] md:text-3xl ">
-              Alert
-            </label>
-          </DialogTitle>
+        open={openDup}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle align="center">
+          <label className="font-minionPro text-[#fd6907] md:text-3xl ">
+            Alert
+          </label>
+        </DialogTitle>
 
-          <DialogContent dividers>
+        <DialogContent dividers>
           <label className="font-minionPro  md:text-xl ">
-          TimeSheet is submitted for the this specific Month.
-            </label>
-          </DialogContent>
-          <DialogActions>
-          <div className="flex justify-center my-2">
-          <button
-              className=" focus:shadow-outline    font-minionPro rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none  md:text-xl"
+            TimeSheet is submitted for the this specific Month.
+          </label>
+        </DialogContent>
+        <DialogActions>
+          <div className="my-2 flex justify-center">
+            <button
+              className=" focus:shadow-outline    rounded-xl bg-[#1A3765] py-2 px-4 font-minionPro font-bold text-white hover:bg-[#6793d9] focus:outline-none  md:text-xl"
               type="button"
               onClick={handleClose}
             >
               Go To Home
             </button>
-          
-            </div>
-          </DialogActions>
-        </Dialog>
+          </div>
+        </DialogActions>
+      </Dialog>
       <Footer />
-      
     </div>
   )
-  
 }
 
 export default DropZoneImageUpload

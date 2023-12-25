@@ -14,7 +14,6 @@ function Header() {
     router.push('/')
   }
   if (user) {
-    
     var name = user.user.email.match(/^([^@]*)@/)[1]
     var role = user.user.role
   }
