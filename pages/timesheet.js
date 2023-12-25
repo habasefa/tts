@@ -239,8 +239,8 @@ const DropZoneImageUpload = () => {
         temp += Number(val.workHour) * 200
         temp += Number(val.workMin / 60) * 200
       } else {
-        temp += Number(val.workHour) * 175
-        temp += Number(val.workMin / 60) * 175
+        temp += Number(val.workHour) * 200
+        temp += Number(val.workMin / 60) * 200
       }
       total += Number(val.workHour)
     })
