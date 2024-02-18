@@ -142,7 +142,7 @@ const StudentRegistration = () => {
     }
     var costs = 0
     data.map((val) => {
-      costs += val.workDays * val.workHour * 250 * 4
+      costs += val.workDays * val.workHour * 300 * 4
     })
     setconst(costs)
     setStudentField(data)
