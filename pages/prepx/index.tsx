@@ -12,7 +12,6 @@ import {
   DialogTitle,
   Alert,
   Box,
-  Item,
   Button,
   Tabs,
   Checkbox,
@@ -28,7 +27,7 @@ import {
   OutlinedInput,
   Chip,
 } from '@mui/material'
-import { sendMessage } from '../backend-utils/tutor-utils'
+// import { sendMessage } from '../backend-utils/tutor-utils'
 
 const PrivacyPolicy = () => {
   return (
