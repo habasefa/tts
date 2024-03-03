@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="h-screen overflow-y-scroll bg-gray-50 scrollbar-hide">
+    <div className="h-screen w-screen overflow-y-scroll bg-gray-50 scrollbar-hide">
       <Head>
         <title>Temaribet</title>
         <link rel="icon" href="/logo.png" />

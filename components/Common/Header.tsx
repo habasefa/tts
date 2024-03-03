@@ -247,7 +247,7 @@ const Header = () => {
           <ul className="justify-centerxl mb-0 flex list-none flex-col items-center text-lg  lg:ml-auto lg:flex-row 2xl:text-2xl">
             <li className="nav-item h-full md:mx-5">
               <a
-                className="flex items-center  px-3 py-1   font-semibold leading-snug text-blue-900 opacity-60  hover:opacity-75"
+                className="flex items-center  px-3 py-1 font-semibold  leading-snug text-blue-900 opacity-60   hover:opacity-75"
                 href="/"
               >
                 Home

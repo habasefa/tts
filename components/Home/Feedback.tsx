@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd'
 const Feedback = () => {
   return (
-    <section className="bg-[#FFEF00]font-minionPro mt-20 min-h-screen md:bg-[#ECF2FB]">
+    <section className="bg-[#FFEF00]font-minionPro  min-h-screen pt-20 md:bg-[#ECF2FB]">
       <div className="  mx-9 my-0 h-full py-0 md:mx-20 md:mr-16">
         <div className="mx-auto mt-0">
           <h2 className="text-3xl font-bold text-[#1A3765] md:text-4xl xl:text-5xl  2xl:text-6xl">
@@ -36,7 +36,7 @@ const Feedback = () => {
               </div>
             </div>
 
-            <div className="mt-5 border-gray-500 lg:mt-0 lg:flex-1 lg:border-l">
+            <div className="mt-5  lg:mt-0 lg:flex-1 ">
               <div className="p-3 lg:ml-5 lg:p-12">
                 <div>
                   <p className="font-minionPro text-lg font-bold lg:text-xl 2xl:text-3xl">

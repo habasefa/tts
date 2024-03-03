@@ -1,5 +1,8 @@
 import { Row, Image, Col } from 'antd'
 import WhyUsComponent from './WhyUsComponent'
+import { LuMousePointerClick } from 'react-icons/lu'
+import { HiDocumentReport } from 'react-icons/hi'
+import { GiProgression } from 'react-icons/gi'
 
 const WhyUs = () => {
   return (
@@ -9,20 +12,22 @@ const WhyUs = () => {
       </header>
       <div className="mx-9 mt-5 md:mx-20">
         <Row gutter={[10, 24]} justify="space-around">
-          <Col xs={24} xl={7}>
+          <Col xs={24} xl={8}>
             <WhyUsComponent
               title="Handpicked Tutors"
               description="The right tutor to fit your child's need selected from thousands of our tutors"
-              image="/passionate.png"
-            />
+            >
+              <LuMousePointerClick size={90} color="#1A3765" />
+            </WhyUsComponent>
           </Col>
 
-          <Col xs={24} xl={7}>
+          <Col xs={24} xl={8}>
             <WhyUsComponent
               title="Managed"
               description="We track every aspect of the tutoring. The tutoring session, topic covered and progress of your child."
-              image="/suitcase.png"
-            />
+            >
+              <GiProgression size={90} color="#1A3765" />
+            </WhyUsComponent>
           </Col>
 
           {/* <Col xs={16} xl={7}>
@@ -33,12 +38,13 @@ const WhyUs = () => {
             />
           </Col> */}
 
-          <Col xs={24} xl={10}>
+          <Col xs={24} xl={8}>
             <WhyUsComponent
               title="Report"
               description="You can find every single information you need about the tutoring just at your fingertip."
-              image="/upstair.png"
-            />
+            >
+              <HiDocumentReport size={90} color="#1A3765" />
+            </WhyUsComponent>
           </Col>
         </Row>
       </div>
