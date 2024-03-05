@@ -10,8 +10,8 @@ import { useRouter } from 'next/router'
 const Work = () => {
   const router = useRouter()
   return (
-    <div className="mx-9 mt-20 mb-20 font-minionPro md:mx-20 2xl:mt-40 2xl:mb-40">
-      <header className="font-minionPro text-3xl font-bold text-[#1A3765] md:text-4xl xl:text-5xl 2xl:text-6xl ">
+    <div className="mt-15 mb-15 mx-9 font-minionPro md:mx-20 2xl:mt-40 2xl:mb-40">
+      <header className="mt-5 font-minionPro text-3xl font-bold text-[#1A3765] md:text-4xl xl:text-5xl 2xl:text-6xl">
         How to start?
       </header>
       <Row gutter={[10, 0]} justify="space-around">

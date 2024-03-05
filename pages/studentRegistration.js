@@ -5,27 +5,14 @@ import { useRouter } from 'next/router'
 import Footer from '../components/historyComponents/footer'
 import Header from '../components/historyComponents/header'
 import { createParent, createStudent } from '../backend-utils/parent-utils'
-import { Form } from 'antd'
-import CircularProgress from '@mui/material/CircularProgress'
 import { FaSpinner } from 'react-icons/fa'
 
 import {
-  Autocomplete,
   Dialog,
-  DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Alert,
   Box,
-  Item,
-  Button,
-  Tabs,
-  Checkbox,
-  Container,
-  FormHelperText,
-  Link,
-  Tab,
   Typography,
   Grid,
   MenuItem,
@@ -36,7 +23,6 @@ import {
 } from '@mui/material'
 
 import TextField from '@mui/material/TextField'
-import { Router } from '@mui/icons-material'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -51,7 +37,6 @@ const MenuProps = {
 }
 
 const StudentRegistration = () => {
-  const [personName, setPersonName] = useState([])
   const router = useRouter()
 
   const [cost, setconst] = useState(0)
@@ -87,13 +72,12 @@ const StudentRegistration = () => {
     'Programming',
   ]
   const [isLoading, setIsLoading] = useState(false)
-  const [value, setValue] = React.useState()
   const [open, setOpen] = React.useState(false)
   const handleClose = () => {
     setOpen(false)
     router.push('/')
   }
-  const [studnets, setStudentField] = useState([
+  const [student, setStudent] = useState([
     {
       studentName: '',
       age: 0,
@@ -105,9 +89,12 @@ const StudentRegistration = () => {
       subjects: [],
     },
   ])
+
+  const [numberOfStudents, setNumberOfStudents] = useState(1)
+
   const addStudent = () => {
     event.preventDefault()
-    let data = [...studnets]
+    let data = [...student]
     let new_studnet = {
       studentName: '',
       age: '',
@@ -119,10 +106,11 @@ const StudentRegistration = () => {
       subjects: [],
     }
     data.push(new_studnet)
-    setStudentField(data)
+    setStudent(data)
   }
+
   const handleStudentField = (event, index) => {
-    let data = [...studnets]
+    let data = [...student]
 
     if (event.target.name == 'subjects') {
       const {
@@ -145,7 +133,7 @@ const StudentRegistration = () => {
       costs += val.workDays * val.workHour * 300 * 4
     })
     setconst(costs)
-    setStudentField(data)
+    setStudent(data)
   }
   const studentik = useFormik({
     initialValues: {
@@ -213,7 +201,7 @@ const StudentRegistration = () => {
     })
       .then((res) => res.json())
       .then((parent) =>
-        studnets.map((val) => {
+        student.map((val) => {
           console.log(parent)
           console.log('val', parent)
           console.log(val)
@@ -251,16 +239,17 @@ const StudentRegistration = () => {
     <div>
       <Header />
 
-      <div className="justify-center px-10 font-minionPro md:flex  md:px-16 ">
+      <div className="justify-center px-5 font-minionPro md:flex md:px-16  ">
         <form onSubmit={createStudentParent} method="post">
-          <label className="pl-4 font-minionPro text-lg font-semibold text-[#1A3765] md:text-xl">
+          <label className="pl-4 font-minionPro text-xl font-semibold text-[#1A3765] md:text-xl">
             Parent Information
           </label>
 
-          <Grid container p={4} rowSpacing={1} columnSpacing={2}>
-            <Grid item xs={16} md={8} lg={3}>
+          <Grid container p={2} rowSpacing={2} columnSpacing={2}>
+            <Grid item xs={16} md={10} lg={3}>
               <InputLabel id="demo-select-small">Full Name</InputLabel>
               <TextField
+                style={{ marginTop: 2 }}
                 InputLabelProps={{ shrink: true }}
                 required={true}
                 error={Boolean(
@@ -277,9 +266,11 @@ const StudentRegistration = () => {
                 value={formik.values.parentName}
               />
             </Grid>
-            <Grid item xs={16} md={8} lg={3}>
+
+            <Grid item xs={16} md={10} lg={3}>
               <InputLabel id="demo-select-small">Phone Number</InputLabel>
               <TextField
+                style={{ marginTop: 2 }}
                 required={true}
                 error={Boolean(
                   formik.touched.phoneNumber1 && formik.errors.phoneNumber1
@@ -294,9 +285,11 @@ const StudentRegistration = () => {
                 value={formik.values.phoneNumber1}
               />
             </Grid>
+
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Phone Number 2</InputLabel>
               <TextField
+                style={{ marginTop: 2 }}
                 error={Boolean(
                   formik.touched.phoneNumber2 && formik.errors.phoneNumber2
                 )}
@@ -315,6 +308,7 @@ const StudentRegistration = () => {
             <Grid item xs={16} md={8} lg={3}>
               <InputLabel id="demo-select-small">Address</InputLabel>
               <TextField
+                style={{ marginTop: 2 }}
                 InputLabelProps={{ shrink: true }}
                 required={true}
                 error={Boolean(formik.touched.Address && formik.errors.Address)}
@@ -329,15 +323,16 @@ const StudentRegistration = () => {
             </Grid>
           </Grid>
 
-          {studnets && studnets.length > 0
-            ? studnets.map((val, index) => {
+          {student?.length > 0
+            ? student.map((val, index) => {
                 return (
                   <div
                     key={index}
-                    className=" my-2 mb-4 rounded-lg border border-gray-200 px-10 py-2 shadow-md "
+                    className=" my-2 mb-4 rounded-lg border border-gray-200 px-3 py-2 shadow-md "
                   >
                     <label className="font-minionPro text-lg font-semibold text-[#1A3765] md:text-xl">
-                      Child Information (Child {index + 1})
+                      Child Information
+                      {index >= 0 && <span> [Child {index + 1}]</span>}
                     </label>
                     <Grid
                       container
@@ -351,6 +346,7 @@ const StudentRegistration = () => {
                           Child Name
                         </InputLabel>
                         <TextField
+                          style={{ marginTop: 2 }}
                           fullWidth
                           required={true}
                           margin="normal"
@@ -362,6 +358,7 @@ const StudentRegistration = () => {
                       <Grid item xs={16} md={8} lg={3}>
                         <InputLabel id="demo-select-small">Age</InputLabel>
                         <TextField
+                          style={{ marginTop: 2 }}
                           fullWidth
                           required={true}
                           margin="normal"
@@ -377,7 +374,6 @@ const StudentRegistration = () => {
                       <Grid item xs={16} md={8} lg={3}>
                         <InputLabel
                           sx={{
-                            pb: 2,
                             font: 'inherit',
                           }}
                           id="demo-select-small"
@@ -403,7 +399,6 @@ const StudentRegistration = () => {
                       <Grid item xs={16} md={8} lg={3}>
                         <InputLabel
                           sx={{
-                            pb: 2,
                             font: 'inherit',
                           }}
                           id="demo-select-small"
@@ -411,6 +406,7 @@ const StudentRegistration = () => {
                           Grade
                         </InputLabel>
                         <Select
+                          style={{ marginTop: 2 }}
                           labelId="demo-select-small"
                           id="demo-select-small"
                           name="grade"
@@ -436,10 +432,16 @@ const StudentRegistration = () => {
                         </Select>
                       </Grid>
                       <Grid item xs={16} md={8} lg={3}>
-                        <InputLabel id="demo-select-small">
+                        <InputLabel
+                          sx={{
+                            font: 'inherit',
+                          }}
+                          id="demo-select-small"
+                        >
                           School Name
                         </InputLabel>
                         <TextField
+                          style={{ marginTop: 2 }}
                           fullWidth
                           margin="normal"
                           name="schoolName"
@@ -461,7 +463,6 @@ const StudentRegistration = () => {
                       <Grid item xs={16} md={8} lg={3}>
                         <InputLabel
                           sx={{
-                            pb: 2,
                             font: 'inherit',
                           }}
                           id="demo-select-small"
@@ -475,7 +476,6 @@ const StudentRegistration = () => {
                           margin="normal"
                           required={true}
                           value={val.workDays}
-                          
                           label="Hours Per Day"
                           fullWidth
                           onChange={(event) => handleStudentField(event, index)}
@@ -487,13 +487,11 @@ const StudentRegistration = () => {
                           <MenuItem value={5}>5 Days</MenuItem>
                           <MenuItem value={6}>6 Days</MenuItem>
                           <MenuItem value={7}>7 Days</MenuItem>
-                        
                         </Select>
                       </Grid>
                       <Grid item xs={16} md={8} lg={3}>
                         <InputLabel
                           sx={{
-                            pb: 2,
                             font: 'inherit',
                           }}
                           id="demo-select-small"
@@ -523,7 +521,7 @@ const StudentRegistration = () => {
                       <Grid item xs={16} md={8} lg={3}>
                         <InputLabel
                           sx={{
-                            pb: 2,
+                            font: 'inherit',
                           }}
                           id="demo-multiple-chip-label"
                         >
@@ -572,12 +570,24 @@ const StudentRegistration = () => {
                 )
               })
             : null}
-          <Grid container p={2} rowSpacing={1} spacing={2} columnSpacing={2}>
+          <button
+            class=" focus:shadow-outline mb-1 w-1/2  rounded-xl bg-[#767b84] py-2 px-4 font-bold text-white hover:bg-[#c5c5c5] focus:outline-none md:w-1/6 md:text-xl"
+            type="button"
+            onClick={addStudent}
+          >
+            Add Child
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            />
+          </button>
+          <Grid container p={2} spacing={2} columnSpacing={2}>
             <Grid item xs={16} md={8}>
               <InputLabel id="demo-select-small">
                 Anything you want to Add
               </InputLabel>
               <TextField
+                style={{ marginTop: 3 }}
                 margin="normal"
                 multiline
                 required={true}
@@ -588,17 +598,23 @@ const StudentRegistration = () => {
               />
             </Grid>
           </Grid>
-          <button
-            class=" focus:shadow-outline w-1/2 mb-1  rounded-xl bg-[#767b84] py-2 px-4 font-bold text-white hover:bg-[#c5c5c5] focus:outline-none md:w-1/6 md:text-xl"
-            type="button"
-            onClick={addStudent}
-          >
-            Add Child
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            />
-          </button>
+
+          <div className="my-3 flex justify-center md:my-2 ">
+            <button
+              className="w-full transform rounded-md bg-[#1A3765] py-5 px-14 font-sans  text-xl font-bold text-white transition-colors duration-200 hover:bg-blue-700 focus:bg-blue-600 focus:outline-none lg:w-1/3 "
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="flex items-center">
+                  <FaSpinner className="mr-2 animate-spin" />
+                  Sending...
+                </span>
+              ) : (
+                <span>Submit</span>
+              )}
+            </button>
+          </div>
 
           <div className="flex justify-center">
             <Alert severity="info">
@@ -607,24 +623,6 @@ const StudentRegistration = () => {
                 <label className="bg-[#fdd507] px-2">{cost}</label> birr
               </p>
             </Alert>
-          </div>
-          <div className="my-1 flex justify-center md:my-2 ">
-            <button
-              class=" focus:shadow-outline w-1/2 rounded-xl bg-[#1A3765] py-2 px-4 font-bold text-white hover:bg-[#6793d9] focus:outline-none disabled:bg-[#6793d9] md:w-1/6 md:text-xl"
-              type="submit"
-              disabled={isLoading}
-            >
-              {isLoading ? 
-                <span className="flex items-center">
-                  <FaSpinner className="mr-2 animate-spin" />
-                  Sending...
-                </span>
-               : 
-               <span >
-               Submit
-               </span>
-              }
-            </button>
           </div>
         </form>
       </div>

@@ -79,7 +79,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="mt-10 mb-0 text-center  text-lg text-white opacity-80 dark:text-white lg:text-2xl">
+          <p className="mt-10 text-center  text-lg text-white opacity-80 dark:text-white lg:text-2xl">
             © 2024 Temaribet Inc. All rights reserved.
           </p>
         </div>

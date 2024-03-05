@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
-        <p className="text-center font-minionPro text-xl lg:text-2xl opacity-80 mt-24 md:mt-32">© 2023 Temaribet.All rights reserved</p>
+    <div className="my-24 text-center font-minionPro text-xl opacity-80 md:mt-32 lg:text-2xl">
+      <p>© 2024 Temaribet Inc. All rights reserved.</p>
     </div>
   )
 }

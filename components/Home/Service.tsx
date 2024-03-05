@@ -13,7 +13,9 @@ const Service = () => {
   ]
   return (
     <div className="mx-9  lg:mx-20">
-      <header className="text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-[#1A3765] font-bold font-minionPro text-[#1A3765] mb-10 ">Service</header>
+      <header className="mb-10 font-minionPro text-3xl font-bold text-[#1A3765] md:text-4xl xl:text-5xl 2xl:text-6xl ">
+        Service
+      </header>
       <Row gutter={[0, 24]} justify="space-between">
         <Col xs={24} lg={7} xl={7}>
           <ServiceCard

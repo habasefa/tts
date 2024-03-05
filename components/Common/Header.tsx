@@ -219,13 +219,13 @@ const Header = () => {
       <div className="mx-9 flex w-full flex-wrap items-center justify-between md:mx-20">
         <div className="relative flex w-full justify-between lg:static lg:block lg:w-auto lg:justify-start">
           <a
-            className="mr-4 inline-block whitespace-nowrap  px-0  font-typograhica  text-3xl font-thin leading-relaxed text-white md:py-5 md:text-5xl  2xl:py-6  2xl:text-6xl"
+            className="mr-4 inline-block whitespace-nowrap  px-0  font-typograhica  text-4xl font-thin leading-relaxed text-white md:py-5 md:text-5xl  2xl:py-6  2xl:text-6xl"
             href="/"
           >
             temaribet
           </a>
           <button
-            className=" block cursor-pointer rounded border border-solid border-transparent bg-transparent px-3 py-1 text-xl leading-none text-gray-500 outline-none focus:outline-none lg:hidden"
+            className=" block cursor-pointer rounded border border-solid border-transparent bg-transparent px-0 py-1 text-xl leading-none text-gray-500 outline-none focus:outline-none lg:hidden"
             type="button"
             onClick={() => setNavbarOpen(!navbarOpen)}
           >
