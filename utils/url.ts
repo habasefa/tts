@@ -1,4 +1,4 @@
-export const API_URL ='https://temaribet-api.onrender.com/'
+export const API_URL ='https://tts-web-api-259g.onrender.com/'
 
 'http://localhost:4000/'
 
