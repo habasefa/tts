@@ -1,9 +1,9 @@
-import { Button, List, Col, Row } from 'antd'
+import { Col, Row } from 'antd'
 import Link from 'next/link'
-import WorkTogatherCard from './WorkCard'
+import { GiGraduateCap } from 'react-icons/gi'
 import { MdContactPage } from 'react-icons/md'
 import { TbEyeSearch } from 'react-icons/tb'
-import { GiGraduateCap } from 'react-icons/gi'
+import WorkTogatherCard from './WorkCard'
 
 import 'antd/dist/antd.css'
 import { useRouter } from 'next/router'
@@ -15,13 +15,16 @@ const Work = () => {
         How to start?
       </header>
       <Row gutter={[10, 0]} justify="space-around">
-        <Col xs={16} xl={7}>
-          <WorkTogatherCard title="Register" description="Fill all the form.">
+        <Col xs={24} xl={7}>
+          <WorkTogatherCard
+            title="Register"
+            description="Fill your location and child's details on the form."
+          >
             <MdContactPage size={90} color="#1A3765" />
           </WorkTogatherCard>
         </Col>
 
-        <Col xs={16} xl={7}>
+        <Col xs={24} xl={7}>
           <WorkTogatherCard
             title="Find a match"
             description="We select the perfect tutor in 48 hours."
@@ -30,7 +33,7 @@ const Work = () => {
           </WorkTogatherCard>
         </Col>
 
-        <Col xs={16} xl={7}>
+        <Col xs={24} xl={7}>
           <WorkTogatherCard
             title="Academic success"
             description="You will witness your kid performing excellent."
