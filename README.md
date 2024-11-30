@@ -8,7 +8,7 @@ This repository hosts the frontend for [Temaribet](https://temaribet.net/), a pr
 
 Below is a screenshot of the homepage of Temaribet:
 
-![Homepage Screenshot](./public/images/logo.jpg)
+![Homepage Screenshot](./public/home_page_screenshot_2.png)
 
 ## Tech Stack
 
@@ -41,7 +41,7 @@ tts/
 
 ### Prerequisites
 
-- Install [Node.js](https://nodejs.org/) (v16 or later recommended).
+- Install [Node.js](https://nodejs.org/) (v6 or later recommended).
 - Install [npm](https://www.npmjs.com/).
 
 ### Steps
