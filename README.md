@@ -2,11 +2,13 @@
 
 ## Overview
 
-This repository hosts the frontend for [Temaribet](https://temaribet.net/), a professional tutoring platform connecting parents, students, and tutors.
+This repository hosts the frontend for [Temaribet](https://temaribet.net/), a professional tutoring platform based in Addis Ababa, Ethiopia. Temaribet connects parents and students with highly qualified tutors, making personalized learning accessible, efficient, and stress-free for busy parents, ensuring academic success for children.
 
-Temaribet is a professional tutoring company based in Addis Ababa, Ethiopia. It connects parents and students with highly qualified tutors. The mission is to make personalized learning accessible, efficient, and stress-free for busy parents, ensuring academic success for children.
+### Homepage
 
----
+Below is a screenshot of the homepage of Temaribet:
+
+![Homepage Screenshot](./public/images/logo.jpg)
 
 ## Tech Stack
 
@@ -29,7 +31,7 @@ tts/
 ├── redux/              # Redux slices and store setup
 ├── styles/             # Global and component-specific styles
 ├── themes/             # Theme configuration for light/dark modes
-├── utils/              # Helper functions for Firebase, formatting, etc.
+├── utils/              # Helper functions for Firebase, and formatting.
 ├── views/              # High-level views for different pages or workflows
 │   └── completeProfile/ # Complete profile page components and logic
 └── README.md           # Documentation
@@ -47,7 +49,7 @@ tts/
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/habasefa/tts.git
-   cd frontend
+   cd tts
    ```
 
 # Setup Instructions
