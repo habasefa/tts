@@ -49,7 +49,6 @@ tts/
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/habasefa/tts.git
-   cd tts
    ```
 
 # Setup Instructions
