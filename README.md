@@ -1,21 +1,73 @@
-# Next.js + Tailwind CSS Example
+# Temaribet Frontend
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## Overview
 
-## Deploy your own
+This repository hosts the frontend for [Temaribet](https://temaribet.net/), a professional tutoring platform based in Addis Ababa, Ethiopia. Temaribet connects parents and students with highly qualified tutors, making personalized learning accessible, efficient, and stress-free for busy parents, ensuring academic success for children.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+### Homepage
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Below is a screenshot of the homepage of Temaribet:
 
-## How to use
+![Homepage Screenshot](./public/home_page_screenshot_2.png)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Tech Stack
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+- **Frontend Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [TailwindCSS](https://tailwindcss.com/)
+- **Database**: [Firebase](https://firebase.google.com/)
+- **State Management**: [Redux](https://redux.js.org/)
+- **API Integration**: Fetch API
+
+---
+
+## Project Structure
+
+```plaintext
+tts/
+├── backend-utils/      # Utilities for API interactions and backend services
+├── components/         # Reusable UI components (e.g., buttons, cards, modals)
+├── pages/              # Next.js pages for routing
+├── public/             # Static assets like images and icons
+├── redux/              # Redux slices and store setup
+├── styles/             # Global and component-specific styles
+├── themes/             # Theme configuration for light/dark modes
+├── utils/              # Helper functions for Firebase, and formatting.
+├── views/              # High-level views for different pages or workflows
+│   └── completeProfile/ # Complete profile page components and logic
+└── README.md           # Documentation
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Setup Instructions
+
+### Prerequisites
+
+- Install [Node.js](https://nodejs.org/) (v6 or later recommended).
+- Install [npm](https://www.npmjs.com/).
+
+### Steps
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/habasefa/tts.git
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd tts
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+4. **Run the development server**:
+
+   ```bash
+
+   npm run dev
+   ```
+
+5. **Access the application**:
+   The application will be accessible at [http://localhost:3000](http://localhost:3000).
