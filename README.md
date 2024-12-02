@@ -12,13 +12,6 @@ Below is a screenshot of the homepage of Temaribet:
 
 ## Tech Stack
 
-- **Frontend Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [TailwindCSS](https://tailwindcss.com/)
-- **Database**: [Firebase](https://firebase.google.com/)
-- **State Management**: [Redux](https://redux.js.org/)
-- **API Integration**: Fetch API
-
-
 - **Frontend Framework**: [React](https://reactjs.org/) and [Next.js](https://nextjs.org/)  
 - **UI Framework**: [Material-UI](https://mui.com/), [Ant Design](https://ant.design/), [Font Awesome](https://fontawesome.com/), [Heroicons](https://heroicons.com/)  
 - **State Management**: [Redux](https://redux.js.org/), [Redux Toolkit](https://redux-toolkit.js.org/), [React-Redux](https://react-redux.js.org/), [Redux Persist](https://github.com/rt2zz/redux-persist)  
