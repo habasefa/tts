@@ -19,7 +19,7 @@ const PricingCardContainer: React.FC = () => {
       <h2 className="mb-4 text-3xl font-extrabold text-yellow-600 md:text-4xl">
         Pricing Per Hour
       </h2>
-      <p className="mb-6 text-lg text-[#1A3765] md:text-xl">
+      <p className="mb-6 text-2xl text-[#1A3765] md:text-xl">
         Sessions are in ETB per hour for direct 1:1 tutor-student time.
       </p>
       <div className="flex flex-wrap justify-center gap-6">
