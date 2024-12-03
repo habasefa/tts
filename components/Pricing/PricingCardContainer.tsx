@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PricingCard from './PricingCard'
 
 interface PricingData {
@@ -14,30 +14,17 @@ const pricingData: PricingData[] = [
 ]
 
 const PricingCardContainer: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null)
-
-  const handleCardClick = (index: number) => {
-    setSelectedCard(index)
-  }
-
   return (
-    <div className="pricing-card-container">
-      <h2 className="text-center text-2xl font-bold text-gray-800 md:text-3xl">
+    <div className="bg-white py-8 px-4 text-center md:px-8">
+      <h2 className="mb-4 text-3xl font-extrabold text-yellow-600 md:text-4xl">
         Pricing Per Hour
       </h2>
-      <p className="mt-2 text-center text-lg text-gray-600 md:mt-4">
+      <p className="mb-6 text-lg text-[#1A3765] md:text-xl">
         Sessions are in ETB per hour for direct 1:1 tutor-student time.
       </p>
-
-      <div className="relative flex flex-wrap justify-center gap-4 bg-gray-50 p-10">
+      <div className="flex flex-wrap justify-center gap-6">
         {pricingData.map((data, index) => (
-          <PricingCard
-            key={index}
-            title={data.title}
-            price={data.price}
-            isSelected={selectedCard === index}
-            onClick={() => handleCardClick(index)}
-          />
+          <PricingCard key={index} title={data.title} price={data.price} />
         ))}
       </div>
     </div>

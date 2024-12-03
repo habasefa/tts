@@ -57,14 +57,14 @@ const Pricing = () => {
         <Header />
         <div className="mt-16 rounded-lg bg-gray-50 px-10 shadow-lg xl:px-16">
           <div className="my-2 gap-3 p-3 md:p-5">
-            <h1 className="mt-12 text-center text-lg font-semibold text-indigo-600 md:text-3xl md:text-gray-800">
+            <h1 className="mt-12 text-center text-lg font-semibold text-[#1A3765] md:text-3xl ">
               Pricing: [UPDATED FOR 2024/25 SCHOOL YEAR]
             </h1>
             <PricingCardContainer />
           </div>
 
-          <div className="my-6 rounded-lg bg-gray-50 p-6 shadow-md md:p-8">
-            <h2 className="text-2xl font-semibold text-gray-800 md:text-3xl">
+          <div className="my-6 rounded-lg bg-gray-50 p-6  shadow-md md:p-8">
+            <h2 className="text-2xl font-semibold text-[#1A3765] md:text-3xl">
               Billing Schedule
             </h2>
             <div className="mt-4 text-lg leading-relaxed text-gray-600">
@@ -78,8 +78,8 @@ const Pricing = () => {
           </div>
 
           {/* <div className="my-2 p-3 md:p-5"> */}
-          <div className="my-6 rounded-lg bg-gray-50 p-6 shadow-md md:p-8">
-            <h2 className="text-2xl font-semibold text-gray-800 md:text-3xl">
+          <div className="my-6 rounded-lg bg-gray-50 p-6 shadow-md md:p-8 ">
+            <h2 className="text-2xl font-semibold text-[#1A3765] md:text-3xl">
               Price Calculator
             </h2>
             <div className="mt-4 text-lg leading-relaxed text-gray-600">
@@ -89,7 +89,15 @@ const Pricing = () => {
                 child to be tutored.
               </p>
             </div>
-            <Grid container p={2} rowSpacing={1} spacing={2} columnSpacing={2}>
+            <Grid
+              container
+              p={2}
+              rowSpacing={1}
+              spacing={2}
+              columnSpacing={2}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Grid item xs={16} md={8} lg={3}>
                 <InputLabel
                   sx={{
@@ -207,7 +215,7 @@ const Pricing = () => {
           <div className="my-4 flex justify-center">
             <button
               onClick={() => router.push('/studentRegistration')}
-              className="transform rounded-full bg-[#1A3765] px-10 py-3 text-lg capitalize  tracking-wide text-white transition-colors duration-200 hover:bg-blue-900  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 md:text-2xl"
+              className="mb-3 transform rounded-full bg-[#1A3765] px-10 py-3 text-lg capitalize  tracking-wide text-white transition-colors duration-200 hover:bg-blue-900  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 md:text-2xl"
             >
               Get Tutor
             </button>
