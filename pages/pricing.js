@@ -1,5 +1,7 @@
 import Footer from '@/components/Common/Footer'
 import Header from '@/components/Common/Header'
+import PricingCard from '@/components/Pricing/PricingCard'
+import PricingCardContainer from '@/components/Pricing/PricingCardContainer'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
@@ -53,43 +55,19 @@ const Pricing = () => {
     <>
       <div className="h-screen overflow-y-scroll  bg-gray-50 font-minionPro scrollbar-hide">
         <Header />
-        <div className="mt-16 px-10 xl:px-16">
+        <div className="mt-16 rounded-lg bg-gray-50 px-10 shadow-lg xl:px-16">
           <div className="my-2 gap-3 p-3 md:p-5">
-            <h1 className="mt-12 text-center text-lg md:text-3xl ">
+            <h1 className="mt-12 text-center text-lg font-semibold text-indigo-600 md:text-3xl md:text-gray-800">
               Pricing: [UPDATED FOR 2024/25 SCHOOL YEAR]
             </h1>
-            <h2 className="text-lg md:py-2 md:text-2xl">Pricing Per Hour</h2>
-            <div className="gap-3 text-lg">
-              <p>
-                Sessions are in ETB per hour for direct 1:1, tutor- student
-                time.
-              </p>
-              <div>
-                For KG-5:
-                <br />
-                375 ETB Birr Per Hour
-              </div>
-              <div>
-                For 6-10:
-                <br />
-                400 ETB Birr Per Hour
-              </div>
-              <div>
-                For 11-12:
-                <br />
-                400 ETB Birr Per Hour
-              </div>
-              <div>
-                For Freshman and Sophomore College Students:
-                <br />
-                500 ETB Birr Per Hour
-              </div>
-            </div>
+            <PricingCardContainer />
           </div>
 
-          <div className="my-2 p-3 md:p-5">
-            <h2 className="text-lg md:text-2xl">Billing Schedule</h2>
-            <div className="text-lg">
+          <div className="my-6 rounded-lg bg-gray-50 p-6 shadow-md md:p-8">
+            <h2 className="text-2xl font-semibold text-gray-800 md:text-3xl">
+              Billing Schedule
+            </h2>
+            <div className="mt-4 text-lg leading-relaxed text-gray-600">
               <p>
                 Monthly invoices will be sent to the parent’s phone number at
                 the end of each month. Payment is expected by the 7th of each
@@ -99,13 +77,16 @@ const Pricing = () => {
             </div>
           </div>
 
-          <div className="my-2 p-3 md:p-5">
-            <h2 className="text-lg md:text-2xl">Price Calculator</h2>
-            <div className="text-lg">
+          {/* <div className="my-2 p-3 md:p-5"> */}
+          <div className="my-6 rounded-lg bg-gray-50 p-6 shadow-md md:p-8">
+            <h2 className="text-2xl font-semibold text-gray-800 md:text-3xl">
+              Price Calculator
+            </h2>
+            <div className="mt-4 text-lg leading-relaxed text-gray-600">
               <p>
-                You can calculate a your predicted bill by manipulating the
-                number of hours per each day and the number of days per week you
-                want your child to be tutored.
+                You can calculate your predicted bill by manipulating the number
+                of hours per day and the number of days per week you want your
+                child to be tutored.
               </p>
             </div>
             <Grid container p={2} rowSpacing={1} spacing={2} columnSpacing={2}>
