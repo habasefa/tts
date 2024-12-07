@@ -2,7 +2,74 @@ import React from 'react'
 import Header from '../components/historyComponents/header'
 import Body from '../components/historyComponents/body'
 import Footer from '../components/historyComponents/footer'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { createReport } from '../backend-utils/tutor-utils'
 const report = () => {
+  const currentDate = new Date()
+
+  const tutor = useSelector((state) => state.user)
+  console.log(tutor)
+  const [formData, setFormData] = useState({
+    totalHours: '',
+    totalDays: '',
+    week: '',
+    month: '',
+    feedback: '',
+    pastChallenge: '',
+    futureChallenge: '',
+    helpChallenge: '',
+    dressing: '',
+    grooming: '',
+    hygiene: '',
+    punctuality: '',
+    manner: '',
+    eloquence: '',
+    // reportDate: '',
+    reportDate: currentDate.getTime(),
+    reportMonth: currentDate.getMonth() + 1, // getMonth() returns 0-11, so we add 1
+    reportYear: currentDate.getFullYear(),
+    tutorId: tutor.id,
+    parentId: '',
+    tutorName: tutor.fullName,
+    rate: 0,
+    status: 'PENDING',
+    view: 'PENDING',
+    comment: '',
+    viewUrl: '',
+  })
+  const [reportJson, setReportJson] = useState({
+    totalTutees: 1,
+    tuteeName: '',
+    subject: '',
+    chapter: '',
+    topic: '',
+    understanding: '',
+    course: '',
+    units: '',
+    type: '',
+    result: '',
+  })
+
+  const handleFormChange = (e) => {
+    const { id, value } = e.target
+    setFormData((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }))
+  }
+  const handleReportChange = (e) => {
+    const { id, value } = e.target
+    setReportJson((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    createReport(formData)
+  }
   return (
     <div className="min-h-screen px-20 font-minionPro xl:px-24">
       <Header />
@@ -14,7 +81,7 @@ const report = () => {
         </div> */}
       {/* <Body /> */}
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="text-center lg:text-left">
           <div className="flex flex-col">
             <div className="p-3">
@@ -28,9 +95,10 @@ const report = () => {
               <input
                 className="mt-4 w-1/5 rounded-sm"
                 type="number"
-                id="phoneN"
+                id="totalTutees"
                 placeholder="How many tutees do you have?"
-                // value={formData.name} // Uncomment and update if you're managing state
+                value={reportJson.totalTutees}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="p-3">
@@ -44,9 +112,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
+                id="tuteeName"
                 placeholder="Tutee Name"
-                // value={formData.name}
+                value={reportJson.tuteeName}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
@@ -60,9 +129,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Month"
-                // value={formData.name}
+                id="totalHours"
+                placeholder="total hours"
+                value={formData.totalHours}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="col">
@@ -72,9 +142,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Month"
-                // value={formData.name}
+                id="totalDays"
+                placeholder="total days"
+                value={formData.totalDays}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
 
@@ -85,9 +156,11 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Month"
-                // value={formData.name}
+                id="week"
+                placeholder="week"
+                value={formData.week}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
+                on
               />
             </div>
             <div className="col">
@@ -97,8 +170,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
+                id="month"
                 placeholder="Month"
+                value={formData.month}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
@@ -117,8 +192,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
+                id="subject"
                 placeholder="Subject"
+                value={reportJson.subject}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="col basis-1/4">
@@ -126,8 +203,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
+                id="chapter"
                 placeholder="Chapter"
+                value={reportJson.chapter}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="col basis-1/4">
@@ -135,9 +214,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="topic"
+                placeholder="topic"
+                value={reportJson.topic}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="col basis-1/4">
@@ -145,9 +225,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="understanding"
+                placeholder="text"
+                value={reportJson.understanding}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
@@ -162,13 +243,14 @@ const report = () => {
 
           <div className="flex flex-row">
             <div className="col basis-1/4">
-              <div> Subject</div>
+              <div> Assessment</div>
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Subject"
-                // value={formData.name}
+                id="assessment"
+                placeholder="assessment"
+                value={reportJson.assessment}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="col basis-1/4">
@@ -176,8 +258,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
+                id="units"
+                placeholder="units"
+                value={reportJson.units}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
                 // value={formData.name}
               />
             </div>
@@ -186,9 +270,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="type"
+                placeholder="type"
+                value={reportJson.type}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
             <div className="col basis-1/4">
@@ -196,9 +281,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="result"
+                placeholder="result"
+                value={reportJson.result}
+                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
@@ -217,18 +303,20 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Subject"
-                // value={formData.name}
+                id="feedback"
+                placeholder="feedback"
+                value={formData.feedback}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
 
               <div> 2.Was there any challenge?</div>
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="pastChallenge"
+                placeholder="past challenge"
+                value={formData.pastChallenge}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
 
@@ -237,9 +325,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="futureChallenge"
+                placeholder="future challenge"
+                value={formData.futureChallenge}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div className="justify-center">
                 4.How can we help you with the challenge?
@@ -247,9 +336,10 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="helpChallenge"
+                placeholder="help challenge"
+                value={formData.helpChallenge}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
@@ -268,26 +358,29 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
+                id="dressing"
                 placeholder="Subject"
-                // value={formData.name}
+                value={formData.dressing}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
 
               <div> Grooming</div>
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="grooming"
+                placeholder="grooming"
+                value={formData.grooming}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div> Hygiene</div>
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="hygiene"
+                placeholder="hygiene"
+                value={formData.hygiene}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
 
@@ -296,25 +389,28 @@ const report = () => {
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="punctuality"
+                placeholder="punctuality"
+                value={formData.punctuality}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div className="justify-center">Manner</div>
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="manner"
+                placeholder="manner"
+                value={formData.manner}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div className="justify-center">Eloquence</div>
               <input
                 className="mx-1"
                 type="text"
-                id="name"
-                placeholder="Chapter"
-                // value={formData.name}
+                id="eloquence"
+                placeholder="eloquence"
+                value={formData.eloquence}
+                onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
@@ -326,6 +422,7 @@ const report = () => {
           Submit
         </button>
       </form>
+
       <Footer />
     </div>
   )
