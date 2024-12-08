@@ -45,7 +45,7 @@ type Assessment = {
 type InputField = {
   name: string
   subjects: Subject[]
-  assessments: Assessment[]
+  assesments: Assessment[]
 }
 
 type FormattedReport = {
@@ -60,7 +60,7 @@ export function formatReport(reportJson: ReportJson[]): FormattedReport {
     (
       acc: Record<
         string,
-        { subjects: Record<string, Chapter[]>; assessments: Assessment[] }
+        { subjects: Record<string, Chapter[]>; assesments: Assessment[] }
       >,
       report
     ) => {
@@ -77,7 +77,7 @@ export function formatReport(reportJson: ReportJson[]): FormattedReport {
       } = report
 
       if (!acc[tuteeName]) {
-        acc[tuteeName] = { subjects: {}, assessments: [] }
+        acc[tuteeName] = { subjects: {}, assesments: [] }
       }
 
       // Handle Subjects and Chapters
@@ -100,7 +100,7 @@ export function formatReport(reportJson: ReportJson[]): FormattedReport {
 
       // Handle Assessments
       if (course || units || type || result) {
-        acc[tuteeName].assessments.push({
+        acc[tuteeName].assesments.push({
           course: course || '',
           units: [
             {
@@ -131,9 +131,9 @@ export function formatReport(reportJson: ReportJson[]): FormattedReport {
         chapters,
       })
     )
-    const assessments: Assessment[] =
-      data.assessments.length > 0
-        ? data.assessments
+    const assesments: Assessment[] =
+      data.assesments.length > 0
+        ? data.assesments
         : [
             {
               course: '',
@@ -155,7 +155,7 @@ export function formatReport(reportJson: ReportJson[]): FormattedReport {
     formatted.inputFields.push({
       name,
       subjects,
-      assessments,
+      assesments,
     })
   })
 

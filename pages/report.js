@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { createReport } from '../backend-utils/tutor-utils'
-import { error } from 'console'
 const report = () => {
   const router = useRouter()
   const user = useSelector((state) => state.user.user)
@@ -37,7 +36,7 @@ const report = () => {
     manner: '',
     elequence: '',
     // reportDate: '',
-    reportDate: currentDate.getTime(),
+    reportDate: currentDate.getDay(),
     reportMonth: currentDate.getMonth() + 1, // getMonth() returns 0-11, so we add 1
     reportYear: currentDate.getFullYear(),
     tutorId: tutor.id,
@@ -94,7 +93,7 @@ const report = () => {
           alert('Report Created Successfully')
           router.push('/')
         } else {
-          alert('Error Creating Report')
+          alert(data.message)
         }
       })
       .catch((error) => console.log(error))
