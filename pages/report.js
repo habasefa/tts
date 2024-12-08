@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { createReport } from '../backend-utils/tutor-utils'
+import { error } from 'console'
 const report = () => {
   const router = useRouter()
   const user = useSelector((state) => state.user.user)
@@ -86,6 +87,17 @@ const report = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     createReport(formData, reportJson, token)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success) {
+          alert('Report Created Successfully')
+          router.push('/')
+        } else {
+          alert('Error Creating Report')
+        }
+      })
+      .catch((error) => console.log(error))
   }
   if (maxTutees === 0) {
     alert('You need Student to do Report')
