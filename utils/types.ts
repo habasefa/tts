@@ -98,7 +98,7 @@ export interface ReportPostProps {
   reportDate: number
   reportMonth: number
   reportYear: number
-  // parentId: string
+  parentId: string
   studentId: string
 }
 export interface TimeSheetProps {

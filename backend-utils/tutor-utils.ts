@@ -319,7 +319,7 @@ const FetchAnImage = async (token: String, id: String) => {
 
   return response
 }
-const createReport = async (
+const createReportNew = async (
   formData: ReportPostProps,
   reportJson: any,
   token: string
@@ -343,12 +343,70 @@ const createReport = async (
 
   return response
 }
+const createReport = async ({
+  reports,
+  token,
+  tutorId,
+  totalDays,
+  totalHours,
+  month,
+  week,
+  feedback,
+  pastChallenge,
+  futureChallenge,
+  helpChallenge,
+  dressing,
+  grooming,
+  hygiene,
+  punctuality,
+  manner,
+  elequence,
+  tutorName,
+  reportDate,
+  reportMonth,
+  reportYear,
+  parentId,
+}: ReportPostProps) => {
+  const response = await fetch(`${API_URL}api/v1/report/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      reports,
+      tutorId,
+      parentId,
+      totalDays,
+      totalHours,
+      month,
+      week,
+      feedback,
+      pastChallenge,
+      futureChallenge,
+      helpChallenge,
+      dressing,
+      grooming,
+      hygiene,
+      punctuality,
+      manner,
+      elequence,
+      tutorName,
+      reportDate,
+      reportMonth,
+      reportYear,
+    }),
+  })
+
+  return response
+}
 export {
   createTutor,
   getTutorById,
   getJobs,
   linkJobAndTutor,
   createReport,
+  createReportNew,
   updateTutor,
   fetchReport,
   fetchRejectedReport,
@@ -363,61 +421,3 @@ export {
   UpdateAnImage,
   FetchAnImage,
 }
-
-// const createReport = async ({
-//   reports,
-//   token,
-//   tutorId,
-//   totalDays,
-//   totalHours,
-//   month,
-//   week,
-//   feedback,
-//   pastChallenge,
-//   futureChallenge,
-//   helpChallenge,
-//   dressing,
-//   grooming,
-//   hygiene,
-//   punctuality,
-//   manner,
-//   elequence,
-//   tutorName,
-//   reportDate,
-//   reportMonth,
-//   reportYear,
-//   parentId,
-// }: ReportPostProps) => {
-//   const response = await fetch(`${API_URL}api/v1/report/`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify({
-//       reports,
-//       tutorId,
-//       parentId,
-//       totalDays,
-//       totalHours,
-//       month,
-//       week,
-//       feedback,
-//       pastChallenge,
-//       futureChallenge,
-//       helpChallenge,
-//       dressing,
-//       grooming,
-//       hygiene,
-//       punctuality,
-//       manner,
-//       elequence,
-//       tutorName,
-//       reportDate,
-//       reportMonth,
-//       reportYear,
-//     }),
-//   })
-
-//   return response
-// }

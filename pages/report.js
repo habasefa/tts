@@ -5,7 +5,7 @@ import Footer from '../components/historyComponents/footer'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { createReport } from '../backend-utils/tutor-utils'
+import { createReportNew } from '../backend-utils/tutor-utils'
 const report = () => {
   const router = useRouter()
   const user = useSelector((state) => state.user.user)
@@ -85,7 +85,7 @@ const report = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createReport(formData, reportJson, token)
+    createReportNew(formData, reportJson, token)
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
