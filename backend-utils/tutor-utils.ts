@@ -5,6 +5,7 @@ import {
   TutorFollowup,
 } from 'utils/types'
 import { API_URL } from 'utils/url'
+import { formatReport } from './report-utils'
 
 const createTutor = async ({
   fullName,
@@ -323,25 +324,25 @@ const createReport = async (
   reportJson: any,
   token: string
 ) => {
-  console.log(reportJson)
-  console.log(formData)
-  console.log(token)
+  // console.log(reportJson)
+  // console.log(formData)
+  // console.log(token)
   const formatedReport = formatReport(reportJson)
-  // const response = await fetch(`${API_URL}api/v1/report/`, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     authorization: `Bearer ${token}`,
-  //   },
-  //   body: JSON.stringify({
-  //     ...formData,
-  //     report: formatedReport,
-  //   }),
-  // })
+  console.log(formatedReport)
+  const response = await fetch(`${API_URL}api/v1/report/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      ...formData,
+      reports: formatedReport,
+    }),
+  })
 
-  // return response
+  return response
 }
-const formatReport = (reportJson: any) => {}
 export {
   createTutor,
   getTutorById,

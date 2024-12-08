@@ -2,20 +2,24 @@ import React from 'react'
 import Header from '../components/historyComponents/header'
 import Body from '../components/historyComponents/body'
 import Footer from '../components/historyComponents/footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import { createReport } from '../backend-utils/tutor-utils'
-import { set } from 'react-ga'
 const report = () => {
-  const currentDate = new Date()
-
+  const router = useRouter()
   const user = useSelector((state) => state.user.user)
-  const maxTutees =
-    useSelector((state) => state.user.user.user.tutor.studentIds.length) || 0
   const token = user.accessToken
-  const tutor = user.user.tutor
-  console.log(tutor)
-  console.log(token)
+  const tutor = useSelector((state) => state.tutor.tutor.tutor)
+  const students = tutor.students.map((student) => {
+    return { name: student.fullName, parentId: student.parentId }
+  })
+  // console.log(students)
+
+  const currentDate = new Date()
+  console.log('tutor: ', tutor)
+
+  const maxTutees = tutor.students.length
   const [formData, setFormData] = useState({
     totalHours: '',
     totalDays: '',
@@ -30,13 +34,13 @@ const report = () => {
     hygiene: '',
     punctuality: '',
     manner: '',
-    eloquence: '',
+    elequence: '',
     // reportDate: '',
     reportDate: currentDate.getTime(),
     reportMonth: currentDate.getMonth() + 1, // getMonth() returns 0-11, so we add 1
     reportYear: currentDate.getFullYear(),
     tutorId: tutor.id,
-    parentId: '',
+    parentId: students.length ? students[0].parentId : '',
     tutorName: tutor.fullName,
   })
   const reportSchema = {
@@ -62,7 +66,7 @@ const report = () => {
   }
   const handleReportChange = (e, ind) => {
     const { id, value } = e.target
-    console.log(id, value)
+    // console.log(id, value)
     setReportJson((prevState) => {
       const newArr = [...prevState]
       newArr[ind] = { ...newArr[ind], [id]: value }
@@ -82,6 +86,10 @@ const report = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     createReport(formData, reportJson, token)
+  }
+  if (maxTutees === 0) {
+    alert('You need Student to do Report')
+    router.push('/')
   }
   return (
     <div className="min-h-screen px-20 font-minionPro xl:px-24">
@@ -110,7 +118,7 @@ const report = () => {
                 type="number"
                 id="totalTutees"
                 placeholder="How many tutees do you have?"
-                min={0}
+                min={1}
                 max={maxTutees}
                 value={totalTutees}
                 onChange={(e) => haldleTotalTutees(e)} // Uncomment and update if you're managing state
@@ -190,16 +198,25 @@ const report = () => {
               >
                 Name of Tutee {ind + 1}
               </label>
-              <br></br>
-              <input
+              <br />
+              <select
                 className="mx-1"
-                type="text"
                 id="tuteeName"
-                placeholder="Tutee Name"
-                value={reportJson[ind].tuteeName}
+                value={reportJson[ind].tuteeName || ''}
                 required
-                onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
-              />
+                onChange={(e) => handleReportChange(e, ind)} // Update state management
+              >
+                <option value="" disabled>
+                  Select a Tutee
+                </option>
+                {students.map((student) => (
+                  <option key={student.parentId} value={student.name}>
+                    {student.name}
+                  </option>
+                ))}
+              </select>
+
+              <br></br>
             </div>
             <div className="mt-10 rounded-md bg-[#f2f2f2] px-3 py-2 ">
               <label
@@ -445,13 +462,13 @@ const report = () => {
                 required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
-              <div className="justify-center">Eloquence</div>
+              <div className="justify-center">Elequence</div>
               <input
                 className="mx-1"
                 type="text"
-                id="eloquence"
-                placeholder="eloquence"
-                value={formData.eloquence}
+                id="elequence"
+                placeholder="elequence"
+                value={formData.elequence}
                 required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
