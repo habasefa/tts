@@ -163,63 +163,6 @@ const sendTimeSheet = async ({
   })
   return response
 }
-const createReport = async ({
-  reports,
-  token,
-  tutorId,
-  totalDays,
-  totalHours,
-  month,
-  week,
-  feedback,
-  pastChallenge,
-  futureChallenge,
-  helpChallenge,
-  dressing,
-  grooming,
-  hygiene,
-  punctuality,
-  manner,
-  elequence,
-  tutorName,
-  reportDate,
-  reportMonth,
-  reportYear,
-  parentId,
-}: ReportPostProps) => {
-  const response = await fetch(`${API_URL}api/v1/report/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      reports,
-      tutorId,
-      parentId,
-      totalDays,
-      totalHours,
-      month,
-      week,
-      feedback,
-      pastChallenge,
-      futureChallenge,
-      helpChallenge,
-      dressing,
-      grooming,
-      hygiene,
-      punctuality,
-      manner,
-      elequence,
-      tutorName,
-      reportDate,
-      reportMonth,
-      reportYear,
-    }),
-  })
-
-  return response
-}
 
 const getTutorById = async (id: any, token: string) => {
   const response = await fetch(`${API_URL}api/v1/tutor/${id}`, {
@@ -375,7 +318,30 @@ const FetchAnImage = async (token: String, id: String) => {
 
   return response
 }
+const createReport = async (
+  formData: ReportPostProps,
+  reportJson: any,
+  token: string
+) => {
+  console.log(reportJson)
+  console.log(formData)
+  console.log(token)
+  const formatedReport = formatReport(reportJson)
+  // const response = await fetch(`${API_URL}api/v1/report/`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     authorization: `Bearer ${token}`,
+  //   },
+  //   body: JSON.stringify({
+  //     ...formData,
+  //     report: formatedReport,
+  //   }),
+  // })
 
+  // return response
+}
+const formatReport = (reportJson: any) => {}
 export {
   createTutor,
   getTutorById,
@@ -396,3 +362,61 @@ export {
   UpdateAnImage,
   FetchAnImage,
 }
+
+// const createReport = async ({
+//   reports,
+//   token,
+//   tutorId,
+//   totalDays,
+//   totalHours,
+//   month,
+//   week,
+//   feedback,
+//   pastChallenge,
+//   futureChallenge,
+//   helpChallenge,
+//   dressing,
+//   grooming,
+//   hygiene,
+//   punctuality,
+//   manner,
+//   elequence,
+//   tutorName,
+//   reportDate,
+//   reportMonth,
+//   reportYear,
+//   parentId,
+// }: ReportPostProps) => {
+//   const response = await fetch(`${API_URL}api/v1/report/`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       authorization: `Bearer ${token}`,
+//     },
+//     body: JSON.stringify({
+//       reports,
+//       tutorId,
+//       parentId,
+//       totalDays,
+//       totalHours,
+//       month,
+//       week,
+//       feedback,
+//       pastChallenge,
+//       futureChallenge,
+//       helpChallenge,
+//       dressing,
+//       grooming,
+//       hygiene,
+//       punctuality,
+//       manner,
+//       elequence,
+//       tutorName,
+//       reportDate,
+//       reportMonth,
+//       reportYear,
+//     }),
+//   })
+
+//   return response
+// }

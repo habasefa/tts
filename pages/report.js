@@ -5,11 +5,17 @@ import Footer from '../components/historyComponents/footer'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { createReport } from '../backend-utils/tutor-utils'
+import { set } from 'react-ga'
 const report = () => {
   const currentDate = new Date()
 
-  const tutor = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user.user)
+  const maxTutees =
+    useSelector((state) => state.user.user.user.tutor.studentIds.length) || 0
+  const token = user.accessToken
+  const tutor = user.user.tutor
   console.log(tutor)
+  console.log(token)
   const [formData, setFormData] = useState({
     totalHours: '',
     totalDays: '',
@@ -32,14 +38,8 @@ const report = () => {
     tutorId: tutor.id,
     parentId: '',
     tutorName: tutor.fullName,
-    rate: 0,
-    status: 'PENDING',
-    view: 'PENDING',
-    comment: '',
-    viewUrl: '',
   })
-  const [reportJson, setReportJson] = useState({
-    totalTutees: 1,
+  const reportSchema = {
     tuteeName: '',
     subject: '',
     chapter: '',
@@ -49,7 +49,9 @@ const report = () => {
     units: '',
     type: '',
     result: '',
-  })
+  }
+  const [reportJson, setReportJson] = useState([])
+  const [totalTutees, setTotalTutees] = useState(0)
 
   const handleFormChange = (e) => {
     const { id, value } = e.target
@@ -58,17 +60,28 @@ const report = () => {
       [id]: value,
     }))
   }
-  const handleReportChange = (e) => {
+  const handleReportChange = (e, ind) => {
     const { id, value } = e.target
-    setReportJson((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }))
+    console.log(id, value)
+    setReportJson((prevState) => {
+      const newArr = [...prevState]
+      newArr[ind] = { ...newArr[ind], [id]: value }
+      return newArr
+    })
+  }
+  const haldleTotalTutees = (e) => {
+    const { id, value } = e.target
+    let arr = []
+    for (let i = 0; i < value; i++) {
+      arr.push({ ...reportSchema })
+    }
+    setTotalTutees(value)
+    setReportJson(arr)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createReport(formData)
+    createReport(formData, reportJson, token)
   }
   return (
     <div className="min-h-screen px-20 font-minionPro xl:px-24">
@@ -97,25 +110,11 @@ const report = () => {
                 type="number"
                 id="totalTutees"
                 placeholder="How many tutees do you have?"
-                value={reportJson.totalTutees}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
-            </div>
-            <div className="p-3">
-              <label
-                className="mt-3 text-2xl font-semibold tracking-wide"
-                htmlFor="phoneN"
-              >
-                Name of Tutee
-              </label>
-              <br></br>
-              <input
-                className="mx-1"
-                type="text"
-                id="tuteeName"
-                placeholder="Tutee Name"
-                value={reportJson.tuteeName}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
+                min={0}
+                max={maxTutees}
+                value={totalTutees}
+                onChange={(e) => haldleTotalTutees(e)} // Uncomment and update if you're managing state
+                required
               />
             </div>
           </div>
@@ -132,6 +131,7 @@ const report = () => {
                 id="totalHours"
                 placeholder="total hours"
                 value={formData.totalHours}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
@@ -145,6 +145,7 @@ const report = () => {
                 id="totalDays"
                 placeholder="total days"
                 value={formData.totalDays}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
@@ -159,6 +160,7 @@ const report = () => {
                 id="week"
                 placeholder="week"
                 value={formData.week}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
                 on
               />
@@ -173,122 +175,153 @@ const report = () => {
                 id="month"
                 placeholder="Month"
                 value={formData.month}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
           </div>
         </div>
-        <div className="mt-10 rounded-md bg-[#f2f2f2] px-3 py-2 ">
-          <label
-            className="text-2xl font-semibold tracking-wide"
-            htmlFor="phoneN"
-          >
-            On the Content
-          </label>
+        {reportJson.map((item, ind) => (
+          <div key={ind}>
+            <div className="p-3">
+              <label
+                className="mt-3 text-2xl font-semibold tracking-wide"
+                htmlFor="phoneN"
+              >
+                Name of Tutee {ind + 1}
+              </label>
+              <br></br>
+              <input
+                className="mx-1"
+                type="text"
+                id="tuteeName"
+                placeholder="Tutee Name"
+                value={reportJson[ind].tuteeName}
+                required
+                onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+              />
+            </div>
+            <div className="mt-10 rounded-md bg-[#f2f2f2] px-3 py-2 ">
+              <label
+                className="text-2xl font-semibold tracking-wide"
+                htmlFor="phoneN"
+              >
+                On the Content
+              </label>
 
-          <div className="flex flex-row">
-            <div className="col basis-1/4">
-              <div> Subject</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="subject"
-                placeholder="Subject"
-                value={reportJson.subject}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
+              <div className="flex flex-row">
+                <div className="col basis-1/4">
+                  <div> Subject</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="subject"
+                    placeholder="Subject"
+                    value={reportJson[ind].subject}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+                <div className="col basis-1/4">
+                  <div> Chapter</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="chapter"
+                    placeholder="Chapter"
+                    value={reportJson[ind].chapter}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+                <div className="col basis-1/4">
+                  <div> Topic</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="topic"
+                    placeholder="topic"
+                    value={reportJson[ind].topic}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+                <div className="col basis-1/4">
+                  <div className="justify-center">Understanding</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="understanding"
+                    placeholder="text"
+                    value={reportJson[ind].understanding}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+              </div>
             </div>
-            <div className="col basis-1/4">
-              <div> Chapter</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="chapter"
-                placeholder="Chapter"
-                value={reportJson.chapter}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
-            </div>
-            <div className="col basis-1/4">
-              <div> Topic</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="topic"
-                placeholder="topic"
-                value={reportJson.topic}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
-            </div>
-            <div className="col basis-1/4">
-              <div className="justify-center">Understanding</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="understanding"
-                placeholder="text"
-                value={reportJson.understanding}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
+            <div className="mt-10 rounded-md bg-[#f2f2f2] px-3 py-2">
+              <label
+                className="text-2xl font-semibold tracking-wide"
+                htmlFor="phoneN"
+              >
+                On Result
+              </label>
+
+              <div className="flex flex-row">
+                <div className="col basis-1/4">
+                  <div> Assessment</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="unit"
+                    placeholder="unit"
+                    value={reportJson[ind].unit}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+                <div className="col basis-1/4">
+                  <div> Units</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="units"
+                    placeholder="units"
+                    value={reportJson[ind].units}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                    // value={formData.name}
+                  />
+                </div>
+                <div className="col basis-1/4">
+                  <div> Type</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="type"
+                    placeholder="type"
+                    value={reportJson[ind].type}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+                <div className="col basis-1/4">
+                  <div className="justify-center">Result</div>
+                  <input
+                    className="mx-1"
+                    type="text"
+                    id="result"
+                    placeholder="result"
+                    value={reportJson[ind].result}
+                    required
+                    onChange={(e) => handleReportChange(e, ind)} // Uncomment and update if you're managing state
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="mt-10 rounded-md bg-[#f2f2f2] px-3 py-2">
-          <label
-            className="text-2xl font-semibold tracking-wide"
-            htmlFor="phoneN"
-          >
-            On Result
-          </label>
-
-          <div className="flex flex-row">
-            <div className="col basis-1/4">
-              <div> Assessment</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="assessment"
-                placeholder="assessment"
-                value={reportJson.assessment}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
-            </div>
-            <div className="col basis-1/4">
-              <div> Units</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="units"
-                placeholder="units"
-                value={reportJson.units}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-                // value={formData.name}
-              />
-            </div>
-            <div className="col basis-1/4">
-              <div> Type</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="type"
-                placeholder="type"
-                value={reportJson.type}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
-            </div>
-            <div className="col basis-1/4">
-              <div className="justify-center">Result</div>
-              <input
-                className="mx-1"
-                type="text"
-                id="result"
-                placeholder="result"
-                value={reportJson.result}
-                onChange={(e) => handleReportChange(e)} // Uncomment and update if you're managing state
-              />
-            </div>
-          </div>
-        </div>
+        ))}
         <div className="mt-2 rounded-md bg-[#f2f2f2] px-3 py-2 ">
           <label
             className="text-2xl font-semibold tracking-wide"
@@ -306,6 +339,7 @@ const report = () => {
                 id="feedback"
                 placeholder="feedback"
                 value={formData.feedback}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
 
@@ -316,6 +350,7 @@ const report = () => {
                 id="pastChallenge"
                 placeholder="past challenge"
                 value={formData.pastChallenge}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
@@ -328,6 +363,7 @@ const report = () => {
                 id="futureChallenge"
                 placeholder="future challenge"
                 value={formData.futureChallenge}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div className="justify-center">
@@ -339,6 +375,7 @@ const report = () => {
                 id="helpChallenge"
                 placeholder="help challenge"
                 value={formData.helpChallenge}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
@@ -361,6 +398,7 @@ const report = () => {
                 id="dressing"
                 placeholder="Subject"
                 value={formData.dressing}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
 
@@ -371,6 +409,7 @@ const report = () => {
                 id="grooming"
                 placeholder="grooming"
                 value={formData.grooming}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div> Hygiene</div>
@@ -380,6 +419,7 @@ const report = () => {
                 id="hygiene"
                 placeholder="hygiene"
                 value={formData.hygiene}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
@@ -392,6 +432,7 @@ const report = () => {
                 id="punctuality"
                 placeholder="punctuality"
                 value={formData.punctuality}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div className="justify-center">Manner</div>
@@ -401,6 +442,7 @@ const report = () => {
                 id="manner"
                 placeholder="manner"
                 value={formData.manner}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
               <div className="justify-center">Eloquence</div>
@@ -410,6 +452,7 @@ const report = () => {
                 id="eloquence"
                 placeholder="eloquence"
                 value={formData.eloquence}
+                required
                 onChange={(e) => handleFormChange(e)} // Uncomment and update if you're managing state
               />
             </div>
@@ -417,7 +460,7 @@ const report = () => {
         </div>{' '}
         <button
           class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
-          type="button"
+          type="submit"
         >
           Submit
         </button>
