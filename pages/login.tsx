@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import { signin } from '../backend-utils/user-utils'
-import { getTutorById } from '../backend-utils/tutor-utils'
 import { useRouter } from 'next/router'
 
 import { Form, Input, Button, Alert } from 'antd'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { login, selectUser } from 'redux/userSlice'
-import { setTutor } from 'redux/tutorSlice'
 
 export default function Login() {
   // ? track mounted state
@@ -49,20 +47,7 @@ export default function Login() {
               loggedIn: true,
             })
           )
-          if (data.user.role === 'TUTOR') {
-            getTutorById(data.user.tutor.id, data.access_token)
-              .then((res) => res.json())
-              .then((data) => {
-                console.log('tutor', data)
-                if (data.success) {
-                  dispatch(
-                    setTutor({
-                      tutor: data.user,
-                    })
-                  )
-                }
-              })
-          }
+
           if (data.user.role === 'TUTOR' && data.user.tutor === null) {
             router.push('/complete-profile')
           } else if (data.user.role === 'TUTOR') {
