@@ -1,8 +1,8 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import Report from './Report'
-// import { API_URL } from '../../../utils/url'
-const API_URL = 'http://localhost:4000/'
+import { API_URL } from '../../../utils/url'
+// const API_URL = 'http://localhost:4000/'
 const report = {
   id: '675c669faf42c54164f8137d',
   totalDays: '1',
