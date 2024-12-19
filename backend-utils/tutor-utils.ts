@@ -60,7 +60,7 @@ const createTutor = async ({
       college,
       volenteerism,
       prevTutored,
-      prevTutorGrades: [prevTutorGrades],
+      prevTutorGrades: prevTutorGrades ? [prevTutorGrades] : [],
       prevTutorExperience,
       idealTutor,
       preferredBank,
@@ -197,13 +197,25 @@ const deleteTimesheet = async (token: any, id: any) => {
 }
 
 const updateTutor = async (id: any, token: string, tutorBody: any) => {
+  console.log('prevTutorGrades:', tutorBody.prevTutorGrades)
+  console.log(tutorBody.prevTutorGrades ? tutorBody.prevTutorGrades : [])
+  let prevTutorGrades = tutorBody.prevTutorGrades
+  if (!prevTutorGrades) {
+    prevTutorGrades = []
+  } else if (typeof prevTutorGrades === 'string') {
+    prevTutorGrades = [prevTutorGrades]
+  } else if (Array.isArray(prevTutorGrades)) {
+  }
   const response = await fetch(`${API_URL}api/v1/tutor/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ ...tutorBody }),
+    body: JSON.stringify({
+      ...tutorBody,
+      prevTutorGrades,
+    }),
   })
   return response
 }
