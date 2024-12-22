@@ -53,11 +53,8 @@ function Tutor({ user }: any) {
     'Web Development',
     'App Development',
   ]
-  const bankChildren =[]
-  const banks =["CBE",
-    "Awash",
-    "Abyssinia",
-    "Telebirr"]
+  const bankChildren = []
+  const banks = ['CBE', 'Awash', 'Abyssinia', 'Telebirr']
   for (let i = 0; i < subjects.length; i++) {
     children.push(<Option key={subjects[i]}>{subjects[i]}</Option>)
   }
@@ -66,7 +63,7 @@ function Tutor({ user }: any) {
   }
   const onFinish = (value: any) => {
     const date = new Date(birthDate)
-    setComplete(true);
+    setComplete(true)
 
     const userInfo = {
       fullName: value.fullName,
@@ -312,7 +309,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <InputNumber maxLength={50}  />
+            <InputNumber maxLength={50} />
           </Form.Item>
           <Form.Item
             label="Cumulative GPA"
@@ -324,7 +321,7 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-            <InputNumber maxLength={50}  />
+            <InputNumber maxLength={50} />
           </Form.Item>
           <Form.Item
             label="Field of study"
@@ -413,15 +410,13 @@ function Tutor({ user }: any) {
               },
             ]}
           >
-              <Select
-             
+            <Select
               allowClear
               style={{ width: '100%' }}
               placeholder="Please select"
             >
               {bankChildren}
             </Select>
-           
           </Form.Item>
 
           <Form.Item
@@ -463,7 +458,10 @@ function Tutor({ user }: any) {
             <Input maxLength={50} showCount />
           </Form.Item>
 
-          <Form.Item label="Guarantor's other phone number" name="contactPhone2">
+          <Form.Item
+            label="Guarantor's other phone number"
+            name="contactPhone2"
+          >
             <Input maxLength={50} showCount />
           </Form.Item>
           <Form.Item
@@ -484,11 +482,11 @@ function Tutor({ user }: any) {
             rules={[
               {
                 required: true,
-                message: "Please input your username for telegram!",
+                message: 'Please input your username for telegram!',
               },
             ]}
           >
-            <Input maxLength={50} showCount />
+            <Input maxLength={50} showCount placeholder="@username" />
           </Form.Item>
 
           <Form.Item
@@ -496,26 +494,24 @@ function Tutor({ user }: any) {
             name="workDays"
             rules={[
               {
-          
                 required: true,
                 message: 'Please input preferred work day/days',
               },
             ]}
           >
-           <InputNumber controls={false} />
+            <InputNumber controls={false} />
           </Form.Item>
           <Form.Item
             label="How many hours a day(the number specified above) are you available?"
             name="workHour"
             rules={[
               {
-               
                 required: true,
                 message: 'Please input preferred work hour/hours',
               },
             ]}
           >
-          <InputNumber controls={false} />
+            <InputNumber controls={false} />
           </Form.Item>
           <Form.Item
             label="List the places(by common name) which are close to where you are? Comma separated"

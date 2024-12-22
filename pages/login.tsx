@@ -33,7 +33,7 @@ export default function Login() {
     setLoggingIn(true)
     setErr('')
     setShowAlert(false)
-    console.log(email,password)
+    console.log(email, password)
     signin(email, password)
       .then((res) => res.json())
       .then((data) => {
@@ -47,21 +47,16 @@ export default function Login() {
               loggedIn: true,
             })
           )
-          if (data.user.role === 'TUTOR' && data.user.tutor === null)
-          {
+
+          if (data.user.role === 'TUTOR' && data.user.tutor === null) {
             router.push('/complete-profile')
-          }
-          else if (data.user.role=== 'TUTOR'){
+          } else if (data.user.role === 'TUTOR') {
             router.push('/')
           }
-        } 
-      
-        else {
-          if (data.status != 500)
-          {
-          setErr(data.message)
-          }
-          else{
+        } else {
+          if (data.status != 500) {
+            setErr(data.message)
+          } else {
             setErr('Something went wrong')
           }
         }
@@ -90,11 +85,11 @@ export default function Login() {
 
   return (
     <>
-      <div className="font-minionPro mx-auto min-h-screen bg-white  p-6 sm:bg-white md:bg-white lg:bg-[#f1f1f1]">
+      <div className="mx-auto min-h-screen bg-white p-6  font-minionPro sm:bg-white md:bg-white lg:bg-[#f1f1f1]">
         <div className=" w-full">
           <div className="mx-auto max-w-lg">
             <a href="/">
-              <h1 className="font-typograhica text-center  text-4xl text-[#FED607] lg:text-5xl  2xl:text-7xl">
+              <h1 className="text-center font-typograhica  text-4xl text-[#FED607] lg:text-5xl  2xl:text-7xl">
                 temaribet
               </h1>
             </a>
@@ -189,7 +184,6 @@ export default function Login() {
                     Log in
                   </Button>
                 </Form.Item>
-                
               </Form>
             </div>
           </div>

@@ -73,29 +73,10 @@ export interface StudentPostProps {
   workHour: number | null
   hobby: string | null
   parentId: string
-  tutorId : string | null
+  tutorId: string | null
 }
 
 export interface ReportPostProps {
-
-  // professionality: string | null
-  // assg: string | null
-  // noDays: string
-  // feedback: string | null
-  // semiTotalHour: string | null
-  // quiz: string | null
-  // test: string | null
-  // envChallenge: string | null
-  // envHelp: string | null
-  // envResponse: string | null
-  // yourChallenge: string | null
-  // yourHelp: string | null
-  // yourResponse: string | null
-  // tuteeChallenge: string | null
-  // tuteeHelp: string | null
-  // tuteeResponse: string | null
-  // subjects: string | null
-  // topics: string | null
   totalDays: String | null
   totalHours: String | null
   month: String | null
@@ -113,45 +94,45 @@ export interface ReportPostProps {
   reports: object | null
   token: string
   tutorId: string
-  tutorName:String | null
+  tutorName: String | null
   reportDate: number
-  reportMonth : number
+  reportMonth: number
   reportYear: number
-  parentId:string
+  parentId: string
+  studentId: string
 }
 export interface TimeSheetProps {
-  tutorId : string
+  tutorId: string
   listStudent: object
-  parentId : String
-  month : String
-  image : Blob
+  parentId: String
+  month: String
+  image: Blob
   token: String
-  year : String
-
+  year: String
 }
 export interface TutorFollowup {
-  tutorId : string
-  month :  String
-  year : String
+  tutorId: string
+  month: String
+  year: String
   strength: String
-  weakness : String
-  opportunity : String
-  threat:String
-  assesment:String
+  weakness: String
+  opportunity: String
+  threat: String
+  assesment: String
   satisfaction: String
   status: String
   authenticity: String
-  token:String
+  token: String
 }
 
 export interface ParentFollowup {
-  parentId : string
-  month :  String
-  year : String
+  parentId: string
+  month: String
+  year: String
   comment: String
   satisfaction: String
   status: String
-  token:String
+  token: String
 }
 export interface TutorPostProps {
   fullName: string
@@ -180,7 +161,7 @@ export interface TutorPostProps {
   workHour: number
   location: string
   essay: string
-  telegramUsername:string
+  telegramUsername: string
   hobby: string
   profilePicture: string
   token: string

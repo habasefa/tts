@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import userReducer from './userSlice'
+import tutorReducer from './tutorSlice'
 
 import {
   persistStore,
@@ -14,17 +15,21 @@ import {
 
 import storage from './storage'
 
-
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
 }
-
-const persistedReducer = persistReducer(persistConfig, userReducer)
+const tutorPersistConfig = {
+  key: 'tutor',
+  version: 1,
+  storage,
+}
+const userpersistedReducer = persistReducer(persistConfig, userReducer)
+const tutorPersistedReducer = persistReducer(tutorPersistConfig, tutorReducer)
 
 const store = configureStore({
-  reducer: { user: persistedReducer },
+  reducer: { user: userpersistedReducer, tutor: tutorPersistedReducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

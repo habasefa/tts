@@ -20,6 +20,7 @@ const Home: NextPage = () => {
   if (user) {
     const decodedToken: any = jwt_decode(user.accessToken)
     if (decodedToken.exp > Date.now()) {
+      console.log('Token Expired')
       dispatch(logout())
     }
   }

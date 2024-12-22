@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository hosts the frontend for [Temaribet](https://temaribet.net/), a professional tutoring platform based in Addis Ababa, Ethiopia. Temaribet connects parents and students with highly qualified tutors, making personalized learning accessible, efficient, and stress-free for busy parents, ensuring academic success for children.
+This repository hosts the frontend for [Temaribet](https://tutor.temari-bet.com/), a professional tutoring platform based in Addis Ababa, Ethiopia. Temaribet connects parents and students with highly qualified tutors, making personalized learning accessible, efficient, and stress-free for busy parents, ensuring academic success for children.
 
 ### Homepage
 
@@ -12,11 +12,14 @@ Below is a screenshot of the homepage of Temaribet:
 
 ## Tech Stack
 
-- **Frontend Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [TailwindCSS](https://tailwindcss.com/)
-- **Database**: [Firebase](https://firebase.google.com/)
-- **State Management**: [Redux](https://redux.js.org/)
-- **API Integration**: Fetch API
+- **Frontend Framework**: [React](https://reactjs.org/) and [Next.js](https://nextjs.org/)
+- **UI Framework**: [Material-UI](https://mui.com/), [Ant Design](https://ant.design/), [Font Awesome](https://fontawesome.com/), [Heroicons](https://heroicons.com/)
+- **State Management**: [Redux](https://redux.js.org/), [Redux Toolkit](https://redux-toolkit.js.org/), [React-Redux](https://react-redux.js.org/), [Redux Persist](https://github.com/rt2zz/redux-persist)
+- **Form Handling**: [Formik](https://formik.org/), [React Hook Form](https://react-hook-form.com/), [Yup](https://github.com/jquense/yup)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [Emotion](https://emotion.sh/docs/introduction)
+- **Utilities**: [Axios](https://axios-http.com/), [Moment.js](https://momentjs.com/), [JWT Decode](https://github.com/auth0/jwt-decode), [CSV to JSON](https://github.com/Keyang/csvtojson)
+- **Analytics**: [Google Analytics](https://github.com/react-ga/react-ga), [Facebook Pixel](https://github.com/zsajjad/react-facebook-pixel)
+- **Firebase**: [Firebase](https://firebase.google.com/) for app initialization and [Firebase Storage](https://firebase.google.com/products/storage) for file storage
 
 ---
 
