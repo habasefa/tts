@@ -128,42 +128,41 @@ const App = () => {
   const router = useRouter()
   const { id } = router.query
   console.log(id)
-  const [report, setReport] = useState(reportData)
+  const [report, setReport] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   // setLoading(false)
 
-  // useEffect(() => {
-  //   if (!id) return // Ensure we have the `id` before fetching
+  useEffect(() => {
+    if (!id) return // Ensure we have the `id` before fetching
 
-  //   const fetchReport = async () => {
-  //     setLoading(true)
-  //     setError(null)
-  //     try {
-  //       // Replace with your actual API endpoint
-  //       const response = await fetch(`${API_URL}api/v1/report/view/${id}`)
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch the report.')
-  //       }
-  //       const data = await response.json()
-  //       console.log(data)
-  //       if (data.success) {
-  //         setReport(data.report)
-  //       } else {
-  //         throw new Error(data.message || 'Failed to fetch the report.')
-  //       }
-  //     } catch (err) {
-  //       setError(err.message)
-  //     } finally {
-  //       setLoading(false)
-  //     }
-  //   }
+    const fetchReport = async () => {
+      setLoading(true)
+      setError(null)
+      try {
+        // Replace with your actual API endpoint
+        const response = await fetch(`${API_URL}api/v1/report/view/${id}`)
+        if (!response.ok) {
+          throw new Error('Failed to fetch the report.')
+        }
+        const data = await response.json()
+        console.log(data)
+        if (data.success) {
+          setReport(data.report)
+        } else {
+          throw new Error(data.message || 'Failed to fetch the report.')
+        }
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-  //   fetchReport()
-  // }, [id])
+    fetchReport()
+  }, [id])
 
   if (loading) {
-    setLoading(false)
     return (
       <div className="flex h-screen items-center justify-center bg-gray-100">
         <p className="text-lg font-semibold text-gray-600">Loading...</p>

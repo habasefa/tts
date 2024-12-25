@@ -162,7 +162,7 @@ const Report = ({ report }) => {
         </h1>
         <button
           onClick={downloadPDF}
-          className="text-xs font-bold text-gray-600 hover:text-gray-800 sm:text-sm"
+          className="rounded-md text-xs font-bold text-gray-600 transition-all duration-200 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 active:scale-95 active:bg-gray-200 sm:text-sm"
         >
           <i className="fas fa-download"></i> Download
         </button>
@@ -301,7 +301,8 @@ const Report = ({ report }) => {
           />
         </div>
       </BackgroundField>
-      <BackgroundField title={'On Professionalization(100%)'}>
+
+      {/* <BackgroundField title={'On Professionalization(100%)'}>
         {' '}
         <div className=" grid grid-cols-1 pb-3 sm:grid-cols-2">
           <ProfessionalizationItem
@@ -331,7 +332,6 @@ const Report = ({ report }) => {
         <p className="text-gray-700">{comment}</p>
       </BackgroundField>
       <BackgroundField title={'Rating'}>
-        {/* Comment and Rating Section */}
         <div className=" m-auto">
           <div className="flex items-center gap-4">
             <div className="flex gap-1">
@@ -348,7 +348,7 @@ const Report = ({ report }) => {
             </div>
           </div>
         </div>
-      </BackgroundField>
+      </BackgroundField> */}
     </div>
   )
 }
