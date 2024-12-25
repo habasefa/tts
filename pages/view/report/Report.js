@@ -282,7 +282,7 @@ const Report = ({ report }) => {
 
       <BackgroundField title={'On the tutorial Delivery'}>
         {/* Tutorial Feedback */}
-        <div className="grid grid-cols-1 justify-between gap-4 lg:grid-cols-2 lg:gap-x-20">
+        <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 lg:gap-x-20">
           <OnTutorialDeliveryFields
             question="1. How do the tutorials go?"
             answer={report.feedback}

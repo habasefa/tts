@@ -165,7 +165,14 @@ const App = () => {
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-100">
-        <p className="text-lg font-semibold text-gray-600">Loading...</p>
+        <div className="flex flex-col items-center space-y-4">
+          {/* Loading spinner */}
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-gray-600"></div>
+          {/* Loading message */}
+          <p className="text-lg font-semibold text-gray-600">
+            Loading, please wait...
+          </p>
+        </div>
       </div>
     )
   }
@@ -173,7 +180,24 @@ const App = () => {
   if (error) {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-100">
-        <p className="text-lg font-semibold text-red-600">Error: {error}</p>
+        <div className="flex flex-col items-center space-y-4">
+          {/* Error icon */}
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+            <div className="h-6 w-6 rounded-full bg-red-600"></div>
+          </div>
+          {/* Error message */}
+          <p className="text-lg font-semibold text-red-600">
+            Oops! Something went wrong.
+          </p>
+          <p className="text-sm font-normal text-gray-500">{error}</p>
+          {/* Reload button */}
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+          >
+            Reload Page
+          </button>
+        </div>
       </div>
     )
   }
