@@ -279,19 +279,19 @@ const Report = ({ report }) => {
         <div className="grid grid-cols-1 justify-between gap-4 lg:grid-cols-2 lg:gap-x-20">
           <OnTutorialDeliveryFields
             question="1. How do the tutorials go?"
-            answer="The tutorials go well and the content is engaging."
+            answer={report.feedback}
           />
           <OnTutorialDeliveryFields
             question="2. Was there any challenges?"
-            answer="Yes, the learning pace can be a bit challenging at times."
+            answer={report.pastChallenge}
           />
           <OnTutorialDeliveryFields
             question="3. What are the challenges you go through?"
-            answer="The major challenges include understanding advanced concepts."
+            answer={report.futureChallenge}
           />
           <OnTutorialDeliveryFields
             question="4. How can we help you to pass the challenges?"
-            answer="Provide more real-world examples and more interactive sessions."
+            answer={report.helpChallenge}
           />
         </div>
       </BackgroundField>
