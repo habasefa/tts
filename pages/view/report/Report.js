@@ -28,11 +28,11 @@ const ProfessionalizationItem = ({ title, percentage }) => {
   // const percentColor = 'red-500'
 
   return (
-    <div className=" rounded-xl bg-gray-50 p-0 ">
+    <div className=" mb-5 rounded-xl bg-gray-50 p-0 sm:mb-0 ">
       {/* Title */}
-      <h3 className=" font-semibold text-gray-900">{title}</h3>
+      <h3 className="font-semibold text-gray-900">{title}</h3>
 
-      <div className="flex items-center space-x-4">
+      <div className="items-center space-x-4 sm:flex ">
         {/* Gradient Bar */}
         <div
           className={`relative h-2 flex-[6] rounded-full bg-gradient-to-r from-orange-100 to-green-100`}
@@ -54,9 +54,11 @@ const ProfessionalizationItem = ({ title, percentage }) => {
 const BackgroundField = ({ children, title }) => {
   return (
     <div>
-      <p className="mb-2 ml-3 text-base font-semibold text-black">{title}</p>
+      <p className="mb-2 ml-3 text-sm font-semibold text-black sm:text-base">
+        {title}
+      </p>
 
-      <div className="mb-8 flex w-full flex-col rounded-2xl border-t-2 bg-gray-50 p-6 shadow-lg ">
+      <div className="mb-8 flex w-full flex-col rounded-2xl border-t-2 bg-gray-50 p-4 shadow-lg sm:p-6">
         {children}
       </div>
     </div>
@@ -64,7 +66,7 @@ const BackgroundField = ({ children, title }) => {
 }
 const OnTutorialDeliveryFields = ({ question, answer }) => {
   return (
-    <div className="rounded-xl  p-4 ">
+    <div className="rounded-xl  sm:p-4 ">
       <h3 className="font-semibold text-black">{question}</h3>
       <p className="text-gray-700">{answer}</p>
     </div>
@@ -152,7 +154,7 @@ const Report = ({ report }) => {
   }
 
   return (
-    <div className="rounded-3xl bg-zinc-100 p-6 ">
+    <div className="rounded-3xl bg-zinc-100 p-2 sm:p-6 ">
       {/* Header Section */}
       <div className="mb-4 flex items-center justify-between">
         <h1 className="text-sm  font-bold text-gray-800 sm:text-2xl">
@@ -192,8 +194,10 @@ const Report = ({ report }) => {
               )}
               {/* grid */}
               <div>
-                <h3 className="ml-3 font-semibold text-gray-800">On Content</h3>
-                <div className="mb-4 w-full rounded-xl border-2 border-gray-200 p-4 text-xs md:text-sm">
+                <h3 className="ml-3 text-sm font-semibold text-gray-800 sm:text-base">
+                  On Content
+                </h3>
+                <div className="mb-4 w-full rounded-xl border-2 border-gray-200 p-4  text-[9.5px] sm:text-xs md:text-sm">
                   <div className="grid grid-cols-4 gap-1 border-0 pb-2">
                     <span className="font-normal text-gray-400">Subject</span>
                     <span className="font-normal text-gray-400">Chapter</span>
@@ -228,7 +232,7 @@ const Report = ({ report }) => {
                 </div>
 
                 <h3 className="ml-3 font-semibold text-gray-800">On Result</h3>
-                <div className="mb-4 w-full rounded-xl border-2 border-gray-200 p-4  text-xs md:text-sm">
+                <div className="mb-4 w-full rounded-xl border-2 border-gray-200 p-4 text-[9.5px] text-xs  sm:text-xs md:text-sm">
                   <div className="grid grid-cols-4 gap-1 border-0 pb-2">
                     <span className="font-normal text-gray-400">Cource</span>
                     <span className="font-normal text-gray-400">Unit</span>
@@ -260,6 +264,8 @@ const Report = ({ report }) => {
                   )}
                 </div>
               </div>
+
+              {/*"mobile"*/}
 
               {/* <div className="flex justify-center">
                 <a
@@ -332,7 +338,7 @@ const Report = ({ report }) => {
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
-                  className={`text-4xl ${
+                  className={`text-xl sm:text-4xl ${
                     star <= rate ? 'text-yellow-400' : 'text-gray-300'
                   }`}
                 >

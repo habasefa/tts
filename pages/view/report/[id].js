@@ -3,7 +3,7 @@ import Sidebar from './Sidebar'
 import Report from './Report'
 import { API_URL } from '../../../utils/url'
 // const API_URL = 'http://localhost:4000/'
-const report = {
+const reportData = {
   id: '675c669faf42c54164f8137d',
   totalDays: '1',
   totalHours: '1',
@@ -29,7 +29,9 @@ const report = {
             chapters: [
               {
                 chapter: '1',
-                topics: [{ topic: 'dc', understanding: 'vf' }],
+                topics: [
+                  { topic: 'dc', understanding: 'vxskakjc skj cjj j f' },
+                ],
               },
             ],
           },
@@ -40,7 +42,29 @@ const report = {
             units: [
               {
                 unit: 'as',
-                types: [{ typ: '', result: 'sacsavv', type: 'cac' }],
+                types: [
+                  {
+                    typ: '',
+                    result: 'sacsdcsjv ksjfd vkjad cjsakdavv',
+                    type: 'cac',
+                  },
+                ],
+              },
+            ],
+            assesment: 'math',
+          },
+          {
+            course: 'blag',
+            units: [
+              {
+                unit: 'as',
+                types: [
+                  {
+                    typ: '',
+                    result: 'sacsdcsjv ksjfd vkjad cjsakdavv',
+                    type: 'cac',
+                  },
+                ],
               },
             ],
             assesment: 'math',
@@ -104,40 +128,42 @@ const App = () => {
   const router = useRouter()
   const { id } = router.query
   console.log(id)
-  const [report, setReport] = useState(null)
+  const [report, setReport] = useState(reportData)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  // setLoading(false)
 
-  useEffect(() => {
-    if (!id) return // Ensure we have the `id` before fetching
+  // useEffect(() => {
+  //   if (!id) return // Ensure we have the `id` before fetching
 
-    const fetchReport = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        // Replace with your actual API endpoint
-        const response = await fetch(`${API_URL}api/v1/report/view/${id}`)
-        if (!response.ok) {
-          throw new Error('Failed to fetch the report.')
-        }
-        const data = await response.json()
-        console.log(data)
-        if (data.success) {
-          setReport(data.report)
-        } else {
-          throw new Error(data.message || 'Failed to fetch the report.')
-        }
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
+  //   const fetchReport = async () => {
+  //     setLoading(true)
+  //     setError(null)
+  //     try {
+  //       // Replace with your actual API endpoint
+  //       const response = await fetch(`${API_URL}api/v1/report/view/${id}`)
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch the report.')
+  //       }
+  //       const data = await response.json()
+  //       console.log(data)
+  //       if (data.success) {
+  //         setReport(data.report)
+  //       } else {
+  //         throw new Error(data.message || 'Failed to fetch the report.')
+  //       }
+  //     } catch (err) {
+  //       setError(err.message)
+  //     } finally {
+  //       setLoading(false)
+  //     }
+  //   }
 
-    fetchReport()
-  }, [id])
+  //   fetchReport()
+  // }, [id])
 
   if (loading) {
+    setLoading(false)
     return (
       <div className="flex h-screen items-center justify-center bg-gray-100">
         <p className="text-lg font-semibold text-gray-600">Loading...</p>
@@ -154,9 +180,9 @@ const App = () => {
   }
 
   return (
-    <div className="flex bg-zinc-100 p-10" id="report-pdf-content">
+    <div className="flex bg-zinc-100 p-0 sm:p-10" id="report-pdf-content">
       <div className="flex w-full rounded-3xl bg-zinc-100 shadow-2xl">
-        <main className="flex-1 overflow-y-auto p-5">
+        <main className="flex-1 overflow-y-auto p-0 sm:p-5">
           <Report report={report} />
         </main>
       </div>
