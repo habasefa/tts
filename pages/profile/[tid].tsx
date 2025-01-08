@@ -34,7 +34,7 @@ function UpdateTutor() {
     getTutorById(tid, token)
       .then((res) => res.json())
       .then((data) => {
-        setTutorExperience(data.user.prevTutored);
+        setTutorExperience(data.user.prevTutored)
         setInputValue({
           fullName: data.user.fullName,
           email: data.user.email,
@@ -63,6 +63,7 @@ function UpdateTutor() {
           location: data.user.location,
           essay: data.user.essay,
           hobby: data.user.hobby,
+          telegramUsername: data.user.telegramUsername,
           profilePicture: data.user.profilePicture,
           userId: data.user.userId,
         })
@@ -190,7 +191,11 @@ function UpdateTutor() {
     >
       <Header />
       <Backdrop
-        sx={{ color: '#fff', backgroundColor: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          color: '#fff',
+          backgroundColor: '#fff',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
         open={isLoading}
       >
         <CircularProgress color="info" />
@@ -495,11 +500,22 @@ function UpdateTutor() {
               <Input maxLength={50} showCount name="contactEmail" />
             </Form.Item>
             <Form.Item
+              label="Username for telegram"
+              name="telegramUsername"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your username for telegram!',
+                },
+              ]}
+            >
+              <Input maxLength={50} showCount placeholder="@username" />
+            </Form.Item>
+            <Form.Item
               label="Work days"
               name="workDays"
               rules={[
                 {
-                  
                   required: true,
                   message: 'Please input preferred work day/days',
                 },
@@ -513,7 +529,7 @@ function UpdateTutor() {
               rules={[
                 {
                   required: true,
-                
+
                   message: 'Please input preferred work hour/hours',
                 },
               ]}
